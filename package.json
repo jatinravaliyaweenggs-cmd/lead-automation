@@ -13,8 +13,11 @@
   "license": "ISC",
   "type": "commonjs",
   "devDependencies": {
-    "@cucumber/cucumber": "^13.0.0",
     "@playwright/test": "^1.61.1",
     "@types/node": "^26.1.0"
+  },
+  "dependencies": {
+    "@cucumber/cucumber": "^9.6.0",
+    "commander": "^9.5.0"
   }
 }
