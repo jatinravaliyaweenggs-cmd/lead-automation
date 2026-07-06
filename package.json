@@ -17,7 +17,6 @@
     "@types/node": "^26.1.0"
   },
   "dependencies": {
-    "@cucumber/cucumber": "^9.6.0",
-    "commander": "^9.5.0"
+    "@cucumber/cucumber": "^9.6.0"
   }
 }
