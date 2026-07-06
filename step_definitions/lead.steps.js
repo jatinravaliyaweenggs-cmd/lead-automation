@@ -19,3 +19,11 @@ Then('Lead page should be opened', async function () {
 Then('User should see Leads heading', async function () {
   await this.leadPage.leadsHeading.waitFor({ state: 'visible', timeout: 15000 });
 });
+
+Then('User clicks on Add Lead button', async function () {
+  await this.leadPage.clickAddLeadButton();
+});
+
+Then('User clicks on Lead option', async function () {
+  await this.leadPage.clickLeadOption();
+});

@@ -10,3 +10,5 @@ Feature: Lead Navigation
   Scenario: Navigate to Lead page from Dashboard
     When User navigates to Lead page via Dashboard
     Then User should see Leads heading
+    And User clicks on Add Lead button
+    And User clicks on Lead option

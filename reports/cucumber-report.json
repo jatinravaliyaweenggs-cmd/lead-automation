@@ -14,7 +14,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 423692700
+              "duration": 476390099
             }
           },
           {
@@ -27,7 +27,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 6500225899
+              "duration": 7193934699
             }
           },
           {
@@ -40,7 +40,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 4192760900
+              "duration": 4195790499
             }
           },
           {
@@ -53,7 +53,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 3720301300
+              "duration": 3921494099
             }
           },
           {
@@ -66,7 +66,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 2432256400
+              "duration": 2351410199
             }
           },
           {
@@ -79,7 +79,33 @@
             },
             "result": {
               "status": "passed",
-              "duration": 290207000
+              "duration": 199096000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 13,
+            "name": "User clicks on Add Lead button",
+            "match": {
+              "location": "step_definitions\\lead.steps.js:23"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1476159200
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 14,
+            "name": "User clicks on Lead option",
+            "match": {
+              "location": "step_definitions\\lead.steps.js:27"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 923693100
             }
           },
           {
@@ -87,7 +113,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 322205699
+              "duration": 329471600
             }
           }
         ],
