@@ -17,8 +17,7 @@ When('User login with {string} and {string}', async function (username, password
 // ─── Then Steps ─────────────────────────────────────────────────────────────
 
 Then('User should be redirected to the dashboard', async function () {
-  await this.page.waitForURL(
-    (url) => !url.toString().includes('sign-in'),
-    { timeout: 15000 }
-  );
+  // "Dashboard" text visible thay tyar sudhi wait karo
+  const dashboardText = this.page.locator('span.ant-typography', { hasText: 'Dashboard' });
+  await dashboardText.waitFor({ state: 'visible', timeout: 30000 });
 });
