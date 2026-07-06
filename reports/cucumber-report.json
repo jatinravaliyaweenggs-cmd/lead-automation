@@ -1,0 +1,89 @@
+[
+  {
+    "description": "  As a user want to login to CFTeam application",
+    "elements": [
+      {
+        "description": "",
+        "id": "login;login-with-valid-credentials",
+        "keyword": "Scenario Outline",
+        "line": 12,
+        "name": "Login with valid credentials",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 411567199
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 6,
+            "name": "User is on the login page",
+            "match": {
+              "location": "features\\step_definitions\\login.steps.js:6"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 7752743199
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 7,
+            "name": "User login with \"jatin.ravaliya@weenggs.in\" and \"1234567890aABCD@#\"",
+            "match": {
+              "location": "features\\step_definitions\\login.steps.js:13"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 4228644100
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 8,
+            "name": "User should be redirected to the dashboard",
+            "match": {
+              "location": "features\\step_definitions\\login.steps.js:19"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1803924499
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 235564800
+            }
+          }
+        ],
+        "tags": [
+          {
+            "name": "@login",
+            "line": 1
+          }
+        ],
+        "type": "scenario"
+      }
+    ],
+    "id": "login",
+    "line": 2,
+    "keyword": "Feature",
+    "name": "Login",
+    "tags": [
+      {
+        "name": "@login",
+        "line": 1
+      }
+    ],
+    "uri": "features\\login.feature"
+  }
+]

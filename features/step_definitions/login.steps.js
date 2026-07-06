@@ -1,0 +1,24 @@
+const { Given, When, Then } = require('@cucumber/cucumber');
+const { LoginPage } = require('../pages/LoginPage');
+
+// ─── Given Steps ────────────────────────────────────────────────────────────
+
+Given('User is on the login page', async function () {
+  this.loginPage = new LoginPage(this.page);
+  await this.loginPage.navigate();
+});
+
+// ─── When Steps ─────────────────────────────────────────────────────────────
+
+When('User login with {string} and {string}', async function (username, password) {
+  await this.loginPage.login(username, password);
+});
+
+// ─── Then Steps ─────────────────────────────────────────────────────────────
+
+Then('User should be redirected to the dashboard', async function () {
+  await this.page.waitForURL(
+    (url) => !url.toString().includes('sign-in'),
+    { timeout: 15000 }
+  );
+});

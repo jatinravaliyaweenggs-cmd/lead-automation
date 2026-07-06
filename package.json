@@ -3,12 +3,17 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "test": "cucumber-js",
+    "test:tags": "cucumber-js --tags",
+    "test:login": "cucumber-js --tags @login"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "type": "commonjs",
   "devDependencies": {
+    "@cucumber/cucumber": "^13.0.0",
     "@playwright/test": "^1.61.1",
     "@types/node": "^26.1.0"
   }
