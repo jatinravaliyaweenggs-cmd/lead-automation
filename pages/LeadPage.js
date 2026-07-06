@@ -112,7 +112,7 @@ class LeadPage {
       { locator: page.locator('input[name="address2"]'),         expected: 'Suite or unit',           label: 'Street 2'    },
       { locator: page.locator('input[name="city"]'),             expected: 'City',                    label: 'City'        },
       { locator: page.locator('input[name="state"]'),            expected: 'State/Province',          label: 'State'       },
-      { locator: page.locator('input[name="zip"]'),              expected: 'Zip code 789',                label: 'Zip'         },
+      { locator: page.locator('input[name="zip"]'),              expected: 'Zip code',                  label: 'Zip'         },
     ];
 
     const failures = [];

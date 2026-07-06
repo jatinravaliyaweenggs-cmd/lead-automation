@@ -4,9 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "cucumber-js",
-    "test:tags": "cucumber-js --tags",
-    "test:login": "cucumber-js --tags @login"
+    "test": "cucumber-js --config cucumber.config.js",
+    "test:tags": "cucumber-js --config cucumber.config.js --tags",
+    "test:login": "cucumber-js --config cucumber.config.js --tags @login"
   },
   "keywords": [],
   "author": "",
