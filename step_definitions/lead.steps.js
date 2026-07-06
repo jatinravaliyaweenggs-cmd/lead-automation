@@ -1,4 +1,5 @@
 const { When, Then } = require('@cucumber/cucumber');
+const { expect } = require('@playwright/test');
 const { LeadPage } = require('../pages/LeadPage');
 
 // ─── When Steps ─────────────────────────────────────────────────────────────
@@ -15,4 +16,8 @@ When('User navigates to Lead page and opens Add Lead form', async function () {
 
 Then('Lead form should be opened', async function () {
   await this.page.waitForTimeout(2000);
+});
+
+Then('Lead form fields should have correct placeholders', async function () {
+  await this.leadPage.verifyFormPlaceholders(this.attach.bind(this));
 });

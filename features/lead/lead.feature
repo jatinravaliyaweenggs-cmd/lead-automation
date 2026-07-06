@@ -10,3 +10,4 @@ Feature: Lead Navigation
   Scenario: Navigate to Lead page from Dashboard
     When User navigates to Lead page and opens Add Lead form
     Then Lead form should be opened
+    And Lead form fields should have correct placeholders
