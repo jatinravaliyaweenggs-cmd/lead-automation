@@ -8,7 +8,5 @@ Feature: Lead Navigation
     Then User should be redirected to the dashboard
 
   Scenario: Navigate to Lead page from Dashboard
-    When User navigates to Lead page via Dashboard
-    Then User should see Leads heading
-    And User clicks on Add Lead button
-    And User clicks on Lead option
+    When User navigates to Lead page and opens Add Lead form
+    Then Lead form should be opened

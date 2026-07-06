@@ -14,7 +14,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 476390099
+              "duration": 474384799
             }
           },
           {
@@ -27,7 +27,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 7193934699
+              "duration": 6648149000
             }
           },
           {
@@ -40,7 +40,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 4195790499
+              "duration": 4172807799
             }
           },
           {
@@ -53,59 +53,33 @@
             },
             "result": {
               "status": "passed",
-              "duration": 3921494099
+              "duration": 4117190000
             }
           },
           {
             "arguments": [],
             "keyword": "When ",
             "line": 11,
-            "name": "User navigates to Lead page via Dashboard",
+            "name": "User navigates to Lead page and opens Add Lead form",
             "match": {
               "location": "step_definitions\\lead.steps.js:6"
             },
             "result": {
               "status": "passed",
-              "duration": 2351410199
+              "duration": 5520203299
             }
           },
           {
             "arguments": [],
             "keyword": "Then ",
             "line": 12,
-            "name": "User should see Leads heading",
+            "name": "Lead form should be opened",
             "match": {
-              "location": "step_definitions\\lead.steps.js:19"
+              "location": "step_definitions\\lead.steps.js:16"
             },
             "result": {
               "status": "passed",
-              "duration": 199096000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "And ",
-            "line": 13,
-            "name": "User clicks on Add Lead button",
-            "match": {
-              "location": "step_definitions\\lead.steps.js:23"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 1476159200
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "And ",
-            "line": 14,
-            "name": "User clicks on Lead option",
-            "match": {
-              "location": "step_definitions\\lead.steps.js:27"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 923693100
+              "duration": 2017146000
             }
           },
           {
@@ -113,7 +87,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 329471600
+              "duration": 323391299
             }
           }
         ],
