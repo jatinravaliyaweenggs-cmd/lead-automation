@@ -1,20 +1,20 @@
 [
   {
-    "description": "  As a user want to login to CFTeam application",
+    "description": "  As a user want to navigate to Lead module",
     "elements": [
       {
         "description": "",
-        "id": "login;login-with-valid-credentials",
+        "id": "lead-navigation;navigate-to-lead-page-from-dashboard",
         "keyword": "Scenario",
-        "line": 5,
-        "name": "Login with valid credentials",
+        "line": 10,
+        "name": "Navigate to Lead page from Dashboard",
         "steps": [
           {
             "keyword": "Before",
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 654845100
+              "duration": 423692700
             }
           },
           {
@@ -27,7 +27,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 6155480299
+              "duration": 6500225899
             }
           },
           {
@@ -40,7 +40,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 4202470299
+              "duration": 4192760900
             }
           },
           {
@@ -53,7 +53,33 @@
             },
             "result": {
               "status": "passed",
-              "duration": 4213276399
+              "duration": 3720301300
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 11,
+            "name": "User navigates to Lead page via Dashboard",
+            "match": {
+              "location": "step_definitions\\lead.steps.js:6"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 2432256400
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 12,
+            "name": "User should see Leads heading",
+            "match": {
+              "location": "step_definitions\\lead.steps.js:19"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 290207000
             }
           },
           {
@@ -61,29 +87,29 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 321077400
+              "duration": 322205699
             }
           }
         ],
         "tags": [
           {
-            "name": "@login",
+            "name": "@lead",
             "line": 1
           }
         ],
         "type": "scenario"
       }
     ],
-    "id": "login",
+    "id": "lead-navigation",
     "line": 2,
     "keyword": "Feature",
-    "name": "Login",
+    "name": "Lead Navigation",
     "tags": [
       {
-        "name": "@login",
+        "name": "@lead",
         "line": 1
       }
     ],
-    "uri": "features\\login.feature"
+    "uri": "features\\lead\\lead.feature"
   }
 ]
