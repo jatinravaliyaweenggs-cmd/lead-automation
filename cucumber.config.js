@@ -1,7 +1,7 @@
 module.exports = {
   default: {
     paths: ['features/**/*.feature'],
-    require: ['features/step_definitions/**/*.js', 'features/support/**/*.js'],
+    require: ['step_definitions/**/*.js', 'support/**/*.js'],
     format: [
       'progress-bar',
       'html:reports/cucumber-report.html',
@@ -9,6 +9,6 @@ module.exports = {
     ],
     formatOptions: { snippetInterface: 'async-await' },
     publishQuiet: true,
-    timeout: 60000 // 60 seconds timeout for each step
+    timeout: 60000
   }
 };

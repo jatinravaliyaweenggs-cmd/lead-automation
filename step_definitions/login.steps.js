@@ -1,5 +1,6 @@
 const { Given, When, Then } = require('@cucumber/cucumber');
 const { LoginPage } = require('../pages/LoginPage');
+const { validUser } = require('../testdata/credentials');
 
 // ─── Given Steps ────────────────────────────────────────────────────────────
 
@@ -10,14 +11,13 @@ Given('User is on the login page', async function () {
 
 // ─── When Steps ─────────────────────────────────────────────────────────────
 
-When('User login with {string} and {string}', async function (username, password) {
-  await this.loginPage.login(username, password);
+When('User login with valid credentials', async function () {
+  await this.loginPage.login(validUser.username, validUser.password);
 });
 
 // ─── Then Steps ─────────────────────────────────────────────────────────────
 
 Then('User should be redirected to the dashboard', async function () {
-  // "Dashboard" text visible thay tyar sudhi wait karo
   const dashboardText = this.page.locator('span.ant-typography', { hasText: 'Dashboard' });
   await dashboardText.waitFor({ state: 'visible', timeout: 30000 });
 });

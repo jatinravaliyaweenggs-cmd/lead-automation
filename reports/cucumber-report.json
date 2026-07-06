@@ -5,8 +5,8 @@
       {
         "description": "",
         "id": "login;login-with-valid-credentials",
-        "keyword": "Scenario Outline",
-        "line": 12,
+        "keyword": "Scenario",
+        "line": 5,
         "name": "Login with valid credentials",
         "steps": [
           {
@@ -14,7 +14,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 443913000
+              "duration": 654845100
             }
           },
           {
@@ -23,24 +23,24 @@
             "line": 6,
             "name": "User is on the login page",
             "match": {
-              "location": "features\\step_definitions\\login.steps.js:6"
+              "location": "step_definitions\\login.steps.js:7"
             },
             "result": {
               "status": "passed",
-              "duration": 7764514000
+              "duration": 6155480299
             }
           },
           {
             "arguments": [],
             "keyword": "When ",
             "line": 7,
-            "name": "User login with \"jatin.ravaliya@weenggs.in\" and \"1234567890aABCD@#\"",
+            "name": "User login with valid credentials",
             "match": {
-              "location": "features\\step_definitions\\login.steps.js:13"
+              "location": "step_definitions\\login.steps.js:14"
             },
             "result": {
               "status": "passed",
-              "duration": 4217101100
+              "duration": 4202470299
             }
           },
           {
@@ -49,11 +49,11 @@
             "line": 8,
             "name": "User should be redirected to the dashboard",
             "match": {
-              "location": "features\\step_definitions\\login.steps.js:19"
+              "location": "step_definitions\\login.steps.js:20"
             },
             "result": {
               "status": "passed",
-              "duration": 3947655899
+              "duration": 4213276399
             }
           },
           {
@@ -61,7 +61,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 251232299
+              "duration": 321077400
             }
           }
         ],
