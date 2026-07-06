@@ -21,3 +21,8 @@ Then('Lead form should be opened', async function () {
 Then('Lead form fields should have correct placeholders', async function () {
   await this.leadPage.verifyFormPlaceholders(this.attach.bind(this));
 });
+
+Then('The following mandatory fields should display an asterisk symbol', async function (dataTable) {
+  const fieldNames = dataTable.hashes().map((row) => row['Field']);
+  await this.leadPage.verifyMandatoryAsterisk(fieldNames, this.attach.bind(this));
+});

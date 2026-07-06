@@ -153,6 +153,59 @@ class LeadPage {
       );
     }
   }
+  /**
+   * Verify that mandatory form fields display an asterisk (*) symbol next to their label.
+   * Checks the label element for a child <span> containing "*".
+   *
+   * @param {string[]} fieldNames - Human-readable field names e.g. ['First Name', 'Last Name', 'Stage']
+   * @param {function} attachFn   - Cucumber's this.attach for embedding screenshot in report
+   */
+  async verifyMandatoryAsterisk(fieldNames, attachFn) {
+    const page    = this.page;
+    const failures = [];
+
+    // Map field label text → locator strategy for its asterisk span
+    // The asterisk lives inside the label as: <span class="ant-typography ...">*</span>
+    const labelToLocator = (labelText) =>
+      page.locator(`label:has-text("${labelText}") span.ant-typography`).filter({ hasText: '*' });
+
+    for (const fieldName of fieldNames) {
+      const asteriskLocator = labelToLocator(fieldName);
+      try {
+        await expect(asteriskLocator).toBeVisible({ timeout: 5000 });
+        const text = await asteriskLocator.innerText();
+        if (!text.includes('*')) {
+          throw new Error(`Expected asterisk (*) but found: "${text}"`);
+        }
+      } catch (err) {
+        await this.highlightElement(
+          page.locator(`label:has-text("${fieldName}")`)
+        );
+        failures.push({ label: fieldName, error: err.message });
+      }
+    }
+
+    if (failures.length > 0) {
+      await page.waitForTimeout(300);
+      const screenshot = await page.screenshot({ fullPage: true });
+
+      if (attachFn) {
+        await attachFn(screenshot, 'image/png');
+      }
+
+      await this.clearHighlights();
+
+      const errorSummary = failures
+        .map((f) => `  ❌ [${f.label}] ${f.error}`)
+        .join('\n');
+
+      throw new Error(
+        `Mandatory asterisk (*) missing for ${failures.length} field(s):\n${errorSummary}`
+      );
+    }
+  }
+
+
 }
 
 module.exports = { LeadPage };
