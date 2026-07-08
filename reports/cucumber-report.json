@@ -1,0 +1,102 @@
+[
+  {
+    "description": "  As a user I want to navigate to the Opportunity module",
+    "elements": [
+      {
+        "description": "",
+        "id": "opportunity-navigation;navigate-to-opportunity-page-from-dashboard",
+        "keyword": "Scenario",
+        "line": 10,
+        "name": "Navigate to Opportunity page from Dashboard",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 467504700
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 6,
+            "name": "User is on the login page",
+            "match": {
+              "location": "step_definitions\\login.steps.js:7"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 5630615799
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 7,
+            "name": "User login with valid credentials",
+            "match": {
+              "location": "step_definitions\\login.steps.js:14"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 4197017699
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 8,
+            "name": "User should be redirected to the dashboard",
+            "match": {
+              "location": "step_definitions\\login.steps.js:20"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 3826323800
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 11,
+            "name": "User navigates to Opportunity page",
+            "match": {
+              "location": "step_definitions\\opportunity.steps.js:4"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 2387157600
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 336629499
+            }
+          }
+        ],
+        "tags": [
+          {
+            "name": "@opportunity",
+            "line": 1
+          }
+        ],
+        "type": "scenario"
+      }
+    ],
+    "id": "opportunity-navigation",
+    "line": 2,
+    "keyword": "Feature",
+    "name": "Opportunity Navigation",
+    "tags": [
+      {
+        "name": "@opportunity",
+        "line": 1
+      }
+    ],
+    "uri": "features\\opportunity\\opportunity.feature"
+  }
+]
