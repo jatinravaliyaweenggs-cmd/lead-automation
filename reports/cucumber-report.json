@@ -1,20 +1,20 @@
 [
   {
-    "description": "  As a user I want to navigate to the Opportunity module",
+    "description": "  As a user I want to open the Lead page to create a lead for a customer",
     "elements": [
       {
         "description": "",
-        "id": "opportunity-navigation;navigate-to-opportunity-page-from-dashboard",
+        "id": "create-lead-for-customer;open-lead-page-and-add-lead-form-for-customer",
         "keyword": "Scenario",
         "line": 10,
-        "name": "Navigate to Opportunity page from Dashboard",
+        "name": "Open Lead page and Add Lead form for Customer",
         "steps": [
           {
             "keyword": "Before",
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 467504700
+              "duration": 398378800
             }
           },
           {
@@ -27,7 +27,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 5630615799
+              "duration": 6840443800
             }
           },
           {
@@ -40,7 +40,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 4197017699
+              "duration": 4170894299
             }
           },
           {
@@ -53,20 +53,33 @@
             },
             "result": {
               "status": "passed",
-              "duration": 3826323800
+              "duration": 4361304799
             }
           },
           {
             "arguments": [],
             "keyword": "When ",
             "line": 11,
-            "name": "User navigates to Opportunity page",
+            "name": "User navigates to Lead page and opens Add Lead form",
             "match": {
-              "location": "step_definitions\\opportunity.steps.js:4"
+              "location": "step_definitions\\lead.steps.js:7"
             },
             "result": {
               "status": "passed",
-              "duration": 2387157600
+              "duration": 5198359599
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 12,
+            "name": "Lead form should be opened",
+            "match": {
+              "location": "step_definitions\\lead.steps.js:17"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 2003977399
             }
           },
           {
@@ -74,29 +87,29 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 336629499
+              "duration": 338533800
             }
           }
         ],
         "tags": [
           {
-            "name": "@opportunity",
+            "name": "@leadCustomer",
             "line": 1
           }
         ],
         "type": "scenario"
       }
     ],
-    "id": "opportunity-navigation",
+    "id": "create-lead-for-customer",
     "line": 2,
     "keyword": "Feature",
-    "name": "Opportunity Navigation",
+    "name": "Create Lead for Customer",
     "tags": [
       {
-        "name": "@opportunity",
+        "name": "@leadCustomer",
         "line": 1
       }
     ],
-    "uri": "features\\opportunity\\opportunity.feature"
+    "uri": "features\\lead\\LeadCreateforCustomer.feature"
   }
 ]
