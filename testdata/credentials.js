@@ -6,6 +6,11 @@ module.exports = {
   leadData: {
     companyName: "Ajay & Son's construction company",
     firstName:   'Ajay',
-    lastName:    'Patel'
+    lastName:    'Patel',
+    stage:       'Pending',
+    phone:       '9876543210',
+    phoneExt1:   '101',
+    phone2:      '9123456780',
+    phoneExt2:   '202'
   }
 };
