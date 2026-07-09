@@ -7,6 +7,10 @@ Feature: Create Lead for Customer
     When User login with valid credentials
     Then User should be redirected to the dashboard
 
-  Scenario: Open Lead page and Add Lead form for Customer
+
+  Scenario: Fill company name, first name and last name in Lead form
     When User navigates to Lead page and opens Add Lead form
     Then Lead form should be opened
+    When User fills in the lead form details
+
+

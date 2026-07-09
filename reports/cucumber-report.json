@@ -4,17 +4,17 @@
     "elements": [
       {
         "description": "",
-        "id": "create-lead-for-customer;open-lead-page-and-add-lead-form-for-customer",
+        "id": "create-lead-for-customer;fill-company-name,-first-name-and-last-name-in-lead-form",
         "keyword": "Scenario",
-        "line": 10,
-        "name": "Open Lead page and Add Lead form for Customer",
+        "line": 11,
+        "name": "Fill company name, first name and last name in Lead form",
         "steps": [
           {
             "keyword": "Before",
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 398378800
+              "duration": 553890500
             }
           },
           {
@@ -27,7 +27,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 6840443800
+              "duration": 6901464199
             }
           },
           {
@@ -40,7 +40,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 4170894299
+              "duration": 4149739299
             }
           },
           {
@@ -53,33 +53,46 @@
             },
             "result": {
               "status": "passed",
-              "duration": 4361304799
+              "duration": 4344863499
             }
           },
           {
             "arguments": [],
             "keyword": "When ",
-            "line": 11,
+            "line": 12,
             "name": "User navigates to Lead page and opens Add Lead form",
             "match": {
               "location": "step_definitions\\lead.steps.js:7"
             },
             "result": {
               "status": "passed",
-              "duration": 5198359599
+              "duration": 5493892899
             }
           },
           {
             "arguments": [],
             "keyword": "Then ",
-            "line": 12,
+            "line": 13,
             "name": "Lead form should be opened",
             "match": {
               "location": "step_definitions\\lead.steps.js:17"
             },
             "result": {
               "status": "passed",
-              "duration": 2003977399
+              "duration": 2002672800
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 14,
+            "name": "User fills in the lead form details",
+            "match": {
+              "location": "step_definitions\\CreateLead.step.js:5"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 2508455099
             }
           },
           {
@@ -87,7 +100,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 338533800
+              "duration": 326559300
             }
           }
         ],
