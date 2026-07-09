@@ -24,6 +24,13 @@ class CreateLeadPage {
     // Mobile and Email locators
     this.cellInput        = page.locator('input[name="cell"]');
     this.emailInput       = page.getByPlaceholder('Email address');
+
+    // Address locators
+    this.addressInput      = page.locator('#directory-module-address-overlay');
+    this.addressFirstItem  = page.locator('.pac-item').first();
+
+    // Submit button
+    this.createLeadButton  = page.getByRole('button', { name: 'Create Lead' });
   }
 
   /**
@@ -126,6 +133,29 @@ class CreateLeadPage {
   async enterEmail(value) {
     await this.emailInput.waitFor({ state: 'visible' });
     await this.emailInput.fill(value);
+  }
+
+  /**
+   * Enter address and select first suggestion from Google autocomplete
+   * Uses type() instead of fill() to trigger Google Places autocomplete
+   * @param {string} value - e.g. 'Raval'
+   */
+  async enterAddress(value) {
+    await this.addressInput.waitFor({ state: 'visible' });
+    await this.addressInput.click();
+    await this.addressInput.clear();
+    await this.addressInput.type(value, { delay: 100 });
+    // Wait for Google autocomplete suggestions to appear
+    await this.addressFirstItem.waitFor({ state: 'visible', timeout: 10000 });
+    await this.addressFirstItem.click();
+  }
+
+  /**
+   * Click Create Lead submit button
+   */
+  async clickCreateLead() {
+    await this.createLeadButton.waitFor({ state: 'visible' });
+    await this.createLeadButton.click();
   }
 }
 
