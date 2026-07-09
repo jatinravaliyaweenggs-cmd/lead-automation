@@ -12,5 +12,7 @@ When('User fills in the lead form details', async function () {
   await this.createLeadPage.enterPhone(leadData.phone);
   await this.createLeadPage.enterPhoneExt1(leadData.phoneExt1);
   await this.createLeadPage.enterPhone2(leadData.phone2);
-  await this.createLeadPage.enterPhoneExt2(leadData.phoneExt2);
+  //await this.createLeadPage.enterPhoneExt2(leadData.phoneExt2);
+  await this.createLeadPage.enterCell(leadData.cell);
+  await this.createLeadPage.enterEmail(leadData.email);
 });

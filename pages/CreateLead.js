@@ -20,6 +20,10 @@ class CreateLeadPage {
 
     // Stage dropdown locators
     this.stageDropdown    = page.locator('#rc_select_0');
+
+    // Mobile and Email locators
+    this.cellInput        = page.locator('input[name="cell"]');
+    this.emailInput       = page.getByPlaceholder('Email address');
   }
 
   /**
@@ -82,7 +86,18 @@ class CreateLeadPage {
    */
   async enterPhoneExt2(value) {
     await this.phoneExt2Input.waitFor({ state: 'visible' });
+    await this.phoneExt2Input.click();
+      await this.page.waitForTimeout(500);
+
     await this.phoneExt2Input.fill(value);
+      await this.page.waitForTimeout(500);
+
+    // fallback: if fill doesn't work, use type
+    const entered = await this.phoneExt2Input.inputValue();
+    if (entered !== value) {
+      await this.phoneExt2Input.clear();
+      await this.phoneExt2Input.type(value);
+    }
   }
 
   /**
@@ -93,6 +108,24 @@ class CreateLeadPage {
     await this.stageDropdown.waitFor({ state: 'visible' });
     await this.stageDropdown.click();
     await this.page.getByText(value, { exact: true }).click();
+  }
+
+  /**
+   * Enter mobile/cell number
+   * @param {string} value
+   */
+  async enterCell(value) {
+    await this.cellInput.waitFor({ state: 'visible' });
+    await this.cellInput.fill(value);
+  }
+
+  /**
+   * Enter email address
+   * @param {string} value
+   */
+  async enterEmail(value) {
+    await this.emailInput.waitFor({ state: 'visible' });
+    await this.emailInput.fill(value);
   }
 }
 

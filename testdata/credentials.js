@@ -11,6 +11,7 @@ module.exports = {
     phone:       '9876543210',
     phoneExt1:   '101',
     phone2:      '9123456780',
-    phoneExt2:   '202'
+    cell:        '9988776655',
+    email:       'ajay.patel@example.com'
   }
 };
