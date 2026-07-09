@@ -114,7 +114,11 @@ class CreateLeadPage {
   async selectStage(value) {
     await this.stageDropdown.waitFor({ state: 'visible' });
     await this.stageDropdown.click();
-    await this.page.getByText(value, { exact: true }).click();
+    // Scope to the ant-select dropdown popup to avoid matching other page elements
+    await this.page
+      .locator('.ant-select-dropdown .ant-select-item-option-content', { hasText: value })
+      .filter({ hasText: new RegExp(`^${value}$`) })
+      .click();
   }
 
   /**
