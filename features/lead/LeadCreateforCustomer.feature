@@ -15,8 +15,6 @@ Feature: Create Lead for Customer
   Scenario: Click first row and add details
     When User navigates to Lead page and opens Add Lead form
     When User clicks the first row in the table
-    When User enters project name in the textbox
-    When User enters title in the textbox
-    When User enters fax value and presses tab
+    When User enters project name, title, and fax details in one step
 
 

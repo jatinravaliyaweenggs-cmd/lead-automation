@@ -24,18 +24,10 @@ When('User clicks the first row in the table', async function () {
   await this.createLeadPage.clickFirstTableRow();
 });
 
-When('User enters project name in the textbox', async function () {
+When('User enters project name, title, and fax details in one step', async function () {
   this.createLeadPage = new CreateLeadPage(this.page);
   await this.createLeadPage.enterProjectName('Project 001');
-});
-
-When('User enters title in the textbox', async function () {
-  this.createLeadPage = new CreateLeadPage(this.page);
   await this.createLeadPage.enterTitle('Sample Title');
-});
-
-When('User enters fax value and presses tab', async function () {
-  this.createLeadPage = new CreateLeadPage(this.page);
   await this.createLeadPage.enterFax('1234567890');
   await this.createLeadPage.pressTabKey();
 });
