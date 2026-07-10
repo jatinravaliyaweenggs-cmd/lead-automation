@@ -33,6 +33,7 @@ class CreateLeadPage {
     this.firstTableRow     = page.locator('table tbody tr').first();
     this.projectNameInput  = page.getByPlaceholder('Project Name').first();
     this.titleInput        = page.getByPlaceholder('Title').first();
+    this.faxInput          = page.locator('input[name="fax"]').first();
 
     // Submit button
     this.createLeadButton  = page.getByRole('button', { name: 'Create Lead' });
@@ -209,6 +210,25 @@ class CreateLeadPage {
     await this.titleInput.click();
     await this.titleInput.fill('');
     await this.titleInput.type(value, { delay: 50 });
+  }
+
+  /**
+   * Enter fax value and press Tab
+   * @param {string} value
+   */
+  async enterFax(value) {
+    await this.page.waitForTimeout(1000);
+    await this.faxInput.waitFor({ state: 'visible', timeout: 10000 });
+    await this.faxInput.click();
+    await this.faxInput.fill('');
+    await this.faxInput.type(value, { delay: 50 });
+  }
+
+  /**
+   * Press the Tab key
+   */
+  async pressTabKey() {
+    await this.page.keyboard.press('Tab');
   }
 
   /**

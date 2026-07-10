@@ -17,5 +17,6 @@ Feature: Create Lead for Customer
     When User clicks the first row in the table
     When User enters project name in the textbox
     When User enters title in the textbox
+    When User enters fax value and presses tab
 
 

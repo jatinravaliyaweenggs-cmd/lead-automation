@@ -33,3 +33,9 @@ When('User enters title in the textbox', async function () {
   this.createLeadPage = new CreateLeadPage(this.page);
   await this.createLeadPage.enterTitle('Sample Title');
 });
+
+When('User enters fax value and presses tab', async function () {
+  this.createLeadPage = new CreateLeadPage(this.page);
+  await this.createLeadPage.enterFax('1234567890');
+  await this.createLeadPage.pressTabKey();
+});
