@@ -18,3 +18,18 @@ When('User fills in the lead form details', async function () {
   await this.createLeadPage.enterAddress(leadData.address);
   await this.createLeadPage.clickCreateLead();
 });
+
+When('User clicks the first row in the table', async function () {
+  this.createLeadPage = new CreateLeadPage(this.page);
+  await this.createLeadPage.clickFirstTableRow();
+});
+
+When('User enters project name in the textbox', async function () {
+  this.createLeadPage = new CreateLeadPage(this.page);
+  await this.createLeadPage.enterProjectName('Project 001');
+});
+
+When('User enters title in the textbox', async function () {
+  this.createLeadPage = new CreateLeadPage(this.page);
+  await this.createLeadPage.enterTitle('Sample Title');
+});

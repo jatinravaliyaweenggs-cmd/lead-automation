@@ -29,6 +29,11 @@ class CreateLeadPage {
     this.addressInput      = page.locator('#directory-module-address-overlay');
     this.addressFirstItem  = page.locator('.pac-item').first();
 
+    // Row and detail field locators
+    this.firstTableRow     = page.locator('table tbody tr').first();
+    this.projectNameInput  = page.getByPlaceholder('Project Name').first();
+    this.titleInput        = page.getByPlaceholder('Title').first();
+
     // Submit button
     this.createLeadButton  = page.getByRole('button', { name: 'Create Lead' });
   }
@@ -152,6 +157,58 @@ class CreateLeadPage {
     // Wait for Google autocomplete suggestions to appear
     await this.addressFirstItem.waitFor({ state: 'visible', timeout: 10000 });
     await this.addressFirstItem.click();
+  }
+
+  /**
+   * Click the first row in the table
+   */
+  async clickFirstTableRow() {
+    const rowCandidates = [
+      this.page.locator('table tbody tr').first(),
+      this.page.locator('.ag-row').first(),
+      this.page.locator('tr').filter({ has: this.page.locator('td') }).first()
+    ];
+
+    for (const row of rowCandidates) {
+      try {
+        await row.waitFor({ state: 'visible', timeout: 5000 });
+        await row.scrollIntoViewIfNeeded();
+        await row.click({ force: true });
+        return;
+      } catch (err) {
+        // Try the next candidate locator
+      }
+    }
+
+    throw new Error('First table row was not found');
+  }
+
+  async clickFirstRow() {
+    await this.clickFirstTableRow();
+  }
+
+  /**
+   * Enter project name in the Project Name field
+   * @param {string} value
+   */
+  async enterProjectName(value) {
+    await this.page.waitForTimeout(1000);
+    await this.projectNameInput.waitFor({ state: 'visible', timeout: 10000 });
+    await this.projectNameInput.click();
+    await this.projectNameInput.fill('');
+    await this.projectNameInput.type(value, { delay: 50 });
+  }
+
+  /**
+   * Enter title in the Title field
+   * @param {string} value
+   */
+  async enterTitle(value) {
+    await this.page.waitForTimeout(1000);
+    await this.titleInput.waitFor({ state: 'visible', timeout: 10000 });
+    await this.titleInput.click();
+    await this.titleInput.fill('');
+    await this.titleInput.type(value, { delay: 50 });
   }
 
   /**

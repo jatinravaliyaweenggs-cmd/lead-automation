@@ -18,6 +18,6 @@ When('User login with valid credentials', async function () {
 // ─── Then Steps ─────────────────────────────────────────────────────────────
 
 Then('User should be redirected to the dashboard', async function () {
-  const dashboardText = this.page.locator('span.ant-typography', { hasText: 'Dashboard' });
+  const dashboardText = this.page.getByRole('navigation').getByText('Dashboard', { exact: true }).first();
   await dashboardText.waitFor({ state: 'visible', timeout: 30000 });
 });
