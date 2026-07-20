@@ -38,6 +38,12 @@ class CreateLeadPage {
     this.titleInput        = page.getByPlaceholder('Title').first();
     this.faxInput          = page.locator('input[name="fax"]').first();
 
+    // Contact Time dropdown — located via placeholder text, stable against runtime ID changes
+    this.contactTimeDropdown = page
+      .locator('.ant-select-selector', {
+        has: page.locator('.ant-select-selection-placeholder', { hasText: 'Select Contact Time' })
+      });
+
     // Submit button
     this.createLeadButton  = page.getByRole('button', { name: 'Create Lead' });
   }
@@ -240,6 +246,25 @@ class CreateLeadPage {
    */
   async pressTabKey() {
     await this.page.keyboard.press('Tab');
+  }
+
+  /**
+   * Select the first option from the Contact Time dropdown
+   */
+  async selectFirstContactTime() {
+    // Open the Contact Time dropdown
+    await this.contactTimeDropdown.waitFor({ state: 'visible', timeout: 10000 });
+    await this.contactTimeDropdown.click();
+
+    // Wait for dropdown popup to appear and pick the very first option
+    const firstOption = this.page
+      .locator('.ant-select-dropdown:not(.ant-select-dropdown-hidden) .ant-select-item-option-content')
+      .first();
+
+    await firstOption.waitFor({ state: 'visible', timeout: 10000 });
+    await firstOption.click();
+
+    await this.page.waitForTimeout(500);
   }
 
   /**

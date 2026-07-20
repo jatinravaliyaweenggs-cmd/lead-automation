@@ -17,4 +17,7 @@ Feature: Create Lead for Customer
  #   When User clicks the first row in the table
   #  When User enters project name, title, and fax details in one step
 
-
+  Scenario: add Additional Details
+    When User navigates to Lead page and opens Add Lead form
+    When User clicks the first row in the table
+    When User selects the first Contact Time option

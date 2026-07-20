@@ -31,3 +31,8 @@ When('User enters project name, title, and fax details in one step', async funct
   await this.createLeadPage.enterFax('1234567890');
   await this.createLeadPage.pressTabKey();
 });
+
+When('User selects the first Contact Time option', async function () {
+  this.createLeadPage = new CreateLeadPage(this.page);
+  await this.createLeadPage.selectFirstContactTime();
+});
