@@ -59,6 +59,7 @@ When('User fills in the additional contact details', async function () {
   await this.createLeadPage.scrollToContactNotes();
   await this.createLeadPage.enterContactNotes('This is test contact created via automation');
   await this.createLeadPage.clickSaveContact();
+  await this.createLeadPage.deleteContactEntry();
 });
 
 When('User selects the first Best Time to Call option', async function () {

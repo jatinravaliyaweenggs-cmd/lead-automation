@@ -404,6 +404,16 @@ class CreateLeadPage {
     await this.contactSaveButton.click();
   }
 
+  async deleteContactEntry() {
+    const deleteButton = this.page.locator('button:has(svg[data-icon="trash-can"])').first();
+    await deleteButton.waitFor({ state: 'visible', timeout: 10000 });
+    await deleteButton.click();
+
+    const confirmButton = this.page.getByRole('button', { name: 'Yes' });
+    await confirmButton.waitFor({ state: 'visible', timeout: 10000 });
+    await confirmButton.click();
+  }
+
   async clickListItemByText(value) {
     const item = this.page.locator('li', { hasText: value }).first();
     await item.waitFor({ state: 'visible', timeout: 10000 });
