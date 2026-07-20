@@ -38,6 +38,9 @@ class CreateLeadPage {
     this.titleInput        = page.getByPlaceholder('Title').first();
     this.faxInput          = page.locator('input[name="fax"]').first();
 
+    // Gate Code field
+    this.gateCodeInput = page.getByPlaceholder('Access/Gate Code');
+
     // Contact Time dropdown — located via placeholder text, stable against runtime ID changes
     this.contactTimeDropdown = page
       .locator('.ant-select-selector', {
@@ -270,6 +273,15 @@ class CreateLeadPage {
     await firstOption.click();
 
     await this.page.waitForTimeout(500);
+  }
+
+  /**
+   * Enter gate/access code
+   * @param {string} value
+   */
+  async enterGateCode(value) {
+    await this.gateCodeInput.waitFor({ state: 'visible', timeout: 10000 });
+    await this.gateCodeInput.fill(value);
   }
 
   /**

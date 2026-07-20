@@ -41,3 +41,8 @@ When('User selects the first Best Time to Call option', async function () {
   this.createLeadPage = new CreateLeadPage(this.page);
   await this.createLeadPage.selectFirstPreferredContactMethod();
 });
+
+When('User enters the gate code', async function () {
+  this.createLeadPage = new CreateLeadPage(this.page);
+  await this.createLeadPage.enterGateCode('12345');
+});
