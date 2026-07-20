@@ -41,6 +41,9 @@ class CreateLeadPage {
     // Gate Code field
     this.gateCodeInput = page.getByPlaceholder('Access/Gate Code');
 
+    // Tags field — type to search, press Enter to select
+    this.tagsInput = page.getByPlaceholder('Select Tags');
+
     // Contact Time dropdown — located via placeholder text, stable against runtime ID changes
     this.contactTimeDropdown = page
       .locator('.ant-select-selector', {
@@ -276,12 +279,44 @@ class CreateLeadPage {
   }
 
   /**
-   * Enter gate/access code
+   * Enter gate/access code and press Tab to move focus to the next field
    * @param {string} value
    */
   async enterGateCode(value) {
     await this.gateCodeInput.waitFor({ state: 'visible', timeout: 10000 });
     await this.gateCodeInput.fill(value);
+    await this.page.keyboard.press('Tab');
+  }
+
+  /**
+   * Select a tag from the Ant Design tags select field
+   * Clicks the selector to open it, then uses keyboard to type and select
+   * @param {string} tagName - e.g. 'Bhagu'
+   */
+  async selectTag(tagName) {
+    // Locate the Tags .ant-select-selector and click to open
+    const tagsSelector = this.page.locator('.ant-select-selector', {
+      has: this.page.locator('.ant-select-selection-placeholder', { hasText: 'Select Tags' })
+    });
+    await tagsSelector.waitFor({ state: 'visible', timeout: 10000 });
+    await tagsSelector.click();
+
+    // After click, Ant Design renders a real input inside the selector — find it
+    const tagsSearchInput = tagsSelector.locator('input');
+    await tagsSearchInput.waitFor({ state: 'visible', timeout: 10000 });
+    await tagsSearchInput.focus();
+    await tagsSearchInput.pressSequentially(tagName, { delay: 100 });
+
+    // Wait for dropdown option matching tagName and click it
+    const option = this.page
+      .locator('.ant-select-dropdown:not(.ant-select-dropdown-hidden) .ant-select-item-option-content')
+      .filter({ hasText: tagName })
+      .first();
+
+    await option.waitFor({ state: 'visible', timeout: 10000 });
+    await option.click();
+
+    await this.page.waitForTimeout(500);
   }
 
   /**

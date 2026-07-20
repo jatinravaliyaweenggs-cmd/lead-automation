@@ -46,3 +46,8 @@ When('User enters the gate code', async function () {
   this.createLeadPage = new CreateLeadPage(this.page);
   await this.createLeadPage.enterGateCode('12345');
 });
+
+When('User selects a tag', async function () {
+  this.createLeadPage = new CreateLeadPage(this.page);
+  await this.createLeadPage.selectTag('Bhagu');
+});
