@@ -58,6 +58,18 @@ class CreateLeadPage {
 
     // Submit button
     this.createLeadButton  = page.getByRole('button', { name: 'Create Lead' });
+    this.additionalContactButton = page.getByRole('button', { name: 'Additional Contact' });
+
+    // Additional contact form locators
+    this.contactFirstNameInput = page.getByPlaceholder('Contact first name (required)');
+    this.contactLastNameInput = page.getByPlaceholder('Contact last name (required)');
+    this.contactJobTitleInput = page.getByPlaceholder('Enter job title');
+    this.contactPrimaryPhoneInput = page.getByPlaceholder('Primary phone number');
+    this.contactExtensionInput = page.getByPlaceholder('Extension');
+    this.contactMobileInput = page.getByPlaceholder('Mobile/Cell number');
+    this.contactEmailInput = page.getByPlaceholder('Work email address');
+    this.contactNotesInput = page.getByPlaceholder('Add any additional notes about this contact');
+    this.contactSaveButton = page.getByRole('button', { name: 'Save' });
   }
 
   /**
@@ -331,6 +343,65 @@ class CreateLeadPage {
    */
   async selectFirstPreferredContactMethod() {
     await this.selectFirstOptionFrom(this.bestTimeToCallDropdown);
+  }
+
+  /**
+   * Click Additional Contact button
+   */
+  async clickAdditionalContact() {
+    await this.additionalContactButton.waitFor({ state: 'visible', timeout: 10000 });
+    await this.additionalContactButton.click();
+  }
+
+  async enterContactFirstName(value) {
+    await this.contactFirstNameInput.waitFor({ state: 'visible', timeout: 10000 });
+    await this.contactFirstNameInput.fill(value);
+  }
+
+  async enterContactLastName(value) {
+    await this.contactLastNameInput.waitFor({ state: 'visible', timeout: 10000 });
+    await this.contactLastNameInput.fill(value);
+  }
+
+  async enterContactJobTitle(value) {
+    await this.contactJobTitleInput.waitFor({ state: 'visible', timeout: 10000 });
+    await this.contactJobTitleInput.fill(value);
+  }
+
+  async enterContactPrimaryPhone(value) {
+    await this.contactPrimaryPhoneInput.waitFor({ state: 'visible', timeout: 10000 });
+    await this.contactPrimaryPhoneInput.fill(value);
+  }
+
+  async enterContactExtension(value) {
+    await this.contactExtensionInput.waitFor({ state: 'visible', timeout: 10000 });
+    await this.contactExtensionInput.fill(value);
+  }
+
+  async enterContactMobile(value) {
+    await this.contactMobileInput.waitFor({ state: 'visible', timeout: 10000 });
+    await this.contactMobileInput.fill(value);
+  }
+
+  async enterContactEmail(value) {
+    await this.contactEmailInput.waitFor({ state: 'visible', timeout: 10000 });
+    await this.contactEmailInput.fill(value);
+  }
+
+  async scrollToContactNotes() {
+    await this.contactNotesInput.waitFor({ state: 'visible', timeout: 10000 });
+    await this.contactNotesInput.scrollIntoViewIfNeeded();
+  }
+
+  async enterContactNotes(value) {
+    await this.contactNotesInput.waitFor({ state: 'visible', timeout: 10000 });
+    await this.contactNotesInput.scrollIntoViewIfNeeded();
+    await this.contactNotesInput.fill(value);
+  }
+
+  async clickSaveContact() {
+    await this.contactSaveButton.waitFor({ state: 'visible', timeout: 10000 });
+    await this.contactSaveButton.click();
   }
 
   /**

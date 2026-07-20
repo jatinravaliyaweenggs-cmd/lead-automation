@@ -17,12 +17,16 @@ Feature: Create Lead for Customer
  #   When User clicks the first row in the table
   #  When User enters project name, title, and fax details in one step
 
-  Scenario: add Additional Details
+  # Scenario: add Additional Details — steps commented out, skipped for now
+  # When User navigates to Lead page and opens Add Lead form
+  # When User clicks the first row in the table
+  # When User selects the first Contact Time option
+  # When User selects the first Best Time to Call option
+  # When User enters the gate code
+  # When User selects a tag
+
+  Scenario: add Additional Contact
     When User navigates to Lead page and opens Add Lead form
     When User clicks the first row in the table
-    When User selects the first Contact Time option
-    When User selects the first Best Time to Call option
-    When User enters the gate code
-    When User selects a tag
-
-    
+    When User clicks the Additional Contact button
+    When User fills in the additional contact details

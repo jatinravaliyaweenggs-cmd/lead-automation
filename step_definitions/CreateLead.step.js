@@ -37,6 +37,25 @@ When('User selects the first Contact Time option', async function () {
   await this.createLeadPage.selectFirstContactTime();
 });
 
+When('User clicks the Additional Contact button', async function () {
+  this.createLeadPage = new CreateLeadPage(this.page);
+  await this.createLeadPage.clickAdditionalContact();
+});
+
+When('User fills in the additional contact details', async function () {
+  this.createLeadPage = new CreateLeadPage(this.page);
+  await this.createLeadPage.enterContactFirstName('Jatin');
+  await this.createLeadPage.enterContactLastName('Ravaliya');
+  await this.createLeadPage.enterContactJobTitle('QA Engineer');
+  await this.createLeadPage.enterContactPrimaryPhone('9876543210');
+  await this.createLeadPage.enterContactExtension('101');
+  await this.createLeadPage.enterContactMobile('9876501234');
+  await this.createLeadPage.enterContactEmail('jatin.ravaliya@test.com');
+  await this.createLeadPage.scrollToContactNotes();
+  await this.createLeadPage.enterContactNotes('This is test contact created via automation');
+  await this.createLeadPage.clickSaveContact();
+});
+
 When('User selects the first Best Time to Call option', async function () {
   this.createLeadPage = new CreateLeadPage(this.page);
   await this.createLeadPage.selectFirstPreferredContactMethod();
