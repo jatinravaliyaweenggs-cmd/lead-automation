@@ -36,3 +36,8 @@ When('User selects the first Contact Time option', async function () {
   this.createLeadPage = new CreateLeadPage(this.page);
   await this.createLeadPage.selectFirstContactTime();
 });
+
+When('User selects the first Best Time to Call option', async function () {
+  this.createLeadPage = new CreateLeadPage(this.page);
+  await this.createLeadPage.selectFirstPreferredContactMethod();
+});

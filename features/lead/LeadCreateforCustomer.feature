@@ -21,3 +21,4 @@ Feature: Create Lead for Customer
     When User navigates to Lead page and opens Add Lead form
     When User clicks the first row in the table
     When User selects the first Contact Time option
+    When User selects the first Best Time to Call option

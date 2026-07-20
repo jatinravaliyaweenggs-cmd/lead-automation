@@ -44,6 +44,12 @@ class CreateLeadPage {
         has: page.locator('.ant-select-selection-placeholder', { hasText: 'Select Contact Time' })
       });
 
+    // Best Time to Call dropdown (rc_select_8) — next dropdown after Contact Time
+    this.bestTimeToCallDropdown = page
+      .locator('.ant-select-selector', {
+        has: page.locator('.ant-select-selection-placeholder', { hasText: 'Select Contact Method' })
+      });
+
     // Submit button
     this.createLeadButton  = page.getByRole('button', { name: 'Create Lead' });
   }
@@ -249,14 +255,13 @@ class CreateLeadPage {
   }
 
   /**
-   * Select the first option from the Contact Time dropdown
+   * Generic helper — opens any Ant Design dropdown and selects its first option
+   * @param {import('@playwright/test').Locator} dropdownSelector - the .ant-select-selector locator
    */
-  async selectFirstContactTime() {
-    // Open the Contact Time dropdown
-    await this.contactTimeDropdown.waitFor({ state: 'visible', timeout: 10000 });
-    await this.contactTimeDropdown.click();
+  async selectFirstOptionFrom(dropdownSelector) {
+    await dropdownSelector.waitFor({ state: 'visible', timeout: 10000 });
+    await dropdownSelector.click();
 
-    // Wait for dropdown popup to appear and pick the very first option
     const firstOption = this.page
       .locator('.ant-select-dropdown:not(.ant-select-dropdown-hidden) .ant-select-item-option-content')
       .first();
@@ -265,6 +270,20 @@ class CreateLeadPage {
     await firstOption.click();
 
     await this.page.waitForTimeout(500);
+  }
+
+  /**
+   * Select the first option from the Contact Time dropdown
+   */
+  async selectFirstContactTime() {
+    await this.selectFirstOptionFrom(this.contactTimeDropdown);
+  }
+
+  /**
+   * Select the first option from the Preferred Contact Method dropdown
+   */
+  async selectFirstPreferredContactMethod() {
+    await this.selectFirstOptionFrom(this.bestTimeToCallDropdown);
   }
 
   /**
