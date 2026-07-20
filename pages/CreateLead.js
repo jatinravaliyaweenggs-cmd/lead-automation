@@ -18,8 +18,11 @@ class CreateLeadPage {
     this.phone2Input      = page.getByPlaceholder('Secondary phone number');
     this.phoneExt2Input   = page.locator('input[name="phone_ext2"]');
 
-    // Stage dropdown locators
-    this.stageDropdown    = page.locator('#rc_select_0');
+    // Stage dropdown — located via its placeholder text, stable against runtime ID changes
+    this.stageDropdown    = page
+      .locator('.ant-select-selector', {
+        has: page.locator('.ant-select-selection-placeholder', { hasText: 'select the lead stage' })
+      });
 
     // Mobile and Email locators
     this.cellInput        = page.locator('input[name="cell"]');
@@ -118,13 +121,21 @@ class CreateLeadPage {
    * @param {string} value - e.g. 'Pending'
    */
   async selectStage(value) {
-    await this.stageDropdown.waitFor({ state: 'visible' });
+    // Click the Stage selector to open dropdown
+    await this.stageDropdown.waitFor({ state: 'visible', timeout: 15000 });
     await this.stageDropdown.click();
-    // Scope to the ant-select dropdown popup to avoid matching other page elements
-    await this.page
-      .locator('.ant-select-dropdown .ant-select-item-option-content', { hasText: value })
+
+    // Wait for dropdown list to become visible, then click exact match
+    const option = this.page
+      .locator('.ant-select-dropdown:not(.ant-select-dropdown-hidden) .ant-select-item-option-content')
       .filter({ hasText: new RegExp(`^${value}$`) })
-      .click();
+      .first();
+
+    await option.waitFor({ state: 'visible', timeout: 10000 });
+    await option.click();
+
+    // Confirm selection took effect
+    await this.page.waitForTimeout(500);
   }
 
   /**

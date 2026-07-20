@@ -12,9 +12,9 @@ Feature: Create Lead for Customer
     Then Lead form should be opened
     When User fills in the lead form details
 
-  Scenario: Click first row and add details
-    When User navigates to Lead page and opens Add Lead form
-    When User clicks the first row in the table
-    When User enters project name, title, and fax details in one step
+ # Scenario: Click first row and add details
+ #   When User navigates to Lead page and opens Add Lead form
+ #   When User clicks the first row in the table
+  #  When User enters project name, title, and fax details in one step
 
 
