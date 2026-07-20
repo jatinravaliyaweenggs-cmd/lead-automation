@@ -42,6 +42,11 @@ When('User clicks the Additional Contact button', async function () {
   await this.createLeadPage.clickAdditionalContact();
 });
 
+When('User clicks the value {string}', async function (value) {
+  this.createLeadPage = new CreateLeadPage(this.page);
+  await this.createLeadPage.clickAndEnterListItemValue(value);
+});
+
 When('User fills in the additional contact details', async function () {
   this.createLeadPage = new CreateLeadPage(this.page);
   await this.createLeadPage.enterContactFirstName('Jatin');

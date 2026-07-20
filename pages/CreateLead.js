@@ -404,6 +404,82 @@ class CreateLeadPage {
     await this.contactSaveButton.click();
   }
 
+  async clickListItemByText(value) {
+    const item = this.page.locator('li', { hasText: value }).first();
+    await item.waitFor({ state: 'visible', timeout: 10000 });
+    await item.click();
+    await this.page.waitForTimeout(1000);
+  }
+
+  /**
+   * Click an inline-edit list item to open the edit input,
+   * type the search value, press ArrowDown to highlight first result, then Enter to confirm
+   * @param {string} value - text to search and select (e.g. 'Surat')
+   */
+  async clickAndEnterListItemValue(value) {
+    // Step 1: Click the li row that contains the field label (City, etc.)
+    const item = this.page.locator('li').filter({ hasText: value }).first();
+    await item.waitFor({ state: 'visible', timeout: 10000 });
+    await item.click();
+    await this.page.waitForTimeout(800);
+
+    // Step 2: Try multiple strategies to locate the input that appears after click
+
+    // Strategy A: input inside the same li
+    const inputInLi = item.locator('input').first();
+    if (await inputInLi.isVisible().catch(() => false)) {
+      await inputInLi.triple_click?.().catch(() => inputInLi.click());
+      await inputInLi.fill('');
+      await inputInLi.pressSequentially(value, { delay: 80 });
+      await this.page.waitForTimeout(500);
+      await this.page.keyboard.press('ArrowDown');
+      await this.page.waitForTimeout(300);
+      await this.page.keyboard.press('Enter');
+      await this.page.waitForTimeout(500);
+      return;
+    }
+
+    // Strategy B: focused input anywhere on page (document.activeElement)
+    const focusedInput = this.page.locator('input:focus');
+    if (await focusedInput.isVisible().catch(() => false)) {
+      await focusedInput.fill('');
+      await focusedInput.pressSequentially(value, { delay: 80 });
+      await this.page.waitForTimeout(500);
+      await this.page.keyboard.press('ArrowDown');
+      await this.page.waitForTimeout(300);
+      await this.page.keyboard.press('Enter');
+      await this.page.waitForTimeout(500);
+      return;
+    }
+
+    // Strategy C: any visible text/search input on page
+    const visibleInput = this.page.locator(
+      'input[type="text"]:visible, input[type="search"]:visible, input:not([type]):visible'
+    ).last();
+    await visibleInput.waitFor({ state: 'visible', timeout: 5000 });
+    await visibleInput.click();
+    await visibleInput.fill('');
+    await visibleInput.pressSequentially(value, { delay: 80 });
+    await this.page.waitForTimeout(500);
+    await this.page.keyboard.press('ArrowDown');
+    await this.page.waitForTimeout(300);
+    await this.page.keyboard.press('Enter');
+    await this.page.waitForTimeout(500);
+  }
+
+  async searchDropdownAndSelect(searchText) {
+    const searchInput = this.page.locator(
+      'input[placeholder*="Search" i], input[aria-label*="Search" i], input[type="search"], .ant-select-selection-search-input input'
+    ).first();
+
+    await searchInput.waitFor({ state: 'visible', timeout: 10000 });
+    await searchInput.click();
+    await searchInput.fill('');
+    await searchInput.pressSequentially(searchText, { delay: 100 });
+    await this.page.keyboard.press('ArrowDown');
+    await this.page.keyboard.press('Enter');
+  }
+
   /**
    * Click Create Lead submit button
    */
