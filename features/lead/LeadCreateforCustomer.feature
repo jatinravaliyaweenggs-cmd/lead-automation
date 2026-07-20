@@ -22,6 +22,7 @@ Feature: Create Lead for Customer
     When User clicks the first row in the table
     When User selects the first Contact Time option
     When User selects the first Best Time to Call option
-    When User selects a tag
     When User enters the gate code
+    When User selects a tag
+
     
