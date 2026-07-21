@@ -131,36 +131,66 @@ class CreateLeadPage {
   }
 
   /**
-   * Select Lead Source from searchable dropdown
+   * Select Lead Source from searchable Ant Design dropdown
+   * Tries multiple locator strategies with scroll fallback
    * @param {string} value - e.g. 'previous customer'
    */
   async selectLeadSource(value) {
-    // Try placeholder-based locator first
-    const dropdownByPlaceholder = this.page.locator('.ant-select-selector', {
+    // Wait for page to settle after previous actions
+    await this.page.waitForTimeout(1000);
+
+    // Strategy 1: Try locating by placeholder text 'Lead Source'
+    let leadSourceSelector = this.page.locator('.ant-select-selector', {
       has: this.page.locator('.ant-select-selection-placeholder', { hasText: 'Lead Source' })
     });
 
-    const placeholderVisible = await dropdownByPlaceholder.isVisible().catch(() => false);
+    let selectorVisible = await leadSourceSelector.isVisible().catch(() => false);
 
-    if (placeholderVisible) {
-      await dropdownByPlaceholder.click();
-    } else {
-      // Fallback: try to locate input by id pattern rc_select_*
-      const leadSourceInput = this.page.locator('input[id^="rc_select_"]').filter({ hasText: '' }).last();
-      await leadSourceInput.waitFor({ state: 'visible', timeout: 10000 });
-      await leadSourceInput.click();
+    // Strategy 2: Try alternate placeholder text variations
+    if (!selectorVisible) {
+      const alternates = ['Select Lead Source', 'Source', 'lead source'];
+      for (const alt of alternates) {
+        leadSourceSelector = this.page.locator('.ant-select-selector', {
+          has: this.page.locator('.ant-select-selection-placeholder', { hasText: alt })
+        });
+        selectorVisible = await leadSourceSelector.isVisible().catch(() => false);
+        if (selectorVisible) break;
+      }
     }
 
-    await this.page.waitForTimeout(500);
+    // Strategy 3: Fallback to input with specific id pattern (last resort)
+    if (!selectorVisible) {
+      leadSourceSelector = this.page.locator('input[id^="rc_select_"]').last();
+    }
 
-    // Type the value character by character
-    const searchInput = this.page.locator('input.ant-select-selection-search-input').first();
+    // Scroll into view and click
+    await leadSourceSelector.scrollIntoViewIfNeeded();
+    await leadSourceSelector.waitFor({ state: 'visible', timeout: 10000 });
+    await leadSourceSelector.click();
+    await this.page.waitForTimeout(800);
+
+    // Locate input inside selector or page-level active input
+    let searchInput = leadSourceSelector.locator('input').first();
+    const inputVisible = await searchInput.isVisible().catch(() => false);
+
+    if (!inputVisible) {
+      searchInput = this.page.locator('input:focus, input.ant-select-selection-search-input').first();
+    }
+
     await searchInput.waitFor({ state: 'visible', timeout: 10000 });
-    await searchInput.fill(value);
-    await this.page.waitForTimeout(500);
+    await searchInput.focus();
+    await searchInput.fill('');
+    await searchInput.pressSequentially(value, { delay: 120 });
+    await this.page.waitForTimeout(800);
 
-    // Press Enter to select
-    await this.page.keyboard.press('Enter');
+    // Click matching option from dropdown
+    const option = this.page
+      .locator('.ant-select-dropdown:not(.ant-select-dropdown-hidden) .ant-select-item-option-content')
+      .filter({ hasText: value })
+      .first();
+
+    await option.waitFor({ state: 'visible', timeout: 10000 });
+    await option.click();
     await this.page.waitForTimeout(500);
   }
 
