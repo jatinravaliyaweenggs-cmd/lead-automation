@@ -93,3 +93,10 @@ When('User enters the lead value', async function () {
   this.createLeadPage = new CreateLeadPage(this.page);
   await this.createLeadPage.enterLeadValue('15');
 });
+
+When('User fills in referred by and lead source details', async function () {
+  this.createLeadPage = new CreateLeadPage(this.page);
+  await this.createLeadPage.enterReferredBy('jayaben');
+  await this.createLeadPage.selectLeadSource('previous customer');
+  await this.createLeadPage.copyFromContactAddress();
+});

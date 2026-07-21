@@ -80,6 +80,19 @@ class CreateLeadPage {
     // Lead value input and save button
     this.leadValueInput = page.getByRole('spinbutton', { name: '0.00' });
     this.saveFloppy = page.locator('.svg-inline--fa.fa-floppy-disk');
+
+    // Referred By field and save button
+    this.referredByInput = page.getByRole('textbox', { name: 'Referred By' });
+    this.saveFloppyPath = page.locator('.svg-inline--fa.fa-floppy-disk > path').first();
+
+    // Lead Source dropdown (searchable Ant Design select)
+    this.leadSourceDropdown = page.locator('.ant-select-selector', {
+      has: page.locator('.ant-select-selection-placeholder', { hasText: 'Lead Source' })
+    });
+
+    // Copy from Contact Address button and Yes confirmation
+    this.copyFromContactAddressButton = page.getByRole('button', { name: 'Copy from Contact Address?' });
+    this.confirmYesButton = page.getByRole('button', { name: 'Yes' });
   }
 
   async sleasPageOpen() {
@@ -102,6 +115,64 @@ class CreateLeadPage {
     await this.saveFloppy.waitFor({ state: 'visible', timeout: 10000 });
     await this.saveFloppy.click();
     await this.page.waitForTimeout(500);
+  }
+
+  /**
+   * Enter Referred By value and save
+   * @param {string} value - e.g. 'jayaben'
+   */
+  async enterReferredBy(value) {
+    await this.referredByInput.waitFor({ state: 'visible', timeout: 10000 });
+    await this.referredByInput.click();
+    await this.referredByInput.fill(value);
+    await this.saveFloppyPath.waitFor({ state: 'visible', timeout: 10000 });
+    await this.saveFloppyPath.click();
+    await this.page.waitForTimeout(500);
+  }
+
+  /**
+   * Select Lead Source from searchable dropdown
+   * @param {string} value - e.g. 'previous customer'
+   */
+  async selectLeadSource(value) {
+    // Try placeholder-based locator first
+    const dropdownByPlaceholder = this.page.locator('.ant-select-selector', {
+      has: this.page.locator('.ant-select-selection-placeholder', { hasText: 'Lead Source' })
+    });
+
+    const placeholderVisible = await dropdownByPlaceholder.isVisible().catch(() => false);
+
+    if (placeholderVisible) {
+      await dropdownByPlaceholder.click();
+    } else {
+      // Fallback: try to locate input by id pattern rc_select_*
+      const leadSourceInput = this.page.locator('input[id^="rc_select_"]').filter({ hasText: '' }).last();
+      await leadSourceInput.waitFor({ state: 'visible', timeout: 10000 });
+      await leadSourceInput.click();
+    }
+
+    await this.page.waitForTimeout(500);
+
+    // Type the value character by character
+    const searchInput = this.page.locator('input.ant-select-selection-search-input').first();
+    await searchInput.waitFor({ state: 'visible', timeout: 10000 });
+    await searchInput.fill(value);
+    await this.page.waitForTimeout(500);
+
+    // Press Enter to select
+    await this.page.keyboard.press('Enter');
+    await this.page.waitForTimeout(500);
+  }
+
+  /**
+   * Click Copy from Contact Address button and confirm with Yes
+   */
+  async copyFromContactAddress() {
+    await this.copyFromContactAddressButton.waitFor({ state: 'visible', timeout: 10000 });
+    await this.copyFromContactAddressButton.click();
+    await this.confirmYesButton.waitFor({ state: 'visible', timeout: 10000 });
+    await this.confirmYesButton.click();
+    await this.page.waitForTimeout(1000);
   }
 
   /**
