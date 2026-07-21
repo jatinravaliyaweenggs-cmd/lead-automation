@@ -253,10 +253,6 @@ class CreateLeadPage {
     await this.titleInput.type(value, { delay: 50 });
   }
 
-  /**
-   * Enter fax value and press Tab
-   * @param {string} value
-   */
   async enterFax(value) {
     await this.page.waitForTimeout(1000);
     await this.faxInput.waitFor({ state: 'visible', timeout: 10000 });
@@ -265,89 +261,54 @@ class CreateLeadPage {
     await this.faxInput.type(value, { delay: 50 });
   }
 
-  /**
-   * Press the Tab key
-   */
   async pressTabKey() {
     await this.page.keyboard.press('Tab');
   }
 
-  /**
-   * Generic helper — opens any Ant Design dropdown and selects its first option
-   * @param {import('@playwright/test').Locator} dropdownSelector - the .ant-select-selector locator
-   */
   async selectFirstOptionFrom(dropdownSelector) {
     await dropdownSelector.waitFor({ state: 'visible', timeout: 10000 });
     await dropdownSelector.click();
-
     const firstOption = this.page
       .locator('.ant-select-dropdown:not(.ant-select-dropdown-hidden) .ant-select-item-option-content')
       .first();
-
     await firstOption.waitFor({ state: 'visible', timeout: 10000 });
     await firstOption.click();
-
     await this.page.waitForTimeout(500);
   }
 
-  /**
-   * Enter gate/access code and press Tab to move focus to the next field
-   * @param {string} value
-   */
   async enterGateCode(value) {
     await this.gateCodeInput.waitFor({ state: 'visible', timeout: 10000 });
     await this.gateCodeInput.fill(value);
     await this.page.keyboard.press('Tab');
   }
 
-  /**
-   * Select a tag from the Ant Design tags select field
-   * Clicks the selector to open it, then uses keyboard to type and select
-   * @param {string} tagName - e.g. 'Bhagu'
-   */
   async selectTag(tagName) {
-    // Locate the Tags .ant-select-selector and click to open
     const tagsSelector = this.page.locator('.ant-select-selector', {
       has: this.page.locator('.ant-select-selection-placeholder', { hasText: 'Select Tags' })
     });
     await tagsSelector.waitFor({ state: 'visible', timeout: 10000 });
     await tagsSelector.click();
-
-    // After click, Ant Design renders a real input inside the selector — find it
     const tagsSearchInput = tagsSelector.locator('input');
     await tagsSearchInput.waitFor({ state: 'visible', timeout: 10000 });
     await tagsSearchInput.focus();
     await tagsSearchInput.pressSequentially(tagName, { delay: 100 });
-
-    // Wait for dropdown option matching tagName and click it
     const option = this.page
       .locator('.ant-select-dropdown:not(.ant-select-dropdown-hidden) .ant-select-item-option-content')
       .filter({ hasText: tagName })
       .first();
-
     await option.waitFor({ state: 'visible', timeout: 10000 });
     await option.click();
-
     await this.page.waitForTimeout(500);
   }
 
-  /**
-   * Select the first option from the Contact Time dropdown
-   */
   async selectFirstContactTime() {
     await this.selectFirstOptionFrom(this.contactTimeDropdown);
   }
 
-  /**
-   * Select the first option from the Preferred Contact Method dropdown
-   */
   async selectFirstPreferredContactMethod() {
     await this.selectFirstOptionFrom(this.bestTimeToCallDropdown);
   }
 
-  /**
-   * Click Additional Contact button
-   */
   async clickAdditionalContact() {
     await this.additionalContactButton.waitFor({ state: 'visible', timeout: 10000 });
     await this.additionalContactButton.click();
@@ -421,11 +382,6 @@ class CreateLeadPage {
     await this.page.waitForTimeout(1000);
   }
 
-  /**
-   * Click an inline-edit list item to open the edit input,
-   * type the search value, press ArrowDown to highlight first result, then Enter to confirm
-   * @param {string} value - text to search and select (e.g. 'Surat')
-   */
   async clickAndEnterListItemValue(value) {
     // Step 1: Click the li row that contains the field label (City, etc.)
     const item = this.page.locator('li').filter({ hasText: value }).first();
@@ -490,9 +446,6 @@ class CreateLeadPage {
     await this.page.keyboard.press('Enter');
   }
 
-  /**
-   * Click Create Lead submit button
-   */
   async clickCreateLead() {
     await this.createLeadButton.waitFor({ state: 'visible' });
     await this.createLeadButton.click();

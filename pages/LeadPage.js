@@ -2,9 +2,7 @@
 const { expect } = require('@playwright/test');
 
 class LeadPage {
-  /**
-   * @param {import('@playwright/test').Page} page
-   */
+
   constructor(page) {
     this.page = page;
 
@@ -16,49 +14,31 @@ class LeadPage {
     this.leadOption      = page.locator('a.ant-typography:has(svg[data-icon="plus"])');
   }
 
-  /**
-   * Click Dashboard button from sidebar/menu
-   */
+
   async clickDashboard() {
     await this.dashboardButton.waitFor({ state: 'visible' });
     await this.dashboardButton.click();
   }
 
-  /**
-   * Click Lead menu item
-   */
   async clickLeadMenu() {
     await this.leadMenuItem.waitFor({ state: 'visible' });
     await this.leadMenuItem.click();
   }
 
-  /**
-   * Wait for Lead page to load
-   */
   async waitForLeadPage() {
     await this.page.waitForURL('**/manage-leads**', { timeout: 30000 });
   }
 
-  /**
-   * Click Add Lead button (plus icon)
-   */
   async clickAddLeadButton() {
     await this.addLeadButton.waitFor({ state: 'visible' });
     await this.addLeadButton.click();
   }
 
-  /**
-   * Click Lead option from dropdown
-   */
   async clickLeadOption() {
     await this.leadOption.waitFor({ state: 'visible' });
     await this.leadOption.click();
   }
 
-  /**
-   * Highlight a failing element with red border + light red background
-   * @param {import('@playwright/test').Locator} locator
-   */
   async highlightElement(locator) {
     try {
       await locator.evaluate((el) => {
@@ -71,9 +51,6 @@ class LeadPage {
     }
   }
 
-  /**
-   * Remove highlight styling from all input elements
-   */
   async clearHighlights() {
     await this.page.evaluate(() => {
       document.querySelectorAll('input').forEach((el) => {
@@ -84,20 +61,8 @@ class LeadPage {
     });
   }
 
-  /**
-   * Verify all Lead form input field placeholders.
-   * - Checks every field without stopping at first failure
-   * - Highlights all failing fields in red
-   * - Takes a screenshot with highlights visible
-   * - Attaches screenshot to Cucumber HTML report
-   * - Throws a combined error listing all failures
-   *
-   * @param {function} attachFn - Cucumber's this.attach for embedding screenshot in report
-   */
   async verifyFormPlaceholders(attachFn) {
     const page = this.page;
-
-    // All fields to verify: locator, expected placeholder, human-readable label
     const fields = [
       { locator: page.locator('input[name="company_name"]'),     expected: 'Company name',            label: 'Company'     },
       { locator: page.locator('input[name="first_name"]'),       expected: 'Lead contact first name', label: 'First Name'  },
@@ -112,7 +77,7 @@ class LeadPage {
       { locator: page.locator('input[name="address2"]'),         expected: 'Suite or unit',           label: 'Street 2'    },
       { locator: page.locator('input[name="city"]'),             expected: 'City',                    label: 'City'        },
       { locator: page.locator('input[name="state"]'),            expected: 'State/Province',          label: 'State'       },
-      { locator: page.locator('input[name="zip"]'),              expected: 'Zip code',                  label: 'Zip'         },
+      { locator: page.locator('input[name="zip"]'),              expected: 'Zip code',                label: 'Zip'         },
     ];
 
     const failures = [];
