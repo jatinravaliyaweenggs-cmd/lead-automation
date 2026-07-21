@@ -83,3 +83,8 @@ When('user open sales tab', async function () {
   console.log("page open successfully");
   await this.createLeadPage.fillupSalesDetails();
 })
+
+When('User selects today date', async function () {
+  this.createLeadPage = new CreateLeadPage(this.page);
+  await this.createLeadPage.selectTodayDate();
+});

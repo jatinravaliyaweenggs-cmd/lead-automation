@@ -42,3 +42,4 @@ Feature: Create Lead for Customer
      When User navigates to Lead page and opens Add Lead form
      When User clicks the first row in the table
      When user open sales tab
+     When User selects today date

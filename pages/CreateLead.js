@@ -71,7 +71,11 @@ class CreateLeadPage {
     this.contactNotesInput = page.getByPlaceholder('Add any additional notes about this contact');
     this.contactSaveButton = page.getByRole('button', { name: 'Save' });
     this.salesPageName = page.getByRole('Button', {name: 'Sales'})
-    this.projectType = page.getByText('Select Project Type');  
+    this.projectType = page.getByText('Select Project Type');
+
+    // Date picker locators
+    this.datePickerInput = page.getByRole('textbox', { name: 'Select Date' });
+    this.dateTodayButton = page.getByText('Today', { exact: true });
   }
 
   async sleasPageOpen() {
@@ -83,8 +87,19 @@ class CreateLeadPage {
     await this.page.waitForTimeout(1500);
   }
 
-  async fillupSalesDetails() {
-    // Locate the Project Type selector by its placeholder text
+  /**
+   * Select today's date from the date picker
+   * Click the date input to open the calendar, then click 'Today'
+   */
+  async selectTodayDate() {
+    await this.datePickerInput.waitFor({ state: 'visible', timeout: 10000 });
+    await this.datePickerInput.click();
+    await this.dateTodayButton.waitFor({ state: 'visible', timeout: 10000 });
+    await this.dateTodayButton.click();
+    await this.page.waitForTimeout(500);
+  }
+
+  async fillupSalesDetails() {    // Locate the Project Type selector by its placeholder text
     const projectTypeSelector = this.page.locator('.ant-select-selector', {
       has: this.page.locator('.ant-select-selection-placeholder', { hasText: 'Select Project Type' })
     });
