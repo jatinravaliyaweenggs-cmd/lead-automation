@@ -74,10 +74,14 @@ class CreateLeadPage {
     this.projectType = page.getByText('Select Project Type');  
   }
 
-    async sleasPageOpen(){
-      await this.salesPageName.waitFor({state: 'visible'});
-      await this.salesPageName.click();
-    }
+  async sleasPageOpen() {
+    // Wait for page to fully load after row click (navigation/re-render)
+    await this.page.waitForTimeout(2000);
+    await this.salesPageName.waitFor({ state: 'visible', timeout: 15000 });
+    await this.salesPageName.click();
+    // Wait for Sales tab content to render
+    await this.page.waitForTimeout(1500);
+  }
 
   async fillupSalesDetails() {
     // Locate the Project Type selector by its placeholder text
