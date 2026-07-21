@@ -14,7 +14,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 498134100
+              "duration": 439514900
             }
           },
           {
@@ -27,7 +27,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 5591692900
+              "duration": 6550835200
             }
           },
           {
@@ -40,7 +40,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 4176472900
+              "duration": 4159929199
             }
           },
           {
@@ -53,7 +53,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 4666568199
+              "duration": 4179891399
             }
           },
           {
@@ -66,7 +66,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 2554838400
+              "duration": 2035047599
             }
           },
           {
@@ -79,7 +79,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 6769685400
+              "duration": 6689098799
             }
           },
           {
@@ -92,7 +92,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 9366062699
+              "duration": 9496856399
             }
           },
           {
@@ -105,7 +105,20 @@
             },
             "result": {
               "status": "passed",
-              "duration": 2320904600
+              "duration": 2315473599
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 46,
+            "name": "User enters the lead value",
+            "match": {
+              "location": "step_definitions\\CreateLead.step.js:92"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 3138690600
             }
           },
           {
@@ -113,7 +126,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 353133600
+              "duration": 371400000
             }
           }
         ],

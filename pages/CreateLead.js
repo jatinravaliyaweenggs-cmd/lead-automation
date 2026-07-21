@@ -76,6 +76,10 @@ class CreateLeadPage {
     // Date picker locators
     this.datePickerInput = page.getByRole('textbox', { name: 'Select Date' });
     this.dateTodayButton = page.getByText('Today', { exact: true });
+
+    // Lead value input and save button
+    this.leadValueInput = page.getByRole('spinbutton', { name: '0.00' });
+    this.saveFloppy = page.locator('.svg-inline--fa.fa-floppy-disk');
   }
 
   async sleasPageOpen() {
@@ -85,6 +89,19 @@ class CreateLeadPage {
     await this.salesPageName.click();
     // Wait for Sales tab content to render
     await this.page.waitForTimeout(1500);
+  }
+
+  /**
+   * Enter lead value and click the floppy disk save button
+   * @param {string} value - e.g. '15'
+   */
+  async enterLeadValue(value) {
+    await this.leadValueInput.waitFor({ state: 'visible', timeout: 10000 });
+    await this.leadValueInput.click();
+    await this.leadValueInput.fill(value);
+    await this.saveFloppy.waitFor({ state: 'visible', timeout: 10000 });
+    await this.saveFloppy.click();
+    await this.page.waitForTimeout(500);
   }
 
   /**

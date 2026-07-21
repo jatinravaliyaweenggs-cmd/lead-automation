@@ -88,3 +88,8 @@ When('User selects today date', async function () {
   this.createLeadPage = new CreateLeadPage(this.page);
   await this.createLeadPage.selectTodayDate();
 });
+
+When('User enters the lead value', async function () {
+  this.createLeadPage = new CreateLeadPage(this.page);
+  await this.createLeadPage.enterLeadValue('15');
+});
