@@ -14,7 +14,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 429894500
+              "duration": 521280299
             }
           },
           {
@@ -27,7 +27,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 6573495899
+              "duration": 7029280099
             }
           },
           {
@@ -40,7 +40,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 4186627699
+              "duration": 4194473400
             }
           },
           {
@@ -53,7 +53,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 4564659099
+              "duration": 5130837499
             }
           },
           {
@@ -66,7 +66,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 2032059699
+              "duration": 2576518299
             }
           },
           {
@@ -79,7 +79,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 6767030199
+              "duration": 6781261500
             }
           },
           {
@@ -92,7 +92,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 9426582699
+              "duration": 9583358299
             }
           },
           {
@@ -105,7 +105,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 2335598100
+              "duration": 2309506300
             }
           },
           {
@@ -118,7 +118,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 3090779300
+              "duration": 3095346000
             }
           },
           {
@@ -131,7 +131,20 @@
             },
             "result": {
               "status": "passed",
-              "duration": 16524530699
+              "duration": 16557703600
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 48,
+            "name": "User creates a task",
+            "match": {
+              "location": "step_definitions\\CreateLead.step.js:104"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 8909135399
             }
           },
           {
@@ -139,7 +152,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 303929100
+              "duration": 334427299
             }
           }
         ],

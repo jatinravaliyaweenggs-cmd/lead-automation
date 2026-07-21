@@ -100,3 +100,8 @@ When('User fills in referred by and lead source details', async function () {
   await this.createLeadPage.selectLeadSource('previous customer');
   await this.createLeadPage.copyFromContactAddress();
 });
+
+When('User creates a task', async function () {
+  this.createLeadPage = new CreateLeadPage(this.page);
+  await this.createLeadPage.createTask('This is a subject', 'nana varchha');
+});

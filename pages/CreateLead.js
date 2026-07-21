@@ -93,6 +93,12 @@ class CreateLeadPage {
     // Copy from Contact Address button and Yes confirmation
     this.copyFromContactAddressButton = page.getByRole('button', { name: 'Copy from Contact Address?' });
     this.confirmYesButton = page.getByRole('button', { name: 'Yes' });
+
+    // Task button and form locators
+    this.taskButton          = page.getByRole('button', { name: 'Task', exact: true });
+    this.taskSubjectInput    = page.getByRole('textbox', { name: 'Short description of the task' });
+    this.taskAddressOverlay  = page.locator('#directory-activity-address-overlay');
+    this.taskAddressInput    = page.locator('#directory-activity-address');
   }
 
   async sleasPageOpen() {
@@ -618,6 +624,36 @@ class CreateLeadPage {
   async clickCreateLead() {
     await this.createLeadButton.waitFor({ state: 'visible' });
     await this.createLeadButton.click();
+  }
+
+  /**
+   * Create a task by clicking Task button, entering subject and address
+   * @param {string} subject  - e.g. 'This is a subject'
+   * @param {string} address  - e.g. 'nana varchha'
+   */
+  async createTask(subject, address) {
+    // Step 1: Click the Task button to open the task form
+    await this.taskButton.waitFor({ state: 'visible', timeout: 10000 });
+    await this.taskButton.click();
+    await this.page.waitForTimeout(800);
+
+    // Step 2: Fill in the subject/description field
+    await this.taskSubjectInput.waitFor({ state: 'visible', timeout: 10000 });
+    await this.taskSubjectInput.click();
+    await this.taskSubjectInput.fill(subject);
+    await this.page.waitForTimeout(300);
+
+    // Step 3: Fill in the address using the overlay input (triggers autocomplete)
+    await this.taskAddressOverlay.waitFor({ state: 'visible', timeout: 10000 });
+    await this.taskAddressOverlay.click();
+    await this.taskAddressOverlay.fill(address);
+    await this.page.waitForTimeout(800);
+
+    // Step 4: ArrowDown to select first suggestion, then Enter to confirm
+    await this.taskAddressInput.press('ArrowDown');
+    await this.page.waitForTimeout(300);
+    await this.taskAddressInput.press('Enter');
+    await this.page.waitForTimeout(500);
   }
 }
 

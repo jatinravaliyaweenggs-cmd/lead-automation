@@ -45,3 +45,4 @@ Feature: Create Lead for Customer
      When User selects today date
      When User enters the lead value
      When User fills in referred by and lead source details
+     When User creates a task
