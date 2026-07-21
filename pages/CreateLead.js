@@ -71,7 +71,7 @@ class CreateLeadPage {
     this.contactNotesInput = page.getByPlaceholder('Add any additional notes about this contact');
     this.contactSaveButton = page.getByRole('button', { name: 'Save' });
     this.salesPageName = page.getByRole('Button', {name: 'Sales'})
-  
+    this.projectType = page.getByText('Select Project Type');  
   }
 
     async sleasPageOpen(){
@@ -79,7 +79,33 @@ class CreateLeadPage {
       await this.salesPageName.click();
     }
 
+  async fillupSalesDetails() {
+    // Locate the Project Type selector by its placeholder text
+    const projectTypeSelector = this.page.locator('.ant-select-selector', {
+      has: this.page.locator('.ant-select-selection-placeholder', { hasText: 'Select Project Type' })
+    });
 
+    // Step 1: Click the selector to open dropdown and activate search input
+    await projectTypeSelector.waitFor({ state: 'visible', timeout: 10000 });
+    await projectTypeSelector.click();
+
+    // Step 2: Locate the search input inside the selector and type value
+    const searchInput = projectTypeSelector.locator('input');
+    await searchInput.waitFor({ state: 'visible', timeout: 10000 });
+    await searchInput.pressSequentially('Residential', { delay: 100 });
+    await this.page.waitForTimeout(500);
+
+    // Step 3: Click the matching option from the dropdown
+    const option = this.page
+      .locator('.ant-select-dropdown:not(.ant-select-dropdown-hidden) .ant-select-item-option-content')
+      .filter({ hasText: 'Residential' })
+      .first();
+
+    await option.waitFor({ state: 'visible', timeout: 10000 });
+    await option.click();
+
+    await this.page.waitForTimeout(500);
+  }
 
 
   async enterCompanyName(value) {

@@ -79,5 +79,7 @@ When('User selects a tag', async function () {
 
 When('user open sales tab', async function () {
   this.createLeadPage = new CreateLeadPage(this.page);
-  await this.sleasPageOpen();
+  await this.createLeadPage.sleasPageOpen();
+  console.log("page open successfully");
+  await this.createLeadPage.fillupSalesDetails();
 })
