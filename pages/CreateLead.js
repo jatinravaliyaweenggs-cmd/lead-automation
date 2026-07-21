@@ -70,12 +70,18 @@ class CreateLeadPage {
     this.contactEmailInput = page.getByPlaceholder('Work email address');
     this.contactNotesInput = page.getByPlaceholder('Add any additional notes about this contact');
     this.contactSaveButton = page.getByRole('button', { name: 'Save' });
+    this.salesPageName = page.getByRole('Button', {name: 'Sales'})
+  
   }
 
-  /**
-   * Enter company name
-   * @param {string} value
-   */
+    async sleasPageOpen(){
+      await this.salesPageName.waitFor({state: 'visible'});
+      await this.salesPageName.click();
+    }
+
+
+
+
   async enterCompanyName(value) {
     await this.companyNameInput.waitFor({ state: 'visible' });
     await this.companyNameInput.fill(value);

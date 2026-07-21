@@ -76,3 +76,8 @@ When('User selects a tag', async function () {
   this.createLeadPage = new CreateLeadPage(this.page);
   await this.createLeadPage.selectTag('Bhagu');
 });
+
+When('user open sales tab', async function () {
+  this.createLeadPage = new CreateLeadPage(this.page);
+  await this.sleasPageOpen();
+})
