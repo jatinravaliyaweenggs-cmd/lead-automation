@@ -1,4 +1,5 @@
 const { When } = require('@cucumber/cucumber');
+const { expect } = require('@playwright/test');
 const { CreateLeadPage } = require('../pages/CreateLead');
 const { leadData } = require('../testdata/credentials');
 const path = require('path');
@@ -120,4 +121,13 @@ When('User uploads a file', async function () {
 When('User verifies Company column sorting', async function () {
   this.createLeadPage = new CreateLeadPage(this.page);
   await this.createLeadPage.testCompanyColumnSorting();
+});
+
+When('User verifies that the company name {string} is visible in the table', async function (companyName) {
+  const companyCell = this.page
+    .locator('[col-id="company_name"]')
+    .filter({ hasText: companyName })
+    .first();
+
+  await expect(companyCell).toBeVisible({ timeout: 10000 });
 });
