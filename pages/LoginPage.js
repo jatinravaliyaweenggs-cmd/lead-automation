@@ -16,7 +16,7 @@ class LoginPage {
    * Navigate to login page
    */
   async navigate() {
-    await this.page.goto('https://beta-app.cfteam.net/sign-in', {
+    await this.page.goto('https://dev-app.cfteam.net/sign-in', {
       waitUntil: 'domcontentloaded'  // networkidle ની જગ્યાએ domcontentloaded
     });
     // username field visible થાય ત્યાં સુધી wait
