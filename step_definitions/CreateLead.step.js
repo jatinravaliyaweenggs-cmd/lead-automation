@@ -1,6 +1,7 @@
 const { When } = require('@cucumber/cucumber');
 const { CreateLeadPage } = require('../pages/CreateLead');
 const { leadData } = require('../testdata/credentials');
+const path = require('path');
 
 When('User fills in the lead form details', async function () {
   this.createLeadPage = new CreateLeadPage(this.page);
@@ -104,4 +105,14 @@ When('User fills in referred by and lead source details', async function () {
 When('User creates a task', async function () {
   this.createLeadPage = new CreateLeadPage(this.page);
   await this.createLeadPage.createTask('This is a subject', 'nana varchha');
+});
+
+When('User uploads a file', async function () {
+  this.createLeadPage = new CreateLeadPage(this.page);
+  const filePath = path.join(
+    __dirname,
+    '../testdata/LeadFile.pdf'
+  );
+  console.log('Uploading file from:', filePath);
+  await this.createLeadPage.uploadFile(filePath);
 });

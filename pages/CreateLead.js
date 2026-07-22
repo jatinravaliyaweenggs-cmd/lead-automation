@@ -99,6 +99,12 @@ class CreateLeadPage {
     this.taskSubjectInput    = page.getByRole('textbox', { name: 'Short description of the task' });
     this.taskAddressOverlay  = page.locator('#directory-activity-address-overlay');
     this.taskAddressInput    = page.locator('#directory-activity-address');
+
+    // Files tab locators
+    this.filesButton         = page.getByRole('button', { name: 'Files' });
+    this.filesDropZone       = page.locator('.top-0.w-full.h-full');
+    this.chooseFileButton    = page.getByRole('button', { name: 'Choose File' });
+    this.attachButton        = page.getByRole('button', { name: 'Attach' });
   }
 
   async sleasPageOpen() {
@@ -619,6 +625,32 @@ class CreateLeadPage {
     await searchInput.pressSequentially(searchText, { delay: 100 });
     await this.page.keyboard.press('ArrowDown');
     await this.page.keyboard.press('Enter');
+  }
+
+  /**
+   * Upload a file via the Files tab
+   * @param {string} filePath - absolute path to the file e.g. 'D:\\Automation\\CreateLead\\testdata\\file.pdf'
+   */
+  async uploadFile(filePath) {
+    // Step 1: Click the Files button/tab
+    await this.filesButton.waitFor({ state: 'visible', timeout: 10000 });
+    await this.filesButton.click();
+    await this.page.waitForTimeout(800);
+
+    // Step 2: Click the drop zone area to activate the upload panel
+    await this.filesDropZone.waitFor({ state: 'visible', timeout: 10000 });
+    await this.filesDropZone.click();
+    await this.page.waitForTimeout(500);
+
+    // Step 3: Set the file using the Choose File input button
+    await this.chooseFileButton.waitFor({ state: 'visible', timeout: 10000 });
+    await this.chooseFileButton.setInputFiles(filePath);
+    await this.page.waitForTimeout(500);
+
+    // Step 4: Click Attach to upload
+    await this.attachButton.waitFor({ state: 'visible', timeout: 10000 });
+    await this.attachButton.click();
+    await this.page.waitForTimeout(1000);
   }
 
   async clickCreateLead() {

@@ -38,11 +38,16 @@ Feature: Create Lead for Customer
   #   When User clicks the value "Surat"
 
     
-   Scenario: add Additional Address
-     When User navigates to Lead page and opens Add Lead form
-     When User clicks the first row in the table
-     When user open sales tab
-     When User selects today date
-     When User enters the lead value
-     When User fills in referred by and lead source details
-     When User creates a task
+   #Scenario: add Additional Address
+  #   When User navigates to Lead page and opens Add Lead form
+  #   When User clicks the first row in the table
+  #   When user open sales tab
+  #   When User selects today date
+   #  When User enters the lead value
+   #  When User fills in referred by and lead source details
+   #  When User creates a task
+
+  Scenario: Upload file to Lead
+    When User navigates to Lead page and opens Add Lead form
+    When User clicks the first row in the table
+    When User uploads a file
