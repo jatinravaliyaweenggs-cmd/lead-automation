@@ -57,3 +57,4 @@ Feature: Create Lead for Customer
     When User verifies that the company name "Ajay & Son's construction company" is visible in the table
     Then User verifies that "Company" column appears after "Name" column
     When User verifies Company column sorting
+    Then User clears company name and verifies dash in list
