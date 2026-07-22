@@ -124,10 +124,6 @@ When('User verifies Company column sorting', async function () {
 });
 
 When('User verifies that the company name {string} is visible in the table', async function (companyName) {
-  const companyCell = this.page
-    .locator('[col-id="company_name"]')
-    .filter({ hasText: companyName })
-    .first();
-
+  const companyCell = this.page.locator('[col-id="company_name"]').filter({ hasText: companyName }).first();
   await expect(companyCell).toBeVisible({ timeout: 10000 });
 });

@@ -13,7 +13,7 @@ module.exports = {
     phone2:      '9123456780',
     phoneExt2:   '202',
     cell:        '9988776655',
-    email:       'ajay.patel@example.com',
+    email:       'ajaypatel@yopmail.com',
     address:     'Surat'
   }
 };
