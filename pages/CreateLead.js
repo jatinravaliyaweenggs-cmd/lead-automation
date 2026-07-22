@@ -760,14 +760,6 @@ class CreateLeadPage {
     }
     console.log(' SUCCESS: Company column is sorted in DESCENDING order (Z → A)');
 
-    // Final summary
-    console.log('\n========================================');
-    console.log(' All Company Column Sorting Tests PASSED');
-    console.log('========================================');
-    console.log('✅ Column Display: Working');
-    console.log('✅ Ascending Sort: Working');
-    console.log('✅ Descending Sort: Working');
-    console.log('========================================\n');
   }
 
   async getCompanyColumnValuesByIndex() {
