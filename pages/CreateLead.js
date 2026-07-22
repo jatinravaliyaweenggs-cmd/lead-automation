@@ -721,17 +721,11 @@ class CreateLeadPage {
 
     // Get initial data before sorting
     const initialData = await this.getCompanyColumnValues();
-    console.log(`\n Total rows found: ${initialData.length}`);
-    console.log('Initial data (before sorting):');
-    console.log('   ' + initialData.slice(0, 5).join(', ') + (initialData.length > 5 ? '...' : ''));
 
     // Step 2: Click for Ascending sort
     await companyHeader.click();
     await this.page.waitForTimeout(1000);
-
     const ascData = await this.getCompanyColumnValues();
-    console.log('\n After first click (ASCENDING):');
-    console.log('   Data: ' + ascData.slice(0, 5).join(', ') + (ascData.length > 5 ? '...' : ''));
 
     // Ascending check
     if (!this.isSortedAsc(ascData)) {
@@ -743,13 +737,10 @@ class CreateLeadPage {
     console.log(' SUCCESS: Company column is sorted in ASCENDING order (A → Z)');
 
     // Step 3: Click again for Descending sort
-    console.log('\n Clicking Company column header for DESCENDING sort...');
     await companyHeader.click();
     await this.page.waitForTimeout(1000);
 
     const descData = await this.getCompanyColumnValues();
-    console.log('\n After second click (DESCENDING):');
-    console.log('   Data: ' + descData.slice(0, 5).join(', ') + (descData.length > 5 ? '...' : ''));
 
     // ✅ Descending check
     if (!this.isSortedDesc(descData)) {
