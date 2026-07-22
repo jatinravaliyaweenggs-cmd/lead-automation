@@ -729,9 +729,6 @@ class CreateLeadPage {
 
     // Ascending check
     if (!this.isSortedAsc(ascData)) {
-      console.log('   FAILED: Company column is NOT sorted in ascending order');
-      console.log('   Expected: A → Z');
-      console.log('   Got: ' + ascData.join(', '));
       throw new Error('Company column is NOT sorted in ascending order');
     }
     console.log(' SUCCESS: Company column is sorted in ASCENDING order (A → Z)');
@@ -742,11 +739,8 @@ class CreateLeadPage {
 
     const descData = await this.getCompanyColumnValues();
 
-    // ✅ Descending check
+    // Descending check
     if (!this.isSortedDesc(descData)) {
-      console.log('   FAILED: Company column is NOT sorted in descending order');
-      console.log('   Expected: Z → A');
-      console.log('   Got: ' + descData.join(', '));
       throw new Error('Company column is NOT sorted in descending order');
     }
     console.log(' SUCCESS: Company column is sorted in DESCENDING order (Z → A)');

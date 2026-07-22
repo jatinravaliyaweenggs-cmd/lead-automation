@@ -4,17 +4,17 @@
     "elements": [
       {
         "description": "",
-        "id": "create-lead-for-customer;add-additional-address",
+        "id": "create-lead-for-customer;verify-company-column-sorting-on-lead-list-page",
         "keyword": "Scenario",
-        "line": 41,
-        "name": "add Additional Address",
+        "line": 55,
+        "name": "Verify Company column sorting on Lead list page",
         "steps": [
           {
             "keyword": "Before",
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 521280299
+              "duration": 495674300
             }
           },
           {
@@ -27,7 +27,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 7029280099
+              "duration": 4064300500
             }
           },
           {
@@ -40,7 +40,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 4194473400
+              "duration": 4172691600
             }
           },
           {
@@ -53,98 +53,33 @@
             },
             "result": {
               "status": "passed",
-              "duration": 5130837499
+              "duration": 2825094400
             }
           },
           {
             "arguments": [],
             "keyword": "When ",
-            "line": 42,
+            "line": 56,
             "name": "User navigates to Lead page and opens Add Lead form",
             "match": {
               "location": "step_definitions\\lead.steps.js:7"
             },
             "result": {
               "status": "passed",
-              "duration": 2576518299
+              "duration": 2224433700
             }
           },
           {
             "arguments": [],
             "keyword": "When ",
-            "line": 43,
-            "name": "User clicks the first row in the table",
+            "line": 57,
+            "name": "User verifies Company column sorting",
             "match": {
-              "location": "step_definitions\\CreateLead.step.js:22"
+              "location": "step_definitions\\CreateLead.step.js:120"
             },
             "result": {
               "status": "passed",
-              "duration": 6781261500
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "When ",
-            "line": 44,
-            "name": "user open sales tab",
-            "match": {
-              "location": "step_definitions\\CreateLead.step.js:80"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 9583358299
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "When ",
-            "line": 45,
-            "name": "User selects today date",
-            "match": {
-              "location": "step_definitions\\CreateLead.step.js:87"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 2309506300
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "When ",
-            "line": 46,
-            "name": "User enters the lead value",
-            "match": {
-              "location": "step_definitions\\CreateLead.step.js:92"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 3095346000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "When ",
-            "line": 47,
-            "name": "User fills in referred by and lead source details",
-            "match": {
-              "location": "step_definitions\\CreateLead.step.js:97"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 16557703600
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "When ",
-            "line": 48,
-            "name": "User creates a task",
-            "match": {
-              "location": "step_definitions\\CreateLead.step.js:104"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 8909135399
+              "duration": 5694127300
             }
           },
           {
@@ -152,7 +87,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 334427299
+              "duration": 373610100
             }
           }
         ],
