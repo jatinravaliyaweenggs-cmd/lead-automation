@@ -690,62 +690,86 @@ class CreateLeadPage {
 
   // ─── Company Column Sorting Methods ────────────────────────────────────────
 
-  /**
-   * Get all text contents from the Company column (3rd column)
-   * @returns {Promise<string[]>} Array of company names
-   */
   async getCompanyColumnValues() {
     return await this.page.locator('tbody tr td:nth-child(3)').allTextContents();
   }
 
-  /**
-   * Check if an array is sorted in ascending order
-   * @param {string[]} arr - Array of strings to check
-   * @returns {boolean} True if sorted ascending
-   */
   isSortedAsc(arr) {
     return [...arr].sort((a, b) => a.localeCompare(b)).every((val, i) => val === arr[i]);
   }
 
-  /**
-   * Check if an array is sorted in descending order
-   * @param {string[]} arr - Array of strings to check
-   * @returns {boolean} True if sorted descending
-   */
   isSortedDesc(arr) {
     return [...arr].sort((a, b) => b.localeCompare(a)).every((val, i) => val === arr[i]);
   }
 
-  /**
-   * Test complete Company column sorting functionality
-   * Clicks header twice and verifies both ascending and descending sort
-   */
+
   async testCompanyColumnSorting() {
-    // Click for Ascending
-    await this.page.getByRole('columnheader', { name: 'Company' }).click();
+    console.log('\n========================================');
+    console.log('🔍 Starting Company Column Sorting Test');
+    console.log('========================================\n');
+
+    // Step 1: Verify Company column is visible
+    const companyHeader = this.page.getByRole('columnheader', { name: 'Company' });
+    
+    try {
+      await companyHeader.waitFor({ state: 'visible', timeout: 10000 });
+      console.log('✅ Company column header is VISIBLE');
+      console.log('   Column Name: "Company"');
+    } catch (error) {
+      console.log('❌ Company column header is NOT VISIBLE');
+      throw new Error('Company column header not found on the page');
+    }
+
+    // Get initial data before sorting
+    const initialData = await this.getCompanyColumnValues();
+    console.log(`\n📊 Total rows found: ${initialData.length}`);
+    console.log('Initial data (before sorting):');
+    console.log('   ' + initialData.slice(0, 5).join(', ') + (initialData.length > 5 ? '...' : ''));
+
+    // Step 2: Click for Ascending sort
+    console.log('\n🔄 Clicking Company column header for ASCENDING sort...');
+    await companyHeader.click();
     await this.page.waitForTimeout(1000);
 
     const ascData = await this.getCompanyColumnValues();
-    console.log('ASC:', ascData);
+    console.log('\n📈 After first click (ASCENDING):');
+    console.log('   Data: ' + ascData.slice(0, 5).join(', ') + (ascData.length > 5 ? '...' : ''));
 
     // ✅ Ascending check
     if (!this.isSortedAsc(ascData)) {
+      console.log('❌ FAILED: Company column is NOT sorted in ascending order');
+      console.log('   Expected: A → Z');
+      console.log('   Got: ' + ascData.join(', '));
       throw new Error('Company column is NOT sorted in ascending order');
     }
-    console.log('✅ Company column is sorted in ascending order');
+    console.log('✅ SUCCESS: Company column is sorted in ASCENDING order (A → Z)');
 
-    // Click again for Descending
-    await this.page.getByRole('columnheader', { name: 'Company' }).click();
+    // Step 3: Click again for Descending sort
+    console.log('\n🔄 Clicking Company column header for DESCENDING sort...');
+    await companyHeader.click();
     await this.page.waitForTimeout(1000);
 
     const descData = await this.getCompanyColumnValues();
-    console.log('DESC:', descData);
+    console.log('\n📉 After second click (DESCENDING):');
+    console.log('   Data: ' + descData.slice(0, 5).join(', ') + (descData.length > 5 ? '...' : ''));
 
     // ✅ Descending check
     if (!this.isSortedDesc(descData)) {
+      console.log('❌ FAILED: Company column is NOT sorted in descending order');
+      console.log('   Expected: Z → A');
+      console.log('   Got: ' + descData.join(', '));
       throw new Error('Company column is NOT sorted in descending order');
     }
-    console.log('✅ Company column is sorted in descending order');
+    console.log('✅ SUCCESS: Company column is sorted in DESCENDING order (Z → A)');
+
+    // Final summary
+    console.log('\n========================================');
+    console.log('🎉 All Company Column Sorting Tests PASSED');
+    console.log('========================================');
+    console.log('✅ Column Display: Working');
+    console.log('✅ Ascending Sort: Working');
+    console.log('✅ Descending Sort: Working');
+    console.log('========================================\n');
   }
 
   /**
