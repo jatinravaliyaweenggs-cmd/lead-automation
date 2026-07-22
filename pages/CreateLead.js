@@ -714,57 +714,55 @@ class CreateLeadPage {
     try {
       await companyHeader.waitFor({ state: 'visible', timeout: 10000 });
       console.log('✅ Company column header is VISIBLE');
-      console.log('   Column Name: "Company"');
     } catch (error) {
-      console.log('❌ Company column header is NOT VISIBLE');
+      console.log('Company column header is NOT VISIBLE');
       throw new Error('Company column header not found on the page');
     }
 
     // Get initial data before sorting
     const initialData = await this.getCompanyColumnValues();
-    console.log(`\n📊 Total rows found: ${initialData.length}`);
+    console.log(`\n Total rows found: ${initialData.length}`);
     console.log('Initial data (before sorting):');
     console.log('   ' + initialData.slice(0, 5).join(', ') + (initialData.length > 5 ? '...' : ''));
 
     // Step 2: Click for Ascending sort
-    console.log('\n🔄 Clicking Company column header for ASCENDING sort...');
     await companyHeader.click();
     await this.page.waitForTimeout(1000);
 
     const ascData = await this.getCompanyColumnValues();
-    console.log('\n📈 After first click (ASCENDING):');
+    console.log('\n After first click (ASCENDING):');
     console.log('   Data: ' + ascData.slice(0, 5).join(', ') + (ascData.length > 5 ? '...' : ''));
 
-    // ✅ Ascending check
+    // Ascending check
     if (!this.isSortedAsc(ascData)) {
-      console.log('❌ FAILED: Company column is NOT sorted in ascending order');
+      console.log('   FAILED: Company column is NOT sorted in ascending order');
       console.log('   Expected: A → Z');
       console.log('   Got: ' + ascData.join(', '));
       throw new Error('Company column is NOT sorted in ascending order');
     }
-    console.log('✅ SUCCESS: Company column is sorted in ASCENDING order (A → Z)');
+    console.log(' SUCCESS: Company column is sorted in ASCENDING order (A → Z)');
 
     // Step 3: Click again for Descending sort
-    console.log('\n🔄 Clicking Company column header for DESCENDING sort...');
+    console.log('\n Clicking Company column header for DESCENDING sort...');
     await companyHeader.click();
     await this.page.waitForTimeout(1000);
 
     const descData = await this.getCompanyColumnValues();
-    console.log('\n📉 After second click (DESCENDING):');
+    console.log('\n After second click (DESCENDING):');
     console.log('   Data: ' + descData.slice(0, 5).join(', ') + (descData.length > 5 ? '...' : ''));
 
     // ✅ Descending check
     if (!this.isSortedDesc(descData)) {
-      console.log('❌ FAILED: Company column is NOT sorted in descending order');
+      console.log('   FAILED: Company column is NOT sorted in descending order');
       console.log('   Expected: Z → A');
       console.log('   Got: ' + descData.join(', '));
       throw new Error('Company column is NOT sorted in descending order');
     }
-    console.log('✅ SUCCESS: Company column is sorted in DESCENDING order (Z → A)');
+    console.log(' SUCCESS: Company column is sorted in DESCENDING order (Z → A)');
 
     // Final summary
     console.log('\n========================================');
-    console.log('🎉 All Company Column Sorting Tests PASSED');
+    console.log(' All Company Column Sorting Tests PASSED');
     console.log('========================================');
     console.log('✅ Column Display: Working');
     console.log('✅ Ascending Sort: Working');
@@ -772,11 +770,6 @@ class CreateLeadPage {
     console.log('========================================\n');
   }
 
-  /**
-   * Get Company column values using dynamic column index
-   * Finds the column index by header text, then extracts values
-   * @returns {Promise<string[]>} Array of company names
-   */
   async getCompanyColumnValuesByIndex() {
     const columnIndex = await this.page.locator('th')
       .allTextContents()
