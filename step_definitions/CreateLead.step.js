@@ -116,3 +116,8 @@ When('User uploads a file', async function () {
   console.log('Uploading file from:', filePath);
   await this.createLeadPage.uploadFile(filePath);
 });
+
+When('User verifies Company column sorting', async function () {
+  this.createLeadPage = new CreateLeadPage(this.page);
+  await this.createLeadPage.testCompanyColumnSorting();
+});

@@ -687,6 +687,84 @@ class CreateLeadPage {
     await this.taskAddressInput.press('Enter');
     await this.page.waitForTimeout(500);
   }
+
+  // ─── Company Column Sorting Methods ────────────────────────────────────────
+
+  /**
+   * Get all text contents from the Company column (3rd column)
+   * @returns {Promise<string[]>} Array of company names
+   */
+  async getCompanyColumnValues() {
+    return await this.page.locator('tbody tr td:nth-child(3)').allTextContents();
+  }
+
+  /**
+   * Check if an array is sorted in ascending order
+   * @param {string[]} arr - Array of strings to check
+   * @returns {boolean} True if sorted ascending
+   */
+  isSortedAsc(arr) {
+    return [...arr].sort((a, b) => a.localeCompare(b)).every((val, i) => val === arr[i]);
+  }
+
+  /**
+   * Check if an array is sorted in descending order
+   * @param {string[]} arr - Array of strings to check
+   * @returns {boolean} True if sorted descending
+   */
+  isSortedDesc(arr) {
+    return [...arr].sort((a, b) => b.localeCompare(a)).every((val, i) => val === arr[i]);
+  }
+
+  /**
+   * Test complete Company column sorting functionality
+   * Clicks header twice and verifies both ascending and descending sort
+   */
+  async testCompanyColumnSorting() {
+    // Click for Ascending
+    await this.page.getByRole('columnheader', { name: 'Company' }).click();
+    await this.page.waitForTimeout(1000);
+
+    const ascData = await this.getCompanyColumnValues();
+    console.log('ASC:', ascData);
+
+    // ✅ Ascending check
+    if (!this.isSortedAsc(ascData)) {
+      throw new Error('Company column is NOT sorted in ascending order');
+    }
+    console.log('✅ Company column is sorted in ascending order');
+
+    // Click again for Descending
+    await this.page.getByRole('columnheader', { name: 'Company' }).click();
+    await this.page.waitForTimeout(1000);
+
+    const descData = await this.getCompanyColumnValues();
+    console.log('DESC:', descData);
+
+    // ✅ Descending check
+    if (!this.isSortedDesc(descData)) {
+      throw new Error('Company column is NOT sorted in descending order');
+    }
+    console.log('✅ Company column is sorted in descending order');
+  }
+
+  /**
+   * Get Company column values using dynamic column index
+   * Finds the column index by header text, then extracts values
+   * @returns {Promise<string[]>} Array of company names
+   */
+  async getCompanyColumnValuesByIndex() {
+    const columnIndex = await this.page.locator('th')
+      .allTextContents()
+      .then(headers => headers.indexOf('Company') + 1);
+
+    if (columnIndex === 0) {
+      throw new Error('Company column header not found');
+    }
+
+    const values = await this.page.locator(`tbody tr td:nth-child(${columnIndex})`).allTextContents();
+    return values;
+  }
 }
 
 module.exports = { CreateLeadPage };
