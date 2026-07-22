@@ -137,3 +137,35 @@ When('User clicks on the company name {string}', async function (companyName) {
   this.createLeadPage = new CreateLeadPage(this.page);
   await this.createLeadPage.clickCompanyNameInTable(companyName);
 });
+
+When('User clears company name and verifies dash in list', async function () {
+  this.createLeadPage = new CreateLeadPage(this.page);
+
+  // Open lead detail
+  await this.page.getByRole('gridcell', { name: /Ajay & Son/i }).first().click();
+
+  // Wait for Company field visible
+  const companyField = this.page.getByRole('textbox', { name: 'Company' });
+  await companyField.waitFor();
+
+  // Clear Company field
+  await companyField.click();
+  await companyField.fill('');
+
+  // Click Save
+  await this.page.locator('.svg-inline--fa.fa-floppy-disk').click();
+
+  // Wait for save confirmation (better than timeout)
+  await this.page.locator('text=Saved').waitFor({ timeout: 5000 }).catch(() => {});
+
+  // Go back to list page
+  await this.page.goBack();
+
+// Wait for grid
+await this.page.getByRole('treegrid').last().waitFor();
+
+// Verify dash in Company column (row data)
+await expect(
+  this.page.locator('.ag-row [col-id="company_name"]').first()
+).toContainText('-');
+});
