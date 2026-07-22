@@ -137,22 +137,3 @@ When('User clicks on the company name {string}', async function (companyName) {
   this.createLeadPage = new CreateLeadPage(this.page);
   await this.createLeadPage.clickCompanyNameInTable(companyName);
 });
-
-When('User clears company name and verifies dash in list', async function () {
-  this.createLeadPage = new CreateLeadPage(this.page);
-  // Go directly to the lead detail page
-  await this.page.goto('https://dev-app.cfteam.net/manage-leads/4278101');
-  await this.page.waitForTimeout(1500);
-  // Clear the company name field
-  const companyField = this.page.getByRole('textbox', { name: 'Company' });
-  await companyField.waitFor({ state: 'visible', timeout: 10000 });
-  await companyField.fill('');
-  await this.page.waitForTimeout(500);
-  // Go back to leads list
-  await this.page.goto('https://dev-app.cfteam.net/manage-leads');
-  await this.page.waitForTimeout(2000);
-  // Verify dash "-" is visible in company cell
-  const dashCell = this.page.getByRole('gridcell', { name: '-' }).nth(1);
-  await expect(dashCell).toBeVisible({ timeout: 10000 });
-  console.log('✅ Dash "-" is visible in company cell after clearing company name');
-});
