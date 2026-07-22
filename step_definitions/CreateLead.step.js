@@ -127,3 +127,8 @@ When('User verifies that the company name {string} is visible in the table', asy
   const companyCell = this.page.locator('[col-id="company_name"]').filter({ hasText: companyName }).first();
   await expect(companyCell).toBeVisible({ timeout: 10000 });
 });
+
+When('User verifies that {string} column appears after {string} column', async function (afterColumn, beforeColumn) {
+  this.createLeadPage = new CreateLeadPage(this.page);
+  await this.createLeadPage.verifyColumnOrder(beforeColumn, afterColumn);
+});

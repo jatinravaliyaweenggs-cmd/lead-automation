@@ -55,4 +55,5 @@ Feature: Create Lead for Customer
   Scenario: Verify Company column sorting on Lead list page
     When User navigates to Lead page and opens Add Lead form
     When User verifies that the company name "Ajay & Son's construction company" is visible in the table
+    Then User verifies that "Company" column appears after "Name" column
     When User verifies Company column sorting

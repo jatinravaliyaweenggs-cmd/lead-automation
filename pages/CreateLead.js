@@ -759,6 +759,58 @@ class CreateLeadPage {
     const values = await this.page.locator(`tbody tr td:nth-child(${columnIndex})`).allTextContents();
     return values;
   }
+
+  async verifyColumnOrder(beforeColumn, afterColumn) {
+    // Wait for table to be visible
+    await this.page.waitForTimeout(1000);
+    
+    // Try multiple strategies to get column headers
+    let headers = [];
+    
+    // Strategy 1: Try .ant-table-thead th
+    headers = await this.page.locator('.ant-table-thead th').allTextContents();
+    
+    // Strategy 2: Try role="columnheader"
+    if (headers.length === 0 || headers.every(h => !h.trim())) {
+      headers = await this.page.locator('[role="columnheader"]').allTextContents();
+    }
+    
+    // Strategy 3: Try generic th
+    if (headers.length === 0 || headers.every(h => !h.trim())) {
+      headers = await this.page.locator('th').allTextContents();
+    }
+    
+    // Strategy 4: Try .ag-header-cell (for ag-grid)
+    if (headers.length === 0 || headers.every(h => !h.trim())) {
+      headers = await this.page.locator('.ag-header-cell').allTextContents();
+    }
+    
+    // Clean up headers (trim whitespace and remove empty)
+    headers = headers.map(h => h.trim()).filter(h => h.length > 0);
+    
+    // Find index using partial match (case-insensitive)
+    const beforeIndex = headers.findIndex(h =>
+      h.toLowerCase().includes(beforeColumn.toLowerCase())
+    );
+    
+    const afterIndex = headers.findIndex(h =>
+      h.toLowerCase().includes(afterColumn.toLowerCase())
+    );
+    
+    if (beforeIndex === -1) {
+      throw new Error(`Column "${beforeColumn}" not found in table headers. Available: [${headers.join(', ')}]`);
+    }
+    
+    if (afterIndex === -1) {
+      throw new Error(`Column "${afterColumn}" not found in table headers. Available: [${headers.join(', ')}]`);
+    }
+    
+    if (afterIndex > beforeIndex) {
+      console.log(` SUCCESS: "${afterColumn}" column appears AFTER "${beforeColumn}" column\n`);
+    } else {
+      throw new Error(` FAILED: "${afterColumn}" (position ${afterIndex + 1}) does NOT appear after "${beforeColumn}" (position ${beforeIndex + 1})`);
+    }
+  }
 }
 
 module.exports = { CreateLeadPage };
