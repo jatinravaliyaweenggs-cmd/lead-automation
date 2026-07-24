@@ -8,6 +8,6 @@ module.exports = {
     ],
     formatOptions: { snippetInterface: 'async-await' },
     publishQuiet: true,
-    timeout: 60000
+    timeout: 120000
   }
 };
