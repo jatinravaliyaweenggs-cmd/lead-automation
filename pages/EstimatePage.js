@@ -33,7 +33,12 @@ async selectProjectType(){
   await this.page.locator('.ant-select-item-option', { hasText: 'Residential' }).click();
 }
 
-  
+  async selectSector(){
+  const dropdown = this.page.locator('.ant-select-selector', {has: this.page.locator('.ant-select-selection-placeholder', { hasText: 'Select Sector' })});
+  await dropdown.click();
+  await dropdown.press('ArrowDown');
+  await dropdown.press('Enter');
+}
 
 async selectTermValue(){
   await this.detailMenuPage.click();

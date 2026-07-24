@@ -17,4 +17,5 @@ Then('User open estimate and enter details', async function () {
   await estimatePage.openastimateAndEnterDetails();
   await estimatePage.selectTermValue();
   await estimatePage.selectProjectType();
+  await estimatePage.selectSector();
 });
