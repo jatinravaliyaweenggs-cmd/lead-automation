@@ -15,8 +15,23 @@ class EstimatePage {
 
     this.detailMenuPage = page.getByRole('button', { name: 'Details' });
     this.termTextbox = page.locator('#rc_select_2');
+
+    this.projectTypename = page.locator('#rc_select_3');
   }
 
+async selectProjectType(){
+  // 1. Open dropdown
+  await this.page.locator('.ant-select-selector', { hasText: 'Select Type' }).click();
+
+  // 2. Target ONLY opened input (aria-expanded = true)
+  const input = this.page.locator('input.ant-select-selection-search-input[aria-expanded="true"]');
+
+  await input.waitFor({ state: 'visible' });
+  await input.fill('Residential');
+
+  // 3. Select option
+  await this.page.locator('.ant-select-item-option', { hasText: 'Residential' }).click();
+}
 
   
 
