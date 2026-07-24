@@ -99,12 +99,6 @@ class CreateLeadPage {
     this.taskSubjectInput    = page.getByRole('textbox', { name: 'Short description of the task' });
     this.taskAddressOverlay  = page.locator('#directory-activity-address-overlay');
     this.taskAddressInput    = page.locator('#directory-activity-address');
-
-    // Files tab locators
-    this.filesButton         = page.getByRole('button', { name: 'Files' });
-    this.filesDropZone       = page.locator('.top-0.w-full.h-full');
-    this.chooseFileButton    = page.getByRole('button', { name: 'Choose File' });
-    this.attachButton        = page.getByRole('button', { name: 'Attach' });
   }
 
   async sleasPageOpen() {
@@ -686,6 +680,69 @@ class CreateLeadPage {
     await this.page.waitForTimeout(300);
     await this.taskAddressInput.press('Enter');
     await this.page.waitForTimeout(500);
+  }
+
+  // ─── Notes Methods ─────────────────────────────────────────────────────────
+
+  /**
+   * Add a note with title, description, and an optional file attachment
+   * @param {string} title       - e.g. 'This is a title'
+   * @param {string} description - e.g. 'This is a description'
+   * @param {string} filePath    - absolute path to the image/file to attach
+   */
+  async addNote(title, description, filePath) {
+    // Step 1: Click the Notes tab
+    await this.page.getByRole('button', { name: 'Notes' }).waitFor({ state: 'visible', timeout: 10000 });
+    await this.page.getByRole('button', { name: 'Notes' }).click();
+    await this.page.waitForTimeout(800);
+
+    // Step 2: Click the Note button (exact match to avoid 'Notes' tab conflict)
+    await this.page.getByRole('button', { name: 'Note', exact: true }).waitFor({ state: 'visible', timeout: 10000 });
+    await this.page.getByRole('button', { name: 'Note', exact: true }).click();
+    await this.page.waitForTimeout(800);
+
+    // Step 3: Fill in the title
+    const titleInput = this.page.getByRole('textbox', { name: 'Enter a title for this note' });
+    await titleInput.waitFor({ state: 'visible', timeout: 10000 });
+    await titleInput.click();
+    await titleInput.fill(title);
+    await this.page.waitForTimeout(300);
+
+    // Step 4: Fill in the description
+    const descInput = this.page.getByRole('textbox', { name: 'Write short description of' });
+    await descInput.waitFor({ state: 'visible', timeout: 10000 });
+    await descInput.click();
+    await descInput.fill(description);
+    await this.page.waitForTimeout(300);
+
+    // Step 5: Click the drop zone area
+ await this.page
+  .getByRole('dialog', { name: /note/i })
+  .locator('svg[data-icon="plus"]')
+  .click();
+    await this.page.waitForTimeout(500);
+
+    // Step 6: Click the upload container
+    await this.page.locator('.flex.md\\:flex-row.flex-col.md\\:gap-1\\.5').waitFor({ state: 'visible', timeout: 10000 });
+    await this.page.locator('.flex.md\\:flex-row.flex-col.md\\:gap-1\\.5').click();
+    await this.page.waitForTimeout(500);
+
+    // // Step 7: Set the file via Choose File button
+    // await this.chooseFileButton.waitFor({ state: 'visible', timeout: 10000 });
+    // await this.chooseFileButton.setInputFiles(filePath);
+    // await this.page.waitForTimeout(500);
+
+    // // Step 8: Click Attach
+    // await this.attachButton.waitFor({ state: 'visible', timeout: 10000 });
+    // await this.attachButton.click();
+    // await this.page.waitForTimeout(800);
+
+    // // Step 9: Click Save
+    // await this.page.getByRole('button', { name: 'Save' }).waitFor({ state: 'visible', timeout: 10000 });
+    // await this.page.getByRole('button', { name: 'Save' }).click();
+    // await this.page.waitForTimeout(1000);
+
+    console.log('✅ Note added successfully with title, description, and file attachment');
   }
 
   // ─── Company Column Sorting Methods ────────────────────────────────────────

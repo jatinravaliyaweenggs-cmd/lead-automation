@@ -138,6 +138,16 @@ When('User clicks on the company name {string}', async function (companyName) {
   await this.createLeadPage.clickCompanyNameInTable(companyName);
 });
 
+When('User adds a note with title, description and file', async function () {
+  this.createLeadPage = new CreateLeadPage(this.page);
+  const filePath = path.join(__dirname, '../testdata/LeadFile.pdf');
+  await this.createLeadPage.addNote(
+    'This is a title',
+    'This is a description',
+    filePath
+  );
+});
+
 When('User clears company name and verifies dash in list', async function () {
   this.createLeadPage = new CreateLeadPage(this.page);
 

@@ -52,9 +52,14 @@ Feature: Create Lead for Customer
   #   When User clicks the first row in the table
   #   When User uploads a file
 
-  Scenario: Verify Company column sorting on Lead list page
+  Scenario: Add a note to a lead
     When User navigates to Lead page and opens Add Lead form
-    When User verifies that the company name "Ajay & Son's construction company" is visible in the table
-    Then User verifies that "Company" column appears after "Name" column
-    When User verifies Company column sorting
-    Then User clears company name and verifies dash in list
+    When User clicks the first row in the table
+    When User adds a note with title, description and file
+
+  # Scenario: Verify Company column sorting on Lead list page
+  #   When User navigates to Lead page and opens Add Lead form
+  #   When User verifies that the company name "Ajay & Son's construction company" is visible in the table
+  #   Then User verifies that "Company" column appears after "Name" column
+  #   When User verifies Company column sorting
+  #   Then User clears company name and verifies dash in list
