@@ -14,5 +14,7 @@ When('User creates a new Estimate', async function () {
 });
 
 Then('User open estimate and enter details', async function () {
-  await estimatePage.verifyEstimateCreated();
+  await estimatePage.openastimateAndEnterDetails();
+  
+  
 });

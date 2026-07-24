@@ -7,36 +7,42 @@ class EstimatePage {
     this.estimatesMenu = page.getByRole('link', { name: 'Estimates-plu' });
     this.newEstimateBtn = page.getByRole('button', { name: 'Estimate-sin' });
 
-    this.titleInput = page.getByRole('textbox', {
-      name: 'Short title for the Estimate-'
-    });
+    this.titleInput = page.getByRole('textbox', {name: 'Short title for the Estimate-'});
+    this.customerBtn = page.getByRole('button', {name: 'Click to select a Customer'});
+    this.searchCustomer = page.getByRole('searchbox', {name: 'Search for Customer'});
+    this.createEstimateBtn = page.getByRole('button', {name: 'Create Estimate-sin'});
+    this.NewCreateEstimateRow = page.locator('table tbody tr');
 
-    this.customerBtn = page.getByRole('button', {
-      name: 'Click to select a Customer'
-    });
-
-    this.searchCustomer = page.getByRole('searchbox', {
-      name: 'Search for Customer'
-    });
-
-    this.createEstimateBtn = page.getByRole('button', {
-      name: 'Create Estimate-sin'
-    });
-
-     this.NewCreateEstimateRow = page.locator('table tbody tr');
+    this.detailMenuPage = page.getByRole('button', { name: 'Details' });
+    this.termTextbox = page.locator('#rc_select_2');
   }
 
-   async openastimateAndEnterDetails(){
-      this.NewCreateEstimateRow().first().click();
-  }
+
   
+
+  async selectTermValue(){
+   await this.detailMenuPage.click();
+    await this.termTextbox.click();
+    await this.termTextbox.fill('30');
+    await this.termTextbox.press('Enter');
+
+  }
+
+async openastimateAndEnterDetails(){
+  const row = this.page.locator('.ag-row').filter({ hasText: 'This is a testing title' }).first();
+  await row.waitFor({ state: 'visible', timeout: 15000 });
+  await row.click();
+}
+
+
+
   async openEstimatePage() {
     await this.menuDashboard.click();
     await this.estimatesMenu.click();
   }
 
   // ✅ FIXED METHOD (NO STRICT MODE ISSUE)
- async selectCustomer(name) {
+  async selectCustomer(name) {
     // Clear + type search
     await this.searchCustomer.fill('');
     await this.searchCustomer.fill(name);
