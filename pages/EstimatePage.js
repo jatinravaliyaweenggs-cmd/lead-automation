@@ -7,69 +7,98 @@ class EstimatePage {
     this.estimatesMenu = page.getByRole('link', { name: 'Estimates-plu' });
     this.newEstimateBtn = page.getByRole('button', { name: 'Estimate-sin' });
 
-    this.titleInput = page.getByRole('textbox', {name: 'Short title for the Estimate-'});
-    this.customerBtn = page.getByRole('button', {name: 'Click to select a Customer'});
-    this.searchCustomer = page.getByRole('searchbox', {name: 'Search for Customer'});
-    this.createEstimateBtn = page.getByRole('button', {name: 'Create Estimate-sin'});
+    this.titleInput = page.getByRole('textbox', { name: 'Short title for the Estimate-' });
+    this.customerBtn = page.getByRole('button', { name: 'Click to select a Customer' });
+    this.searchCustomer = page.getByRole('searchbox', { name: 'Search for Customer' });
+    this.createEstimateBtn = page.getByRole('button', { name: 'Create Estimate-sin' });
     this.NewCreateEstimateRow = page.locator('table tbody tr');
 
     this.detailMenuPage = page.getByRole('button', { name: 'Details' });
     this.termTextbox = page.locator('#rc_select_2');
 
     this.projectTypename = page.locator('#rc_select_3');
+   
+    this.invoicedToButton =  page.getByRole('button', { name: 'Invoiced To' });
+    this.selectVendor =  page.getByRole('button', { name: 'Vendors' });
+    this.vendorSerchBox = page.getByRole('searchbox', { name: 'Search for Vendor' });
+    this.rakeshVendor = page.getByText('Rakesh Raval (Rakesh and son)');
+    
+
   }
 
-async selectProjectType(){
-  // 1. Open dropdown
-  await this.page.locator('.ant-select-selector', { hasText: 'Select Type' }).click();
+async selectInvoicedTo() {
+  await this.invoicedToButton.waitFor({ state: 'visible', timeout: 10000 });
+  await this.invoicedToButton.click();
+  await this.page.waitForTimeout(500);
 
-  // 2. Target ONLY opened input (aria-expanded = true)
-  const input = this.page.locator('input.ant-select-selection-search-input[aria-expanded="true"]');
+  await this.selectVendor.waitFor({ state: 'visible', timeout: 10000 });
+  await this.selectVendor.click();
+  await this.page.waitForTimeout(500);
 
-  await input.waitFor({ state: 'visible' });
-  await input.fill('Residential');
+  await this.vendorSerchBox.waitFor({ state: 'visible', timeout: 10000 });
+  await this.vendorSerchBox.click();
+  await this.vendorSerchBox.fill('rakesh');
 
-  // 3. Select option
-  await this.page.locator('.ant-select-item-option', { hasText: 'Residential' }).click();
+  // Wait for skeleton/loading to disappear first, then wait for actual result
+  await this.page.waitForFunction(() => {
+    const skeletons = document.querySelectorAll('.animate-pulse, [class*="skeleton"], [class*="shimmer"]');
+    return skeletons.length === 0;
+  }, { timeout: 15000 }).catch(() => {});
+
+  // Wait for actual vendor text to appear
+  const vendorResult = this.page.getByText("Rakesh Raval (Rakesh and son's company)").nth(0);
+  await vendorResult.waitFor({ state: 'visible', timeout: 20000 });
+  await vendorResult.click();
+  await this.page.waitForTimeout(500);
 }
 
 
-async selectContact() {
-  const dropdown = this.page.locator('.ant-select-selector', {has: this.page.locator('.ant-select-selection-placeholder', { hasText: 'Select Contact' })});
-  await dropdown.click();
-  await dropdown.press('ArrowDown');
-  await dropdown.press('Enter');
-}
+  async selectProjectType() {
+    // 1. Open dropdown
+    await this.page.locator('.ant-select-selector', { hasText: 'Select Type' }).click();
 
+    // 2. Target ONLY opened input (aria-expanded = true)
+    const input = this.page.locator('input.ant-select-selection-search-input[aria-expanded="true"]');
 
-  async selectSector(){
-  const dropdown = this.page.locator('.ant-select-selector', {has: this.page.locator('.ant-select-selection-placeholder', { hasText: 'Select Sector' })});
-  await dropdown.click();
-  await dropdown.press('ArrowDown');
-  await dropdown.press('Enter');
-}
+    await input.waitFor({ state: 'visible' });
+    await input.fill('Residential');
 
-async selectTermValue(){
-  await this.detailMenuPage.click();
-  const dropdown = this.page.locator('.ant-select-selector').filter({ hasText: 'Select a Term' });
-  await dropdown.click();
-  const option = this.page.locator('.ant-select-item-option').filter({ hasText: '30' }).first();
-  await option.click();
-}
+    // 3. Select option
+    await this.page.locator('.ant-select-item-option', { hasText: 'Residential' }).click();
+  }
 
-async openastimateAndEnterDetails(){
-  const row = this.page.locator('.ag-row').filter({ hasText: 'This is a testing title' }).first();
-  await row.waitFor({ state: 'visible', timeout: 15000 });
-  await row.click();
-}
+  async selectContact() {
+    const dropdown = this.page.locator('.ant-select-selector', { has: this.page.locator('.ant-select-selection-placeholder', { hasText: 'Select Contact' }) });
+    await dropdown.click();
+    await dropdown.press('ArrowDown');
+    await dropdown.press('Enter');
+  }
 
+  async selectSector() {
+    const dropdown = this.page.locator('.ant-select-selector', { has: this.page.locator('.ant-select-selection-placeholder', { hasText: 'Select Sector' }) });
+    await dropdown.click();
+    await dropdown.press('ArrowDown');
+    await dropdown.press('Enter');
+  }
 
+  async selectTermValue() {
+    await this.detailMenuPage.click();
+    const dropdown = this.page.locator('.ant-select-selector').filter({ hasText: 'Select a Term' });
+    await dropdown.click();
+    const option = this.page.locator('.ant-select-item-option').filter({ hasText: '30' }).first();
+    await option.click();
+  }
+
+  async openastimateAndEnterDetails() {
+    const row = this.page.locator('.ag-row').filter({ hasText: 'This is a testing title' }).first();
+    await row.waitFor({ state: 'visible', timeout: 15000 });
+    await row.click();
+  }
 
   async openEstimatePage() {
     await this.menuDashboard.click();
     await this.estimatesMenu.click();
   }
-
   // ✅ FIXED METHOD (NO STRICT MODE ISSUE)
   async selectCustomer(name) {
     // Clear + type search
