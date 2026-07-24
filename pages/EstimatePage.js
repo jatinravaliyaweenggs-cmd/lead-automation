@@ -27,15 +27,17 @@ class EstimatePage {
     this.selectProjectAddress = page.getByText('Project', { exact: true });
     this.pencilIconOfAddress = page.locator('.svg-inline--fa.fa-pencil > path');
     this.addressline1 = page.locator('#ignore-input-change');
+    this.addressListitem = page.getByRole('listitem').filter({ hasText: /^-$/ });
 
   }
 
   async selectAddress(){
     await this.addressDroupdown.click();
     await this.selectProjectAddress.click();
+    await this.addressListitem.hover();
     await this.pencilIconOfAddress.click();
     await this.addressline1.click();
-    await this.addressline1.fill('maharana pratap garden');
+    await this.addressline1.fill('Nana varchha');
     await this.addressline1.press('ArrowDown');
     await this.addressline1.press('Enter');
   }
