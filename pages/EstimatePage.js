@@ -20,13 +20,13 @@ class EstimatePage {
 
   
 
-  async selectTermValue(){
-   await this.detailMenuPage.click();
-    await this.termTextbox.click();
-    await this.termTextbox.fill('30');
-    await this.termTextbox.press('Enter');
-
-  }
+async selectTermValue(){
+  await this.detailMenuPage.click();
+  const dropdown = this.page.locator('.ant-select-selector').filter({ hasText: 'Select a Term' });
+  await dropdown.click();
+  const option = this.page.locator('.ant-select-item-option').filter({ hasText: '30' }).first();
+  await option.click();
+}
 
 async openastimateAndEnterDetails(){
   const row = this.page.locator('.ag-row').filter({ hasText: 'This is a testing title' }).first();
