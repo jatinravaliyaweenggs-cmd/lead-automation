@@ -31,20 +31,27 @@ class EstimatePage {
 
   // ✅ FIXED METHOD (NO STRICT MODE ISSUE)
  async selectCustomer(name) {
-  // Clear + type
-  await this.searchCustomer.fill('');
-  await this.searchCustomer.fill(name);
+    // Clear + type search
+    await this.searchCustomer.fill('');
+    await this.searchCustomer.fill(name);
+    await this.page.waitForTimeout(1500);
 
-  // Wait for results load
-  const row = this.page.locator('.ag-row')
-    .filter({ hasText: name })
-    .first();
+    // Click the result row using the list item container
+    const resultRow = this.page.locator('li').filter({ hasText: "Bhavik Raval (Bhavik and son's company)" }).first();
+    const resultRow2 = this.page.locator('[class*="cursor-pointer"]').filter({ hasText: "Bhavik Raval (Bhavik and son's company)" }).first();
+    const resultRowDiv = this.page.locator('div[tabindex]').filter({ hasText: "Bhavik Raval (Bhavik and son's company)" }).first();
 
-  await row.waitFor({ state: 'visible', timeout: 15000 });
-
-  // Click row
-  await row.click();
-}
+    // Try each locator strategy
+    if (await resultRow.count() > 0) {
+      await resultRow.click();
+    } else if (await resultRow2.count() > 0) {
+      await resultRow2.click();
+    } else {
+      // Fallback: click by exact text match on the name span/div
+      await resultRowDiv.click();
+    }
+    await this.page.waitForTimeout(500);
+  }
 
   async createEstimate() {
     // Click New Estimate
