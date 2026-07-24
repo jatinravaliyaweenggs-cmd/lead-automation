@@ -23,6 +23,13 @@ class EstimatePage {
     this.vendorSerchBox = page.getByRole('searchbox', { name: 'Search for Vendor' });
     this.rakeshVendor = page.getByText('Rakesh Raval (Rakesh and son)');
     
+    this.addressDroupdown = page.locator('#scrollable-div-id').getByTitle('Customer');
+    this.selectProjectAddress = page.getByText('Project', { exact: true });
+  }
+
+  async selectAddress(){
+    await this.addressDroupdown.click();
+    await this.selectProjectAddress.click();
 
   }
 
