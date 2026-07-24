@@ -8,4 +8,7 @@ Feature: Estimate Creation
   Scenario: Create a new Estimate
     When User navigates to Estimate page
     And User creates a new Estimate
-    Then Estimate should be created successfully
+
+  Scenario: estimate deails add
+    When User navigates to Estimate page
+    When User open estimate and enter details

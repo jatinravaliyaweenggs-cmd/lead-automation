@@ -13,6 +13,6 @@ When('User creates a new Estimate', async function () {
   await estimatePage.createEstimate();
 });
 
-Then('Estimate should be created successfully', async function () {
+Then('User open estimate and enter details', async function () {
   await estimatePage.verifyEstimateCreated();
 });

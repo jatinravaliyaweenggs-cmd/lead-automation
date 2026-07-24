@@ -22,8 +22,14 @@ class EstimatePage {
     this.createEstimateBtn = page.getByRole('button', {
       name: 'Create Estimate-sin'
     });
+
+     this.NewCreateEstimateRow = page.locator('table tbody tr');
   }
 
+   async openastimateAndEnterDetails(){
+      this.NewCreateEstimateRow().first().click();
+  }
+  
   async openEstimatePage() {
     await this.menuDashboard.click();
     await this.estimatesMenu.click();
