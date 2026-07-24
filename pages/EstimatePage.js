@@ -31,16 +31,18 @@ class EstimatePage {
 
   }
 
-  async selectAddress(){
-    await this.addressDroupdown.click();
-    await this.selectProjectAddress.click();
-    await this.addressListitem.hover();
-    await this.pencilIconOfAddress.click();
-    await this.addressline1.click();
-    await this.addressline1.fill('Nana varchha');
-    await this.addressline1.press('ArrowDown');
-    await this.addressline1.press('Enter');
-  }
+async selectAddress() {
+  await this.addressDroupdown.click();
+  await this.selectProjectAddress.click();
+  await this.addressListitem.first().hover();
+  await this.pencilIconOfAddress.click();
+  await this.addressline1.fill('Nana varchha');
+  // 🔥 Wait for Google suggestion dropdown
+  const suggestion = this.page.locator('.pac-item').first();
+  await suggestion.waitFor({ state: 'visible', timeout: 5000 });
+  // Select suggestion (better than keyboard)
+  await suggestion.click();
+}
 
 async selectInvoicedTo() {
   await this.invoicedToButton.waitFor({ state: 'visible', timeout: 10000 });

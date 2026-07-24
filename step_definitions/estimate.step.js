@@ -16,10 +16,10 @@ When('User creates a new Estimate', async function () {
 Then('User open estimate and enter details', async function () {
   await estimatePage.openastimateAndEnterDetails();
   await estimatePage.selectTermValue();
-  //await estimatePage.selectProjectType();
-  //await estimatePage.selectSector();
- // await estimatePage.selectContact();
- // await estimatePage.selectInvoicedTo();
+  await estimatePage.selectProjectType();
+  await estimatePage.selectSector();
+ await estimatePage.selectContact();
+ await estimatePage.selectInvoicedTo();
   await estimatePage.selectAddress();
 
 });
