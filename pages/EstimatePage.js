@@ -94,6 +94,9 @@ class EstimatePage {
     await this.addToEstimateSinDroupdown.click();
     await this.importFromTemplateOption.waitFor({ state: 'visible' });
     await this.importFromTemplateOption.click();
+    await this.addItemButton.click();
+    const modal = this.page.locator('[role="dialog"]');
+    await modal.getByRole('button', { name: 'Yes' }).click();
   }
 
   async addSectionDescription() {
