@@ -17,12 +17,12 @@ class EstimatePage {
     this.termTextbox = page.locator('#rc_select_2');
 
     this.projectTypename = page.locator('#rc_select_3');
-   
-    this.invoicedToButton =  page.getByRole('button', { name: 'Invoiced To' });
-    this.selectVendor =  page.getByRole('button', { name: 'Vendors' });
+
+    this.invoicedToButton = page.getByRole('button', { name: 'Invoiced To' });
+    this.selectVendor = page.getByRole('button', { name: 'Vendors' });
     this.vendorSerchBox = page.getByRole('searchbox', { name: 'Search for Vendor' });
     this.rakeshVendor = page.getByText('Rakesh Raval (Rakesh and son)');
-    
+
     this.addressDroupdown = page.locator('#scrollable-div-id').getByTitle('Customer');
     this.selectProjectAddress = page.getByText('Project', { exact: true });
     this.pencilIconOfAddress = page.locator('.svg-inline--fa.fa-pencil > path');
@@ -37,18 +37,18 @@ class EstimatePage {
     this.sectionName = page.locator('#section_name');
     this.sectionDescription = page.locator('#description');
     this.addButton = page.locator('button[type="submit"]');
-    this.importFromTemplateOption = page.getByRole('menuitem', { name: 'Import from Estimate-sin or Template' });  
-    this.ImportItemsfromCsvFilePage = page.getByRole('menuitem', { name: 'Import Items from CSV File'})  
+    this.importFromTemplateOption = page.getByRole('menuitem', { name: 'Import from Estimate-sin or Template' });
+    this.ImportItemsfromCsvFilePage = page.getByRole('menuitem', { name: 'Import Items from CSV File' })
     this.importCSVOption = this.page.getByRole('menuitem', { name: 'Import Items from CSV File' });
     this.importButton = page.getByRole('button', { name: 'Import' });
-    
-    this.pastefromClipboardPage = page.getByRole('menuitem', {name: 'Paste from Clipboard'})
+
+    this.pastefromClipboardPage = page.getByRole('menuitem', { name: 'Paste from Clipboard' })
     this.itemDescriptionTextarea = page.locator('textarea[placeholder*="Item Name"]');
-    this.nextButton =  page.getByRole('button', { name: 'Next' });
+    this.nextButton = page.getByRole('button', { name: 'Next' });
     this.selectField = page.locator('div:has-text("Select Field")');
     this.addItemButton = page.getByRole('button', { name: 'Add Items' });
 
-  
+
   }
 
 
@@ -69,7 +69,7 @@ class EstimatePage {
     const selectField2 = modal.locator('.ag-header-cell-comp-wrapper >> text=Description').first();
     await selectField2.click();
 
-// 👇 only visible dropdown
+    // 👇 only visible dropdown
     const itemType = this.page.locator('.ant-popover:visible li').filter({ hasText: 'Item Type' }).first();
     await itemType.waitFor({ state: 'visible' });
     await itemType.scrollIntoViewIfNeeded();
@@ -77,92 +77,85 @@ class EstimatePage {
     await this.addItemButton.click();
   }
 
-async uploadCSVFile(){
-  await this.addToEstimateSinDroupdown.click();
-  await this.importCSVOption.click();
-  const fileInput = this.page.locator('input[type="file"]');
-  await fileInput.setInputFiles('D:\\Automation\\CreateLead\\testdata\\MaterialItems.csv');
-  await this.importButton.click();
-  await this.page.keyboard.press('Enter');
-}
+  async uploadCSVFile() {
+    await this.addToEstimateSinDroupdown.click();
+    await this.importCSVOption.click();
+    const fileInput = this.page.locator('input[type="file"]');
+    await fileInput.setInputFiles('D:\\Automation\\CreateLead\\testdata\\MaterialItems.csv');
+    await this.importButton.click();
+    await this.page.keyboard.press('Enter');
+  }
 
+  async ImportItemsfromCsvFilePageOpen() {
+    await this.ImportItemsfromCsvFilePage.click();
+  }
 
-async ImportItemsfromCsvFilePageOpen(){
-  await this.ImportItemsfromCsvFilePage.click();
-}
+  async importFromEstimateTemplate() {
+    await this.addToEstimateSinDroupdown.click();
+    await this.importFromTemplateOption.waitFor({ state: 'visible' });
+    await this.importFromTemplateOption.click();
+  }
 
-  async importFromEstimateTemplate(){
-  await this.addToEstimateSinDroupdown.click();
-  await this.importFromTemplateOption.waitFor({ state: 'visible' });
-  await this.importFromTemplateOption.click();
-}
+  async addSectionDescription() {
+    await this.sectionName.fill('Test Section');
+    await this.sectionDescription.fill('This is test section description');
+    await this.addButton.click();
+  }
 
-async addSectionDescription(){
-  await this.sectionName.fill('Test Section');
-  await this.sectionDescription.fill('This is test section description');
-  await this.addButton.click();
-}
+  async addNewSection() {
+    await this.addToEstimateSinDroupdown.click();
+    await this.addMenuItemPage.click();
 
-async addNewSection(){
-  await this.addToEstimateSinDroupdown.click();
-  await this.addMenuItemPage.click();
+  }
 
-}
-
-
-
-
-  async addItemDetails(){
-   await this.itemPage.click();
+  async addItemDetails() {
+    await this.itemPage.click();
   }
   async enterTermsInclusionsExclusions() {
-  this.termPage.click();
-  const editors = this.page.locator('.fr-element'); // 3 editors
-  await editors.nth(0).click();
-  await this.page.keyboard.type('This is Terms content', { delay: 20 });
-  await editors.nth(1).click();
-  await this.page.keyboard.type('This is Inclusions content', { delay: 20 });
-  await editors.nth(2).click();
-  await this.page.keyboard.type('This is Exclusions content', { delay: 20 });
-}
+    this.termPage.click();
+    const editors = this.page.locator('.fr-element'); // 3 editors
+    await editors.nth(0).click();
+    await this.page.keyboard.type('This is Terms content', { delay: 20 });
+    await editors.nth(1).click();
+    await this.page.keyboard.type('This is Inclusions content', { delay: 20 });
+    await editors.nth(2).click();
+    await this.page.keyboard.type('This is Exclusions content', { delay: 20 });
+  }
 
+  async selectAddress() {
+    await this.addressDroupdown.click();
+    await this.selectProjectAddress.click();
+    await this.addressListitem.first().hover();
+    await this.pencilIconOfAddress.click();
+    await this.addressline1.fill('Nana varchha');
+    const suggestion = this.page.locator('.pac-item').first();
+    await suggestion.waitFor({ state: 'visible', timeout: 5000 });
+    await suggestion.click();
+  }
 
-async selectAddress() {
-  await this.addressDroupdown.click();
-  await this.selectProjectAddress.click();
-  await this.addressListitem.first().hover();
-  await this.pencilIconOfAddress.click();
-  await this.addressline1.fill('Nana varchha');
-  const suggestion = this.page.locator('.pac-item').first();
-  await suggestion.waitFor({ state: 'visible', timeout: 5000 });
-  await suggestion.click();
-}
+  async selectInvoicedTo() {
+    await this.invoicedToButton.waitFor({ state: 'visible', timeout: 10000 });
+    await this.invoicedToButton.click();
+    await this.page.waitForTimeout(500);
 
-async selectInvoicedTo() {
-  await this.invoicedToButton.waitFor({ state: 'visible', timeout: 10000 });
-  await this.invoicedToButton.click();
-  await this.page.waitForTimeout(500);
+    await this.selectVendor.waitFor({ state: 'visible', timeout: 10000 });
+    await this.selectVendor.click();
+    await this.page.waitForTimeout(500);
 
-  await this.selectVendor.waitFor({ state: 'visible', timeout: 10000 });
-  await this.selectVendor.click();
-  await this.page.waitForTimeout(500);
+    await this.vendorSerchBox.waitFor({ state: 'visible', timeout: 10000 });
+    await this.vendorSerchBox.click();
+    await this.vendorSerchBox.fill('rakesh');
 
-  await this.vendorSerchBox.waitFor({ state: 'visible', timeout: 10000 });
-  await this.vendorSerchBox.click();
-  await this.vendorSerchBox.fill('rakesh');
+    await this.page.waitForFunction(() => {
+      const skeletons = document.querySelectorAll('.animate-pulse, [class*="skeleton"], [class*="shimmer"]');
+      return skeletons.length === 0;
+    }, { timeout: 15000 }).catch(() => { });
 
-  // Wait for skeleton/loading to disappear first, then wait for actual result
-  await this.page.waitForFunction(() => {
-    const skeletons = document.querySelectorAll('.animate-pulse, [class*="skeleton"], [class*="shimmer"]');
-    return skeletons.length === 0;
-  }, { timeout: 15000 }).catch(() => {});
-
-  // Wait for actual vendor text to appear
-  const vendorResult = this.page.getByText("Rakesh Raval (Rakesh and son's company)").nth(0);
-  await vendorResult.waitFor({ state: 'visible', timeout: 20000 });
-  await vendorResult.click();
-  await this.page.waitForTimeout(500);
-}
+    const vendorResult = this.page.getByText("Rakesh Raval (Rakesh and son's company)").nth(0);
+    await vendorResult.waitFor({ state: 'visible', timeout: 20000 });
+    await vendorResult.click();
+    await this.page.waitForTimeout(500);
+  }
 
   async getTotals() {
     await this.page.waitForSelector('[col-id="total"]');
@@ -186,7 +179,7 @@ async selectInvoicedTo() {
   }
 
 
- async clickNoAndValidate() {
+  async clickNoAndValidate() {
     await this.clickNoButton.click();
     await this.page.waitForTimeout(1000);
     const totals = await this.getTotals();
@@ -198,23 +191,11 @@ async selectInvoicedTo() {
     console.log('NO working correctly');
   }
 
-
-
-
-
-
-
   async selectProjectType() {
-    // 1. Open dropdown
     await this.page.locator('.ant-select-selector', { hasText: 'Select Type' }).click();
-
-    // 2. Target ONLY opened input (aria-expanded = true)
     const input = this.page.locator('input.ant-select-selection-search-input[aria-expanded="true"]');
-
     await input.waitFor({ state: 'visible' });
     await input.fill('Residential');
-
-    // 3. Select option
     await this.page.locator('.ant-select-item-option', { hasText: 'Residential' }).click();
   }
 
@@ -247,21 +228,17 @@ async selectInvoicedTo() {
   }
 
   async openEstimatePage() {
-    // Wait for app to fully load after login (splash screen gone)
     await this.page.waitForLoadState('networkidle', { timeout: 30000 });
     await this.menuDashboard.waitFor({ state: 'visible', timeout: 30000 });
     await this.menuDashboard.click();
     await this.estimatesMenu.waitFor({ state: 'visible', timeout: 15000 });
     await this.estimatesMenu.click();
   }
-  // ✅ FIXED METHOD (NO STRICT MODE ISSUE)
+
   async selectCustomer(name) {
-    // Clear + type search
     await this.searchCustomer.fill('');
     await this.searchCustomer.fill(name);
     await this.page.waitForTimeout(1500);
-
-    // Click the result row using the list item container
     const resultRow = this.page.locator('li').filter({ hasText: "Bhavik Raval (Bhavik and son's company)" }).first();
     const resultRow2 = this.page.locator('[class*="cursor-pointer"]').filter({ hasText: "Bhavik Raval (Bhavik and son's company)" }).first();
     const resultRowDiv = this.page.locator('div[tabindex]').filter({ hasText: "Bhavik Raval (Bhavik and son's company)" }).first();
@@ -279,31 +256,19 @@ async selectInvoicedTo() {
   }
 
   async createEstimate() {
-    // Click New Estimate
     await this.newEstimateBtn.waitFor({ state: 'visible', timeout: 15000 });
     await this.newEstimateBtn.click();
-
-    // Fill Title
     await this.titleInput.waitFor({ state: 'visible' });
     await this.titleInput.fill('This is a testing title');
-
-    // Select Customer
     await this.customerBtn.click();
     await this.searchCustomer.waitFor({ state: 'visible' });
-
     await this.selectCustomer('Bhavik Raval');
-
-    // Click Create Estimate
     await this.createEstimateBtn.waitFor({ state: 'visible' });
     await this.createEstimateBtn.click();
   }
 
   async verifyEstimateCreated() {
     await this.page.waitForLoadState('networkidle');
-
-    // 👉 Update based on actual UI validation
-    // Example:
-    // await expect(this.page.getByText('Estimate')).toBeVisible();
   }
 }
 
