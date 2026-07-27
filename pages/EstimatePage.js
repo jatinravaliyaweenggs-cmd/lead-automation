@@ -51,24 +51,30 @@ class EstimatePage {
   }
 
 
-async pasteFromClipboard(){
-  await this.addToEstimateSinDroupdown.click();
-  await this.pastefromClipboardPage.click();
+  async pasteFromClipboard() {
+    await this.addToEstimateSinDroupdown.click();
+    await this.pastefromClipboardPage.click();
 
-  await this.itemDescriptionTextarea.fill(
-    'Item,Description,Qty,Rate\nCement Work,High quality cement,10,50\nSteel Rods,TMT steel rods,5,120'
-  );
+    await this.itemDescriptionTextarea.fill(
+      'Item,Description,Qty,Rate\nCement Work,High quality cement,10,50\nSteel Rods,TMT steel rods,5,120'
+    );
+    await this.nextButton.click();
+    const modal = this.page.getByRole('dialog', { name: 'Paste Items from Clipboard' });
+    await modal.waitFor({ state: 'visible', timeout: 10000 });
+    const selectField = modal.locator('.ag-header-cell-comp-wrapper >> text=Select Field').first();
+    await selectField.click();
+    await this.page.locator('ul li', { hasText: 'Item Name' }).click();
 
-  await this.nextButton.click();
+    const selectField2 = modal.locator('.ag-header-cell-comp-wrapper >> text=Description').first();
+await selectField2.click();
 
-  const modal = this.page.getByRole('dialog', { name: 'Paste Items from Clipboard' });
-await modal.waitFor({ state: 'visible', timeout: 10000 });
+// 👇 IMPORTANT: use page locator (not modal)
+const itemTypeOption = this.page.locator('.ant-popover ul li', { hasText: 'Item Type' }).first();
 
-const selectField = modal.locator('.ag-header-cell-comp-wrapper >> text=Select Field').first();
-  await selectField.click();
-
-await this.page.locator('ul li', { hasText: 'Item Name' }).click();
-}
+// scroll + click
+await itemTypeOption.scrollIntoViewIfNeeded();
+await itemTypeOption.click();
+  }
 
 async uploadCSVFile(){
   await this.addToEstimateSinDroupdown.click();
