@@ -16,11 +16,26 @@ When('User creates a new Estimate', async function () {
 Then('User open estimate and enter details', async function () {
   await estimatePage.openastimateAndEnterDetails();
    await estimatePage.selectTermValue();
-  // await estimatePage.selectProjectType();
+   //await estimatePage.selectProjectType();
   // await estimatePage.selectSector();
   // await estimatePage.selectContact();
   // await estimatePage.selectInvoicedTo();
   // await estimatePage.selectAddress();
-  await estimatePage.enterTermsInclusionsExclusions();
-
+  //await estimatePage.enterTermsInclusionsExclusions();
 });
+
+Then('User open enter item', async function () {
+  await estimatePage.openastimateAndEnterDetails();
+  await estimatePage.addItemDetails();
+  await estimatePage.clickYesAndValidate();
+  await estimatePage.clickNoAndValidate();
+
+}
+
+
+
+
+
+
+
+);

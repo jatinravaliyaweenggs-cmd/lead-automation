@@ -28,10 +28,18 @@ class EstimatePage {
     this.pencilIconOfAddress = page.locator('.svg-inline--fa.fa-pencil > path');
     this.addressline1 = page.locator('#ignore-input-change');
     this.addressListitem = page.getByRole('listitem').filter({ hasText: /^-$/ });
-    this.termPage = page.getByRole('button', { name: 'Terms' })
+    this.termPage = page.getByRole('button', { name: 'Terms' });
+    this.itemPage = page.getByRole('button', { name: 'Items' });
+    this.clickYesButton = page.locator('label:has-text("Yes")');
+    this.clickNoButton = page.locator('label:has-text("No")');
 
   }
 
+  async addItemDetails(){
+   await this.itemPage.click();
+
+
+  }
   async enterTermsInclusionsExclusions() {
   this.termPage.click();
   const editors = this.page.locator('.fr-element'); // 3 editors
@@ -80,6 +88,45 @@ async selectInvoicedTo() {
   await vendorResult.click();
   await this.page.waitForTimeout(500);
 }
+
+  async getTotals() {
+    await this.page.waitForSelector('[col-id="total"]');
+    const values = await this.page.locator('[col-id="total"]').allTextContents();
+    return values.map(v =>
+      parseFloat(v.replace(/[^0-9.-]+/g, '')) || 0
+    );
+  }
+
+  async clickYesAndValidate() {
+    await this.clickYesButton.click();
+    await this.page.waitForTimeout(1000); // wait for filter apply
+    const totals = await this.getTotals();
+    console.log('YES Totals:', totals);
+    for (const val of totals) {
+      if (val !== 0) {
+        throw new Error(`YES selected but found non-zero value: ${val}`);
+      }
+    }
+    console.log('YES working correctly');
+  }
+
+
+ async clickNoAndValidate() {
+    await this.clickNoButton.click();
+    await this.page.waitForTimeout(1000);
+    const totals = await this.getTotals();
+    console.log('NO Totals:', totals);
+    const hasNonZero = totals.some(v => v !== 0);
+    if (!hasNonZero) {
+      throw new Error('NO selected but all values are 0');
+    }
+    console.log('NO working correctly');
+  }
+
+
+
+
+
 
 
   async selectProjectType() {
