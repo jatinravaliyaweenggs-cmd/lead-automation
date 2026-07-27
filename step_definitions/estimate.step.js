@@ -35,6 +35,7 @@ Then('User open enter item', async function () {
 Then('user enter new section', async function(){
 await estimatePage.addNewSection();
 await estimatePage.addSectionDescription();
-
-
+const section = this.page.locator('div.flex.items-center.gap-2').getByText('Test Section');
+await section.waitFor({ state: 'visible' });
+await expect.soft(section).toBeVisible();
 })
