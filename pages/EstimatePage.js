@@ -37,8 +37,15 @@ class EstimatePage {
     this.sectionName = page.locator('#section_name');
     this.sectionDescription = page.locator('#description');
     this.addButton = page.locator('button[type="submit"]');
-  }
+    this.importFromTemplateOption = page.getByRole('menuitem', { name: 'Import from Estimate-sin or Template' });  }
 
+
+
+  async importFromEstimateTemplate(){
+  await this.addToEstimateSinDroupdown.click();
+  await this.importFromTemplateOption.waitFor({ state: 'visible' });
+  await this.importFromTemplateOption.click();
+}
 
 async addSectionDescription(){
   await this.sectionName.fill('Test Section');

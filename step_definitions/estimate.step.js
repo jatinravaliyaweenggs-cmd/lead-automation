@@ -39,3 +39,7 @@ const section = this.page.locator('div.flex.items-center.gap-2').getByText('Test
 await section.waitFor({ state: 'visible' });
 await expect.soft(section).toBeVisible();
 })
+
+Then('User import estimate from template', async function(){
+  await estimatePage.importFromEstimateTemplate();
+});
