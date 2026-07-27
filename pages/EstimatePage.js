@@ -41,9 +41,34 @@ class EstimatePage {
     this.ImportItemsfromCsvFilePage = page.getByRole('menuitem', { name: 'Import Items from CSV File'})  
     this.importCSVOption = this.page.getByRole('menuitem', { name: 'Import Items from CSV File' });
     this.importButton = page.getByRole('button', { name: 'Import' });
+    
+    this.pastefromClipboardPage = page.getByRole('menuitem', {name: 'Paste from Clipboard'})
+    this.itemDescriptionTextarea = page.locator('textarea[placeholder*="Item Name"]');
+    this.nextButton =  page.getByRole('button', { name: 'Next' });
+    this.selectField = page.locator('div:has-text("Select Field")');
 
   
   }
+
+
+async pasteFromClipboard(){
+  await this.addToEstimateSinDroupdown.click();
+  await this.pastefromClipboardPage.click();
+
+  await this.itemDescriptionTextarea.fill(
+    'Item,Description,Qty,Rate\nCement Work,High quality cement,10,50\nSteel Rods,TMT steel rods,5,120'
+  );
+
+  await this.nextButton.click();
+
+  const modal = this.page.getByRole('dialog', { name: 'Paste Items from Clipboard' });
+await modal.waitFor({ state: 'visible', timeout: 10000 });
+
+const selectField = modal.locator('.ag-header-cell-comp-wrapper >> text=Select Field').first();
+  await selectField.click();
+
+await this.page.locator('ul li', { hasText: 'Item Name' }).click();
+}
 
 async uploadCSVFile(){
   await this.addToEstimateSinDroupdown.click();
