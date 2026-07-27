@@ -28,8 +28,21 @@ class EstimatePage {
     this.pencilIconOfAddress = page.locator('.svg-inline--fa.fa-pencil > path');
     this.addressline1 = page.locator('#ignore-input-change');
     this.addressListitem = page.getByRole('listitem').filter({ hasText: /^-$/ });
+    this.termPage = page.getByRole('button', { name: 'Terms' })
 
   }
+
+  async enterTermsInclusionsExclusions() {
+  this.termPage.click();
+  const editors = this.page.locator('.fr-element'); // 3 editors
+  await editors.nth(0).click();
+  await this.page.keyboard.type('This is Terms content', { delay: 20 });
+  await editors.nth(1).click();
+  await this.page.keyboard.type('This is Inclusions content', { delay: 20 });
+  await editors.nth(2).click();
+  await this.page.keyboard.type('This is Exclusions content', { delay: 20 });
+}
+
 
 async selectAddress() {
   await this.addressDroupdown.click();
@@ -37,10 +50,8 @@ async selectAddress() {
   await this.addressListitem.first().hover();
   await this.pencilIconOfAddress.click();
   await this.addressline1.fill('Nana varchha');
-  // 🔥 Wait for Google suggestion dropdown
   const suggestion = this.page.locator('.pac-item').first();
   await suggestion.waitFor({ state: 'visible', timeout: 5000 });
-  // Select suggestion (better than keyboard)
   await suggestion.click();
 }
 
