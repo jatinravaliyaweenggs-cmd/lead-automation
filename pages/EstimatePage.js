@@ -46,6 +46,7 @@ class EstimatePage {
     this.itemDescriptionTextarea = page.locator('textarea[placeholder*="Item Name"]');
     this.nextButton =  page.getByRole('button', { name: 'Next' });
     this.selectField = page.locator('div:has-text("Select Field")');
+    this.addItemButton = page.getByRole('button', { name: 'Add Items' });
 
   
   }
@@ -67,13 +68,13 @@ class EstimatePage {
 
     const selectField2 = modal.locator('.ag-header-cell-comp-wrapper >> text=Description').first();
     await selectField2.click();
-    await this.page.waitForTimeout(800);
 
-    // Dropdown appears as a plain list — Item Type is visible, click via JS to bypass scroll issues
-    const itemTypeOption = this.page.locator('ul li').filter({ hasText: 'Item Type' }).first();
-    await itemTypeOption.waitFor({ state: 'attached', timeout: 10000 });
-    await itemTypeOption.evaluate(el => el.click());
-    await this.page.waitForTimeout(500);
+// 👇 only visible dropdown
+    const itemType = this.page.locator('.ant-popover:visible li').filter({ hasText: 'Item Type' }).first();
+    await itemType.waitFor({ state: 'visible' });
+    await itemType.scrollIntoViewIfNeeded();
+    await itemType.click();
+    await this.addItemButton.click();
   }
 
 async uploadCSVFile(){
