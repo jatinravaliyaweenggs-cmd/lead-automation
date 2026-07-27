@@ -16,3 +16,4 @@ Feature: Estimate Creation
     Scenario: user enter items detail
     When User navigates to Estimate page
     When User open enter item
+    When user enter new section

@@ -32,13 +32,31 @@ class EstimatePage {
     this.itemPage = page.getByRole('button', { name: 'Items' });
     this.clickYesButton = page.locator('label:has-text("Yes")');
     this.clickNoButton = page.locator('label:has-text("No")');
-
+    this.addToEstimateSinDroupdown = page.getByRole('button', { name: 'Add Item to Estimate-sin' });
+    this.addMenuItemPage = page.getByRole('menuitem', { name: 'Add New Section' });
+    this.sectionName = page.locator('#section_name');
+    this.sectionDescription = page.locator('#description');
+    this.addButton = page.locator('button[type="submit"]');
   }
+
+
+async addSectionDescription(){
+  await this.sectionName.fill('Test Section');
+  await this.sectionDescription.fill('This is test section description');
+  await this.addButton.click();
+}
+
+async addNewSection(){
+  await this.addToEstimateSinDroupdown.click();
+  await this.addMenuItemPage.click();
+
+}
+
+
+
 
   async addItemDetails(){
    await this.itemPage.click();
-
-
   }
   async enterTermsInclusionsExclusions() {
   this.termPage.click();

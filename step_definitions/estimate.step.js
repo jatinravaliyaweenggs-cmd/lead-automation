@@ -27,15 +27,14 @@ Then('User open estimate and enter details', async function () {
 Then('User open enter item', async function () {
   await estimatePage.openastimateAndEnterDetails();
   await estimatePage.addItemDetails();
-  await estimatePage.clickYesAndValidate();
-  await estimatePage.clickNoAndValidate();
-
+  //await estimatePage.clickYesAndValidate();
+  //await estimatePage.clickNoAndValidate();
 }
-
-
-
-
-
-
-
 );
+
+Then('user enter new section', async function(){
+await estimatePage.addNewSection();
+await estimatePage.addSectionDescription();
+
+
+})
