@@ -37,9 +37,26 @@ class EstimatePage {
     this.sectionName = page.locator('#section_name');
     this.sectionDescription = page.locator('#description');
     this.addButton = page.locator('button[type="submit"]');
-    this.importFromTemplateOption = page.getByRole('menuitem', { name: 'Import from Estimate-sin or Template' });  }
+    this.importFromTemplateOption = page.getByRole('menuitem', { name: 'Import from Estimate-sin or Template' });  
+    this.ImportItemsfromCsvFilePage = page.getByRole('menuitem', { name: 'Import Items from CSV File'})  
+    this.importCSVOption = this.page.getByRole('menuitem', { name: 'Import Items from CSV File' });
+  
+  }
+
+async uploadCSVFile(){
+  await this.addToEstimateSinDroupdown.click();
+  await this.importCSVOption.click();
+  const fileInput = this.page.locator('input[type="file"]');
+  await fileInput.setInputFiles('D:\\Automation\\CreateLead\\testdata\\MaterialItems.csv');
+}
 
 
+async ImportItemsfromCsvFilePageOpen(){
+  await this.ImportItemsfromCsvFilePage.click();
+
+
+
+}
 
   async importFromEstimateTemplate(){
   await this.addToEstimateSinDroupdown.click();
