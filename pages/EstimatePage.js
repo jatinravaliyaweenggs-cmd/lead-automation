@@ -66,14 +66,14 @@ class EstimatePage {
     await this.page.locator('ul li', { hasText: 'Item Name' }).click();
 
     const selectField2 = modal.locator('.ag-header-cell-comp-wrapper >> text=Description').first();
-await selectField2.click();
+    await selectField2.click();
+    await this.page.waitForTimeout(800);
 
-// 👇 IMPORTANT: use page locator (not modal)
-const itemTypeOption = this.page.locator('.ant-popover ul li', { hasText: 'Item Type' }).first();
-
-// scroll + click
-await itemTypeOption.scrollIntoViewIfNeeded();
-await itemTypeOption.click();
+    // Dropdown appears as a plain list — Item Type is visible, click via JS to bypass scroll issues
+    const itemTypeOption = this.page.locator('ul li').filter({ hasText: 'Item Type' }).first();
+    await itemTypeOption.waitFor({ state: 'attached', timeout: 10000 });
+    await itemTypeOption.evaluate(el => el.click());
+    await this.page.waitForTimeout(500);
   }
 
 async uploadCSVFile(){
@@ -246,7 +246,11 @@ async selectInvoicedTo() {
   }
 
   async openEstimatePage() {
+    // Wait for app to fully load after login (splash screen gone)
+    await this.page.waitForLoadState('networkidle', { timeout: 30000 });
+    await this.menuDashboard.waitFor({ state: 'visible', timeout: 30000 });
     await this.menuDashboard.click();
+    await this.estimatesMenu.waitFor({ state: 'visible', timeout: 15000 });
     await this.estimatesMenu.click();
   }
   // ✅ FIXED METHOD (NO STRICT MODE ISSUE)
