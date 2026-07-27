@@ -40,6 +40,8 @@ class EstimatePage {
     this.importFromTemplateOption = page.getByRole('menuitem', { name: 'Import from Estimate-sin or Template' });  
     this.ImportItemsfromCsvFilePage = page.getByRole('menuitem', { name: 'Import Items from CSV File'})  
     this.importCSVOption = this.page.getByRole('menuitem', { name: 'Import Items from CSV File' });
+    this.importButton = page.getByRole('button', { name: 'Import' });
+
   
   }
 
@@ -48,14 +50,13 @@ async uploadCSVFile(){
   await this.importCSVOption.click();
   const fileInput = this.page.locator('input[type="file"]');
   await fileInput.setInputFiles('D:\\Automation\\CreateLead\\testdata\\MaterialItems.csv');
+  await this.importButton.click();
+  await this.page.keyboard.press('Enter');
 }
 
 
 async ImportItemsfromCsvFilePageOpen(){
   await this.ImportItemsfromCsvFilePage.click();
-
-
-
 }
 
   async importFromEstimateTemplate(){
