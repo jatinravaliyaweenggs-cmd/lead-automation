@@ -89,7 +89,12 @@ await this.selectUnitType.click();
 const input = this.page.locator('.ant-select-open input.ant-select-selection-search-input');
 await input.fill('Bag');
 await input.press('Enter');
+const quantityInput = this.page.locator('#quantity');
+await quantityInput.fill('5');
 
+const textareas = this.page.locator('textarea');
+await textareas.nth(0).fill('This is a test description');
+await textareas.nth(1).fill('This is internal notes');
   
 }
 
