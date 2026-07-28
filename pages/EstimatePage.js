@@ -49,9 +49,9 @@ class EstimatePage {
     this.addItemButton = page.getByRole('button', { name: 'Add Items' });
 
     this.plusItemButton = page
-  .locator('[id^="section-"]')
-  .first()
-  .getByRole('button', { name: 'Items' });
+      .locator('[id^="section-"]')
+      .first()
+      .getByRole('button', { name: 'Items' });
     this.addManualItemTab = page.getByText('Add Manual Item');
 
     this.enterItemNameTextBox = page.getByRole('combobox', { name: 'Enter an item name' });
@@ -72,28 +72,38 @@ class EstimatePage {
     this.materialPageMenu = page.getByRole('button', { name: 'Material' });
     this.materialSerchbar = page.getByPlaceholder('Search for Materials');
 
+    this.labourPageMenu = page.getByRole('button', { name: 'Labor' });
+    this.laborSerchbar = page.getByPlaceholder('Search for Labors');
+
+
   }
 
-
-  async  materialAddFromMaterialPage(){
+async laborAddFromLaborPage() {
+  await this.plusItemButtonClick();
+  await this.labourPageMenu.click();
+  const searchBox = this.page.locator('input[placeholder="Search for Labors"]:visible');
+  await searchBox.click();
+  await searchBox.fill('Carpenter');
+  await this.page.locator('.project').first().click();
+  await this.addItemButton.click();
+}
+  async materialAddFromMaterialPage() {
     await this.plusItemButtonClick();
     await this.materialPageMenu.click();
     await this.materialSerchbar.first().click();
     await this.materialSerchbar.first().fill('Red Clay Bricks');
     await this.page.locator('.project:has-text("Red Clay Bricks")').click();
     await this.addItemButton.click();
-
-
   }
 
-async homeDepotItemAdd() {
-  await this.plusItemButtonClick();
-  await this.homeDepotSerchBar.fill('(2-Pack) 4 in. Zinc-Plated Hook and Eye');
-  const row = this.page.locator(`.ag-row:has-text("(2-Pack) 4 in. Zinc-Plated Hook and Eye")`);
-  await row.waitFor({ state: 'visible' });
-  await row.locator('.ant-checkbox').first().click(); // ✅ FIX
-  await this.addItemButton.click();
-}
+  async homeDepotItemAdd() {
+    await this.plusItemButtonClick();
+    await this.homeDepotSerchBar.fill('(2-Pack) 4 in. Zinc-Plated Hook and Eye');
+    const row = this.page.locator(`.ag-row:has-text("(2-Pack) 4 in. Zinc-Plated Hook and Eye")`);
+    await row.waitFor({ state: 'visible' });
+    await row.locator('.ant-checkbox').first().click(); // ✅ FIX
+    await this.addItemButton.click();
+  }
 
 
 

@@ -28,6 +28,10 @@ Feature: Estimate Creation
   #  When User select Home Depot item from Home Depot page
 
 
-     Scenario: material add 
+  #   Scenario: material add 
+  # When User navigates to Estimate page and open estimate
+  # When User enter material from material tab
+
+      Scenario: labor add 
    When User navigates to Estimate page and open estimate
-   When User enter material from material tab
+   When User enter labor from labor tab
