@@ -80,6 +80,7 @@ class EstimatePage {
     await this.materialPageMenu.click();
     await this.materialSerchbar.first().click();
     await this.materialSerchbar.first().fill('Red Clay Bricks');
+    await this.page.locator('.project:has-text("Red Clay Bricks")').click();
 
 
   }
