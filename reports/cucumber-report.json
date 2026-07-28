@@ -1,85 +1,72 @@
 [
   {
-    "description": "  As a user I want to open the Lead page to create a lead for a customer",
+    "description": "",
     "elements": [
       {
         "description": "",
-        "id": "create-lead-for-customer;verify-company-column-sorting-on-lead-list-page",
+        "id": "estimate-creation;manual-item-add",
         "keyword": "Scenario",
-        "line": 55,
-        "name": "Verify Company column sorting on Lead list page",
+        "line": 22,
+        "name": "manual item add",
         "steps": [
           {
             "keyword": "Before",
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 495674300
+              "duration": 542328000
             }
           },
           {
             "arguments": [],
             "keyword": "Given ",
-            "line": 6,
+            "line": 4,
             "name": "User is on the login page",
             "match": {
               "location": "step_definitions\\login.steps.js:7"
             },
             "result": {
               "status": "passed",
-              "duration": 4064300500
+              "duration": 3825949200
             }
           },
           {
             "arguments": [],
             "keyword": "When ",
-            "line": 7,
+            "line": 5,
             "name": "User login with valid credentials",
             "match": {
               "location": "step_definitions\\login.steps.js:14"
             },
             "result": {
               "status": "passed",
-              "duration": 4172691600
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Then ",
-            "line": 8,
-            "name": "User should be redirected to the dashboard",
-            "match": {
-              "location": "step_definitions\\login.steps.js:20"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 2825094400
+              "duration": 4199163300
             }
           },
           {
             "arguments": [],
             "keyword": "When ",
-            "line": 56,
-            "name": "User navigates to Lead page and opens Add Lead form",
+            "line": 23,
+            "name": "User navigates to Estimate page and open estimate",
             "match": {
-              "location": "step_definitions\\lead.steps.js:7"
+              "location": "step_definitions\\estimate.step.js:16"
             },
             "result": {
               "status": "passed",
-              "duration": 2224433700
+              "duration": 9385124200
             }
           },
           {
             "arguments": [],
             "keyword": "When ",
-            "line": 57,
-            "name": "User verifies Company column sorting",
+            "line": 24,
+            "name": "user enter manual item",
             "match": {
-              "location": "step_definitions\\CreateLead.step.js:120"
+              "location": "step_definitions\\estimate.step.js:57"
             },
             "result": {
               "status": "passed",
-              "duration": 5694127300
+              "duration": 26114258799
             }
           },
           {
@@ -87,29 +74,19 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 373610100
+              "duration": 375187700
             }
           }
         ],
-        "tags": [
-          {
-            "name": "@leadCustomer",
-            "line": 1
-          }
-        ],
+        "tags": [],
         "type": "scenario"
       }
     ],
-    "id": "create-lead-for-customer",
-    "line": 2,
+    "id": "estimate-creation",
+    "line": 1,
     "keyword": "Feature",
-    "name": "Create Lead for Customer",
-    "tags": [
-      {
-        "name": "@leadCustomer",
-        "line": 1
-      }
-    ],
-    "uri": "features\\lead\\LeadCreateforCustomer.feature"
+    "name": "Estimate Creation",
+    "tags": [],
+    "uri": "features\\estimate\\estimate.feature"
   }
 ]
