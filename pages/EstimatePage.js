@@ -60,43 +60,50 @@ class EstimatePage {
 
     this.unitCostValue = page.getByPlaceholder('Unit Cost');
     this.selectUnitType = page.locator('.ant-select:has(.ant-select-selection-placeholder:text("Select Unit")) .ant-select-selector');
+    this.uploadfilebutton = page.locator('div.cursor-pointer').filter({ hasText: 'Browse Files' });
+    this.attachButton = page.getByRole('button', { name: 'Attach' });
 
   }
 
+  async uploadMaterialImage() {
+    await this.page.locator('div.cursor-pointer:has(svg[data-icon="plus"])').click();
+    await this.page.locator('input[type="file"]').nth(1).setInputFiles('D:\\Automation\\CreateLead\\testdata\\MaterialItems.csv');
+    await this.attachButton.click();
+  }
 
+  async plusItemButtonClick() {
+    await this.plusItemButton.waitFor({ state: 'visible', timeout: 10000 });
+    await this.plusItemButton.click();
+  }
 
-async plusItemButtonClick() {
-  await this.plusItemButton.waitFor({ state: 'visible', timeout: 10000 });
-  await this.plusItemButton.click();
-}
+  async addManualItemTabClick() {
+    await this.plusItemButtonClick();
+    await this.addManualItemTab.waitFor({ state: 'visible', timeout: 10000 });
+    await this.addManualItemTab.click();
+    await this.enterItemNameTextBox.fill('Cement Bags (OPC 53 Grade)');
+    await this.enterSKUName.fill('CEM-OPC-53');
+    await this.enterVeriationValue.fill('Grade: 53, Brand: UltraTech');
+    await this.selectMaterialType.click();
+    await this.selectMaterialType.press('Enter');
 
-async addManualItemTabClick() {
-  await this.plusItemButtonClick();
-  await this.addManualItemTab.waitFor({ state: 'visible', timeout: 10000 });
-  await this.addManualItemTab.click();
-  await this.enterItemNameTextBox.fill('Cement Bags (OPC 53 Grade)');
-  await this.enterSKUName.fill('CEM-OPC-53');
-  await this.enterVeriationValue.fill('Grade: 53, Brand: UltraTech');
-  await this.selectMaterialType.click();
-  await this.selectMaterialType.press('Enter');
-  
-  await this.enterCostItem.fill('bathroom replacement');
-  await this.enterCostItem.press('Enter');
+    // await this.enterCostItem.fill('bathroom replacement');
+    // await this.enterCostItem.press('Enter');
 
-  await this.unitCostValue.fill('10');
+    // await this.unitCostValue.fill('10');
 
-await this.selectUnitType.click();
-const input = this.page.locator('.ant-select-open input.ant-select-selection-search-input');
-await input.fill('Bag');
-await input.press('Enter');
-const quantityInput = this.page.locator('#quantity');
-await quantityInput.fill('5');
+    // await this.selectUnitType.click();
+    // const input = this.page.locator('.ant-select-open input.ant-select-selection-search-input');
+    // await input.fill('Bag');
+    // await input.press('Enter');
+    // const quantityInput = this.page.locator('#quantity');
+    // await quantityInput.fill('5');
 
-const textareas = this.page.locator('textarea');
-await textareas.nth(0).fill('This is a test description');
-await textareas.nth(1).fill('This is internal notes');
-  
-}
+    // const textareas = this.page.locator('textarea');
+    // await textareas.nth(0).fill('This is a test description');
+    // await textareas.nth(1).fill('This is internal notes');
+
+    await this.uploadMaterialImage();
+  }
 
 
 
