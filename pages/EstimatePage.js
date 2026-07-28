@@ -75,8 +75,25 @@ class EstimatePage {
     this.equipmentPageMenu = page.getByRole('button', { name: 'Equipment' });
     this.equipmentSerchbar = page.getByPlaceholder('Search for Equipments');
 
+    this.subcontractorPageMenu = page.getByRole('button', { name: 'Subcontractor' });
+    this.subcontractorSerchbar = page.getByPlaceholder('Search for Subcontractors');
+
 
   }
+
+
+  async subContractorAddFromSubContractorPage(){
+    await this.plusItemButtonClick();
+    await this.subcontractorPageMenu.click();
+    await this.subcontractorSerchbar.first().click();
+    await this.subcontractorSerchbar.first().fill('Surveying equipment');
+    await this.page.locator('.project:has-text("Surveying equipment")').click();
+    await this.addItemButton.click();
+  }
+
+
+
+
 
 async equipmentAddFromLaborPage(){
     await this.plusItemButtonClick();
