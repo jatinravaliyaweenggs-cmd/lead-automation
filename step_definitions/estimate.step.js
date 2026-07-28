@@ -13,6 +13,13 @@ When('User creates a new Estimate', async function () {
   await estimatePage.createEstimate();
 });
 
+When('User navigates to Estimate page and open estimate', async function () {
+  estimatePage = new EstimatePage(this.page);
+  await estimatePage.openEstimatePage();
+  await estimatePage.openastimateAndEnterDetails();
+
+});
+
 Then('User open estimate and enter details', async function () {
   await estimatePage.openastimateAndEnterDetails();
    await estimatePage.selectTermValue();
@@ -44,4 +51,9 @@ Then('User import estimate from template', async function(){
   await estimatePage.importFromEstimateTemplate();
   await estimatePage.uploadCSVFile();
   await estimatePage.pasteFromClipboard();
+});
+
+
+When('user enter manual item', async function () {
+  await estimatePage.addManualItemTabClick();
 });

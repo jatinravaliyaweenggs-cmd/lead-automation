@@ -48,8 +48,51 @@ class EstimatePage {
     this.selectField = page.locator('div:has-text("Select Field")');
     this.addItemButton = page.getByRole('button', { name: 'Add Items' });
 
+    this.plusItemButton = page.locator('#section-210780').getByRole('button', { name: 'Items' });
+    this.addManualItemTab = page.getByText('Add Manual Item');
+
+    this.enterItemNameTextBox = page.getByRole('combobox', { name: 'Enter an item name' });
+    this.enterSKUName = page.getByRole('textbox', { name: 'Enter SKU' });
+    this.selectMaterialType = page.locator('#item_type');
+    this.materialTypeValueMaterial = page.getByText('Material');
+    this.enterVeriationValue = page.locator('.ant-select[name="itemVariations"] input');
+    this.enterCostItem = page.locator('#cost_code_id');
+
+    this.unitCostValue = page.getByPlaceholder('Unit Cost');
+    this.selectUnitType = page.locator('.ant-select:has(.ant-select-selection-placeholder:text("Select Unit")) .ant-select-selector');
 
   }
+
+
+
+async plusItemButtonClick() {
+  await this.plusItemButton.waitFor({ state: 'visible', timeout: 10000 });
+  await this.plusItemButton.click();
+}
+
+async addManualItemTabClick() {
+  await this.plusItemButtonClick();
+  await this.addManualItemTab.waitFor({ state: 'visible', timeout: 10000 });
+  await this.addManualItemTab.click();
+  await this.enterItemNameTextBox.fill('Cement Bags (OPC 53 Grade)');
+  await this.enterSKUName.fill('CEM-OPC-53');
+  await this.enterVeriationValue.fill('Grade: 53, Brand: UltraTech');
+  await this.selectMaterialType.click();
+  await this.selectMaterialType.press('Enter');
+  
+  await this.enterCostItem.fill('bathroom replacement');
+  await this.enterCostItem.press('Enter');
+
+  await this.unitCostValue.fill('10');
+
+await this.selectUnitType.click();
+const input = this.page.locator('.ant-select-open input.ant-select-selection-search-input');
+await input.fill('Bag');
+await input.press('Enter');
+
+  
+}
+
 
 
   async pasteFromClipboard() {
