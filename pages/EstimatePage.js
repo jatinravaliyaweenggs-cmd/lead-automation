@@ -68,8 +68,21 @@ class EstimatePage {
     this.addmanualItemButton = this.page.locator('form').getByRole('button', { name: 'Add Manual Item' });
 
     this.homeDepotSerchBar = this.page.locator('#home-depot-search-bar');
+
+    this.materialPageMenu = page.getByRole('button', { name: 'Material' });
+    this.materialSerchbar = page.getByPlaceholder('Search for Materials');
+
   }
 
+
+  async  materialAddFromMaterialPage(){
+    await this.plusItemButtonClick();
+    await this.materialPageMenu.click();
+    await this.materialSerchbar.first().click();
+    await this.materialSerchbar.first().fill('Red Clay Bricks');
+
+
+  }
 
 async homeDepotItemAdd() {
   await this.plusItemButtonClick();

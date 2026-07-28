@@ -23,6 +23,11 @@ Feature: Estimate Creation
  #   When User navigates to Estimate page and open estimate
  #   When user enter manual item
 
-    Scenario: home depot
-    When User navigates to Estimate page and open estimate
-    When User select Home Depot item from Home Depot page
+   # Scenario: home depot
+   # When User navigates to Estimate page and open estimate
+  #  When User select Home Depot item from Home Depot page
+
+
+     Scenario: material add 
+   When User navigates to Estimate page and open estimate
+   When User enter material from material tab

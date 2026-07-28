@@ -60,5 +60,10 @@ When('user enter manual item', async function () {
 
 When('User select Home Depot item from Home Depot page', async function (){
     await estimatePage.homeDepotItemAdd();
+})
+
+When('User enter material from material tab', async function (){
+  await estimatePage.materialAddFromMaterialPage();
+
 
 })
