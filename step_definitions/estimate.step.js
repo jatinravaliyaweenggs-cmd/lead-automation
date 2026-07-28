@@ -70,3 +70,8 @@ When('User enter material from material tab', async function (){
 When('User enter labor from labor tab', async function (){
 await estimatePage.laborAddFromLaborPage();
 })
+
+
+When('User enter equipment from equipment tab', async function () {
+await estimatePage.equipmentAddFromLaborPage();
+})

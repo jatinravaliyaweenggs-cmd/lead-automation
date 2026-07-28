@@ -48,10 +48,7 @@ class EstimatePage {
     this.selectField = page.locator('div:has-text("Select Field")');
     this.addItemButton = page.getByRole('button', { name: 'Add Items' });
 
-    this.plusItemButton = page
-      .locator('[id^="section-"]')
-      .first()
-      .getByRole('button', { name: 'Items' });
+    this.plusItemButton = page.locator('[id^="section-"]').first().getByRole('button', { name: 'Items' });
     this.addManualItemTab = page.getByText('Add Manual Item');
 
     this.enterItemNameTextBox = page.getByRole('combobox', { name: 'Enter an item name' });
@@ -75,8 +72,25 @@ class EstimatePage {
     this.labourPageMenu = page.getByRole('button', { name: 'Labor' });
     this.laborSerchbar = page.getByPlaceholder('Search for Labors');
 
+    this.equipmentPageMenu = page.getByRole('button', { name: 'Equipment' });
+    this.equipmentSerchbar = page.getByPlaceholder('Search for Equipments');
+
 
   }
+
+async equipmentAddFromLaborPage(){
+    await this.plusItemButtonClick();
+    await this.equipmentPageMenu.click();
+    await this.equipmentSerchbar.first().click();
+    await this.equipmentSerchbar.first().fill('Concrete Edger Electric');
+    await this.page.locator('.project:has-text("Concrete Edger Electric")').click();
+    await this.addItemButton.click(); 
+
+
+}
+
+
+
 
 async laborAddFromLaborPage() {
   await this.plusItemButtonClick();

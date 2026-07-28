@@ -32,6 +32,10 @@ Feature: Estimate Creation
   # When User navigates to Estimate page and open estimate
   # When User enter material from material tab
 
-      Scenario: labor add 
+ # Scenario: labor add 
+ #  When User navigates to Estimate page and open estimate
+ #  When User enter labor from labor tab
+
+     Scenario: Equipment add 
    When User navigates to Estimate page and open estimate
-   When User enter labor from labor tab
+   When User enter equipment from equipment tab
