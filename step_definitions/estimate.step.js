@@ -79,3 +79,7 @@ await estimatePage.equipmentAddFromLaborPage();
 When('User enter subcontractor from subcontractor tab', async function () {
   await estimatePage.subcontractorAddFromSubcontractorPage();
 });
+
+When('User enter other items from other items tab', async function () {
+  await estimatePage.otherItemsAddFromOtherItemsPage();
+});

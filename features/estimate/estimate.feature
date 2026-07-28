@@ -40,6 +40,11 @@ Feature: Estimate Creation
   # When User navigates to Estimate page and open estimate
   # When User enter equipment from equipment tab
 
-  Scenario: subcontractor add 
+ # Scenario: subcontractor add 
+ #  When User navigates to Estimate page and open estimate
+ #  When User enter subcontractor from subcontractor tab
+
+
+  Scenario: other item add 
    When User navigates to Estimate page and open estimate
-   When User enter subcontractor from subcontractor tab
+   When User enter other item from other item tab

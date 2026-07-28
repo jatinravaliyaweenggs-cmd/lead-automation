@@ -78,9 +78,20 @@ class EstimatePage {
     this.subcontractorPageMenu = page.getByRole('button', { name: 'Subcontractor' });
     this.subcontractorSerchbar = page.getByPlaceholder('Search for Subcontractors');
 
+    this.otherItemsPageMenu = page.getByRole('button', { name: 'Other Items' });
+    this.otherItemsSerchbar = page.getByPlaceholder('Search for Other Items');
 
   }
 
+
+  async otherItemsAddFromOtherItemsPage() {
+    await this.plusItemButtonClick();
+    await this.otherItemsPageMenu.click();
+    await this.otherItemsSerchbar.first().click();
+    await this.otherItemsSerchbar.first().fill('Welding machines');
+    await this.page.locator('.project:has-text("Welding machines")').click();
+    await this.addItemButton.click();
+  }
 
   async subContractorAddFromSubContractorPage(){
     await this.plusItemButtonClick();
