@@ -64,7 +64,19 @@ class EstimatePage {
     this.attachButton = page.getByRole('button', { name: 'Attach' });
     this.addmanualItemButton = this.page.locator('form').getByRole('button', { name: 'Add Manual Item' });
 
+    this.homeDepotSerchBar = this.page.locator('#home-depot-search-bar');
   }
+
+
+async homeDepotItemAdd() {
+  await this.plusItemButtonClick();
+  await this.homeDepotSerchBar.fill('(2-Pack) 4 in. Zinc-Plated Hook and Eye');
+  const row = this.page.locator(`.ag-row:has-text("(2-Pack) 4 in. Zinc-Plated Hook and Eye")`);
+  await row.waitFor({ state: 'visible' });
+  await row.locator('.ant-checkbox').click();
+}
+
+
 
   async uploadMaterialImage() {
     await this.page.locator('div.cursor-pointer:has(svg[data-icon="plus"])').click();

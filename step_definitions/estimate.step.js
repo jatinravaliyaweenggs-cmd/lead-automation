@@ -57,3 +57,8 @@ Then('User import estimate from template', async function(){
 When('user enter manual item', async function () {
   await estimatePage.addManualItemTabClick();
 });
+
+When('User select Home Depot item from Home Depot page', async function (){
+    await estimatePage.homeDepotItemAdd();
+
+})

@@ -19,7 +19,10 @@ Feature: Estimate Creation
 #    When user enter new section
 #    Then User import estimate from template
 
-    Scenario: manual item add
-    When User navigates to Estimate page and open estimate
-    When user enter manual item
+ #   Scenario: manual item add
+ #   When User navigates to Estimate page and open estimate
+ #   When user enter manual item
 
+    Scenario: home depot
+    When User navigates to Estimate page and open estimate
+    When User select Home Depot item from Home Depot page
