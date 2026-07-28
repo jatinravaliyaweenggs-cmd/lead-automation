@@ -48,7 +48,10 @@ class EstimatePage {
     this.selectField = page.locator('div:has-text("Select Field")');
     this.addItemButton = page.getByRole('button', { name: 'Add Items' });
 
-    this.plusItemButton = page.locator('#section-210780').getByRole('button', { name: 'Items' });
+    this.plusItemButton = page
+  .locator('[id^="section-"]')
+  .first()
+  .getByRole('button', { name: 'Items' });
     this.addManualItemTab = page.getByText('Add Manual Item');
 
     this.enterItemNameTextBox = page.getByRole('combobox', { name: 'Enter an item name' });
@@ -73,7 +76,8 @@ async homeDepotItemAdd() {
   await this.homeDepotSerchBar.fill('(2-Pack) 4 in. Zinc-Plated Hook and Eye');
   const row = this.page.locator(`.ag-row:has-text("(2-Pack) 4 in. Zinc-Plated Hook and Eye")`);
   await row.waitFor({ state: 'visible' });
-  await row.locator('.ant-checkbox').click();
+  await row.locator('.ant-checkbox').first().click(); // ✅ FIX
+  await this.addItemButton.click();
 }
 
 
