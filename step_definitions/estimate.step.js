@@ -80,6 +80,6 @@ When('User enter subcontractor from subcontractor tab', async function () {
   await estimatePage.subcontractorAddFromSubcontractorPage();
 });
 
-When('User enter other items from other items tab', async function () {
+When('User enter other item from other item tab', async function () {
   await estimatePage.otherItemsAddFromOtherItemsPage();
 });

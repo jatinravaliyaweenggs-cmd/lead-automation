@@ -93,14 +93,14 @@ class EstimatePage {
     await this.addItemButton.click();
   }
 
-  async subContractorAddFromSubContractorPage(){
-    await this.plusItemButtonClick();
-    await this.subcontractorPageMenu.click();
-    await this.subcontractorSerchbar.first().click();
-    await this.subcontractorSerchbar.first().fill('Surveying equipment');
-    await this.page.locator('.project:has-text("Surveying equipment")').click();
-    await this.addItemButton.click();
-  }
+async subcontractorAddFromSubcontractorPage(){
+  await this.plusItemButtonClick();
+  await this.subcontractorPageMenu.click();
+  await this.subcontractorSerchbar.first().click();
+  await this.subcontractorSerchbar.first().fill('Surveying equipment');
+  await this.page.locator('.project:has-text("Surveying equipment")').click();
+  await this.addItemButton.click();
+}
 
 
 
