@@ -99,8 +99,43 @@ class EstimatePage {
 
       this.SaveandCloseButton = page.getByRole('button', { name: 'Save & Close' });
       this.hideAndmarkUp = page.locator('[data-icon="eye-slash"]');
+      this.personDaddingiCon = page.locator('button:has(svg[data-icon="person-digging"])');
+
+      this.remainderEmail = page.getByPlaceholder('# of Days Before Bidding Deadline');
+      this.scopeofWorks = page.getByPlaceholder('Describe the scope of work for this bid');
+
   }
 
+
+async createBidPackage() {
+  await this.expandIcon.first().click();
+  const checkbox = this.page.locator('.ag-header-cell-comp-wrapper input[type="checkbox"]');
+  await checkbox.first().check();  // best practice
+  await this.personDaddingiCon.click();
+  await this.remainderEmail.fill('5');
+  await this.scopeofWorks.fill('This is a scope of work');
+  await this.selectDateFromCalendar();
+  await this.addButton.click();
+}
+
+async selectDateFromCalendar() {
+  const input = this.page.locator('input[name="deadline_date"]');
+
+  // open calendar
+  await input.click();
+
+  // year selector open karo (header par click)
+  await this.page.locator('.ant-picker-header-view').click();
+
+  // 2032 select karo
+  await this.page.locator('.ant-picker-year-panel').getByText('2026').click();
+
+  // month select (example: Jul)
+  await this.page.locator('.ant-picker-month-panel').getByText('Jul').click();
+
+  // date select (example: 15)
+  await this.page.locator('.ant-picker-cell-inner', { hasText: '31' }).click();
+}
 
 async hideandmarkupCheck() {
   await this.hideAndmarkUp.click();

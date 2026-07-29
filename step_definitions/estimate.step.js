@@ -106,3 +106,7 @@ Then('User verify hide markup functionality', async function () {
 await estimatePage.hideandmarkupCheck();
 
 })
+
+When('User apply bid package', async function () {
+await estimatePage.createBidPackage();
+})
