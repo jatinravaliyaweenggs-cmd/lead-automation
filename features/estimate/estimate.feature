@@ -61,4 +61,4 @@ Feature: Estimate Creation
 
   Scenario: add Apply Automatic/Bulk Markup
   When User navigates to Estimate page and open estimate
-  When User update item details
+  When User update item details and delete item

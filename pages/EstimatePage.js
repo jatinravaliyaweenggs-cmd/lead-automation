@@ -108,6 +108,12 @@ class EstimatePage {
       await this.page.locator('input[type="file"]').nth(1).setInputFiles('D:\\Automation\\CreateLead\\testdata\\plumber.jpg');
       await this.attachButton.click();
       await this.SaveandCloseButton.click();
+      await this.deleteItem();
+  }
+
+  async deleteItem(){
+      await this.deleteButton.first().click();
+      await this.deleteButton.first().press('Enter');
   }
 
   async applyBulkMarkUp(){

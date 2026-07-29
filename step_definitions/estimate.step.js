@@ -98,6 +98,6 @@ await expect(section).toBeVisible();
 })
 
 
-When('User update item details', async function () {
+When('User update item details and delete item', async function () {
   await estimatePage.updateItemDetails();
 })
