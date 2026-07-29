@@ -85,9 +85,12 @@ When('User enter other item from other item tab', async function () {
 });
 
 
-When('User update other item from other item tab', async function () {
-  await estimatePage.clickThreeDotMenu();
+When('User update View Edit Section Details', async function () {
+  await estimatePage.updateSectionDetails();
 const section = this.page.locator('span.ant-typography', { hasText: 'Test Section' }).first();
-
 await expect(section).toBeVisible();
 });
+
+When('User apply Automatic Bulk Markup', async function () {
+  await estimatePage.applyBulkMarkUp();
+})

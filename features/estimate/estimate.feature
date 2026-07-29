@@ -50,6 +50,11 @@ Feature: Estimate Creation
   # When User enter other item from other item tab
 
 
-    Scenario: Update item
+  #Scenario: Update item
+  #When User navigates to Estimate page and open estimate
+  #When User update View Edit Section Details
+
+
+  Scenario: add Apply Automatic/Bulk Markup
   When User navigates to Estimate page and open estimate
-  When User update other item from other item tab
+  When User apply Automatic Bulk Markup

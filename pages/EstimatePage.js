@@ -81,19 +81,27 @@ class EstimatePage {
     this.otherItemsPageMenu = page.getByRole('button', { name: 'Other Items' });
     this.otherItemsSerchbar = page.getByPlaceholder('Search for Other Items');
 
+    this.threeDotButtons = page.locator('button:has(svg[data-icon="ellipsis-vertical"])').nth(1);
     this.updateButton = page.getByRole('button', { name: 'Update' });
   }
 
 
-  async clickThreeDotMenu() {
-  const btn = this.page.locator('button:has(svg[data-icon="ellipsis-vertical"])').nth(1); // 0,1,2...
-await btn.click();
+  async applyBulkMarkUp(){
+    await this.threeDotButtons.click();
+    await this.page.getByRole('menuitem', { name: 'Apply Automatic/Bulk Markup' }).click();
+
+  }
+  async updateSectionDetails() {
+  await this.threeDotButtons.click();
   await this.page.getByRole('menuitem', { name: 'View/Edit Section Details' }).click();
       await this.sectionName.fill('Test Section');
     await this.sectionDescription.fill('This is test section description');
     await this.updateButton.click();
-
 }
+
+
+
+
 
 async updateAddItem() {
   await this.page.waitForLoadState('domcontentloaded');
