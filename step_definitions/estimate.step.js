@@ -101,3 +101,8 @@ await expect(section).toBeVisible();
 When('User update item details and delete item', async function () {
   await estimatePage.updateItemDetails();
 })
+
+Then('User verify hide markup functionality', async function () {
+await estimatePage.hideandmarkupCheck();
+
+})

@@ -1,3 +1,5 @@
+const { expect } = require('@playwright/test');
+
 class EstimatePage {
   constructor(page) {
     this.page = page;
@@ -96,9 +98,20 @@ class EstimatePage {
       this.expandIcon = page.locator('.ant-collapse-expand-icon');
 
       this.SaveandCloseButton = page.getByRole('button', { name: 'Save & Close' });
-
+      this.hideAndmarkUp = page.locator('[data-icon="eye-slash"]');
   }
 
+
+async hideandmarkupCheck() {
+  await this.hideAndmarkUp.click();
+await this.expandIcon.first().click();
+  // wait for column to appear
+  await this.page.waitForSelector('[col-id="markup"]', { timeout: 10000 });
+
+  const muHeader = this.page.locator('[col-id="markup"] .font-semibold');
+
+  await expect(muHeader).toHaveText('MU%');
+}
 
   async updateItemDetails() {
       await this.expandIcon.first().click();
@@ -113,8 +126,11 @@ class EstimatePage {
 
   async deleteItem(){
       await this.deleteButton.first().click();
-      await this.deleteButton.first().press('Enter');
+          const modal = this.page.locator('[role="dialog"]');
+    await modal.getByRole('button', { name: 'Yes' }).click();
   }
+
+  
 
   async applyBulkMarkUp(){
     await this.threeDotButtons.click();
