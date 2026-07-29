@@ -104,12 +104,8 @@ class EstimatePage {
 
 async hideandmarkupCheck() {
   await this.hideAndmarkUp.click();
-await this.expandIcon.first().click();
-  // wait for column to appear
   await this.page.waitForSelector('[col-id="markup"]', { timeout: 10000 });
-
   const muHeader = this.page.locator('[col-id="markup"] .font-semibold');
-
   await expect(muHeader).toHaveText('MU%');
 }
 
