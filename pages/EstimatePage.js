@@ -83,12 +83,31 @@ class EstimatePage {
 
     this.threeDotButtons = page.locator('button:has(svg[data-icon="ellipsis-vertical"])').nth(1);
     this.updateButton = page.getByRole('button', { name: 'Update' });
+    this.entermarkupValue = page.locator('input[name="161"]');
+    this.markupradioButton = page.getByText('Apply to all Items (with or without an existing MU)');
+
+    this.applyButton = page.getByRole('button', { name: 'Apply' });
+    this.copyButton = page.locator('button:has(svg[data-icon="copy"])');
+
+      this.deleteButton = page.locator('button:has(svg[data-icon="trash-can"])');
+      this.viewButton = page.locator('button:has(svg[data-icon="eye"])');
+
   }
 
 
   async applyBulkMarkUp(){
     await this.threeDotButtons.click();
     await this.page.getByRole('menuitem', { name: 'Apply Automatic/Bulk Markup' }).click();
+    await this.entermarkupValue.fill('20');
+    await this.markupradioButton.click();
+    await this.applyButton.click();
+    //await this.threeDotButtons.click();
+   // await this.copyButton.click();
+   // await this.copyButton.press('Enter');
+    //await this.threeDotButtons.click();
+    //await this.deleteButton.click();
+    //await this.deleteButton.press('Enter');
+    await this.viewButton.click();
 
   }
   async updateSectionDetails() {
