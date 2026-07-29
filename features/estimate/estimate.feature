@@ -55,6 +55,10 @@ Feature: Estimate Creation
   #When User update View Edit Section Details
 
 
+  #Scenario: add Apply Automatic/Bulk Markup
+  #When User navigates to Estimate page and open estimate
+  #When User apply Automatic Bulk Markup
+
   Scenario: add Apply Automatic/Bulk Markup
   When User navigates to Estimate page and open estimate
-  When User apply Automatic Bulk Markup
+  When User update item details

@@ -92,8 +92,23 @@ class EstimatePage {
       this.deleteButton = page.locator('button:has(svg[data-icon="trash-can"])');
       this.viewButton = page.locator('button:has(svg[data-icon="eye"])');
 
+      this.addProductImage = page.locator('div:has-text("Add Product Image")');
+      this.expandIcon = page.locator('.ant-collapse-expand-icon');
+
+      this.SaveandCloseButton = page.getByRole('button', { name: 'Save & Close' });
+
   }
 
+
+  async updateItemDetails() {
+      await this.expandIcon.first().click();
+      await this.viewButton.first().click();
+      const drawer = this.page.getByRole('dialog');
+      await drawer.getByText('Add Product Image').click();
+      await this.page.locator('input[type="file"]').nth(1).setInputFiles('D:\\Automation\\CreateLead\\testdata\\plumber.jpg');
+      await this.attachButton.click();
+      await this.SaveandCloseButton.click();
+  }
 
   async applyBulkMarkUp(){
     await this.threeDotButtons.click();
@@ -101,13 +116,12 @@ class EstimatePage {
     await this.entermarkupValue.fill('20');
     await this.markupradioButton.click();
     await this.applyButton.click();
-    //await this.threeDotButtons.click();
-   // await this.copyButton.click();
-   // await this.copyButton.press('Enter');
-    //await this.threeDotButtons.click();
-    //await this.deleteButton.click();
-    //await this.deleteButton.press('Enter');
-    await this.viewButton.click();
+    await this.threeDotButtons.click();
+    await this.copyButton.click();
+    await this.copyButton.press('Enter');
+    await this.threeDotButtons.click();
+    await this.deleteButton.click();
+    await this.deleteButton.press('Enter');
 
   }
   async updateSectionDetails() {
@@ -119,23 +133,14 @@ class EstimatePage {
 }
 
 
-
-
-
 async updateAddItem() {
   await this.page.waitForLoadState('domcontentloaded');
-
   const row = this.page.locator('.ag-center-cols-container .ag-row').first();
-
   await row.scrollIntoViewIfNeeded();
   await row.hover();
-
   const eyeBtn = row.locator('svg[data-icon="eye"]').locator('..').locator('..');
-
   await eyeBtn.scrollIntoViewIfNeeded();
-
   await this.page.waitForTimeout(500); // small wait for hover animation
-
   await eyeBtn.click();
 }
 
@@ -157,10 +162,6 @@ async subcontractorAddFromSubcontractorPage(){
   await this.addItemButton.click();
 }
 
-
-
-
-
 async equipmentAddFromLaborPage(){
     await this.plusItemButtonClick();
     await this.equipmentPageMenu.click();
@@ -168,12 +169,7 @@ async equipmentAddFromLaborPage(){
     await this.equipmentSerchbar.first().fill('Concrete Edger Electric');
     await this.page.locator('.project:has-text("Concrete Edger Electric")').click();
     await this.addItemButton.click(); 
-
-
 }
-
-
-
 
 async laborAddFromLaborPage() {
   await this.plusItemButtonClick();
@@ -184,6 +180,7 @@ async laborAddFromLaborPage() {
   await this.page.locator('.project').first().click();
   await this.addItemButton.click();
 }
+
   async materialAddFromMaterialPage() {
     await this.plusItemButtonClick();
     await this.materialPageMenu.click();
@@ -201,8 +198,6 @@ async laborAddFromLaborPage() {
     await row.locator('.ant-checkbox').first().click(); // ✅ FIX
     await this.addItemButton.click();
   }
-
-
 
   async uploadMaterialImage() {
     await this.page.locator('div.cursor-pointer:has(svg[data-icon="plus"])').click();
@@ -225,26 +220,20 @@ async laborAddFromLaborPage() {
     await this.selectMaterialType.click();
     await this.selectMaterialType.click();
     await this.selectMaterialType.press('Enter');
-
     await this.enterCostItem.fill('bathroom replacement');
     await this.enterCostItem.press('Enter');
-
     await this.unitCostValue.fill('10');
-
     await this.selectUnitType.click();
     const input = this.page.locator('.ant-select-open input.ant-select-selection-search-input');
     await input.fill('Bag');
     await input.press('Enter');
     const quantityInput = this.page.locator('#quantity');
     await quantityInput.fill('5');
-
     const textareas = this.page.locator('textarea');
     await textareas.nth(0).fill('This is a test description');
     await textareas.nth(1).fill('This is internal notes');
-
     await this.uploadMaterialImage();
     await this.addmanualItemButton.click();
-
     console.log('file addes successfull........');
   }
 

@@ -96,3 +96,8 @@ When('User apply Automatic Bulk Markup', async function () {
   const section = this.page.locator('span.ant-typography', { hasText: 'Copy of Test Section' }).first();
 await expect(section).toBeVisible();
 })
+
+
+When('User update item details', async function () {
+  await estimatePage.updateItemDetails();
+})
