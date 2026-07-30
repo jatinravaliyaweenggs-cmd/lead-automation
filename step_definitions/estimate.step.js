@@ -108,8 +108,8 @@ await estimatePage.hideandmarkupCheck();
 })
 
 When('User apply bid package', async function () {
-//await estimatePage.createBidPackage();
-//await estimatePage.termsValueEnterInBidPackage();
+await estimatePage.createBidPackage();
+await estimatePage.termsValueEnterInBidPackage();
 await estimatePage.uploadFileinBid();
 
 

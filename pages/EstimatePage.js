@@ -147,6 +147,32 @@ async removeTax() {
 }
 
 
+async addBidders(){
+  await this.page.getByRole('button', { name: 'Bidders' }).click();
+  await this.page.getByRole('button', { name: 'Add Bidder' }).click();
+
+
+  await this.selectVendor.waitFor({ state: 'visible', timeout: 10000 });
+    await this.selectVendor.click();
+    await this.page.waitForTimeout(500);
+
+    await this.vendorSerchBox.waitFor({ state: 'visible', timeout: 10000 });
+    await this.vendorSerchBox.click();
+    await this.vendorSerchBox.fill('rakesh');
+
+    await this.page.waitForFunction(() => {
+      const skeletons = document.querySelectorAll('.animate-pulse, [class*="skeleton"], [class*="shimmer"]');
+      return skeletons.length === 0;
+    }, { timeout: 15000 }).catch(() => { });
+
+    const vendorResult = this.page.getByText("Rakesh Raval (Rakesh and son's company)").nth(0);
+    await vendorResult.waitFor({ state: 'visible', timeout: 20000 });
+    await vendorResult.click();
+    await this.page.waitForTimeout(500);
+    await this.saveButton.click();
+    await this.addButton.click();
+}
+
 async createBidPackage() {
   await this.expandIcon.first().click();
   await this.itemCheckBoxInBid.first().check();  // best practice
@@ -156,15 +182,13 @@ async createBidPackage() {
   await this.selectDateFromCalendar();
   await this.addButton.click();
 
-  
-
 
 }
 
 async uploadFileinBid() {
-  await this.expandIcon.first().click();
-  await this.itemCheckBoxInBid.first().check(); 
-  await this.personDaddingiCon.click();
+  // await this.expandIcon.first().click();
+  // await this.itemCheckBoxInBid.first().check(); 
+  // await this.personDaddingiCon.click();
 
   await this.page.locator('button:has-text("Files")').nth(1).click(); 
 
@@ -175,6 +199,8 @@ async uploadFileinBid() {
   await fileInput.setInputFiles('D:\\Automation\\CreateLead\\testdata\\MaterialItems.csv');
 
   await this.attachButton.click();
+
+  await this.addBidders();
 }
 
 
