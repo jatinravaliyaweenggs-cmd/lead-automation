@@ -110,3 +110,7 @@ await estimatePage.hideandmarkupCheck();
 When('User apply bid package', async function () {
 await estimatePage.createBidPackage();
 })
+
+Then('User apply and remove tax', async function () {
+  await estimatePage.applyAndRemoveTax();
+})

@@ -103,8 +103,29 @@ class EstimatePage {
 
       this.remainderEmail = page.getByPlaceholder('# of Days Before Bidding Deadline');
       this.scopeofWorks = page.getByPlaceholder('Describe the scope of work for this bid');
+      this.applyandRemoveButton = page.locator('button:has(svg[data-icon="money-bill-transfer"])');
+
+      this.removeTaxRadio = page.getByLabel('Remove Tax from all selected Items');
+      this.saveButton = page.getByRole('button', { name: 'Save' });
 
   }
+
+async applyAndRemoveTax() {
+  await this.expandIcon.first().click();
+  const headerCheckbox = this.page.locator('.ag-header-cell-comp-wrapper input[type="checkbox"]'); 
+  await headerCheckbox.first().check(); 
+  await this.applyandRemoveButton.click(); 
+  await this.removeTaxRadio.check();
+  await expect(this.removeTaxRadio).toBeChecked();
+  await this.saveButton.click();
+
+  const checkboxes = this.page.locator('input[name="apply_global_tax"]');
+  const count = await checkboxes.count();
+
+  for (let i = 0; i < count; i++) {
+    await expect(checkboxes.nth(i)).not.toBeChecked();  // ✅ FIX HERE
+  }
+}
 
 
 async createBidPackage() {
@@ -120,20 +141,10 @@ async createBidPackage() {
 
 async selectDateFromCalendar() {
   const input = this.page.locator('input[name="deadline_date"]');
-
-  // open calendar
   await input.click();
-
-  // year selector open karo (header par click)
   await this.page.locator('.ant-picker-header-view').click();
-
-  // 2032 select karo
   await this.page.locator('.ant-picker-year-panel').getByText('2026').click();
-
-  // month select (example: Jul)
   await this.page.locator('.ant-picker-month-panel').getByText('Jul').click();
-
-  // date select (example: 15)
   await this.page.locator('.ant-picker-cell-inner', { hasText: '31' }).click();
 }
 
