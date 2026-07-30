@@ -63,10 +63,10 @@ Feature: Estimate Creation
  # When User update item details and delete item
  # Then User verify hide markup functionality
 
- #Scenario: add Apply Automatic/Bulk Markup
-   # When User navigates to Estimate page and open estimate
-   # When User apply bid package
-
-    Scenario: Apply remove tax
+ Scenario: add Apply Automatic/Bulk Markup
     When User navigates to Estimate page and open estimate
-    Then User apply and remove tax 
+    When User apply bid package
+
+  #  Scenario: Apply remove tax
+  #  When User navigates to Estimate page and open estimate
+  #  Then User apply and remove tax 

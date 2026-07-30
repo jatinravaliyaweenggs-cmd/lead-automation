@@ -147,13 +147,20 @@ async removeTax() {
 
 async createBidPackage() {
   await this.expandIcon.first().click();
-  const checkbox = this.page.locator('.ag-header-cell-comp-wrapper input[type="checkbox"]');
-  await checkbox.first().check();  // best practice
+  const checkbox2 = this.page.locator('.ag-header-cell-comp-wrapper input[type="checkbox"]');
+  //await checkbox2.first().check();  // best practice
+  //await this.personDaddingiCon.click();
+  // await this.remainderEmail.fill('5');
+  // await this.scopeofWorks.fill('This is a scope of work');
+  // await this.selectDateFromCalendar();
+  // await this.addButton.click();
+
+  //const checkbox2 = this.page.locator('.ag-header-cell-comp-wrapper input[type="checkbox"]');
+  await checkbox2.first().check(); 
   await this.personDaddingiCon.click();
-  await this.remainderEmail.fill('5');
-  await this.scopeofWorks.fill('This is a scope of work');
-  await this.selectDateFromCalendar();
-  await this.addButton.click();
+  //await this.termPage.first().click();
+await this.page.locator('button:has-text("Terms")').nth(1).click();
+
 }
 
 async selectDateFromCalendar() {
