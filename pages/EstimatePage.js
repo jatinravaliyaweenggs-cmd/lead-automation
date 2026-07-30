@@ -106,11 +106,28 @@ class EstimatePage {
       this.applyandRemoveButton = page.locator('button:has(svg[data-icon="money-bill-transfer"])');
 
       this.removeTaxRadio = page.getByLabel('Remove Tax from all selected Items');
+      this.applyTaxRadio = page.getByLabel('Collect Tax from all selected Items');
       this.saveButton = page.getByRole('button', { name: 'Save' });
 
   }
 
-async applyAndRemoveTax() {
+  async applyTax(){
+    //await this.expandIcon.first().click();
+    await this.applyandRemoveButton.click(); 
+    await this.applyTaxRadio.check();
+    await expect(this.applyTaxRadio).toBeChecked();
+    await this.saveButton.click();
+
+      const checkboxes = this.page.locator('input[name="apply_global_tax"]');
+  const count = await checkboxes.count();
+
+  for (let i = 0; i < count; i++) {
+    await expect(checkboxes.nth(i)).toBeChecked();  // ✅ FIX HERE
+  }
+
+  }
+
+async removeTax() {
   await this.expandIcon.first().click();
   const headerCheckbox = this.page.locator('.ag-header-cell-comp-wrapper input[type="checkbox"]'); 
   await headerCheckbox.first().check(); 

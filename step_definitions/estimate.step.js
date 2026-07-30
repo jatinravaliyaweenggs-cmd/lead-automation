@@ -112,5 +112,6 @@ await estimatePage.createBidPackage();
 })
 
 Then('User apply and remove tax', async function () {
-  await estimatePage.applyAndRemoveTax();
+  await estimatePage.removeTax();
+  await estimatePage.applyTax();
 })
