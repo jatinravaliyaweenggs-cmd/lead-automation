@@ -109,6 +109,8 @@ class EstimatePage {
       this.applyTaxRadio = page.getByLabel('Collect Tax from all selected Items');
       this.saveButton = page.getByRole('button', { name: 'Save' });
 
+      this.itemCheckBoxInBid = page.locator('.ag-header-cell-comp-wrapper input[type="checkbox"]');
+
   }
 
   async applyTax(){
@@ -147,19 +149,52 @@ async removeTax() {
 
 async createBidPackage() {
   await this.expandIcon.first().click();
-  const checkbox2 = this.page.locator('.ag-header-cell-comp-wrapper input[type="checkbox"]');
-  //await checkbox2.first().check();  // best practice
-  //await this.personDaddingiCon.click();
-  // await this.remainderEmail.fill('5');
-  // await this.scopeofWorks.fill('This is a scope of work');
-  // await this.selectDateFromCalendar();
-  // await this.addButton.click();
-
-  //const checkbox2 = this.page.locator('.ag-header-cell-comp-wrapper input[type="checkbox"]');
-  await checkbox2.first().check(); 
+  await this.itemCheckBoxInBid.first().check();  // best practice
   await this.personDaddingiCon.click();
-  //await this.termPage.first().click();
+  await this.remainderEmail.fill('5');
+  await this.scopeofWorks.fill('This is a scope of work');
+  await this.selectDateFromCalendar();
+  await this.addButton.click();
+
+  
+
+
+}
+
+async uploadFileinBid() {
+  await this.expandIcon.first().click();
+  await this.itemCheckBoxInBid.first().check(); 
+  await this.personDaddingiCon.click();
+
+  await this.page.locator('button:has-text("Files")').nth(1).click(); 
+
+  await this.page.locator('.App div.cursor-pointer:has(svg[data-icon="plus"])').click();
+
+  const fileInput = this.page.locator('input[type="file"]');
+  await fileInput.waitFor({ state: 'attached' });
+  await fileInput.setInputFiles('D:\\Automation\\CreateLead\\testdata\\MaterialItems.csv');
+
+  await this.attachButton.click();
+}
+
+
+async termsValueEnterInBidPackage() {
+await this.itemCheckBoxInBid.first().check(); 
+await this.personDaddingiCon.click();
 await this.page.locator('button:has-text("Terms")').nth(1).click();
+
+await this.page.locator('.fr-element[contenteditable="true"]').nth(0).click();
+await this.page.keyboard.type('This is a Term text');
+
+await this.page.locator('.fr-element[contenteditable="true"]').nth(1).click();
+await this.page.keyboard.type('This is a Inclusions text');
+
+await this.page.locator('.fr-element[contenteditable="true"]').nth(2).click();
+await this.page.keyboard.type('This is a Exclusions text');
+
+await this.page.locator('.fr-element[contenteditable="true"]').nth(3).click();
+await this.page.keyboard.type('This is a Clarification text');
+
 
 }
 

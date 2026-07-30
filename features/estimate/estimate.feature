@@ -67,6 +67,6 @@ Feature: Estimate Creation
     When User navigates to Estimate page and open estimate
     When User apply bid package
 
-  #  Scenario: Apply remove tax
-  #  When User navigates to Estimate page and open estimate
+  #  Scenario: Apply remove tax 
+  #  When User navigates to Estimate page and open estimate 
   #  Then User apply and remove tax 

@@ -108,7 +108,12 @@ await estimatePage.hideandmarkupCheck();
 })
 
 When('User apply bid package', async function () {
-await estimatePage.createBidPackage();
+//await estimatePage.createBidPackage();
+//await estimatePage.termsValueEnterInBidPackage();
+await estimatePage.uploadFileinBid();
+
+
+
 })
 
 Then('User apply and remove tax', async function () {
