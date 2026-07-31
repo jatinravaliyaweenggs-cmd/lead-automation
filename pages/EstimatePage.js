@@ -115,6 +115,7 @@ class EstimatePage {
 
       this.makeAllOptionalItemUnselected = page.getByLabel('Make all selected items optional and mark them as unselected.');
       this.makeAllOptionalItemSelected = page.getByLabel('Make all selected items optional and mark them as selected.');
+      this.MakeAllItemsNotOptional = page.getByLabel('Make all items not optional.');
   }
 
   async makeItemOptional() {
@@ -129,6 +130,13 @@ class EstimatePage {
    await this.makeAllOptionalItemSelected.check();
    await this.saveButton.click();
    await expect(this.page.locator('.optional-button-icon').first()).toBeVisible();
+  
+   await this.makeOptionalButton.click();
+   await this.MakeAllItemsNotOptional.click();
+   await this.saveButton.click();
+   await expect(this.page.locator('.optional-button-icon').first()).not.toBeVisible();
+
+
   }
 
 
