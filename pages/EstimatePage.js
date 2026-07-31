@@ -111,7 +111,31 @@ class EstimatePage {
 
       this.itemCheckBoxInBid = page.locator('.ag-header-cell-comp-wrapper input[type="checkbox"]');
 
+      this.makeOptionalButton = page.locator('button:has(svg[data-icon="clipboard-check"])').first();
+
+      this.makeAllOptionalItemUnselected = page.getByLabel('Make all selected items optional and mark them as unselected.');
+      this.makeAllOptionalItemSelected = page.getByLabel('Make all selected items optional and mark them as selected.');
   }
+
+  async makeItemOptional() {
+   //await this.expandIcon.first().click();
+   await this.itemCheckBoxInBid.first().check(); 
+   await this.makeOptionalButton.click();
+   await this.makeAllOptionalItemUnselected.check();
+   await this.saveButton.click();
+   await expect(this.page.locator('text=AED0.00').first()).toBeVisible();
+
+   await this.makeOptionalButton.click();
+   await this.makeAllOptionalItemSelected.check();
+   await this.saveButton.click();
+   await expect(this.page.locator('.optional-button-icon').first()).toBeVisible();
+  }
+
+
+
+
+
+
 
   async applyTax(){
     //await this.expandIcon.first().click();
@@ -184,6 +208,10 @@ async createBidPackage() {
 
 
 }
+
+
+
+
 
 async uploadFileinBid() {
   // await this.expandIcon.first().click();

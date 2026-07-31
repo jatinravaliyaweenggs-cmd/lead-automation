@@ -120,3 +120,8 @@ Then('User apply and remove tax', async function () {
   await estimatePage.removeTax();
   await estimatePage.applyTax();
 })
+
+
+When('Make item optional', async function () {
+  await estimatePage.makeItemOptional();
+})
