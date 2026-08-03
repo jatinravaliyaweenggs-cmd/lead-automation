@@ -129,13 +129,12 @@ class EstimatePage {
     this.ReduceMarkup = this.page.locator('input[name="decrease_conditional"]');
 
     this.DecreaseConditionalMin = page.locator('input[name="decrease_conditional_min"]');
-    
+
   }
 
 
-  async ReduceTheMarkupOfSelectedItemsBy(){
-    await this.itemCheckBoxInBid.first().check();
-    await this.applyBulkMarkup.click();
+  async reduceTheMarkupOfSelectedItemsBy(){
+    await this.openApplyBulkMarkupPopup();
     await this.ReduceMarkup.fill('10');
     await this.DecreaseConditionalMin.fill('7');
     await this.applyButton.click();
@@ -143,8 +142,7 @@ class EstimatePage {
   }
 
   async increaseMarkupBy() {
-    await this.itemCheckBoxInBid.first().check();
-    await this.applyBulkMarkup.click();
+    await this.openApplyBulkMarkupPopup();
     await this.increaseMarkup.click();
     await this.increaseMarkup.fill('10');
     await this.applyButton.click();
@@ -155,7 +153,7 @@ class EstimatePage {
     await this.applyBulkMarkup.click();
   }
 
-  async openApplyBulkMarkupPopup() {
+  async openApplyBulkMarkupPopupMinMax() {
     await this.openApplyBulkMarkupPopup();
     await this.increaseUptoMaximum.click();
     await this.increaseUptoMaximum.fill('10');

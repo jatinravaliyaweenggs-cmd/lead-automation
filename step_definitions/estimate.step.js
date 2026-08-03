@@ -129,8 +129,7 @@ When('Make item optional', async function () {
 When('user apply markup and verify value', async function () {
 //await estimatePage.applyBulkMarkUpToSelectedItem();
 //await estimatePage.applyBulkMarkUpToSelectedItemWithNoMarkup();
-//await estimatePage.openApplyBulkMarkupPopup();
+//await estimatePage.openApplyBulkMarkupPopupMinMax();
 //await estimatePage.increaseMarkupBy();
-await estimatePage.ReduceTheMarkupOfSelectedItemsBy();
-
+await estimatePage.reduceTheMarkupOfSelectedItemsBy();
 })
