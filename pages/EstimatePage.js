@@ -91,86 +91,98 @@ class EstimatePage {
     this.applyButton = page.getByRole('button', { name: 'Apply' });
     this.copyButton = page.locator('button:has(svg[data-icon="copy"])');
 
-      this.deleteButton = page.locator('button:has(svg[data-icon="trash-can"])');
-      this.viewButton = page.locator('button:has(svg[data-icon="eye"])');
+    this.deleteButton = page.locator('button:has(svg[data-icon="trash-can"])');
+    this.viewButton = page.locator('button:has(svg[data-icon="eye"])');
 
-      this.addProductImage = page.locator('div:has-text("Add Product Image")');
-      this.expandIcon = page.locator('.ant-collapse-expand-icon');
+    this.addProductImage = page.locator('div:has-text("Add Product Image")');
+    this.expandIcon = page.locator('.ant-collapse-expand-icon');
 
-      this.SaveandCloseButton = page.getByRole('button', { name: 'Save & Close' });
-      this.hideAndmarkUp = page.locator('[data-icon="eye-slash"]');
-      this.personDaddingiCon = page.locator('button:has(svg[data-icon="person-digging"])');
+    this.SaveandCloseButton = page.getByRole('button', { name: 'Save & Close' });
+    this.hideAndmarkUp = page.locator('[data-icon="eye-slash"]');
+    this.personDaddingiCon = page.locator('button:has(svg[data-icon="person-digging"])');
 
-      this.remainderEmail = page.getByPlaceholder('# of Days Before Bidding Deadline');
-      this.scopeofWorks = page.getByPlaceholder('Describe the scope of work for this bid');
-      this.applyandRemoveButton = page.locator('button:has(svg[data-icon="money-bill-transfer"])');
+    this.remainderEmail = page.getByPlaceholder('# of Days Before Bidding Deadline');
+    this.scopeofWorks = page.getByPlaceholder('Describe the scope of work for this bid');
+    this.applyandRemoveButton = page.locator('button:has(svg[data-icon="money-bill-transfer"])');
 
-      this.removeTaxRadio = page.getByLabel('Remove Tax from all selected Items');
-      this.applyTaxRadio = page.getByLabel('Collect Tax from all selected Items');
-      this.saveButton = page.getByRole('button', { name: 'Save' });
+    this.removeTaxRadio = page.getByLabel('Remove Tax from all selected Items');
+    this.applyTaxRadio = page.getByLabel('Collect Tax from all selected Items');
+    this.saveButton = page.getByRole('button', { name: 'Save' });
 
-      this.itemCheckBoxInBid = page.locator('.ag-header-cell-comp-wrapper input[type="checkbox"]');
+    this.itemCheckBoxInBid = page.locator('.ag-header-cell-comp-wrapper input[type="checkbox"]');
 
-      this.makeOptionalButton = page.locator('button:has(svg[data-icon="clipboard-check"])').first();
+    this.makeOptionalButton = page.locator('button:has(svg[data-icon="clipboard-check"])').first();
 
-      this.makeAllOptionalItemUnselected = page.getByLabel('Make all selected items optional and mark them as unselected.');
-      this.makeAllOptionalItemSelected = page.getByLabel('Make all selected items optional and mark them as selected.');
-      this.MakeAllItemsNotOptional = page.getByLabel('Make all items not optional.');
+    this.makeAllOptionalItemUnselected = page.getByLabel('Make all selected items optional and mark them as unselected.');
+    this.makeAllOptionalItemSelected = page.getByLabel('Make all selected items optional and mark them as selected.');
+    this.MakeAllItemsNotOptional = page.getByLabel('Make all items not optional.');
 
-      this.applyBulkMarkup = page.locator('button:has(svg[data-icon="tags"])');
+    this.applyBulkMarkup = page.locator('button:has(svg[data-icon="tags"])');
 
-      this.markupWithorWithoutExistingItem = page.locator('input[name="increase_all"]');
-      this.noMarkup =  page.locator('input[name="increase_no_markup"]');
+    this.markupWithorWithoutExistingItem = page.locator('input[name="increase_all"]');
+    this.noMarkup = page.locator('input[name="increase_no_markup"]');
 
-      this.increaseUptoMaximum = page.locator('input[name="increase_conditional"]');      
-      this.increaseConditionalMax = page.locator('input[name="increase_conditional_max"]');
-      this.increaseMarkup = page.locator('input[name="increase_markup_by"]');
+    this.increaseUptoMaximum = page.locator('input[name="increase_conditional"]');
+    this.increaseConditionalMax = page.locator('input[name="increase_conditional_max"]');
+    this.increaseMarkup = page.locator('input[name="increase_markup_by"]');
+
+    this.ReduceMarkup = this.page.locator('input[name="decrease_conditional"]');
+
+    this.DecreaseConditionalMin = page.locator('input[name="decrease_conditional_min"]');
+    
+  }
+
+
+  async ReduceTheMarkupOfSelectedItemsBy(){
+    await this.itemCheckBoxInBid.first().check();
+    await this.applyBulkMarkup.click();
+    await this.ReduceMarkup.fill('10');
+    await this.DecreaseConditionalMin.fill('7');
+    await this.applyButton.click();
 
   }
 
-    async increaseMarkupBy(){
-    await this.itemCheckBoxInBid.first().check(); 
+  async increaseMarkupBy() {
+    await this.itemCheckBoxInBid.first().check();
     await this.applyBulkMarkup.click();
     await this.increaseMarkup.click();
     await this.increaseMarkup.fill('10');
     await this.applyButton.click();
-
-
   }
 
-  async openApplyBulkMarkupPopup(){
-    await this.itemCheckBoxInBid.first().check(); 
+  async openApplyBulkMarkupPopup() {
+    await this.itemCheckBoxInBid.first().check();
     await this.applyBulkMarkup.click();
   }
 
-  async openApplyBulkMarkupPopup(){
-      await this.openApplyBulkMarkupPopup();
-      await this.increaseUptoMaximum.click();
-      await this.increaseUptoMaximum.fill('10');
-      await this.increaseConditionalMax.click();
-      await this.increaseConditionalMax.fill('20');
-      await this.applyButton.click();
+  async openApplyBulkMarkupPopup() {
+    await this.openApplyBulkMarkupPopup();
+    await this.increaseUptoMaximum.click();
+    await this.increaseUptoMaximum.fill('10');
+    await this.increaseConditionalMax.click();
+    await this.increaseConditionalMax.fill('20');
+    await this.applyButton.click();
   }
 
-async applyBulkMarkUpToSelectedItem(){
-  await this.openApplyBulkMarkupPopup();
-  await this.markupWithorWithoutExistingItem.click();
-  await this.markupWithorWithoutExistingItem.fill('10');
- 
-const muColumnCells = this.page.locator('.ag-center-cols-container .ag-row .ag-cell[col-id="markup"]');
-await expect(muColumnCells.nth(0)).toHaveText('10');
-const count = await muColumnCells.count();
-for (let i = 0; i < count; i++) {
-  await expect(muColumnCells.nth(i)).toHaveText('10');
-}
-  await this.applyButton.click();
-}
+  async applyBulkMarkUpToSelectedItem() {
+    await this.openApplyBulkMarkupPopup();
+    await this.markupWithorWithoutExistingItem.click();
+    await this.markupWithorWithoutExistingItem.fill('10');
 
-async applyBulkMarkUpToSelectedItemWithNoMarkup(){
-  await this.openApplyBulkMarkupPopup();
-  await this.noMarkup.fill('10');
-  await this.applyButton.click();
-}
+    const muColumnCells = this.page.locator('.ag-center-cols-container .ag-row .ag-cell[col-id="markup"]');
+    await expect(muColumnCells.nth(0)).toHaveText('10');
+    const count = await muColumnCells.count();
+    for (let i = 0; i < count; i++) {
+      await expect(muColumnCells.nth(i)).toHaveText('10');
+    }
+    await this.applyButton.click();
+  }
+
+  async applyBulkMarkUpToSelectedItemWithNoMarkup() {
+    await this.openApplyBulkMarkupPopup();
+    await this.noMarkup.fill('10');
+    await this.applyButton.click();
+  }
 
 
 
@@ -179,22 +191,22 @@ async applyBulkMarkUpToSelectedItemWithNoMarkup(){
 
 
   async makeItemOptional() {
-   //await this.expandIcon.first().click();
-   await this.itemCheckBoxInBid.first().check(); 
-   await this.makeOptionalButton.click();
-   await this.makeAllOptionalItemUnselected.check();
-   await this.saveButton.click();
-   await expect(this.page.locator('text=AED0.00').first()).toBeVisible();
+    //await this.expandIcon.first().click();
+    await this.itemCheckBoxInBid.first().check();
+    await this.makeOptionalButton.click();
+    await this.makeAllOptionalItemUnselected.check();
+    await this.saveButton.click();
+    await expect(this.page.locator('text=AED0.00').first()).toBeVisible();
 
-   await this.makeOptionalButton.click();
-   await this.makeAllOptionalItemSelected.check();
-   await this.saveButton.click();
-   await expect(this.page.locator('.optional-button-icon').first()).toBeVisible();
-  
-   await this.makeOptionalButton.click();
-   await this.MakeAllItemsNotOptional.click();
-   await this.saveButton.click();
-   await expect(this.page.locator('.optional-button-icon').first()).not.toBeVisible();
+    await this.makeOptionalButton.click();
+    await this.makeAllOptionalItemSelected.check();
+    await this.saveButton.click();
+    await expect(this.page.locator('.optional-button-icon').first()).toBeVisible();
+
+    await this.makeOptionalButton.click();
+    await this.MakeAllItemsNotOptional.click();
+    await this.saveButton.click();
+    await expect(this.page.locator('.optional-button-icon').first()).not.toBeVisible();
 
 
   }
@@ -205,46 +217,46 @@ async applyBulkMarkUpToSelectedItemWithNoMarkup(){
 
 
 
-  async applyTax(){
+  async applyTax() {
     //await this.expandIcon.first().click();
-    await this.applyandRemoveButton.click(); 
+    await this.applyandRemoveButton.click();
     await this.applyTaxRadio.check();
     await expect(this.applyTaxRadio).toBeChecked();
     await this.saveButton.click();
 
-      const checkboxes = this.page.locator('input[name="apply_global_tax"]');
-  const count = await checkboxes.count();
+    const checkboxes = this.page.locator('input[name="apply_global_tax"]');
+    const count = await checkboxes.count();
 
-  for (let i = 0; i < count; i++) {
-    await expect(checkboxes.nth(i)).toBeChecked();  // ✅ FIX HERE
+    for (let i = 0; i < count; i++) {
+      await expect(checkboxes.nth(i)).toBeChecked();  // ✅ FIX HERE
+    }
+
   }
 
+  async removeTax() {
+    await this.expandIcon.first().click();
+    const headerCheckbox = this.page.locator('.ag-header-cell-comp-wrapper input[type="checkbox"]');
+    await headerCheckbox.first().check();
+    await this.applyandRemoveButton.click();
+    await this.removeTaxRadio.check();
+    await expect(this.removeTaxRadio).toBeChecked();
+    await this.saveButton.click();
+
+    const checkboxes = this.page.locator('input[name="apply_global_tax"]');
+    const count = await checkboxes.count();
+
+    for (let i = 0; i < count; i++) {
+      await expect(checkboxes.nth(i)).not.toBeChecked();  // ✅ FIX HERE
+    }
   }
 
-async removeTax() {
-  await this.expandIcon.first().click();
-  const headerCheckbox = this.page.locator('.ag-header-cell-comp-wrapper input[type="checkbox"]'); 
-  await headerCheckbox.first().check(); 
-  await this.applyandRemoveButton.click(); 
-  await this.removeTaxRadio.check();
-  await expect(this.removeTaxRadio).toBeChecked();
-  await this.saveButton.click();
 
-  const checkboxes = this.page.locator('input[name="apply_global_tax"]');
-  const count = await checkboxes.count();
-
-  for (let i = 0; i < count; i++) {
-    await expect(checkboxes.nth(i)).not.toBeChecked();  // ✅ FIX HERE
-  }
-}
+  async addBidders() {
+    await this.page.getByRole('button', { name: 'Bidders' }).click();
+    await this.page.getByRole('button', { name: 'Add Bidder' }).click();
 
 
-async addBidders(){
-  await this.page.getByRole('button', { name: 'Bidders' }).click();
-  await this.page.getByRole('button', { name: 'Add Bidder' }).click();
-
-
-  await this.selectVendor.waitFor({ state: 'visible', timeout: 10000 });
+    await this.selectVendor.waitFor({ state: 'visible', timeout: 10000 });
     await this.selectVendor.click();
     await this.page.waitForTimeout(500);
 
@@ -263,99 +275,99 @@ async addBidders(){
     await this.page.waitForTimeout(500);
     await this.saveButton.click();
     await this.addButton.click();
-}
-
-async createBidPackage() {
-  await this.expandIcon.first().click();
-  await this.itemCheckBoxInBid.first().check();  // best practice
-  await this.personDaddingiCon.click();
-  await this.remainderEmail.fill('5');
-  await this.scopeofWorks.fill('This is a scope of work');
-  await this.selectDateFromCalendar();
-  await this.addButton.click();
-
-
-}
-
-
-
-
-
-async uploadFileinBid() {
-  // await this.expandIcon.first().click();
-  // await this.itemCheckBoxInBid.first().check(); 
-  // await this.personDaddingiCon.click();
-
-  await this.page.locator('button:has-text("Files")').nth(1).click(); 
-
-  await this.page.locator('.App div.cursor-pointer:has(svg[data-icon="plus"])').click();
-
-  const fileInput = this.page.locator('input[type="file"]');
-  await fileInput.waitFor({ state: 'attached' });
-  await fileInput.setInputFiles('D:\\Automation\\CreateLead\\testdata\\MaterialItems.csv');
-
-  await this.attachButton.click();
-
-  await this.addBidders();
-}
-
-
-async termsValueEnterInBidPackage() {
-await this.itemCheckBoxInBid.first().check(); 
-await this.personDaddingiCon.click();
-await this.page.locator('button:has-text("Terms")').nth(1).click();
-
-await this.page.locator('.fr-element[contenteditable="true"]').nth(0).click();
-await this.page.keyboard.type('This is a Term text');
-
-await this.page.locator('.fr-element[contenteditable="true"]').nth(1).click();
-await this.page.keyboard.type('This is a Inclusions text');
-
-await this.page.locator('.fr-element[contenteditable="true"]').nth(2).click();
-await this.page.keyboard.type('This is a Exclusions text');
-
-await this.page.locator('.fr-element[contenteditable="true"]').nth(3).click();
-await this.page.keyboard.type('This is a Clarification text');
-
-
-}
-
-async selectDateFromCalendar() {
-  const input = this.page.locator('input[name="deadline_date"]');
-  await input.click();
-  await this.page.locator('.ant-picker-header-view').click();
-  await this.page.locator('.ant-picker-year-panel').getByText('2026').click();
-  await this.page.locator('.ant-picker-month-panel').getByText('Jul').click();
-  await this.page.locator('.ant-picker-cell-inner', { hasText: '31' }).click();
-}
-
-async hideandmarkupCheck() {
-  await this.hideAndmarkUp.click();
-  await this.page.waitForSelector('[col-id="markup"]', { timeout: 10000 });
-  const muHeader = this.page.locator('[col-id="markup"] .font-semibold');
-  await expect(muHeader).toHaveText('MU%');
-}
-
-  async updateItemDetails() {
-      await this.expandIcon.first().click();
-      await this.viewButton.first().click();
-      const drawer = this.page.getByRole('dialog');
-      await drawer.getByText('Add Product Image').click();
-      await this.page.locator('input[type="file"]').nth(1).setInputFiles('D:\\Automation\\CreateLead\\testdata\\plumber.jpg');
-      await this.attachButton.click();
-      await this.SaveandCloseButton.click();
-      await this.deleteItem();
   }
 
-  async deleteItem(){
-      await this.deleteButton.first().click();
-          const modal = this.page.locator('[role="dialog"]');
+  async createBidPackage() {
+    await this.expandIcon.first().click();
+    await this.itemCheckBoxInBid.first().check();  // best practice
+    await this.personDaddingiCon.click();
+    await this.remainderEmail.fill('5');
+    await this.scopeofWorks.fill('This is a scope of work');
+    await this.selectDateFromCalendar();
+    await this.addButton.click();
+
+
+  }
+
+
+
+
+
+  async uploadFileinBid() {
+    // await this.expandIcon.first().click();
+    // await this.itemCheckBoxInBid.first().check(); 
+    // await this.personDaddingiCon.click();
+
+    await this.page.locator('button:has-text("Files")').nth(1).click();
+
+    await this.page.locator('.App div.cursor-pointer:has(svg[data-icon="plus"])').click();
+
+    const fileInput = this.page.locator('input[type="file"]');
+    await fileInput.waitFor({ state: 'attached' });
+    await fileInput.setInputFiles('D:\\Automation\\CreateLead\\testdata\\MaterialItems.csv');
+
+    await this.attachButton.click();
+
+    await this.addBidders();
+  }
+
+
+  async termsValueEnterInBidPackage() {
+    await this.itemCheckBoxInBid.first().check();
+    await this.personDaddingiCon.click();
+    await this.page.locator('button:has-text("Terms")').nth(1).click();
+
+    await this.page.locator('.fr-element[contenteditable="true"]').nth(0).click();
+    await this.page.keyboard.type('This is a Term text');
+
+    await this.page.locator('.fr-element[contenteditable="true"]').nth(1).click();
+    await this.page.keyboard.type('This is a Inclusions text');
+
+    await this.page.locator('.fr-element[contenteditable="true"]').nth(2).click();
+    await this.page.keyboard.type('This is a Exclusions text');
+
+    await this.page.locator('.fr-element[contenteditable="true"]').nth(3).click();
+    await this.page.keyboard.type('This is a Clarification text');
+
+
+  }
+
+  async selectDateFromCalendar() {
+    const input = this.page.locator('input[name="deadline_date"]');
+    await input.click();
+    await this.page.locator('.ant-picker-header-view').click();
+    await this.page.locator('.ant-picker-year-panel').getByText('2026').click();
+    await this.page.locator('.ant-picker-month-panel').getByText('Jul').click();
+    await this.page.locator('.ant-picker-cell-inner', { hasText: '31' }).click();
+  }
+
+  async hideandmarkupCheck() {
+    await this.hideAndmarkUp.click();
+    await this.page.waitForSelector('[col-id="markup"]', { timeout: 10000 });
+    const muHeader = this.page.locator('[col-id="markup"] .font-semibold');
+    await expect(muHeader).toHaveText('MU%');
+  }
+
+  async updateItemDetails() {
+    await this.expandIcon.first().click();
+    await this.viewButton.first().click();
+    const drawer = this.page.getByRole('dialog');
+    await drawer.getByText('Add Product Image').click();
+    await this.page.locator('input[type="file"]').nth(1).setInputFiles('D:\\Automation\\CreateLead\\testdata\\plumber.jpg');
+    await this.attachButton.click();
+    await this.SaveandCloseButton.click();
+    await this.deleteItem();
+  }
+
+  async deleteItem() {
+    await this.deleteButton.first().click();
+    const modal = this.page.locator('[role="dialog"]');
     await modal.getByRole('button', { name: 'Yes' }).click();
   }
 
-  
 
-  async applyBulkMarkUp(){
+
+  async applyBulkMarkUp() {
     await this.threeDotButtons.click();
     await this.page.getByRole('menuitem', { name: 'Apply Automatic/Bulk Markup' }).click();
     await this.entermarkupValue.fill('20');
@@ -370,24 +382,24 @@ async hideandmarkupCheck() {
 
   }
   async updateSectionDetails() {
-  await this.threeDotButtons.click();
-  await this.page.getByRole('menuitem', { name: 'View/Edit Section Details' }).click();
-      await this.sectionName.fill('Test Section');
+    await this.threeDotButtons.click();
+    await this.page.getByRole('menuitem', { name: 'View/Edit Section Details' }).click();
+    await this.sectionName.fill('Test Section');
     await this.sectionDescription.fill('This is test section description');
     await this.updateButton.click();
-}
+  }
 
 
-async updateAddItem() {
-  await this.page.waitForLoadState('domcontentloaded');
-  const row = this.page.locator('.ag-center-cols-container .ag-row').first();
-  await row.scrollIntoViewIfNeeded();
-  await row.hover();
-  const eyeBtn = row.locator('svg[data-icon="eye"]').locator('..').locator('..');
-  await eyeBtn.scrollIntoViewIfNeeded();
-  await this.page.waitForTimeout(500); // small wait for hover animation
-  await eyeBtn.click();
-}
+  async updateAddItem() {
+    await this.page.waitForLoadState('domcontentloaded');
+    const row = this.page.locator('.ag-center-cols-container .ag-row').first();
+    await row.scrollIntoViewIfNeeded();
+    await row.hover();
+    const eyeBtn = row.locator('svg[data-icon="eye"]').locator('..').locator('..');
+    await eyeBtn.scrollIntoViewIfNeeded();
+    await this.page.waitForTimeout(500); // small wait for hover animation
+    await eyeBtn.click();
+  }
 
   async otherItemsAddFromOtherItemsPage() {
     await this.plusItemButtonClick();
@@ -398,33 +410,33 @@ async updateAddItem() {
     await this.addItemButton.click();
   }
 
-async subcontractorAddFromSubcontractorPage(){
-  await this.plusItemButtonClick();
-  await this.subcontractorPageMenu.click();
-  await this.subcontractorSerchbar.first().click();
-  await this.subcontractorSerchbar.first().fill('Surveying equipment');
-  await this.page.locator('.project:has-text("Surveying equipment")').click();
-  await this.addItemButton.click();
-}
+  async subcontractorAddFromSubcontractorPage() {
+    await this.plusItemButtonClick();
+    await this.subcontractorPageMenu.click();
+    await this.subcontractorSerchbar.first().click();
+    await this.subcontractorSerchbar.first().fill('Surveying equipment');
+    await this.page.locator('.project:has-text("Surveying equipment")').click();
+    await this.addItemButton.click();
+  }
 
-async equipmentAddFromLaborPage(){
+  async equipmentAddFromLaborPage() {
     await this.plusItemButtonClick();
     await this.equipmentPageMenu.click();
     await this.equipmentSerchbar.first().click();
     await this.equipmentSerchbar.first().fill('Concrete Edger Electric');
     await this.page.locator('.project:has-text("Concrete Edger Electric")').click();
-    await this.addItemButton.click(); 
-}
+    await this.addItemButton.click();
+  }
 
-async laborAddFromLaborPage() {
-  await this.plusItemButtonClick();
-  await this.labourPageMenu.click();
-  const searchBox = this.page.locator('input[placeholder="Search for Labors"]:visible');
-  await searchBox.click();
-  await searchBox.fill('Carpenter');
-  await this.page.locator('.project').first().click();
-  await this.addItemButton.click();
-}
+  async laborAddFromLaborPage() {
+    await this.plusItemButtonClick();
+    await this.labourPageMenu.click();
+    const searchBox = this.page.locator('input[placeholder="Search for Labors"]:visible');
+    await searchBox.click();
+    await searchBox.fill('Carpenter');
+    await this.page.locator('.project').first().click();
+    await this.addItemButton.click();
+  }
 
   async materialAddFromMaterialPage() {
     await this.plusItemButtonClick();
