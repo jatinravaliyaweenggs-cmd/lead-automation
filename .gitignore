@@ -6,3 +6,52 @@ node_modules/
 /blob-report/
 /playwright/.cache/
 /playwright/.auth/
+kiro-clean/DIPS
+kiro-clean/DIPS-wal
+kiro-clean/SharedStorage
+kiro-clean/SharedStorage-wal
+kiro-clean/Cache/No_Vary_Search/journal.baj
+kiro-clean/Local Storage/leveldb/000003.log
+kiro-clean/Local Storage/leveldb/LOCK
+kiro-clean/Local Storage/leveldb/LOG
+kiro-clean/Local Storage/leveldb/MANIFEST-000001
+kiro-clean/logs/20260803T165059/editSessions.log
+kiro-clean/logs/20260803T165059/main.log
+kiro-clean/logs/20260803T165059/mcpGateway.log
+kiro-clean/logs/20260803T165059/network-shared.log
+kiro-clean/logs/20260803T165059/remoteTunnelService.log
+kiro-clean/logs/20260803T165059/sharedprocess.log
+kiro-clean/logs/20260803T165059/telemetry.log
+kiro-clean/logs/20260803T165059/terminal.log
+kiro-clean/logs/20260803T165059/tunnelHostService.log
+kiro-clean/logs/20260803T165059/userDataSync.log
+kiro-clean/logs/20260803T165059/window1/network.log
+kiro-clean/logs/20260803T165059/window1/notebook.rendering.log
+kiro-clean/logs/20260803T165059/window1/renderer.log
+kiro-clean/logs/20260803T165059/window1/textModelChanges.log
+kiro-clean/logs/20260803T165059/window1/views.log
+kiro-clean/logs/20260803T165059/window1/exthost/exthost.log
+kiro-clean/logs/20260803T165059/window1/exthost/extHostTelemetry.log
+kiro-clean/logs/20260803T165059/window1/exthost/GitHub.copilot-chat/GitHub Copilot Chat.log
+kiro-clean/logs/20260803T165059/window1/exthost/openai.chatgpt/Codex.log
+kiro-clean/logs/20260803T165059/window1/exthost/output_logging_20260803T165105/1-GitHub Copilot Log (Code References).log
+kiro-clean/logs/20260803T165059/window1/exthost/vscode.git/Git.log
+kiro-clean/logs/20260803T165059/window1/exthost/vscode.github/GitHub.log
+kiro-clean/logs/20260803T165059/window1/exthost/vscode.github-authentication/GitHub Authentication.log
+kiro-clean/logs/20260803T165059/window1/exthost/vscode.json-language-features/JSON Language Server.log
+kiro-clean/logs/20260803T165059/window1/exthost/vscode.microsoft-authentication/Microsoft Authentication.log
+kiro-clean/logs/20260803T165059/window1/output_20260803T165103/agentSessionsOutput.log
+kiro-clean/logs/20260803T165059/window1/output_20260803T165103/tasks.log
+kiro-clean/Network/Cookies
+kiro-clean/Network/Cookies-journal
+kiro-clean/Network/Trust Tokens
+kiro-clean/Network/Trust Tokens-journal
+kiro-clean/Shared Dictionary/db
+kiro-clean/Shared Dictionary/db-journal
+kiro-clean/User/chatLanguageModels.json
+kiro-clean/User/globalStorage/state.vscdb
+kiro-clean/User/globalStorage/github.copilot-chat/session-store.db
+kiro-clean/User/globalStorage/github.copilot-chat/session-store.db-shm
+kiro-clean/User/globalStorage/github.copilot-chat/session-store.db-wal
+kiro-clean/User/workspaceStorage/1785756059664/state.vscdb
+kiro-clean/User/workspaceStorage/1785756059664/chatEditingSessions/b30ec5e0-7101-4992-b959-1f03cfad5dce/state.json
