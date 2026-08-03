@@ -6,6 +6,7 @@ node_modules/
 /blob-report/
 /playwright/.cache/
 /playwright/.auth/
+.gitignore
 kiro-clean/DIPS
 kiro-clean/DIPS-wal
 kiro-clean/SharedStorage
@@ -54,4 +55,3 @@ kiro-clean/User/globalStorage/github.copilot-chat/session-store.db
 kiro-clean/User/globalStorage/github.copilot-chat/session-store.db-shm
 kiro-clean/User/globalStorage/github.copilot-chat/session-store.db-wal
 kiro-clean/User/workspaceStorage/1785756059664/state.vscdb
-kiro-clean/User/workspaceStorage/1785756059664/chatEditingSessions/b30ec5e0-7101-4992-b959-1f03cfad5dce/state.json
