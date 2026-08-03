@@ -136,3 +136,7 @@ await estimatePage.reduceTheMarkupofSelectedItemsBy();
 await estimatePage.resetTheMarkupForSelectedItemsToZero();
 await estimatePage.UpdateTheMarkupOfSelectedItemsFrom();
 })
+
+When('User copy selected items', async function (){
+await estimatePage.copyitems();
+})

@@ -134,7 +134,15 @@ class EstimatePage {
 
     this.updateWithRange = page.locator('input[name="update_with_range"]');
     this.updatewithrangeMarkupLimit = page.locator('input[name="update_with_range_markup_limit"]');
+
+
   }
+
+async copyitems(){
+    await this.itemCheckBoxInBid.first().check();
+    await this.copyButton.click();
+    const itemNameCells = this.page.locator('.ag-center-cols-container .ag-row .ag-cell[col-id="item_name"]');
+}
 
   
 async UpdateTheMarkupOfSelectedItemsFrom(){
