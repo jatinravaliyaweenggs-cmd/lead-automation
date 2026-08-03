@@ -140,3 +140,7 @@ await estimatePage.UpdateTheMarkupOfSelectedItemsFrom();
 When('User copy selected items', async function (){
 await estimatePage.copyitems();
 })
+
+Then('User update tab name', async function () {
+  await estimatePage.swapTabsByDrag();
+})

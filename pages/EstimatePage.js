@@ -134,9 +134,35 @@ class EstimatePage {
 
     this.updateWithRange = page.locator('input[name="update_with_range"]');
     this.updatewithrangeMarkupLimit = page.locator('input[name="update_with_range_markup_limit"]');
+    this.customerEstimateNumber = page.locator('#custom_estimate_id');
 
+    this.CreateProjectOpportunityLater = page.getByRole('Button',{ name:'Create Project/Opportunity Later'});
 
   }
+async swapTabsByDrag() {
+
+  // 🔹 Source (Material)
+  const source = this.page.locator('.ant-collapse-item')
+    .filter({ hasText: 'Material' })
+    .locator('button.cursor-move')
+    .first();   // ✅ FIX
+
+  // 🔹 Target (Copy of Material)
+  const target = this.page.locator('.ant-collapse-item')
+    .filter({ hasText: 'Copy of Material' })
+    .locator('button.cursor-move')
+    .first();   // ✅ FIX
+
+  await source.waitFor({ state: 'visible' });
+  await target.waitFor({ state: 'visible' });
+
+  await this.page.waitForTimeout(500);
+
+  // 🔥 Drag & Drop
+  await source.dragTo(target);
+
+  console.log('Swapped Material with Copy of Material');
+}
 
 async copyitems(){
     await this.itemCheckBoxInBid.first().check();
@@ -748,8 +774,12 @@ async UpdateTheMarkupOfSelectedItemsFrom(){
     await this.customerBtn.click();
     await this.searchCustomer.waitFor({ state: 'visible' });
     await this.selectCustomer('Bhavik Raval');
+    await this.customerEstimateNumber.fill('Est#123')
     await this.createEstimateBtn.waitFor({ state: 'visible' });
     await this.createEstimateBtn.click();
+    await this.CreateProjectOpportunityLater.click();
+    await this.createEstimateBtn.click();
+
   }
 
   async verifyEstimateCreated() {
