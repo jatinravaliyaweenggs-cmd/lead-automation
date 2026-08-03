@@ -127,11 +127,12 @@ When('Make item optional', async function () {
 })
 
 When('user apply markup and verify value', async function () {
-//await estimatePage.applyBulkMarkUpToSelectedItem();
-//await estimatePage.applyBulkMarkUpToSelectedItemWithNoMarkup();
-//await estimatePage.openApplyBulkMarkupPopupMinMax();
-//await estimatePage.increaseMarkupBy();
-//await estimatePage.reduceTheMarkupOfSelectedItemsBy();
-//await estimatePage.reduceTheMarkupofSelectedItemsBy();
+await estimatePage.applyBulkMarkUpToSelectedItem();
+await estimatePage.applyBulkMarkUpToSelectedItemWithNoMarkup();
+await estimatePage.openApplyBulkMarkupPopupMinMax();
+await estimatePage.increaseMarkupBy();
+await estimatePage.reduceTheMarkupOfSelectedItemsBy();
+await estimatePage.reduceTheMarkupofSelectedItemsBy();
 await estimatePage.resetTheMarkupForSelectedItemsToZero();
+await estimatePage.UpdateTheMarkupOfSelectedItemsFrom();
 })

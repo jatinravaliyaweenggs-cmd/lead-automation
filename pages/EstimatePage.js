@@ -132,7 +132,20 @@ class EstimatePage {
 
     this.resetmarkupZero = this.page.locator('input[name="markup_option"][value="reset"]');
 
+    this.updateWithRange = page.locator('input[name="update_with_range"]');
+    this.updatewithrangeMarkupLimit = page.locator('input[name="update_with_range_markup_limit"]');
   }
+
+  
+async UpdateTheMarkupOfSelectedItemsFrom(){
+  await this.openApplyBulkMarkupPopup();
+  await this.updateWithRange.fill('0');
+  await this.updatewithrangeMarkupLimit.fill('55');
+  await this.applyButton.click();
+  const muColumnCells = this.page.locator('.ag-center-cols-container .ag-row .ag-cell[col-id="markup"]');
+  await expect(muColumnCells).toHaveText(Array(await muColumnCells.count()).fill('55'));
+
+}
 
   async resetTheMarkupForSelectedItemsToZero(){
     await this.openApplyBulkMarkupPopup();
@@ -148,6 +161,7 @@ class EstimatePage {
   async reduceTheMarkupofSelectedItemsBy(){
     await this.openApplyBulkMarkupPopup();
     await this.reduceAllmarkup.fill('5');
+    await this.applyButton.click();
 
   }
 
@@ -184,14 +198,14 @@ class EstimatePage {
     await this.openApplyBulkMarkupPopup();
     await this.markupWithorWithoutExistingItem.click();
     await this.markupWithorWithoutExistingItem.fill('10');
-
+    await this.applyButton.click();
     const muColumnCells = this.page.locator('.ag-center-cols-container .ag-row .ag-cell[col-id="markup"]');
     await expect(muColumnCells.nth(0)).toHaveText('10');
     const count = await muColumnCells.count();
     for (let i = 0; i < count; i++) {
       await expect(muColumnCells.nth(i)).toHaveText('10');
     }
-    await this.applyButton.click();
+    
   }
 
   async applyBulkMarkUpToSelectedItemWithNoMarkup() {
