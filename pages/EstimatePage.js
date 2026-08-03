@@ -124,14 +124,27 @@ class EstimatePage {
 
       this.increaseUptoMaximum = page.locator('input[name="increase_conditional"]');      
       this.increaseConditionalMax = page.locator('input[name="increase_conditional_max"]');
+      this.increaseMarkup = page.locator('input[name="increase_markup_by"]');
 
   }
 
+    async increaseMarkupBy(){
+    await this.itemCheckBoxInBid.first().check(); 
+    await this.applyBulkMarkup.click();
+    await this.increaseMarkup.click();
+    await this.increaseMarkup.fill('10');
+    await this.applyButton.click();
 
+
+  }
 
   async openApplyBulkMarkupPopup(){
-      await this.itemCheckBoxInBid.first().check(); 
-      await this.applyBulkMarkup.click();
+    await this.itemCheckBoxInBid.first().check(); 
+    await this.applyBulkMarkup.click();
+  }
+
+  async openApplyBulkMarkupPopup(){
+      await this.openApplyBulkMarkupPopup();
       await this.increaseUptoMaximum.click();
       await this.increaseUptoMaximum.fill('10');
       await this.increaseConditionalMax.click();
