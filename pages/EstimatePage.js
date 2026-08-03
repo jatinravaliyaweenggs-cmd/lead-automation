@@ -128,15 +128,23 @@ class EstimatePage {
 
     this.ReduceMarkup = this.page.locator('input[name="decrease_conditional"]');
 
-    this.DecreaseConditionalMin = page.locator('input[name="decrease_conditional_min"]');
+    this.decreaseConditionalMin = page.locator('input[name="decrease_conditional_min"]');
+
+    this.reduceAllmarkup = page.locator('input[name="decrease_all"]');
 
   }
 
 
+  async reduceTheMarkupofSelectedItemsBy(){
+    await this.openApplyBulkMarkupPopup();
+    await this.reduceAllmarkup.fill('5');
+
+  }
+
   async reduceTheMarkupOfSelectedItemsBy(){
     await this.openApplyBulkMarkupPopup();
     await this.ReduceMarkup.fill('10');
-    await this.DecreaseConditionalMin.fill('7');
+    await this.decreaseConditionalMin.fill('7');
     await this.applyButton.click();
 
   }
