@@ -121,22 +121,47 @@ class EstimatePage {
 
       this.markupWithorWithoutExistingItem = page.locator('input[name="increase_all"]');
       this.noMarkup =  page.locator('input[name="increase_no_markup"]');
+
+      this.increaseUptoMaximum = page.locator('input[name="increase_conditional"]');      
+      this.increaseConditionalMax = page.locator('input[name="increase_conditional_max"]');
+
+  }
+
+
+
+  async openApplyBulkMarkupPopup(){
+      await this.itemCheckBoxInBid.first().check(); 
+      await this.applyBulkMarkup.click();
+      await this.increaseUptoMaximum.click();
+      await this.increaseUptoMaximum.fill('10');
+      await this.increaseConditionalMax.click();
+      await this.increaseConditionalMax.fill('20');
+      await this.applyButton.click();
   }
 
 async applyBulkMarkUpToSelectedItem(){
-  await this.itemCheckBoxInBid.first().check(); 
-  await this.applyBulkMarkup.click();
-  await this.page.locator('input[value="increase_all"]').click();
-  await this.page.locator('input[name="increase_all"]').fill('10');
+  await this.openApplyBulkMarkupPopup();
+  await this.markupWithorWithoutExistingItem.click();
+  await this.markupWithorWithoutExistingItem.fill('10');
+ 
+const muColumnCells = this.page.locator('.ag-center-cols-container .ag-row .ag-cell[col-id="markup"]');
+await expect(muColumnCells.nth(0)).toHaveText('10');
+const count = await muColumnCells.count();
+for (let i = 0; i < count; i++) {
+  await expect(muColumnCells.nth(i)).toHaveText('10');
+}
   await this.applyButton.click();
 }
 
 async applyBulkMarkUpToSelectedItemWithNoMarkup(){
-  await this.itemCheckBoxInBid.first().check(); 
-  await this.applyBulkMarkup.click();
+  await this.openApplyBulkMarkupPopup();
   await this.noMarkup.fill('10');
   await this.applyButton.click();
 }
+
+
+
+
 
 
 
