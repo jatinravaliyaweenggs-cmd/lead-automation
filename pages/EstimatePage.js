@@ -116,7 +116,29 @@ class EstimatePage {
       this.makeAllOptionalItemUnselected = page.getByLabel('Make all selected items optional and mark them as unselected.');
       this.makeAllOptionalItemSelected = page.getByLabel('Make all selected items optional and mark them as selected.');
       this.MakeAllItemsNotOptional = page.getByLabel('Make all items not optional.');
+
+      this.applyBulkMarkup = page.locator('button:has(svg[data-icon="tags"])');
+
+      this.markupWithorWithoutExistingItem = page.locator('input[name="increase_all"]');
+      this.noMarkup =  page.locator('input[name="increase_no_markup"]');
   }
+
+async applyBulkMarkUpToSelectedItem(){
+  await this.itemCheckBoxInBid.first().check(); 
+  await this.applyBulkMarkup.click();
+  await this.page.locator('input[value="increase_all"]').click();
+  await this.page.locator('input[name="increase_all"]').fill('10');
+  await this.applyButton.click();
+}
+
+async applyBulkMarkUpToSelectedItemWithNoMarkup(){
+  await this.itemCheckBoxInBid.first().check(); 
+  await this.applyBulkMarkup.click();
+  await this.noMarkup.fill('10');
+  await this.applyButton.click();
+}
+
+
 
   async makeItemOptional() {
    //await this.expandIcon.first().click();

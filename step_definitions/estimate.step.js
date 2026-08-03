@@ -125,3 +125,9 @@ Then('User apply and remove tax', async function () {
 When('Make item optional', async function () {
   await estimatePage.makeItemOptional();
 })
+
+When('user apply markup and verify value', async function () {
+await estimatePage.applyBulkMarkUpToSelectedItem();
+await estimatePage.applyBulkMarkUpToSelectedItemWithNoMarkup();
+
+})

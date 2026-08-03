@@ -6,8 +6,8 @@ Feature: Estimate Creation
     #Then User should be redirected to the dashboard
 
  # Scenario: Create a new Estimate
-  #  When User navigates to Estimate page
-   # And User creates a new Estimate
+ #   When User navigates to Estimate page
+ #   And User creates a new Estimate
 
  # Scenario: estimate deails add
  #   When User navigates to Estimate page
@@ -72,7 +72,14 @@ Feature: Estimate Creation
  #   When User navigates to Estimate page and open estimate
  #   When User apply bid package
 
- Scenario: add Apply Automatic/Bulk Markup
+ #Scenario: add Apply Automatic/Bulk Markup
+ #  When User navigates to Estimate page and open estimate
+ #  When Make item optional
+
+ Scenario: Apply bulk markup
    When User navigates to Estimate page and open estimate
-   When Make item optional
+   When user apply markup and verify value
+
    
+
+  
