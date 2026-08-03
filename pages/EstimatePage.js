@@ -127,12 +127,22 @@ class EstimatePage {
     this.increaseMarkup = page.locator('input[name="increase_markup_by"]');
 
     this.ReduceMarkup = this.page.locator('input[name="decrease_conditional"]');
-
     this.decreaseConditionalMin = page.locator('input[name="decrease_conditional_min"]');
-
     this.reduceAllmarkup = page.locator('input[name="decrease_all"]');
 
+    this.resetmarkupZero = this.page.locator('input[name="markup_option"][value="reset"]');
+
   }
+
+  async resetTheMarkupForSelectedItemsToZero(){
+    await this.openApplyBulkMarkupPopup();
+    await this.resetmarkupZero.click()
+    await this.applyButton.click();
+
+    const muColumnCells = this.page.locator('.ag-center-cols-container .ag-row .ag-cell[col-id="markup"]');
+    await expect(muColumnCells).toHaveText(Array(await muColumnCells.count()).fill('0'));
+    }
+
 
 
   async reduceTheMarkupofSelectedItemsBy(){

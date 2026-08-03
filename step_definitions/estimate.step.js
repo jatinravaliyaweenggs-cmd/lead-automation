@@ -132,5 +132,6 @@ When('user apply markup and verify value', async function () {
 //await estimatePage.openApplyBulkMarkupPopupMinMax();
 //await estimatePage.increaseMarkupBy();
 //await estimatePage.reduceTheMarkupOfSelectedItemsBy();
-await estimatePage.reduceTheMarkupofSelectedItemsBy();
+//await estimatePage.reduceTheMarkupofSelectedItemsBy();
+await estimatePage.resetTheMarkupForSelectedItemsToZero();
 })
