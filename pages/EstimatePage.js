@@ -146,13 +146,35 @@ class EstimatePage {
 
   }
 
+  async click3dotButtonOfUploadFile() {
+    const fileCard = this.page.locator('div.group\\/upload-file').filter({ hasText: 'MaterialItems_' }).first();
+    await fileCard.scrollIntoViewIfNeeded();
+    const threeDotBtn = fileCard.locator('button:has(svg[data-icon="ellipsis-vertical"])');
+    await threeDotBtn.click({ force: true });
+}
+
+async downloadUploadFile(){
+    this.click3dotButtonOfUploadFile();
+    const downloadBtn = this.page.locator('ul[role="menu"] >> text=Download');
+    await expect(downloadBtn).toBeVisible();
+    const [ download ] = await Promise.all([
+        this.page.waitForEvent('download'),
+        downloadBtn.click()
+    ]);
+
+    const filePath = await download.path();
+    console.log('Downloaded file:', filePath);
+}
+
   async uploadFileInEstimate(){
     await this.uploadFilePage.click();
     await this.page.locator('.App div.cursor-pointer:has(svg[data-icon="plus"])').click();
     const fileInput = this.page.locator('input[type="file"]');
     await fileInput.waitFor({ state: 'attached' });
     await fileInput.setInputFiles('D:\\Automation\\CreateLead\\testdata\\MaterialItems.csv');
+    await expect(this.page.locator('text=MaterialItems.csv')).toBeVisible();
     await this.attachButton.click();
+    await this.downloadUploadFile();
 
 
   }
