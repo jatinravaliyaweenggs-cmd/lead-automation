@@ -76,14 +76,18 @@ Feature: Estimate Creation
  #  When User navigates to Estimate page and open estimate
  #  When Make item optional
 
-# Scenario: Apply bulk markup
- #  When User navigates to Estimate page and open estimate
- #  When user apply markup and verify value
+#  Scenario: Apply bulk markup
+#    When User navigates to Estimate page and open estimate
+#    When user apply markup and verify value
 
- #  Scenario: Copy selected item
-#   When User navigates to Estimate page and open estimate
- #  When User copy selected items
+#   Scenario: Copy selected item
+#    When User navigates to Estimate page and open estimate
+#    When User copy selected items
 
-Scenario: swap selected item
-   When User navigates to Estimate page and open estimate
-   Then User update tab name
+# Scenario: swap selected item
+#    When User navigates to Estimate page and open estimate
+#    Then User update tab name
+
+ Scenario: swap selected item
+    When User navigates to Estimate page and open estimate
+    Then User enter scope of detail

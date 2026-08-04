@@ -138,7 +138,32 @@ class EstimatePage {
 
     this.CreateProjectOpportunityLater = page.getByRole('Button',{ name:'Create Project/Opportunity Later'});
 
+    this.scopeofWorksPage = page.locator('button:has-text("Scope of Work")');
+    this.scopeofWorksEditor = page.locator('div.fr-element[contenteditable="true"]');
+
   }
+
+  async enterScopeOfDetail() {
+
+    // 1️⃣ Click on Scope of Work tab
+    await expect(this.scopeofWorksPage).toBeVisible();
+    await this.scopeofWorksPage.click();
+
+    // 2️⃣ Assert page opened
+    await expect(
+      this.page.getByText('Scope of Work (Checked items show on PDF)')
+    ).toBeVisible();
+
+    // 3️⃣ Enter text in editor
+    await expect(this.scopeofWorksEditor).toBeVisible();
+    await this.scopeofWorksEditor.click();
+
+    // ✅ Use keyboard (best for Froala)
+    await this.page.keyboard.type('This is a scope of work');
+  }
+
+
+
 async swapTabsByDrag() {
 
   // 🔹 Source (Material)

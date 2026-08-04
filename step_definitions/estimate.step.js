@@ -144,3 +144,7 @@ await estimatePage.copyitems();
 Then('User update tab name', async function () {
   await estimatePage.swapTabsByDrag();
 })
+
+Then('User enter scope of detail', async function(){
+await estimatePage.enterScopeOfDetail();
+})
