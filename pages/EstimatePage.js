@@ -140,6 +140,7 @@ class EstimatePage {
 
     this.scopeofWorksPage = page.locator('button:has-text("Scope of Work")');
     this.scopeofWorksEditor = page.locator('div.fr-element[contenteditable="true"]');
+    this.scopeofWorkTextarea = page.locator('textarea[placeholder="Add Scope of Work (max 2000 characters)."]').last();
 
   }
 
@@ -149,7 +150,31 @@ class EstimatePage {
     await expect(this.page.getByText('Scope of Work (Checked items show on PDF)')).toBeVisible();
     await expect(this.scopeofWorksEditor).toBeVisible();
     await this.scopeofWorksEditor.click();
+    await this.scopeofWorksEditor.clear();
     await this.page.keyboard.type('This is a scope of work');
+
+    // Find the empty textarea (last one without any value) and fill it
+    const allTextareas = this.page.locator('textarea[placeholder="Add Scope of Work (max 2000 characters)."]');
+    const count = await allTextareas.count();
+
+    let targetTextarea = null;
+    for (let i = count - 1; i >= 0; i--) {
+      const value = await allTextareas.nth(i).inputValue();
+      if (value.trim() === '') {
+        targetTextarea = allTextareas.nth(i);
+        break;
+      }
+    }
+
+    if (!targetTextarea) {
+      // fallback: use last one
+      targetTextarea = allTextareas.last();
+    }
+
+    await targetTextarea.scrollIntoViewIfNeeded();
+    await targetTextarea.click();
+    await targetTextarea.fill('This is the additional scope of work text.');
+    await targetTextarea.press('Enter');
   }
 
 
