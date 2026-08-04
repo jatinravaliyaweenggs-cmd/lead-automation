@@ -88,6 +88,10 @@ Feature: Estimate Creation
 #    When User navigates to Estimate page and open estimate
 #    Then User update tab name
 
- Scenario: swap selected item
-    When User navigates to Estimate page and open estimate
-    Then User enter scope of detail
+#  Scenario: add scope of details
+#     When User navigates to Estimate page and open estimate
+#     Then User enter scope of detail
+
+  Scenario: swap selected item
+     When User navigates to Estimate page and open estimate
+     Then Upload files in estimate

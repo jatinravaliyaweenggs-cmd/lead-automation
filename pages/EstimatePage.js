@@ -142,6 +142,19 @@ class EstimatePage {
     this.scopeofWorksEditor = page.locator('div.fr-element[contenteditable="true"]');
     this.scopeofWorkTextarea = page.locator('textarea[placeholder="Add Scope of Work (max 2000 characters)."]').last();
 
+    this.uploadFilePage = page.locator('button:has-text("Files")');
+
+  }
+
+  async uploadFileInEstimate(){
+    await this.uploadFilePage.click();
+    await this.page.locator('.App div.cursor-pointer:has(svg[data-icon="plus"])').click();
+    const fileInput = this.page.locator('input[type="file"]');
+    await fileInput.waitFor({ state: 'attached' });
+    await fileInput.setInputFiles('D:\\Automation\\CreateLead\\testdata\\MaterialItems.csv');
+    await this.attachButton.click();
+
+
   }
 
   async enterScopeOfDetail() {

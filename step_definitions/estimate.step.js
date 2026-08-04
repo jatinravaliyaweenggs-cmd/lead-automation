@@ -148,3 +148,7 @@ Then('User update tab name', async function () {
 Then('User enter scope of detail', async function(){
 await estimatePage.enterScopeOfDetail();
 })
+
+Then('Upload files in estimate', async function () {
+  await estimatePage.uploadFileInEstimate();
+})
