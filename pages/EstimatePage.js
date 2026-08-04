@@ -148,10 +148,26 @@ class EstimatePage {
 
   }
 
+
+ async selectCoverSheet() {
+  const dropdown = this.page.locator('[name="cover_sheet_template_id"]');
+
+  // open dropdown
+  await dropdown.locator('.ant-select-selector').click();
+
+  // exact + scoped to dropdown
+  const option = this.page.locator(
+    '.ant-select-dropdown .ant-select-item-option[title="Cover Sheet"]'
+  );
+
+  await option.click();
+}
+
   async openCoversheetPage()
   {
     await this.coverSheetPage.click();
     await this.page.getByRole('switch').click();
+    await this.selectCoverSheet();    
   }
 
   async click3dotButtonOfUploadFile() {

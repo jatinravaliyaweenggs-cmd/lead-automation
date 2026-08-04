@@ -4,17 +4,17 @@
     "elements": [
       {
         "description": "",
-        "id": "estimate-creation;swap-selected-item",
+        "id": "estimate-creation;open-cover-sheet-page",
         "keyword": "Scenario",
-        "line": 91,
-        "name": "swap selected item",
+        "line": 99,
+        "name": "Open cover sheet page",
         "steps": [
           {
             "keyword": "Before",
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 478415699
+              "duration": 500496799
             }
           },
           {
@@ -27,7 +27,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 4028610000
+              "duration": 4079812399
             }
           },
           {
@@ -40,33 +40,33 @@
             },
             "result": {
               "status": "passed",
-              "duration": 4181055300
+              "duration": 4200026799
             }
           },
           {
             "arguments": [],
             "keyword": "When ",
-            "line": 92,
+            "line": 100,
             "name": "User navigates to Estimate page and open estimate",
             "match": {
               "location": "step_definitions\\estimate.step.js:16"
             },
             "result": {
               "status": "passed",
-              "duration": 8755876000
+              "duration": 10639682199
             }
           },
           {
             "arguments": [],
             "keyword": "Then ",
-            "line": 93,
-            "name": "User enter scope of detail",
+            "line": 101,
+            "name": "Open coversheet page and apply template",
             "match": {
-              "location": "step_definitions\\estimate.step.js:148"
+              "location": "step_definitions\\estimate.step.js:156"
             },
             "result": {
               "status": "passed",
-              "duration": 13326431000
+              "duration": 6972878000
             }
           },
           {
@@ -74,7 +74,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 297867499
+              "duration": 324093100
             }
           }
         ],
