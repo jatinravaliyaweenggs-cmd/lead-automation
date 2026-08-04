@@ -144,21 +144,11 @@ class EstimatePage {
   }
 
   async enterScopeOfDetail() {
-
-    // 1️⃣ Click on Scope of Work tab
     await expect(this.scopeofWorksPage).toBeVisible();
     await this.scopeofWorksPage.click();
-
-    // 2️⃣ Assert page opened
-    await expect(
-      this.page.getByText('Scope of Work (Checked items show on PDF)')
-    ).toBeVisible();
-
-    // 3️⃣ Enter text in editor
+    await expect(this.page.getByText('Scope of Work (Checked items show on PDF)')).toBeVisible();
     await expect(this.scopeofWorksEditor).toBeVisible();
     await this.scopeofWorksEditor.click();
-
-    // ✅ Use keyboard (best for Froala)
     await this.page.keyboard.type('This is a scope of work');
   }
 
