@@ -174,19 +174,32 @@ await notesBtn.click();
 const notesInput = this.page.locator('textarea[name="Notes"]');
 await expect(notesInput).toBeVisible();
 await notesInput.fill('This is my test note');
+await this.saveButton.click();
+
+}
+
+
+async deleteButtonOfUploadFile(){
+this.click3dotButtonOfUploadFile();
+const deleteBtn = this.page.getByRole('menuitem', { name: 'Delete' });
+await expect(deleteBtn).toBeVisible();
+await deleteBtn.click();
+
 
 }
 
   async uploadFileInEstimate(){
      await this.uploadFilePage.click();
-    // await this.page.locator('.App div.cursor-pointer:has(svg[data-icon="plus"])').click();
-    // const fileInput = this.page.locator('input[type="file"]');
-    // await fileInput.waitFor({ state: 'attached' });
-    // await fileInput.setInputFiles('D:\\Automation\\CreateLead\\testdata\\MaterialItems.csv');
-    // await expect(this.page.locator('text=MaterialItems.csv')).toBeVisible();
-    // await this.attachButton.click();
-    // await this.downloadUploadFile();
+    await this.page.locator('.App div.cursor-pointer:has(svg[data-icon="plus"])').click();
+    const fileInput = this.page.locator('input[type="file"]');
+    await fileInput.waitFor({ state: 'attached' });
+    await fileInput.setInputFiles('D:\\Automation\\CreateLead\\testdata\\MaterialItems.csv');
+    await expect(this.page.locator('text=MaterialItems.csv')).toBeVisible();
+    await this.attachButton.click();
+    await this.downloadUploadFile();
     await this.enterNoteInUploadFile();
+    await this.deleteButtonOfUploadFile();
+
 
 
   }
