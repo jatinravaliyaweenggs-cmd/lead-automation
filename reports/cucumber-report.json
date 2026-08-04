@@ -4,17 +4,17 @@
     "elements": [
       {
         "description": "",
-        "id": "estimate-creation;equipment-add",
+        "id": "estimate-creation;swap-selected-item",
         "keyword": "Scenario",
-        "line": 39,
-        "name": "Equipment add",
+        "line": 91,
+        "name": "swap selected item",
         "steps": [
           {
             "keyword": "Before",
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 705310099
+              "duration": 478415699
             }
           },
           {
@@ -27,7 +27,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 4088984199
+              "duration": 4028610000
             }
           },
           {
@@ -40,33 +40,33 @@
             },
             "result": {
               "status": "passed",
-              "duration": 4196988400
+              "duration": 4181055300
             }
           },
           {
             "arguments": [],
             "keyword": "When ",
-            "line": 40,
+            "line": 92,
             "name": "User navigates to Estimate page and open estimate",
             "match": {
               "location": "step_definitions\\estimate.step.js:16"
             },
             "result": {
               "status": "passed",
-              "duration": 12976471800
+              "duration": 8755876000
             }
           },
           {
             "arguments": [],
-            "keyword": "When ",
-            "line": 41,
-            "name": "User enter equipment from equipment tab",
+            "keyword": "Then ",
+            "line": 93,
+            "name": "User enter scope of detail",
             "match": {
-              "location": "step_definitions\\estimate.step.js:75"
+              "location": "step_definitions\\estimate.step.js:148"
             },
             "result": {
               "status": "passed",
-              "duration": 11761822399
+              "duration": 13326431000
             }
           },
           {
@@ -74,7 +74,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 522277699
+              "duration": 297867499
             }
           }
         ],

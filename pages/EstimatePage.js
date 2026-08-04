@@ -157,24 +157,29 @@ class EstimatePage {
     const allTextareas = this.page.locator('textarea[placeholder="Add Scope of Work (max 2000 characters)."]');
     const count = await allTextareas.count();
 
-    let targetTextarea = null;
+    let targetIndex = count - 1; // fallback: last one
     for (let i = count - 1; i >= 0; i--) {
       const value = await allTextareas.nth(i).inputValue();
       if (value.trim() === '') {
-        targetTextarea = allTextareas.nth(i);
+        targetIndex = i;
         break;
       }
     }
 
-    if (!targetTextarea) {
-      // fallback: use last one
-      targetTextarea = allTextareas.last();
-    }
-
+    const targetTextarea = allTextareas.nth(targetIndex);
     await targetTextarea.scrollIntoViewIfNeeded();
     await targetTextarea.click();
     await targetTextarea.fill('This is the additional scope of work text.');
     await targetTextarea.press('Enter');
+
+    // Check the checkbox in the same row as this textarea
+    // Walk up to nearest ancestor that also contains a checkbox
+    const rowContainer = targetTextarea.locator('xpath=ancestor::div[.//input[@type="checkbox"]][1]');
+    const checkbox = rowContainer.locator('input[type="checkbox"]').first();
+    await checkbox.waitFor({ state: 'attached', timeout: 5000 });
+    if (!(await checkbox.isChecked())) {
+      await checkbox.click();
+    }
   }
 
 
