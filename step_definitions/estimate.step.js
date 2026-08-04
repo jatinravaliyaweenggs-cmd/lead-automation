@@ -152,3 +152,7 @@ await estimatePage.enterScopeOfDetail();
 Then('Upload files in estimate', async function () {
   await estimatePage.uploadFileInEstimate();
 })
+
+Then('Open coversheet page and apply template', async function () {
+  await estimatePage.openCoversheetPage();
+})

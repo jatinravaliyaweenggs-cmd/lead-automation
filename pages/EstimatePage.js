@@ -144,6 +144,14 @@ class EstimatePage {
 
     this.uploadFilePage = page.locator('button:has-text("Files")');
 
+    this.coverSheetPage = page.getByRole('button', { name: 'Cover Sheet' });
+
+  }
+
+  async openCoversheetPage()
+  {
+    await this.coverSheetPage.click();
+    await this.page.getByRole('switch').click();
   }
 
   async click3dotButtonOfUploadFile() {
@@ -202,7 +210,7 @@ await deleteBtn.click();
 }
 
   async uploadFileInEstimate(){
-     await this.uploadFilePage.click();
+    await this.uploadFilePage.click();
     await this.page.locator('.App div.cursor-pointer:has(svg[data-icon="plus"])').click();
     const fileInput = this.page.locator('input[type="file"]');
     await fileInput.waitFor({ state: 'attached' });
