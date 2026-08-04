@@ -145,22 +145,26 @@ class EstimatePage {
     this.uploadFilePage = page.locator('button:has-text("Files")');
 
     this.coverSheetPage = page.getByRole('button', { name: 'Cover Sheet' });
+    this.generateFromUploadButton = page.getByRole('button', { name: 'Generate from Upload' });
+    this.previewCropButton = page.getByRole('button', { name: 'Preview Crop' });
 
   }
 
 
  async selectCoverSheet() {
   const dropdown = this.page.locator('[name="cover_sheet_template_id"]');
-
-  // open dropdown
   await dropdown.locator('.ant-select-selector').click();
-
-  // exact + scoped to dropdown
-  const option = this.page.locator(
-    '.ant-select-dropdown .ant-select-item-option[title="Cover Sheet"]'
-  );
-
+  const option = this.page.locator('.ant-select-dropdown .ant-select-item-option[title="Cover Sheet"]');
   await option.click();
+  await this.generateFromUploadButton.click();
+  const fileInput = this.page.locator('input[type="file"]');
+    await fileInput.waitFor({ state: 'attached' });
+    await fileInput.setInputFiles('D:\\Automation\\CreateLead\\testdata\\plumber.jpg');
+
+    await this.previewCropButton.first().click();
+    await this.saveButton.click();
+
+  
 }
 
   async openCoversheetPage()
