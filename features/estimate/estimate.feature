@@ -92,6 +92,6 @@ Feature: Estimate Creation
 #     When User navigates to Estimate page and open estimate
 #     Then User enter scope of detail
 
-  Scenario: swap selected item
+  Scenario: Upload file
      When User navigates to Estimate page and open estimate
      Then Upload files in estimate

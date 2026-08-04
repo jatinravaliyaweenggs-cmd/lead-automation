@@ -166,6 +166,19 @@ async downloadUploadFile(){
     console.log('Downloaded file:', filePath);
 }
 
+async viewandMarkupForUploadFile(){
+  this.click3dotButtonOfUploadFile();
+  const viewAndMarkupBtn = this.page.getByRole('menuitem', { name: 'View & Markup' });
+await expect(viewAndMarkupBtn).toBeVisible();
+await viewAndMarkupBtn.click();
+const title = this.page.locator('h5:has-text("View and Markup")');
+await expect(title).toBeVisible();
+await this.page.keyboard.press('Escape');
+
+}
+
+
+
 async enterNoteInUploadFile(){
 this.click3dotButtonOfUploadFile();
 const notesBtn = this.page.getByRole('menuitem', { name: 'Notes' });
@@ -197,6 +210,7 @@ await deleteBtn.click();
     await expect(this.page.locator('text=MaterialItems.csv')).toBeVisible();
     await this.attachButton.click();
     await this.downloadUploadFile();
+    await this.viewandMarkupForUploadFile();
     await this.enterNoteInUploadFile();
     await this.deleteButtonOfUploadFile();
 
