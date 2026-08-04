@@ -180,6 +180,17 @@ class EstimatePage {
     if (!(await checkbox.isChecked())) {
       await checkbox.click();
     }
+
+    // Locate textarea which already has the value
+const existingTextarea = this.page.locator(
+  'textarea[placeholder="Add Scope of Work (max 2000 characters)."]'
+).filter({ hasText: 'This is the additional scope of work text.' });
+
+await existingTextarea.click();
+await existingTextarea.press('Control+A');   // Mac → Meta+A
+await existingTextarea.press('Backspace');
+await this.page.keyboard.type('This is UPDATED additional scope of work text.');
+await targetTextarea.press('Enter');
   }
 
 
