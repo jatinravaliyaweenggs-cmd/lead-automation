@@ -4,17 +4,17 @@
     "elements": [
       {
         "description": "",
-        "id": "estimate-creation;open-cover-sheet-page",
+        "id": "estimate-creation;user-enter-items-detail",
         "keyword": "Scenario",
-        "line": 99,
-        "name": "Open cover sheet page",
+        "line": 16,
+        "name": "user enter items detail",
         "steps": [
           {
             "keyword": "Before",
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 488188200
+              "duration": 450742599
             }
           },
           {
@@ -27,7 +27,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 4064473900
+              "duration": 4030305800
             }
           },
           {
@@ -40,33 +40,33 @@
             },
             "result": {
               "status": "passed",
-              "duration": 4192497100
+              "duration": 4177769899
             }
           },
           {
             "arguments": [],
             "keyword": "When ",
-            "line": 100,
+            "line": 17,
             "name": "User navigates to Estimate page and open estimate",
             "match": {
               "location": "step_definitions\\estimate.step.js:16"
             },
             "result": {
               "status": "passed",
-              "duration": 13309414499
+              "duration": 9551776900
             }
           },
           {
             "arguments": [],
             "keyword": "Then ",
-            "line": 101,
-            "name": "Open coversheet page and apply template",
+            "line": 20,
+            "name": "User import estimate from template",
             "match": {
-              "location": "step_definitions\\estimate.step.js:156"
+              "location": "step_definitions\\estimate.step.js:50"
             },
             "result": {
               "status": "passed",
-              "duration": 14080684300
+              "duration": 21162182399
             }
           },
           {
@@ -74,7 +74,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 385410399
+              "duration": 280198199
             }
           }
         ],

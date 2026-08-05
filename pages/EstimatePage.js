@@ -34,12 +34,12 @@ class EstimatePage {
     this.itemPage = page.getByRole('button', { name: 'Items' });
     this.clickYesButton = page.locator('label:has-text("Yes")');
     this.clickNoButton = page.locator('label:has-text("No")');
-    this.addToEstimateSinDroupdown = page.getByRole('button', { name: 'Add Item to Estimate-sin' });
+    this.addToEstimateSinDroupdown = page.locator('button:has-text("Add Item to Estimate-sin1")');
     this.addMenuItemPage = page.getByRole('menuitem', { name: 'Add New Section' });
     this.sectionName = page.locator('#section_name');
     this.sectionDescription = page.locator('#description');
     this.addButton = page.locator('button[type="submit"]');
-    this.importFromTemplateOption = page.getByRole('menuitem', { name: 'Import from Estimate-sin or Template' });
+    this.importFromTemplateOption = page.getByRole('menuitem', { name: 'Import from Estimate-sin1 or Template' });
     this.ImportItemsfromCsvFilePage = page.getByRole('menuitem', { name: 'Import Items from CSV File' })
     this.importCSVOption = this.page.getByRole('menuitem', { name: 'Import Items from CSV File' });
     this.importButton = page.getByRole('button', { name: 'Import' });
@@ -153,6 +153,7 @@ class EstimatePage {
 
     this.noteTitleInput = page.getByPlaceholder('Enter a title for this note');
     this.noteDescriptionInput = page.getByPlaceholder('Write short description of note or observation here');
+
   }
 
 

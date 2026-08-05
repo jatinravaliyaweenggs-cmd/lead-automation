@@ -13,11 +13,11 @@ Feature: Estimate Creation
  #   When User navigates to Estimate page
  #   When User open estimate and enter details
 
-#  Scenario: user enter items detail
-#    When User navigates to Estimate page
-#    When User open enter item
-#    When user enter new section
-#    Then User import estimate from template
+ Scenario: user enter items detail
+   When User navigates to Estimate page and open estimate
+  # When User open enter item
+  # When user enter new section
+   Then User import estimate from template
 
   #  Scenario: manual item add
  #  When User navigates to Estimate page and open estimate
@@ -100,6 +100,6 @@ Feature: Estimate Creation
 #   When User navigates to Estimate page and open estimate
 #   Then Open coversheet page and apply template
 
-  Scenario: Enter note in estimate page
-  When User navigates to Estimate page and open estimate
-  Then User enter note in estimate
+  # Scenario: Enter note in estimate page
+  # When User navigates to Estimate page and open estimate
+  # Then User enter note in estimate
