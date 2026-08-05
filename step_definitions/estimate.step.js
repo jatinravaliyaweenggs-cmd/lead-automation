@@ -160,3 +160,8 @@ Then('Open coversheet page and apply template', async function () {
 Then('User enter note in estimate', async function () {
   await estimatePage.addNote();
 })
+
+
+Then('User copy the estimate', async function () {
+  await estimatePage.estimateCopyButton();
+})

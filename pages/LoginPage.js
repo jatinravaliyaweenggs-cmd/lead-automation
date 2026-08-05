@@ -58,6 +58,9 @@ class LoginPage {
     await this.enterUsername(username);
     await this.enterPassword(password);
     await this.clickLogin();
+    // Wait for navigation away from sign-in page and dashboard to load
+    await this.page.waitForURL(/^(?!.*sign-in).*$/, { timeout: 30000 });
+    await this.page.waitForLoadState('domcontentloaded', { timeout: 30000 });
   }
 }
 

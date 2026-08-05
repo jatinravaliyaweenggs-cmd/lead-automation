@@ -84,6 +84,7 @@ class EstimatePage {
     this.otherItemsSerchbar = page.getByPlaceholder('Search for Other Items');
 
     this.threeDotButtons = page.locator('button:has(svg[data-icon="ellipsis-vertical"])').nth(1);
+    this.mainThreeDotButtons = page.locator('button:has(svg[data-icon="ellipsis-vertical"])');
     this.updateButton = page.getByRole('button', { name: 'Update' });
     this.entermarkupValue = page.locator('input[name="161"]');
     this.markupradioButton = page.getByText('Apply to all Items (with or without an existing MU)');
@@ -156,8 +157,17 @@ class EstimatePage {
 
   }
 
+  async estimateCopyButton() {
+  // 3-dot click
+  await this.page
+    .locator('button.ant-dropdown-trigger:has(svg[data-icon="ellipsis-vertical"])')
+    .last()
+    .click();
 
-
+  // Make a Copy click
+  await this.page.locator('text=Make a Copy').click();
+  
+}
   async addNote() {
   await this.notesEnterInEstimate();
   await this.noteButton.waitFor({ state: 'visible' });
@@ -530,6 +540,7 @@ class EstimatePage {
 
   }
 
+  
 
 
 
@@ -572,6 +583,9 @@ class EstimatePage {
 
 
   }
+
+
+
 
   async selectDateFromCalendar() {
     const input = this.page.locator('input[name="deadline_date"]');
@@ -916,8 +930,14 @@ class EstimatePage {
   }
 
   async openEstimatePage() {
-    await this.page.waitForLoadState('networkidle', { timeout: 30000 });
-    await this.menuDashboard.waitFor({ state: 'visible', timeout: 30000 });
+    // If already inside an estimate detail page, no need to navigate again
+    if (this.page.url().includes('/manage-estimates/')) {
+      return;
+    }
+    // Wait for the app to fully load after login
+    await this.page.waitForLoadState('domcontentloaded', { timeout: 30000 });
+    await this.page.waitForLoadState('networkidle', { timeout: 15000 }).catch(() => {});
+    await this.menuDashboard.waitFor({ state: 'visible', timeout: 45000 });
     await this.menuDashboard.click();
     await this.estimatesMenu.waitFor({ state: 'visible', timeout: 15000 });
     await this.estimatesMenu.click();
