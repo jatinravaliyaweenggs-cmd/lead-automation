@@ -136,7 +136,7 @@ class EstimatePage {
     this.updatewithrangeMarkupLimit = page.locator('input[name="update_with_range_markup_limit"]');
     this.customerEstimateNumber = page.locator('#custom_estimate_id');
 
-    this.CreateProjectOpportunityLater = page.getByRole('Button',{ name:'Create Project/Opportunity Later'});
+    this.CreateProjectOpportunityLater = page.getByRole('Button', { name: 'Create Project/Opportunity Later' });
 
     this.scopeofWorksPage = page.locator('button:has-text("Scope of Work")');
     this.scopeofWorksEditor = page.locator('div.fr-element[contenteditable="true"]');
@@ -148,30 +148,48 @@ class EstimatePage {
     this.generateFromUploadButton = page.getByRole('button', { name: 'Generate from Upload' });
     this.previewCropButton = page.getByRole('button', { name: 'Preview Crop' });
 
+    this.notesPage = page.getByRole('button', { name: 'Notes' });
+    this.noteButton = this.page.locator('div.ml-auto button:has-text("Note")');
+
+    this.noteTitleInput = page.getByPlaceholder('Enter a title for this note');
+    this.noteDescriptionInput = page.getByPlaceholder('Write short description of note or observation here');
   }
 
 
- async selectCoverSheet() {
-  const dropdown = this.page.locator('[name="cover_sheet_template_id"]');
-  await dropdown.locator('.ant-select-selector').click();
-  const option = this.page.locator('.ant-select-dropdown .ant-select-item-option[title="Cover Sheet"]');
-  await option.click();
-  await this.generateFromUploadButton.click();
-  const fileInput = this.page.locator('input[type="file"]');
+
+  async addNote() {
+  await this.notesEnterInEstimate();
+  await this.noteButton.waitFor({ state: 'visible' });
+  await this.noteButton.click();
+  await this.noteTitleInput.fill('Test Note Title');
+  await this.noteDescriptionInput.fill('This is a estimate note');
+  await this.saveButton.click();
+}
+  
+  async notesEnterInEstimate(){
+    await this.notesPage.click();
+  }
+
+  async selectCoverSheet() {
+    const dropdown = this.page.locator('[name="cover_sheet_template_id"]');
+    await dropdown.locator('.ant-select-selector').click();
+    const option = this.page.locator('.ant-select-dropdown .ant-select-item-option[title="Cover Sheet"]');
+    await option.click();
+    await this.generateFromUploadButton.click();
+    const fileInput = this.page.locator('input[type="file"]');
     await fileInput.waitFor({ state: 'attached' });
     await fileInput.setInputFiles('D:\\Automation\\CreateLead\\testdata\\plumber.jpg');
 
     await this.previewCropButton.first().click();
     await this.saveButton.click();
 
-  
-}
 
-  async openCoversheetPage()
-  {
+  }
+
+  async openCoversheetPage() {
     await this.coverSheetPage.click();
     await this.page.getByRole('switch').click();
-    await this.selectCoverSheet();    
+    await this.selectCoverSheet();
   }
 
   async click3dotButtonOfUploadFile() {
@@ -179,57 +197,57 @@ class EstimatePage {
     await fileCard.scrollIntoViewIfNeeded();
     const threeDotBtn = fileCard.locator('button:has(svg[data-icon="ellipsis-vertical"])');
     await threeDotBtn.click({ force: true });
-}
+  }
 
-async downloadUploadFile(){
+  async downloadUploadFile() {
     this.click3dotButtonOfUploadFile();
     const downloadBtn = this.page.locator('ul[role="menu"] >> text=Download');
     await expect(downloadBtn).toBeVisible();
-    const [ download ] = await Promise.all([
-        this.page.waitForEvent('download'),
-        downloadBtn.click()
+    const [download] = await Promise.all([
+      this.page.waitForEvent('download'),
+      downloadBtn.click()
     ]);
 
     const filePath = await download.path();
     console.log('Downloaded file:', filePath);
-}
+  }
 
-async viewandMarkupForUploadFile(){
-  this.click3dotButtonOfUploadFile();
-  const viewAndMarkupBtn = this.page.getByRole('menuitem', { name: 'View & Markup' });
-await expect(viewAndMarkupBtn).toBeVisible();
-await viewAndMarkupBtn.click();
-const title = this.page.locator('h5:has-text("View and Markup")');
-await expect(title).toBeVisible();
-await this.page.keyboard.press('Escape');
+  async viewandMarkupForUploadFile() {
+    this.click3dotButtonOfUploadFile();
+    const viewAndMarkupBtn = this.page.getByRole('menuitem', { name: 'View & Markup' });
+    await expect(viewAndMarkupBtn).toBeVisible();
+    await viewAndMarkupBtn.click();
+    const title = this.page.locator('h5:has-text("View and Markup")');
+    await expect(title).toBeVisible();
+    await this.page.keyboard.press('Escape');
 
-}
-
-
-
-async enterNoteInUploadFile(){
-this.click3dotButtonOfUploadFile();
-const notesBtn = this.page.getByRole('menuitem', { name: 'Notes' });
-await expect(notesBtn).toBeVisible();
-await notesBtn.click();
-const notesInput = this.page.locator('textarea[name="Notes"]');
-await expect(notesInput).toBeVisible();
-await notesInput.fill('This is my test note');
-await this.saveButton.click();
-
-}
+  }
 
 
-async deleteButtonOfUploadFile(){
-this.click3dotButtonOfUploadFile();
-const deleteBtn = this.page.getByRole('menuitem', { name: 'Delete' });
-await expect(deleteBtn).toBeVisible();
-await deleteBtn.click();
+
+  async enterNoteInUploadFile() {
+    this.click3dotButtonOfUploadFile();
+    const notesBtn = this.page.getByRole('menuitem', { name: 'Notes' });
+    await expect(notesBtn).toBeVisible();
+    await notesBtn.click();
+    const notesInput = this.page.locator('textarea[name="Notes"]');
+    await expect(notesInput).toBeVisible();
+    await notesInput.fill('This is my test note');
+    await this.saveButton.click();
+
+  }
 
 
-}
+  async deleteButtonOfUploadFile() {
+    this.click3dotButtonOfUploadFile();
+    const deleteBtn = this.page.getByRole('menuitem', { name: 'Delete' });
+    await expect(deleteBtn).toBeVisible();
+    await deleteBtn.click();
 
-  async uploadFileInEstimate(){
+
+  }
+
+  async uploadFileInEstimate() {
     await this.uploadFilePage.click();
     await this.page.locator('.App div.cursor-pointer:has(svg[data-icon="plus"])').click();
     const fileInput = this.page.locator('input[type="file"]');
@@ -284,80 +302,80 @@ await deleteBtn.click();
     }
 
     // Locate textarea which already has the value
-const existingTextarea = this.page.locator(
-  'textarea[placeholder="Add Scope of Work (max 2000 characters)."]'
-).filter({ hasText: 'This is the additional scope of work text.' });
+    const existingTextarea = this.page.locator(
+      'textarea[placeholder="Add Scope of Work (max 2000 characters)."]'
+    ).filter({ hasText: 'This is the additional scope of work text.' });
 
-await existingTextarea.click();
-await existingTextarea.press('Control+A');   // Mac → Meta+A
-await existingTextarea.press('Backspace');
-await this.page.keyboard.type('This is UPDATED additional scope of work text.');
-await targetTextarea.press('Enter');
+    await existingTextarea.click();
+    await existingTextarea.press('Control+A');   // Mac → Meta+A
+    await existingTextarea.press('Backspace');
+    await this.page.keyboard.type('This is UPDATED additional scope of work text.');
+    await targetTextarea.press('Enter');
   }
 
 
 
-async swapTabsByDrag() {
+  async swapTabsByDrag() {
 
-  // 🔹 Source (Material)
-  const source = this.page.locator('.ant-collapse-item')
-    .filter({ hasText: 'Material' })
-    .locator('button.cursor-move')
-    .first();   // ✅ FIX
+    // 🔹 Source (Material)
+    const source = this.page.locator('.ant-collapse-item')
+      .filter({ hasText: 'Material' })
+      .locator('button.cursor-move')
+      .first();   // ✅ FIX
 
-  // 🔹 Target (Copy of Material)
-  const target = this.page.locator('.ant-collapse-item')
-    .filter({ hasText: 'Copy of Material' })
-    .locator('button.cursor-move')
-    .first();   // ✅ FIX
+    // 🔹 Target (Copy of Material)
+    const target = this.page.locator('.ant-collapse-item')
+      .filter({ hasText: 'Copy of Material' })
+      .locator('button.cursor-move')
+      .first();   // ✅ FIX
 
-  await source.waitFor({ state: 'visible' });
-  await target.waitFor({ state: 'visible' });
+    await source.waitFor({ state: 'visible' });
+    await target.waitFor({ state: 'visible' });
 
-  await this.page.waitForTimeout(500);
+    await this.page.waitForTimeout(500);
 
-  // 🔥 Drag & Drop
-  await source.dragTo(target);
+    // 🔥 Drag & Drop
+    await source.dragTo(target);
 
-  console.log('Swapped Material with Copy of Material');
-}
+    console.log('Swapped Material with Copy of Material');
+  }
 
-async copyitems(){
+  async copyitems() {
     await this.itemCheckBoxInBid.first().check();
     await this.copyButton.click();
     const itemNameCells = this.page.locator('.ag-center-cols-container .ag-row .ag-cell[col-id="item_name"]');
-}
+  }
 
-  
-async UpdateTheMarkupOfSelectedItemsFrom(){
-  await this.openApplyBulkMarkupPopup();
-  await this.updateWithRange.fill('0');
-  await this.updatewithrangeMarkupLimit.fill('55');
-  await this.applyButton.click();
-  const muColumnCells = this.page.locator('.ag-center-cols-container .ag-row .ag-cell[col-id="markup"]');
-  await expect(muColumnCells).toHaveText(Array(await muColumnCells.count()).fill('55'));
 
-}
+  async UpdateTheMarkupOfSelectedItemsFrom() {
+    await this.openApplyBulkMarkupPopup();
+    await this.updateWithRange.fill('0');
+    await this.updatewithrangeMarkupLimit.fill('55');
+    await this.applyButton.click();
+    const muColumnCells = this.page.locator('.ag-center-cols-container .ag-row .ag-cell[col-id="markup"]');
+    await expect(muColumnCells).toHaveText(Array(await muColumnCells.count()).fill('55'));
 
-  async resetTheMarkupForSelectedItemsToZero(){
+  }
+
+  async resetTheMarkupForSelectedItemsToZero() {
     await this.openApplyBulkMarkupPopup();
     await this.resetmarkupZero.click()
     await this.applyButton.click();
 
     const muColumnCells = this.page.locator('.ag-center-cols-container .ag-row .ag-cell[col-id="markup"]');
     await expect(muColumnCells).toHaveText(Array(await muColumnCells.count()).fill('0'));
-    }
+  }
 
 
 
-  async reduceTheMarkupofSelectedItemsBy(){
+  async reduceTheMarkupofSelectedItemsBy() {
     await this.openApplyBulkMarkupPopup();
     await this.reduceAllmarkup.fill('5');
     await this.applyButton.click();
 
   }
 
-  async reduceTheMarkupOfSelectedItemsBy(){
+  async reduceTheMarkupOfSelectedItemsBy() {
     await this.openApplyBulkMarkupPopup();
     await this.ReduceMarkup.fill('10');
     await this.decreaseConditionalMin.fill('7');
@@ -397,7 +415,7 @@ async UpdateTheMarkupOfSelectedItemsFrom(){
     for (let i = 0; i < count; i++) {
       await expect(muColumnCells.nth(i)).toHaveText('10');
     }
-    
+
   }
 
   async applyBulkMarkUpToSelectedItemWithNoMarkup() {

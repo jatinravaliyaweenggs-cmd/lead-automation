@@ -92,10 +92,14 @@ Feature: Estimate Creation
 #     When User navigates to Estimate page and open estimate
 #     Then User enter scope of detail
 
- # Scenario: Upload file
- #    When User navigates to Estimate page and open estimate
- #    Then Upload files in estimate
+#  Scenario: Upload file
+#     When User navigates to Estimate page and open estimate
+#     Then Upload files in estimate
 
-  Scenario: Open cover sheet page
+#   Scenario: Open cover sheet page
+#   When User navigates to Estimate page and open estimate
+#   Then Open coversheet page and apply template
+
+  Scenario: Enter note in estimate page
   When User navigates to Estimate page and open estimate
-  Then Open coversheet page and apply template
+  Then User enter note in estimate

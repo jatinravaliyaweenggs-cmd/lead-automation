@@ -156,3 +156,7 @@ Then('Upload files in estimate', async function () {
 Then('Open coversheet page and apply template', async function () {
   await estimatePage.openCoversheetPage();
 })
+
+Then('User enter note in estimate', async function () {
+  await estimatePage.addNote();
+})
