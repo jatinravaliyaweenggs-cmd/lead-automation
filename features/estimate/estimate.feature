@@ -9,72 +9,72 @@ Feature: Estimate Creation
 #    When User navigates to Estimate page
 #    And User creates a new Estimate
 
- # Scenario: estimate deails add
- #   When User navigates to Estimate page
- #   When User open estimate and enter details
+#  Scenario: estimate deails add
+#    When User navigates to Estimate page
+#    When User open estimate and enter details
 
- #Scenario: user enter items detail
- #   When User navigates to Estimate page and open estimate
-  # When User open enter item
-  # When user enter new section
-   #Then User import estimate from template
+#  Scenario: user enter items detail
+#    When User navigates to Estimate page and open estimate
+#   When User open enter item
+#   When user enter new section
+#    Then User import estimate from template
 
-  #  Scenario: manual item add
- #  When User navigates to Estimate page and open estimate
- #   When user enter manual item
+#    Scenario: manual item add
+#   When User navigates to Estimate page and open estimate
+#    When user enter manual item
 
-  #  #Scenario: home depot
-   #When User navigates to Estimate page and open estimate
-    #When User select Home Depot item from Home Depot page
-
-
-  #   Scenario: material add 
-  # When User navigates to Estimate page and open estimate
- #  When User enter material from material tab
-
- # Scenario: labor add 
-  # When User navigates to Estimate page and open estimate
-  # When User enter labor from labor tab
-
-  #   Scenario: Equipment add 
-  # When User navigates to Estimate page and open estimate
-  # When User enter equipment from equipment tab
-
- # Scenario: subcontractor add 
-  # When User navigates to Estimate page and open estimate
-  # When User enter subcontractor from subcontractor tab
+#    #Scenario: home depot
+#    When User navigates to Estimate page and open estimate
+#     When User select Home Depot item from Home Depot page
 
 
-  # Scenario: other item add 
-  # When User navigates to Estimate page and open estimate
-  # When User enter other item from other item tab
+#     Scenario: material add 
+#   When User navigates to Estimate page and open estimate
+#   When User enter material from material tab
+
+#  Scenario: labor add 
+#   When User navigates to Estimate page and open estimate
+#   When User enter labor from labor tab
+
+#     Scenario: Equipment add 
+#   When User navigates to Estimate page and open estimate
+#   When User enter equipment from equipment tab
+
+#  Scenario: subcontractor add 
+#   When User navigates to Estimate page and open estimate
+#   When User enter subcontractor from subcontractor tab
 
 
- # Scenario: Update item
- # When User navigates to Estimate page and open estimate
- # When User update View Edit Section Details
+#   Scenario: other item add 
+#   When User navigates to Estimate page and open estimate
+#   When User enter other item from other item tab
 
- # Scenario: add Apply Automatic/Bulk Markup
- # When User navigates to Estimate page and open estimate
- # When User apply Automatic Bulk Markup
 
- # Scenario: add Apply Automatic/Bulk Markup
- # When User navigates to Estimate page and open estimate
- # When User update item details and delete item
- # Then User verify hide markup functionality
+#  Scenario: Update item
+#  When User navigates to Estimate page and open estimate
+#  When User update View Edit Section Details
 
- #   Scenario: Apply remove tax 
- #   When User navigates to Estimate page and open estimate 
- #   Then User apply and remove tax 
+#  Scenario: add Apply Automatic/Bulk Markup
+#  When User navigates to Estimate page and open estimate
+#  When User apply Automatic Bulk Markup
+
+#  Scenario: add Apply Automatic/Bulk Markup
+#  When User navigates to Estimate page and open estimate
+#  When User update item details and delete item
+#  Then User verify hide markup functionality
+
+#    Scenario: Apply remove tax 
+#    When User navigates to Estimate page and open estimate 
+#    Then User apply and remove tax 
 
     
- #Scenario: add Apply Automatic/Bulk Markup
- #   When User navigates to Estimate page and open estimate
- #   When User apply bid package
+#  Scenario: add Apply Automatic/Bulk Markup
+#    When User navigates to Estimate page and open estimate
+#    When User apply bid package
 
- #Scenario: add Apply Automatic/Bulk Markup
- #  When User navigates to Estimate page and open estimate
- #  When Make item optional
+#  Scenario: add Apply Automatic/Bulk Markup
+#   When User navigates to Estimate page and open estimate
+#   When Make item optional
 
 #  Scenario: Apply bulk markup
 #    When User navigates to Estimate page and open estimate
@@ -100,10 +100,14 @@ Feature: Estimate Creation
 #   When User navigates to Estimate page and open estimate
 #   Then Open coversheet page and apply template
 
-  # Scenario: Enter note in estimate page
-  # When User navigates to Estimate page and open estimate
-  # Then User enter note in estimate
+#   Scenario: Enter note in estimate page
+#   When User navigates to Estimate page and open estimate
+#   Then User enter note in estimate
 
- Scenario: Copy estimate page
-   When User navigates to Estimate page and open estimate
-   Then User copy the estimate
+#  Scenario: Copy estimate page
+#    When User navigates to Estimate page and open estimate
+#    Then User copy the estimate
+
+  Scenario: search estimate page
+    When User navigates to Estimate page
+    Then User search the estimate

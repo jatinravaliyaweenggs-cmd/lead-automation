@@ -165,3 +165,7 @@ Then('User enter note in estimate', async function () {
 Then('User copy the estimate', async function () {
   await estimatePage.estimateCopyButton();
 })
+
+Then('User search the estimate', async function name() {
+  await estimatePage.searchProject();
+})

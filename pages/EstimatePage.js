@@ -155,19 +155,23 @@ class EstimatePage {
     this.noteTitleInput = page.getByPlaceholder('Enter a title for this note');
     this.noteDescriptionInput = page.getByPlaceholder('Write short description of note or observation here');
 
+    this.searchInput = page.locator('input[placeholder="Search for Estimates-plu123"]');
+    this.filterBtn = page.locator('button:has(svg[data-icon="filter"])');
+  }
+
+  async searchProject(){
+      await this.searchInput.fill('SJ - Estimate 19');
+      const row = this.page.locator('.ag-center-cols-container .ag-row').filter({ hasText: 'SJ - Estimate 19' });
+      await expect(row).toBeVisible();
+      await expect(this.filterBtn).toBeVisible();
+      await this.filterBtn.click();
   }
 
   async estimateCopyButton() {
-  // 3-dot click
-  await this.page
-    .locator('button.ant-dropdown-trigger:has(svg[data-icon="ellipsis-vertical"])')
-    .last()
-    .click();
-
-  // Make a Copy click
+  await this.page.locator('button.ant-dropdown-trigger:has(svg[data-icon="ellipsis-vertical"])').last().click();
   await this.page.locator('text=Make a Copy').click();
-  
-}
+  }
+
   async addNote() {
   await this.notesEnterInEstimate();
   await this.noteButton.waitFor({ state: 'visible' });
@@ -971,7 +975,8 @@ class EstimatePage {
     await this.customerBtn.click();
     await this.searchCustomer.waitFor({ state: 'visible' });
     await this.selectCustomer('Bhavik Raval');
-    await this.customerEstimateNumber.fill('Est#123')
+    const uniqueNum = `Est#${Date.now().toString().slice(-6)}`;
+    await this.customerEstimateNumber.fill(uniqueNum);
     await this.createEstimateBtn.waitFor({ state: 'visible' });
     await this.createEstimateBtn.click();
     await this.CreateProjectOpportunityLater.click();
