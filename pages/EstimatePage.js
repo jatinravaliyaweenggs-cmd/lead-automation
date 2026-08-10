@@ -164,7 +164,9 @@ class EstimatePage {
     this.createDateRange = page.locator('[name="created_date_range"]');
     this.thisMonthDateFilterButton = page.locator('.ant-picker-presets').locator('div:has-text("This Month")');
 
-      this.logoImg = this.page.locator('img[src*="logo.svg"]');
+    this.logoImg = this.page.locator('img[src*="logo.svg"]');
+
+    this.selectProjectInEstimate = this.page.getByRole('button', {name: 'Click to select a Project/Opportunity-S'});
 
   }
 
@@ -202,23 +204,21 @@ class EstimatePage {
 async verifyRequiredFieldErrors() {
   await this.logoImg.nth(0).click(); // ✅ correct
 
-      await this.menuDashboard.click();
+    await this.menuDashboard.click();
     await this.estimatesMenu.waitFor({ state: 'visible', timeout: 15000 });
     await this.estimatesMenu.click();
     
     await this.newEstimateBtn.click();
-  // 🔹 Use this.page (IMPORTANT)
-  const titleError = this.page.locator('label:has-text("Title")').locator('..')
+    const titleError = this.page.locator('label:has-text("Title")').locator('..')
     .locator('span:has-text("This field is required.")');
 
-  const customerError = this.page.locator('label:has-text("Customer")').locator('..')
+    const customerError = this.page.locator('label:has-text("Customer")').locator('..')
     .locator('span:has-text("This field is required.")');
 
-  const estimateError = this.page.locator('label:has-text("EST.")').locator('..')
+    const estimateError = this.page.locator('label:has-text("EST.")').locator('..')
     .locator('span:has-text("This field is required.")');
 
-  // 🔹 Trigger validation
-  await this.createEstimateBtn.click();
+    await this.createEstimateBtn.click();
 
   // 🔹 Assertions
   await Promise.all([
@@ -227,7 +227,7 @@ async verifyRequiredFieldErrors() {
     expect(estimateError).toBeVisible()
   ]);
 
-  console.log('Testcases 2: Verify mandatory field at estimate time');
+  console.log('Testcases 3: Verify mandatory field at estimate time');
 }
 
   async createEstimate() {
@@ -237,19 +237,18 @@ async verifyRequiredFieldErrors() {
     await this.searchCustomer.fill('Bhavik Raval');
     await this.selectCustomer('Bhavik Raval');
 
+    await this.selectProjectInEstimate.click();
+    await this.page.locator('.ant-drawer, .ant-select-dropdown').nth(0).waitFor();
+    const projectName = 'Residential Villa – Electrical & Plumbing'; 
+    const project = this.page.locator('.project').filter({ hasText: projectName }).first();
+    await project.click();
+    console.log('Testcase 2: customers accociate project selected');
+
     const uniqueNum = `Est#${Date.now().toString().slice(-6)}`;
     await this.customerEstimateNumber.fill(uniqueNum);
     await this.createEstimateBtn.click();
 
-    if (await this.CreateProjectOpportunityLater.isVisible()) {
-      await this.CreateProjectOpportunityLater.click();
-    }
-
-    if (await this.createEstimateBtn.isVisible()) {
-      await this.createEstimateBtn.click();
-    }
     console.log('Testcase 1: Estimate Created Successfully!!!!!!!!!!!!!!!');
-    await this.page.waitForTimeout(3000);
   }
 
   async estimateCopyButton() {

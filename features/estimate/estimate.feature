@@ -8,7 +8,11 @@ Feature: Estimate Creation
  Scenario: Create a new Estimate
    When User navigates to Estimate page
    And User creates a new Estimate
-   #And User verifies mandatory fields for create estimate
+   And User verifies mandatory fields for create estimate
+
+     # Scenario: search estimate page
+  #   When User navigates to Estimate page
+  #   Then User search the estimate
 
 #  Scenario: estimate deails add
 #    When User navigates to Estimate page
@@ -109,6 +113,3 @@ Feature: Estimate Creation
 #    When User navigates to Estimate page and open estimate
 #    Then User copy the estimate
 
-  # Scenario: search estimate page
-  #   When User navigates to Estimate page
-  #   Then User search the estimate
