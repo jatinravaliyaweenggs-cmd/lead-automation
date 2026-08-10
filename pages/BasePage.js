@@ -4,6 +4,7 @@ class BasePage {
 
     // ✅ Only Save Button
     this.saveButton = page.getByRole('button', { name: 'Save' });
+this.logo = this.page.locator('a.logo[href="/"]');
   }
 
   /**
@@ -13,6 +14,11 @@ class BasePage {
     await this.saveButton.waitFor({ state: 'visible', timeout: 10000 });
     await this.saveButton.click();
   }
+
+  async clickLogo() {
+  await this.logo.click();
+}
+
 }
 
 module.exports = BasePage;

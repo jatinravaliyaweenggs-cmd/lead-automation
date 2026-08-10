@@ -1,4 +1,6 @@
 const { expect } = require('@playwright/test');
+const BasePage = require('./BasePage');
+
 
 class EstimatePage {
   constructor(page) {
@@ -161,54 +163,110 @@ class EstimatePage {
 
     this.createDateRange = page.locator('[name="created_date_range"]');
     this.thisMonthDateFilterButton = page.locator('.ant-picker-presets').locator('div:has-text("This Month")');
+
+      this.logoImg = this.page.locator('img[src*="logo.svg"]');
+
   }
 
   async searchProject() {
-  await this.searchInput.fill('This is a testing title');
-  const row = this.page.locator('.ag-center-cols-container .ag-row').filter({ hasText: 'This is a testing title' }).first();
-  await expect(row).toBeVisible();
-  await this.filterBtn.click();
-  const CustomerSearchBox = this.page.locator('li:nth-child(2) > .w-full.md\\:min-w-\\[300px\\] > .common-filter > .flex.items-center.justify-between');
-  await CustomerSearchBox.click();
-  await this.selectCustomer('Bhavik Raval');
-  await this.saveButton.click();
-  await this.projecTypeFilter.click();
-  await this.projecTypeFilter.type('Residential');
-  await this.page.locator('.ant-select-item-option', {hasText: 'Residential'}).click();
-  await this.projecTypeFilter.press('Escape');
+    await this.searchInput.fill('This is a testing title');
+    const row = this.page.locator('.ag-center-cols-container .ag-row').filter({ hasText: 'This is a testing title' }).first();
+    await expect(row).toBeVisible();
+    await this.filterBtn.click();
+    const CustomerSearchBox = this.page.locator('li:nth-child(2) > .w-full.md\\:min-w-\\[300px\\] > .common-filter > .flex.items-center.justify-between');
+    await CustomerSearchBox.click();
+    await this.selectCustomer('Bhavik Raval');
+    await this.saveButton.click();
+    await this.projecTypeFilter.click();
+    await this.projecTypeFilter.type('Residential');
+    await this.page.locator('.ant-select-item-option', { hasText: 'Residential' }).click();
+    await this.projecTypeFilter.press('Escape');
 
-  await this.page.locator('div[name="approval_type"]').click();
-  await this.page.locator('.ant-select-item-option[title="Estimating-ss"]').click();
+    await this.page.locator('div[name="approval_type"]').click();
+    await this.page.locator('.ant-select-item-option[title="Estimating-ss"]').click();
 
-  await this.projecTypeFilter.press('Escape')
-  await this.createDateRange.last().click();
-  await this.thisMonthDateFilterButton.click();
-  
-// Visible overlay div par click karo (actual clickable layer)
-await this.page.locator('.z-10.w-full.top-0.h-7.absolute').nth(1).click();
-await this.thisMonthDateFilterButton.nth(1).click();
+    await this.projecTypeFilter.press('Escape')
+    await this.createDateRange.last().click();
+    await this.thisMonthDateFilterButton.click();
 
-  await this.applyButton.click();
- // await expect(row).toBeVisible();
+    // Visible overlay div par click karo (actual clickable layer)
+    await this.page.locator('.z-10.w-full.top-0.h-7.absolute').nth(1).click();
+    await this.thisMonthDateFilterButton.nth(1).click();
+
+    await this.applyButton.click();
+    // await expect(row).toBeVisible();
 
 
+  }
+
+async verifyRequiredFieldErrors() {
+  await this.logoImg.nth(0).click(); // ✅ correct
+
+      await this.menuDashboard.click();
+    await this.estimatesMenu.waitFor({ state: 'visible', timeout: 15000 });
+    await this.estimatesMenu.click();
+    
+    await this.newEstimateBtn.click();
+  // 🔹 Use this.page (IMPORTANT)
+  const titleError = this.page.locator('label:has-text("Title")').locator('..')
+    .locator('span:has-text("This field is required.")');
+
+  const customerError = this.page.locator('label:has-text("Customer")').locator('..')
+    .locator('span:has-text("This field is required.")');
+
+  const estimateError = this.page.locator('label:has-text("EST.")').locator('..')
+    .locator('span:has-text("This field is required.")');
+
+  // 🔹 Trigger validation
+  await this.createEstimateBtn.click();
+
+  // 🔹 Assertions
+  await Promise.all([
+    expect(titleError).toBeVisible(),
+    expect(customerError).toBeVisible(),
+    expect(estimateError).toBeVisible()
+  ]);
+
+  console.log('Testcases 2: Verify mandatory field at estimate time');
 }
 
+  async createEstimate() {
+    await this.newEstimateBtn.click();
+    await this.titleInput.fill('This is a testing title');
+    await this.customerBtn.click();
+    await this.searchCustomer.fill('Bhavik Raval');
+    await this.selectCustomer('Bhavik Raval');
+
+    const uniqueNum = `Est#${Date.now().toString().slice(-6)}`;
+    await this.customerEstimateNumber.fill(uniqueNum);
+    await this.createEstimateBtn.click();
+
+    if (await this.CreateProjectOpportunityLater.isVisible()) {
+      await this.CreateProjectOpportunityLater.click();
+    }
+
+    if (await this.createEstimateBtn.isVisible()) {
+      await this.createEstimateBtn.click();
+    }
+    console.log('Testcase 1: Estimate Created Successfully!!!!!!!!!!!!!!!');
+    await this.page.waitForTimeout(3000);
+  }
+
   async estimateCopyButton() {
-  await this.page.locator('button.ant-dropdown-trigger:has(svg[data-icon="ellipsis-vertical"])').last().click();
-  await this.page.locator('text=Make a Copy').click();
+    await this.page.locator('button.ant-dropdown-trigger:has(svg[data-icon="ellipsis-vertical"])').last().click();
+    await this.page.locator('text=Make a Copy').click();
   }
 
   async addNote() {
-  await this.notesEnterInEstimate();
-  await this.noteButton.waitFor({ state: 'visible' });
-  await this.noteButton.click();
-  await this.noteTitleInput.fill('Test Note Title');
-  await this.noteDescriptionInput.fill('This is a estimate note');
-  await this.saveButton.click();
-}
-  
-  async notesEnterInEstimate(){
+    await this.notesEnterInEstimate();
+    await this.noteButton.waitFor({ state: 'visible' });
+    await this.noteButton.click();
+    await this.noteTitleInput.fill('Test Note Title');
+    await this.noteDescriptionInput.fill('This is a estimate note');
+    await this.saveButton.click();
+  }
+
+  async notesEnterInEstimate() {
     await this.notesPage.click();
   }
 
@@ -571,7 +629,7 @@ await this.thisMonthDateFilterButton.nth(1).click();
 
   }
 
-  
+
 
 
 
@@ -967,7 +1025,7 @@ await this.thisMonthDateFilterButton.nth(1).click();
     }
     // Wait for the app to fully load after login
     await this.page.waitForLoadState('domcontentloaded', { timeout: 30000 });
-    await this.page.waitForLoadState('networkidle', { timeout: 15000 }).catch(() => {});
+    await this.page.waitForLoadState('networkidle', { timeout: 15000 }).catch(() => { });
     await this.menuDashboard.waitFor({ state: 'visible', timeout: 45000 });
     await this.menuDashboard.click();
     await this.estimatesMenu.waitFor({ state: 'visible', timeout: 15000 });
@@ -994,27 +1052,7 @@ await this.thisMonthDateFilterButton.nth(1).click();
     await this.page.waitForTimeout(500);
   }
 
- async createEstimate() {
-  await this.newEstimateBtn.click();
-  await this.titleInput.fill('This is a testing title');
-  await this.customerBtn.click();
-  await this.searchCustomer.fill('Bhavik Raval');
-  await this.selectCustomer('Bhavik Raval');
 
-  const uniqueNum = `Est#${Date.now().toString().slice(-6)}`;
-  await this.customerEstimateNumber.fill(uniqueNum);
-  await this.createEstimateBtn.click();
-
-  if (await this.CreateProjectOpportunityLater.isVisible()) {
-    await this.CreateProjectOpportunityLater.click();
-  }
-
-  if (await this.createEstimateBtn.isVisible()) {
-    await this.createEstimateBtn.click();
-  }
-  console.log('Testcase 1: Estimate Created Successfully!!!!!!!!!!!!!!!');
-  await this.page.waitForTimeout(3000);
-}
 
 }
 

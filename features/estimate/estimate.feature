@@ -8,6 +8,7 @@ Feature: Estimate Creation
  Scenario: Create a new Estimate
    When User navigates to Estimate page
    And User creates a new Estimate
+   #And User verifies mandatory fields for create estimate
 
 #  Scenario: estimate deails add
 #    When User navigates to Estimate page
