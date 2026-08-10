@@ -179,8 +179,6 @@ class EstimatePage {
 
   await this.page.locator('div[name="approval_type"]').click();
   await this.page.locator('.ant-select-item-option[title="Estimating-ss"]').click();
-  const statusFilter = this.page.locator('.ant-select-selection-search-input:visible').last();
-  await this.page.locator('.ant-select-dropdown').last().locator('.ant-select-item-option[title="Estimating-ss"]').click();
 
   await this.projecTypeFilter.press('Escape')
   await this.createDateRange.last().click();
