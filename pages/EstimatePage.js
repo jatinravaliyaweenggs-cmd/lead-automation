@@ -165,14 +165,20 @@ class EstimatePage {
   const row = this.page.locator('.ag-center-cols-container .ag-row').filter({ hasText: 'This is a testing title' }).first();
   await expect(row).toBeVisible();
   await this.filterBtn.click();
-const CustomerSearchBox = this.page.locator(
-  'li:nth-child(2) > .w-full.md\\:min-w-\\[300px\\] > .common-filter > .flex.items-center.justify-between'
-);  await CustomerSearchBox.click();
+  const CustomerSearchBox = this.page.locator('li:nth-child(2) > .w-full.md\\:min-w-\\[300px\\] > .common-filter > .flex.items-center.justify-between');
+  await CustomerSearchBox.click();
   await this.selectCustomer('Bhavik Raval');
   await this.saveButton.click();
   await this.projecTypeFilter.click();
   await this.projecTypeFilter.type('Residential');
   await this.page.locator('.ant-select-item-option', {hasText: 'Residential'}).click();
+  await this.projecTypeFilter.press('Escape')
+
+  await this.page.locator('div[name="approval_type"]').click();
+  await this.page.locator('.ant-select-item-option[title="Estimating-ss"]').click();
+  const statusFilter = this.page.locator('.ant-select-selection-search-input:visible').last();
+await this.page.locator('.ant-select-dropdown').last().locator('.ant-select-item-option[title="Estimating-ss"]').click();
+
   await this.applyButton.click();
   await expect(row).toBeVisible();
 }
