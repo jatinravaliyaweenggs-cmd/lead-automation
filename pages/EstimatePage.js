@@ -158,6 +158,8 @@ class EstimatePage {
     this.searchInput = page.locator('input[placeholder="Search for Estimates-plu123"]');
     this.filterBtn = page.locator('button:has(svg[data-icon="filter"])');
     this.projecTypeFilter = page.locator('div[name="estimate_project_type"]');
+
+    this.createDateRange = page.locator('[name="created_date_range"]');
   }
 
   async searchProject() {
@@ -172,15 +174,23 @@ class EstimatePage {
   await this.projecTypeFilter.click();
   await this.projecTypeFilter.type('Residential');
   await this.page.locator('.ant-select-item-option', {hasText: 'Residential'}).click();
-  await this.projecTypeFilter.press('Escape')
+  await this.projecTypeFilter.press('Escape');
 
   await this.page.locator('div[name="approval_type"]').click();
   await this.page.locator('.ant-select-item-option[title="Estimating-ss"]').click();
   const statusFilter = this.page.locator('.ant-select-selection-search-input:visible').last();
-await this.page.locator('.ant-select-dropdown').last().locator('.ant-select-item-option[title="Estimating-ss"]').click();
+  await this.page.locator('.ant-select-dropdown').last().locator('.ant-select-item-option[title="Estimating-ss"]').click();
 
+   await this.projecTypeFilter.press('Escape')
+    await this.createDateRange.last().click();
+    await this.page
+  .locator('.ant-picker-presets')
+  .locator('div:has-text("This Month")')
+  .click();
   await this.applyButton.click();
   await expect(row).toBeVisible();
+
+
 }
 
   async estimateCopyButton() {
