@@ -1,4 +1,4 @@
-const { When, Then } = require('@cucumber/cucumber');
+const { Given, When, Then } = require('@cucumber/cucumber');
 const { expect } = require('@playwright/test');
 const EstimatePage = require('../pages/EstimatePage');
 
@@ -171,4 +171,9 @@ Then('User copy the estimate', async function () {
 
 Then('User search the estimate', async function name() {
   await estimatePage.searchProject();
+})
+
+
+Then('User open module setting page and apply customized starting number setting', async function(){
+  await estimatePage.customizedStartingNumber();
 })

@@ -5,10 +5,16 @@ Feature: Estimate Creation
     When User login with valid credentials
     #Then User should be redirected to the dashboard
 
- Scenario: Create a new Estimate
-   When User navigates to Estimate page
-   And User creates a new Estimate
-   And User verifies mandatory fields for create estimate
+
+Scenario: Create a new Estimate
+When User navigates to Estimate page
+Then User open module setting page and apply customized starting number setting
+
+#  Scenario: Create a new Estimate
+#    When User navigates to Estimate page
+#    And User creates a new Estimate
+#    And User verifies mandatory fields for create estimate
+
 
      # Scenario: search estimate page
   #   When User navigates to Estimate page

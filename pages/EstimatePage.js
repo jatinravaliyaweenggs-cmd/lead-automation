@@ -168,7 +168,22 @@ class EstimatePage {
 
     this.selectProjectInEstimate = this.page.getByRole('button', {name: 'Click to select a Project/Opportunity-S'});
 
+    this.moduleSettings = page.locator('#moduleSettings');
+    this.autoUpdateEstimateNumber = page.getByText('Auto/Custom');
+
   }
+
+async customizedStartingNumber(){
+  await this.moduleSettings.click();
+  await this.moduleSettings.click();
+
+  await this.page.waitForSelector('label:has-text("Auto/Custom")', { state: 'visible' });
+
+  await this.page.locator('label:has-text("Auto/Custom")').click({ force: true });
+  await this.saveButton.click();
+await this.page.locator('button.close-icon').nth(1).click();
+}
+
 
   async searchProject() {
     await this.searchInput.fill('This is a testing title');
