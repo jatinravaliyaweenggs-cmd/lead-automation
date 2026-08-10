@@ -160,11 +160,18 @@ class EstimatePage {
   }
 
   async searchProject(){
-      await this.searchInput.fill('SJ - Estimate 19');
-      const row = this.page.locator('.ag-center-cols-container .ag-row').filter({ hasText: 'SJ - Estimate 19' });
+      await this.searchInput.fill('This is a testing title');
+      const row = this.page.locator('.ag-center-cols-container .ag-row').filter({ hasText: 'This is a testing title' }).first();
       await expect(row).toBeVisible();
       await expect(this.filterBtn).toBeVisible();
       await this.filterBtn.click();
+      const CustomerSearchBox = this.page.locator('li:nth-child(2) > .w-full.md\\:min-w-\\[300px\\] > .common-filter > .flex.items-center.justify-between')
+      await CustomerSearchBox.click();
+      await this.selectCustomer('Bhavik Raval');
+      await expect(row).toBeVisible();
+
+
+
   }
 
   async estimateCopyButton() {
