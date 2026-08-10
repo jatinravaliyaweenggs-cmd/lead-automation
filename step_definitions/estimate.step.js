@@ -11,7 +11,6 @@ When('User navigates to Estimate page', async function () {
 
 When('User creates a new Estimate', async function () {
   await estimatePage.createEstimate();
-  //await estimatePage.verifyRequiredFieldErrors();
 });
 
 Then('User verifies mandatory fields for create estimate', async function (){
