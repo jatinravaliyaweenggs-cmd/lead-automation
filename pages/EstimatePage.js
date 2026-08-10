@@ -162,32 +162,17 @@ class EstimatePage {
 
   async searchProject() {
   await this.searchInput.fill('This is a testing title');
-
-  const row = this.page.locator('.ag-center-cols-container .ag-row')
-    .filter({ hasText: 'This is a testing title' })
-    .first();
-
+  const row = this.page.locator('.ag-center-cols-container .ag-row').filter({ hasText: 'This is a testing title' }).first();
   await expect(row).toBeVisible();
-
   await this.filterBtn.click();
-
-  const CustomerSearchBox = this.page.locator(
-    'li:nth-child(2) .common-filter'
-  );
-  await CustomerSearchBox.click();
-
+const CustomerSearchBox = this.page.locator(
+  'li:nth-child(2) > .w-full.md\\:min-w-\\[300px\\] > .common-filter > .flex.items-center.justify-between'
+);  await CustomerSearchBox.click();
   await this.selectCustomer('Bhavik Raval');
   await this.saveButton.click();
-
-  // ✅ Project Type Filter
   await this.projecTypeFilter.click();
-
   await this.projecTypeFilter.type('Residential');
-
-  await this.page.locator('.ant-select-item-option', {
-    hasText: 'Residential'
-}).click();
-
+  await this.page.locator('.ant-select-item-option', {hasText: 'Residential'}).click();
   await this.applyButton.click();
   await expect(row).toBeVisible();
 }
