@@ -4,17 +4,17 @@
     "elements": [
       {
         "description": "",
-        "id": "estimate-creation;user-enter-items-detail",
+        "id": "estimate-creation;create-a-new-estimate",
         "keyword": "Scenario",
-        "line": 16,
-        "name": "user enter items detail",
+        "line": 8,
+        "name": "Create a new Estimate",
         "steps": [
           {
             "keyword": "Before",
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 450742599
+              "duration": 460430700
             }
           },
           {
@@ -27,7 +27,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 4030305800
+              "duration": 3317167900
             }
           },
           {
@@ -40,33 +40,33 @@
             },
             "result": {
               "status": "passed",
-              "duration": 4177769899
+              "duration": 7012420799
             }
           },
           {
             "arguments": [],
             "keyword": "When ",
-            "line": 17,
-            "name": "User navigates to Estimate page and open estimate",
+            "line": 9,
+            "name": "User navigates to Estimate page",
             "match": {
-              "location": "step_definitions\\estimate.step.js:16"
+              "location": "step_definitions\\estimate.step.js:7"
             },
             "result": {
               "status": "passed",
-              "duration": 9551776900
+              "duration": 6374999099
             }
           },
           {
             "arguments": [],
-            "keyword": "Then ",
-            "line": 20,
-            "name": "User import estimate from template",
+            "keyword": "And ",
+            "line": 10,
+            "name": "User creates a new Estimate",
             "match": {
-              "location": "step_definitions\\estimate.step.js:50"
+              "location": "step_definitions\\estimate.step.js:12"
             },
             "result": {
               "status": "passed",
-              "duration": 21162182399
+              "duration": 13662634799
             }
           },
           {
@@ -74,7 +74,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 280198199
+              "duration": 379232000
             }
           }
         ],

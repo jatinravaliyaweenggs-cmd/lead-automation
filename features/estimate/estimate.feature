@@ -5,9 +5,9 @@ Feature: Estimate Creation
     When User login with valid credentials
     #Then User should be redirected to the dashboard
 
-#  Scenario: Create a new Estimate
-#    When User navigates to Estimate page
-#    And User creates a new Estimate
+ Scenario: Create a new Estimate
+   When User navigates to Estimate page
+   And User creates a new Estimate
 
 #  Scenario: estimate deails add
 #    When User navigates to Estimate page
@@ -108,6 +108,6 @@ Feature: Estimate Creation
 #    When User navigates to Estimate page and open estimate
 #    Then User copy the estimate
 
-  Scenario: search estimate page
-    When User navigates to Estimate page
-    Then User search the estimate
+  # Scenario: search estimate page
+  #   When User navigates to Estimate page
+  #   Then User search the estimate

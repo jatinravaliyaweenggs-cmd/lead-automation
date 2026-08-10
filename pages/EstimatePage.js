@@ -12,7 +12,7 @@ class EstimatePage {
     this.titleInput = page.getByRole('textbox', { name: 'Short title for the Estimate-' });
     this.customerBtn = page.getByRole('button', { name: 'Click to select a Customer' });
     this.searchCustomer = page.getByRole('searchbox', { name: 'Search for Customer' });
-    this.createEstimateBtn = page.getByRole('button', { name: 'Create Estimate-sin' });
+    this.createEstimateBtn = page.getByRole('button', { name: 'Create Estimate-sin1' });
     this.NewCreateEstimateRow = page.locator('table tbody tr');
 
     this.detailMenuPage = page.getByRole('button', { name: 'Details' });
@@ -1002,6 +1002,7 @@ await this.thisMonthDateFilterButton.nth(1).click();
     await this.customerBtn.click();
     await this.searchCustomer.waitFor({ state: 'visible' });
     await this.selectCustomer('Bhavik Raval');
+  
     const uniqueNum = `Est#${Date.now().toString().slice(-6)}`;
     await this.customerEstimateNumber.fill(uniqueNum);
     await this.createEstimateBtn.waitFor({ state: 'visible' });
@@ -1011,9 +1012,6 @@ await this.thisMonthDateFilterButton.nth(1).click();
 
   }
 
-  async verifyEstimateCreated() {
-    await this.page.waitForLoadState('networkidle');
-  }
 }
 
 module.exports = EstimatePage;
