@@ -160,6 +160,7 @@ class EstimatePage {
     this.projecTypeFilter = page.locator('div[name="estimate_project_type"]');
 
     this.createDateRange = page.locator('[name="created_date_range"]');
+    this.thisMonthDateFilterButton = page.locator('.ant-picker-presets').locator('div:has-text("This Month")');
   }
 
   async searchProject() {
@@ -181,12 +182,9 @@ class EstimatePage {
   const statusFilter = this.page.locator('.ant-select-selection-search-input:visible').last();
   await this.page.locator('.ant-select-dropdown').last().locator('.ant-select-item-option[title="Estimating-ss"]').click();
 
-   await this.projecTypeFilter.press('Escape')
-    await this.createDateRange.last().click();
-    await this.page
-  .locator('.ant-picker-presets')
-  .locator('div:has-text("This Month")')
-  .click();
+  await this.projecTypeFilter.press('Escape')
+  await this.createDateRange.last().click();
+  await this.thisMonthDateFilterButton.click();
   await this.applyButton.click();
   await expect(row).toBeVisible();
 
