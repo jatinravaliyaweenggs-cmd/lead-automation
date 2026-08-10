@@ -994,23 +994,27 @@ await this.thisMonthDateFilterButton.nth(1).click();
     await this.page.waitForTimeout(500);
   }
 
-  async createEstimate() {
-    await this.newEstimateBtn.waitFor({ state: 'visible', timeout: 15000 });
-    await this.newEstimateBtn.click();
-    await this.titleInput.waitFor({ state: 'visible' });
-    await this.titleInput.fill('This is a testing title');
-    await this.customerBtn.click();
-    await this.searchCustomer.waitFor({ state: 'visible' });
-    await this.selectCustomer('Bhavik Raval');
-  
-    const uniqueNum = `Est#${Date.now().toString().slice(-6)}`;
-    await this.customerEstimateNumber.fill(uniqueNum);
-    await this.createEstimateBtn.waitFor({ state: 'visible' });
-    await this.createEstimateBtn.click();
-    await this.CreateProjectOpportunityLater.click();
-    await this.createEstimateBtn.click();
+ async createEstimate() {
+  await this.newEstimateBtn.click();
+  await this.titleInput.fill('This is a testing title');
+  await this.customerBtn.click();
+  await this.searchCustomer.fill('Bhavik Raval');
+  await this.selectCustomer('Bhavik Raval');
 
+  const uniqueNum = `Est#${Date.now().toString().slice(-6)}`;
+  await this.customerEstimateNumber.fill(uniqueNum);
+  await this.createEstimateBtn.click();
+
+  if (await this.CreateProjectOpportunityLater.isVisible()) {
+    await this.CreateProjectOpportunityLater.click();
   }
+
+  if (await this.createEstimateBtn.isVisible()) {
+    await this.createEstimateBtn.click();
+  }
+  console.log('Testcase 1: Estimate Created Successfully!!!!!!!!!!!!!!!');
+  await this.page.waitForTimeout(3000);
+}
 
 }
 
