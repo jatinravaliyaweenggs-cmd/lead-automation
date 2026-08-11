@@ -7,7 +7,7 @@ let estimatePage;
 When('User create new project in estimate', async function () {
   estimatePage = new EstimatePage(this.page);
 
-  await estimatePage.createNewProjectInEstimate();
+  await estimatePage.createEstimateUsingExistingProject();
 
 });
 

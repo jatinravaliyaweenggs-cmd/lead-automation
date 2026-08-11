@@ -182,7 +182,7 @@ class EstimatePage extends BasePage {
     await this.selectProjectOpportunity(projectName, 'input[placeholder="Search Project/Opportunity-S"]');
   }
 
-  async createNewProjectInEstimate() { 
+  async createEstimateUsingExistingProject() { 
       await this.newEstimateBtn.click();
       await this.clickProjectOpportunitysTextbox();
       await this.selectProjectOpportunityS();
