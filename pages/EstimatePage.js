@@ -178,7 +178,6 @@ class EstimatePage extends BasePage {
 
   }
 
-
   async selectProjectOpportunityS(projectName = 'Residential Villa – Electrical & Plumbing') {
     await this.selectProjectOpportunity(projectName, 'input[placeholder="Search Project/Opportunity-S"]');
   }
@@ -187,8 +186,9 @@ class EstimatePage extends BasePage {
       await this.newEstimateBtn.click();
       await this.clickProjectOpportunitysTextbox();
       await this.selectProjectOpportunityS();
-
-
+      await this.titleInput.fill('This is a testing title');
+      await this.randomEstimateNumbergenerate();
+      await this.createEstimateBtn.click();
 }
 
 

@@ -16,10 +16,12 @@ this.projectOpportunityBtn = this.page.locator('button[name="project_id"]');
 
   }
 
-  
-  /**
-   * Click Save button (common for all pages)
-   */
+
+    async randomEstimateNumbergenerate(){
+    const uniqueNum = `Est#${Date.now().toString().slice(-6)}`;
+    await this.customerEstimateNumber.fill(uniqueNum);
+  }
+
   async clickSave() {
     await this.saveButton.waitFor({ state: 'visible', timeout: 10000 });
     await this.saveButton.click();
