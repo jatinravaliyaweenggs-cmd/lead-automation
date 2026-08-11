@@ -25,13 +25,12 @@ class BasePage {
   }
 
 
-  async projectNameInputFill() {
-    this.projectNameInput =
-      this.page.locator('input[name="project_name"][placeholder="Type a Project name"]');
-    await this.projectNameInput.waitFor({ state: 'visible' });
-    await this.projectNameInput.click();
-    await this.projectNameInput.fill('Residential Villa – Electrical & Plumbing');
-  }
+async projectNameInputFill() {
+  this.projectNameInput = this.page.getByRole('textbox', { name: 'Type a Project name' });
+  await this.projectNameInput.waitFor({ state: 'visible' });
+  await this.projectNameInput.click();
+  await this.projectNameInput.fill('Residential Villa – Electrical & Plumbing');
+}
 
 
 
