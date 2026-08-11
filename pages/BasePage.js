@@ -11,6 +11,7 @@ class BasePage {
     this.projectPlusButton = this.page.getByRole('menuitem', { name: 'Project' });
 
     this.projectNumberInput = this.page.locator('input[placeholder="Type a Project number"]');
+    this.yesBtn =  this.page.getByRole('button', { name: 'Yes', exact: true });
   }
 
   async estimatePageOpenAfterCreate() {
@@ -25,12 +26,14 @@ class BasePage {
   }
 
 
-async projectNameInputFill() {
-  this.projectNameInput = this.page.getByRole('textbox', { name: 'Type a Project name' });
-  await this.projectNameInput.waitFor({ state: 'visible' });
-  await this.projectNameInput.click();
-  await this.projectNameInput.fill('Residential Villa – Electrical & Plumbing');
-}
+  async projectNameInputFill() {
+    this.projectNameInput = this.page.locator('input[name="project_name"]');
+
+    await this.projectNameInput.waitFor({ state: 'visible', timeout: 10000 });
+    await this.projectNameInput.click({ force: true });
+    await this.projectNameInput.clear();
+    await this.projectNameInput.type('Automation Project', { delay: 50 });
+  }
 
 
 

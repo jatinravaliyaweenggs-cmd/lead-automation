@@ -167,29 +167,60 @@ class EstimatePage extends BasePage {
 
     this.logoImg = this.page.locator('img[src*="logo.svg"]');
 
-    this.selectProjectInEstimate = this.page.getByRole('button', {name: 'Click to select a Project/Opportunity-S'});
+    this.selectProjectInEstimate = this.page.getByRole('button', { name: 'Click to select a Project/Opportunity-S' });
     this.searchBarSelectaProject = this.page.locator('input[placeholder="Search Project/Opportunity-S"]')
-
-
-
 
     this.moduleSettings = page.locator('#moduleSettings');
     this.autoUpdateEstimateNumber = page.getByText('Auto/Custom');
-    this.CreateProjectBtn = page.getByRole('button', { name: 'Create Project'});
+    this.CreateProjectBtn = page.getByRole('button', { name: 'Create Project' });
 
+    this.projectTypeDropdown = page.locator('div.ant-select[name="project_type"]');
 
   }
 
   async EstimaterCreateUsingNewProject() {
-    await this.newEstimateBtn.click();
-    await this.clickProjectOpportunitysTextbox();
-    await this.EstimateCreateFromNewProject();
+    //await this.newEstimateBtn.click();
+    //await this.clickProjectOpportunitysTextbox();
+
+
     await this.projectNameInputFill();
-    await this.selectProjectType();
-    await this.CreateProjectBtn.click();
+    await this.projectTypeDropdown.click();
+    await this.page.keyboard.type('Residential');
+    await this.page.keyboard.press('Enter');
+
+    const duplicateNameAlert = this.page.locator('.ant-notification-notice-description');
+    await expect(duplicateNameAlert).toBeVisible({ timeout: 5000 });
+    await expect(duplicateNameAlert).toHaveText('This name already exists. Please use a different name.');
+
+    const randomProjectType = `PType ${Date.now()}`;
+
+    await this.page.keyboard.type(randomProjectType);
+    await this.page.keyboard.press('Enter');
+    await this.yesBtn.click();
+
+    const selectCreateCustomerOrLead = this.page.getByRole('button', {
+      name: 'Select/Create Customer or Lead',
+      exact: true
+    });
+
+    await selectCreateCustomerOrLead.click();
+
+    await this.searchCustomer.fill('Bhavik Raval');
+    await this.selectCustomer('Bhavik Raval');
+
+    await this.projectTypeDropdown.click();
+    await this.page.keyboard.type('Residential');
+    await this.page.keyboard.press('Enter');
+
+
+    const CreateProjectBtn = this.page.getByRole('button', { name: 'Create Project', exact: true });
+    await CreateProjectBtn.click();
+
   }
 
-  async userCreateNewProjectForEstimate(){
+
+
+  async userCreateNewProjectForEstimate() {
     await this.estimatePageOpenAfterCreate();
     await this.estimatesMenu.click();
     await this.newEstimateBtn.click();
@@ -202,26 +233,26 @@ class EstimatePage extends BasePage {
     await this.selectProjectOpportunity(projectName, 'input[placeholder="Search Project/Opportunity-S"]');
   }
 
-  async createEstimateUsingExistingProject() { 
-      await this.newEstimateBtn.click();
-      await this.clickProjectOpportunitysTextbox();
-      await this.selectProjectOpportunityS();
-      await this.titleInput.fill('This is a testing title');
-      await this.randomEstimateNumbergenerate();
-      await this.createEstimateBtn.nth(0).click();
-}
+  async createEstimateUsingExistingProject() {
+    await this.newEstimateBtn.click();
+    await this.clickProjectOpportunitysTextbox();
+    await this.selectProjectOpportunityS();
+    await this.titleInput.fill('This is a testing title');
+    await this.randomEstimateNumbergenerate();
+    await this.createEstimateBtn.nth(0).click();
+  }
 
 
-async customizedStartingNumber(){
-  await this.moduleSettings.click();
-  await this.moduleSettings.click();
+  async customizedStartingNumber() {
+    await this.moduleSettings.click();
+    await this.moduleSettings.click();
 
-  await this.page.waitForSelector('label:has-text("Auto/Custom")', { state: 'visible' });
+    await this.page.waitForSelector('label:has-text("Auto/Custom")', { state: 'visible' });
 
-  await this.page.locator('label:has-text("Auto/Custom")').click({ force: true });
-  await this.saveButton.click();
-await this.page.locator('button.close-icon').nth(1).click();
-}
+    await this.page.locator('label:has-text("Auto/Custom")').click({ force: true });
+    await this.saveButton.click();
+    await this.page.locator('button.close-icon').nth(1).click();
+  }
 
 
   async searchProject() {
@@ -257,29 +288,29 @@ await this.page.locator('button.close-icon').nth(1).click();
 
 
 
-async verifyRequiredFieldErrors() {
+  async verifyRequiredFieldErrors() {
     await this.estimatePageOpenAfterCreate();
     await this.newEstimateBtn.click();
     const titleError = this.page.locator('label:has-text("Title")').locator('..')
-    .locator('span:has-text("This field is required.")');
+      .locator('span:has-text("This field is required.")');
 
     const customerError = this.page.locator('label:has-text("Customer")').locator('..')
-    .locator('span:has-text("This field is required.")');
+      .locator('span:has-text("This field is required.")');
 
     const estimateError = this.page.locator('label:has-text("EST.")').locator('..')
-    .locator('span:has-text("This field is required.")');
+      .locator('span:has-text("This field is required.")');
 
     await this.createEstimateBtn.click();
 
-  // 🔹 Assertions
-  await Promise.all([
-    expect(titleError).toBeVisible(),
-    expect(customerError).toBeVisible(),
-    expect(estimateError).toBeVisible()
-  ]);
+    // 🔹 Assertions
+    await Promise.all([
+      expect(titleError).toBeVisible(),
+      expect(customerError).toBeVisible(),
+      expect(estimateError).toBeVisible()
+    ]);
 
-  console.log('Testcases 3: Verify mandatory field at estimate time');
-}
+    console.log('Testcases 3: Verify mandatory field at estimate time');
+  }
 
   async createEstimate() {
     await this.newEstimateBtn.click();
@@ -290,7 +321,7 @@ async verifyRequiredFieldErrors() {
 
     await this.selectProjectInEstimate.click();
     await this.page.locator('.ant-drawer, .ant-select-dropdown').nth(0).waitFor();
-    const projectName = 'Residential Villa – Electrical & Plumbing'; 
+    const projectName = 'Residential Villa – Electrical & Plumbing';
     const project = this.page.locator('.project').filter({ hasText: projectName }).first();
     await project.click();
     console.log('Testcase 2: customers accociate project selected');

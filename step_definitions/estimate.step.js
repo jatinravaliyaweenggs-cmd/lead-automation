@@ -1,6 +1,7 @@
 const { Given, When, Then } = require('@cucumber/cucumber');
 const { expect } = require('@playwright/test');
 const EstimatePage = require('../pages/EstimatePage');
+const BasePage = require('../pages/BasePage');
 
 let estimatePage;
 
@@ -15,6 +16,7 @@ When('User create estimate using existing project', async function () {
 When('User create new project in estimate', async function () {
   estimatePage = new EstimatePage(this.page);
   await estimatePage.userCreateNewProjectForEstimate();
+  await estimatePage.EstimaterCreateUsingNewProject();
 
 });
 
