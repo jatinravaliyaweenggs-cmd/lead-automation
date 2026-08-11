@@ -14,7 +14,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 517787700
+              "duration": 500346799
             }
           },
           {
@@ -27,7 +27,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 4030406899
+              "duration": 3976730599
             }
           },
           {
@@ -40,7 +40,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 7542950600
+              "duration": 7760549099
             }
           },
           {
@@ -53,20 +53,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 6225403500
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Then ",
-            "line": 11,
-            "name": "User create estimate using existing project",
-            "match": {
-              "location": "step_definitions\\estimate.step.js:7"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 9547227800
+              "duration": 6003422199
             }
           },
           {
@@ -79,7 +66,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 11938892200
+              "duration": 10009827299
             }
           },
           {
@@ -87,7 +74,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 310006300
+              "duration": 449214899
             }
           }
         ],

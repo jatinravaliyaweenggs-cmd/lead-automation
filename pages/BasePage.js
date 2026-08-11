@@ -13,18 +13,31 @@ class BasePage {
     this.projectNumberInput = this.page.locator('input[placeholder="Type a Project number"]');
   }
 
-async estimatePageOpenAfterCreate() {
-  await this.logoImg.nth(0).click(); // ✅ correct
+  async estimatePageOpenAfterCreate() {
+    await this.logoImg.nth(0).click(); // ✅ correct
     await this.menuDashboard.click();
     await this.estimatesMenu.waitFor({ state: 'visible', timeout: 15000 });
-}
+  }
 
   async randomProjectNumbergenerate() {
     const randomProjectNumber = `PRJ-${Date.now().toString().slice(-8)}`;
     await this.projectNumberInput.fill(randomProjectNumber);
   }
 
-  async projectPlusButtonClick(){
+
+  async projectNameInputFill() {
+    this.projectNameInput =
+      this.page.locator('input[name="project_name"][placeholder="Type a Project name"]');
+    await this.projectNameInput.waitFor({ state: 'visible' });
+    await this.projectNameInput.click();
+    await this.projectNameInput.fill('Residential Villa – Electrical & Plumbing');
+  }
+
+
+
+
+
+  async projectPlusButtonClick() {
     await this.newButton.waitFor({ state: 'visible', timeout: 10000 });
     await this.newButton.click();
     await this.projectPlusButton.waitFor({ state: 'visible', timeout: 10000 });

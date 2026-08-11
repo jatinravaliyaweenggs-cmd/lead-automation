@@ -175,7 +175,7 @@ class EstimatePage extends BasePage {
 
     this.moduleSettings = page.locator('#moduleSettings');
     this.autoUpdateEstimateNumber = page.getByText('Auto/Custom');
-
+    this.CreateProjectBtn = page.getByRole('button', { name: 'Create Project'});
 
 
   }
@@ -184,8 +184,9 @@ class EstimatePage extends BasePage {
     await this.newEstimateBtn.click();
     await this.clickProjectOpportunitysTextbox();
     await this.EstimateCreateFromNewProject();
-
-
+    await this.projectNameInputFill();
+    await this.selectProjectType();
+    await this.CreateProjectBtn.click();
   }
 
   async userCreateNewProjectForEstimate(){
