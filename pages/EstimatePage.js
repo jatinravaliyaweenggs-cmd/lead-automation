@@ -180,15 +180,20 @@ class EstimatePage extends BasePage {
 
   }
 
-
-
-  async userCreateNewProjectForEstimate(){
+  async EstimaterCreateUsingNewProject() {
     await this.newEstimateBtn.click();
     await this.clickProjectOpportunitysTextbox();
-    await this.projectCreateForNewEstimate();
+    await this.EstimateCreateFromNewProject();
 
 
+  }
 
+  async userCreateNewProjectForEstimate(){
+    await this.estimatePageOpenAfterCreate();
+    await this.estimatesMenu.click();
+    await this.newEstimateBtn.click();
+    await this.clickProjectOpportunitysTextbox();
+    await this.projectPlusButtonClick();
   }
 
   async selectProjectOpportunityS(projectName = 'Residential Villa – Electrical & Plumbing') {
@@ -201,7 +206,7 @@ class EstimatePage extends BasePage {
       await this.selectProjectOpportunityS();
       await this.titleInput.fill('This is a testing title');
       await this.randomEstimateNumbergenerate();
-      await this.createEstimateBtn.click();
+      await this.createEstimateBtn.nth(0).click();
 }
 
 
@@ -248,13 +253,10 @@ await this.page.locator('button.close-icon').nth(1).click();
 
   }
 
-async verifyRequiredFieldErrors() {
-  await this.logoImg.nth(0).click(); // ✅ correct
 
-    await this.menuDashboard.click();
-    await this.estimatesMenu.waitFor({ state: 'visible', timeout: 15000 });
-    await this.estimatesMenu.click();
-    
+
+async verifyRequiredFieldErrors() {
+    await this.estimatePageOpenAfterCreate();
     await this.newEstimateBtn.click();
     const titleError = this.page.locator('label:has-text("Title")').locator('..')
     .locator('span:has-text("This field is required.")');

@@ -4,15 +4,27 @@ class BasePage {
 
     // ✅ Only Save Button
     this.saveButton = page.getByRole('button', { name: 'Save' });
-    this.logo = this.page.locator('a.logo[href="/"]');
+    this.logo = this.page.locator('a.logo.px-2\.5.m-auto[href="/"]');
 
     this.projectOpportunityBtn = this.page.locator('button[name="project_id"]');
     this.newButton = this.page.getByRole('button', { name: 'New' });
     this.projectPlusButton = this.page.getByRole('menuitem', { name: 'Project' });
+
+    this.projectNumberInput = this.page.locator('input[placeholder="Type a Project number"]');
   }
 
+async estimatePageOpenAfterCreate() {
+  await this.logoImg.nth(0).click(); // ✅ correct
+    await this.menuDashboard.click();
+    await this.estimatesMenu.waitFor({ state: 'visible', timeout: 15000 });
+}
 
-  async projectCreateForNewEstimate(){
+  async randomProjectNumbergenerate() {
+    const randomProjectNumber = `PRJ-${Date.now().toString().slice(-8)}`;
+    await this.projectNumberInput.fill(randomProjectNumber);
+  }
+
+  async projectPlusButtonClick(){
     await this.newButton.waitFor({ state: 'visible', timeout: 10000 });
     await this.newButton.click();
     await this.projectPlusButton.waitFor({ state: 'visible', timeout: 10000 });
