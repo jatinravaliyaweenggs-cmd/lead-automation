@@ -5,11 +5,17 @@ const BasePage = require('../pages/BasePage');
 
 let estimatePage;
 
+
+When('User serch not exits customer and lead', async function () {
+  estimatePage = new EstimatePage(this.page);
+  await estimatePage.noRecordFilterSerchForCustomerAndLead();
+});
+
+
+
 When('User create estimate using existing project', async function () {
   estimatePage = new EstimatePage(this.page);
-
   await estimatePage.createEstimateUsingExistingProject();
-
 });
 
 

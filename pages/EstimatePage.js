@@ -178,6 +178,21 @@ class EstimatePage extends BasePage {
 
   }
 
+
+  async noRecordFilterSerchForCustomerAndLead(){
+        await this.estimatePageOpenAfterCreate();
+    await this.estimatesMenu.click();
+    await this.newEstimateBtn.click();
+    await this.clickProjectOpportunitysTextbox();
+    await this.projectPlusButtonClick();
+    await this.clickSelectCreateCustomerOrLead();
+    await this.searchCustomer.click();
+    await this.searchCustomer.fill('This is a not available text');
+    await this.verifyNoRecordsAvailable();
+
+
+  }
+
   async EstimaterCreateUsingNewProject() {
     //await this.newEstimateBtn.click();
     //await this.clickProjectOpportunitysTextbox();
@@ -198,12 +213,13 @@ class EstimatePage extends BasePage {
     await this.page.keyboard.press('Enter');
     await this.yesBtn.click();
 
-    const selectCreateCustomerOrLead = this.page.getByRole('button', {
-      name: 'Select/Create Customer or Lead',
-      exact: true
-    });
+    // const selectCreateCustomerOrLead = this.page.getByRole('button', {
+    //   name: 'Select/Create Customer or Lead',
+    //   exact: true
+    // });
 
-    await selectCreateCustomerOrLead.click();
+    // await selectCreateCustomerOrLead.click();
+    await this.clickSelectCreateCustomerOrLead();
 
     await this.searchCustomer.fill('Bhavik Raval');
     await this.selectCustomer('Bhavik Raval');

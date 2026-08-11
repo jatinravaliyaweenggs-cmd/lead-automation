@@ -1,3 +1,5 @@
+const { expect } = require('@playwright/test');
+
 class BasePage {
   constructor(page) {
     this.page = page;
@@ -12,7 +14,20 @@ class BasePage {
 
     this.projectNumberInput = this.page.locator('input[placeholder="Type a Project number"]');
     this.yesBtn =  this.page.getByRole('button', { name: 'Yes', exact: true });
+    this.selectCreateCustomerOrLead = page.getByRole('button', {name: 'Select/Create Customer or Lead',exact: true});
+    this.noRecordsMessage = this.page.getByText('No Records Available', {exact: true});
   }
+
+  async verifyNoRecordsAvailable() {
+  await expect(this.noRecordsMessage).toBeVisible({timeout: 5000});
+}
+
+async clickSelectCreateCustomerOrLead(){
+    await this.selectCreateCustomerOrLead.click();
+
+}
+    
+
 
   async estimatePageOpenAfterCreate() {
     await this.logoImg.nth(0).click(); // ✅ correct
