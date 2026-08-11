@@ -176,15 +176,8 @@ class EstimatePage extends BasePage {
     this.moduleSettings = page.locator('#moduleSettings');
     this.autoUpdateEstimateNumber = page.getByText('Auto/Custom');
 
-    this.projectOpportunityBtn = this.page.locator('button[name="project_id"]');
-
   }
 
-  async clickProjectOpportunitysTextbox(){
-  await this.projectOpportunityBtn.waitFor({ state: 'visible' });
-  await this.projectOpportunityBtn.click();
-
-  }
 
   async selectProjectOpportunityS(projectName = 'Residential Villa – Electrical & Plumbing') {
     await this.selectProjectOpportunity(projectName, 'input[placeholder="Search Project/Opportunity-S"]');

@@ -5,8 +5,18 @@ class BasePage {
     // ✅ Only Save Button
     this.saveButton = page.getByRole('button', { name: 'Save' });
 this.logo = this.page.locator('a.logo[href="/"]');
+
+this.projectOpportunityBtn = this.page.locator('button[name="project_id"]');
   }
 
+
+   async clickProjectOpportunitysTextbox(){
+  await this.projectOpportunityBtn.waitFor({ state: 'visible' });
+  await this.projectOpportunityBtn.click();
+
+  }
+
+  
   /**
    * Click Save button (common for all pages)
    */
