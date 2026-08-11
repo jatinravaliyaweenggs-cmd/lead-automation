@@ -4,20 +4,29 @@ class BasePage {
 
     // ✅ Only Save Button
     this.saveButton = page.getByRole('button', { name: 'Save' });
-this.logo = this.page.locator('a.logo[href="/"]');
+    this.logo = this.page.locator('a.logo[href="/"]');
 
-this.projectOpportunityBtn = this.page.locator('button[name="project_id"]');
+    this.projectOpportunityBtn = this.page.locator('button[name="project_id"]');
+    this.newButton = this.page.getByRole('button', { name: 'New' });
+    this.projectPlusButton = this.page.getByRole('menuitem', { name: 'Project' });
   }
 
 
-   async clickProjectOpportunitysTextbox(){
-  await this.projectOpportunityBtn.waitFor({ state: 'visible' });
-  await this.projectOpportunityBtn.click();
+  async projectCreateForNewEstimate(){
+    await this.newButton.waitFor({ state: 'visible', timeout: 10000 });
+    await this.newButton.click();
+    await this.projectPlusButton.waitFor({ state: 'visible', timeout: 10000 });
+    await this.projectPlusButton.click();
+  }
+
+  async clickProjectOpportunitysTextbox() {
+    await this.projectOpportunityBtn.waitFor({ state: 'visible' });
+    await this.projectOpportunityBtn.click();
 
   }
 
 
-    async randomEstimateNumbergenerate(){
+  async randomEstimateNumbergenerate() {
     const uniqueNum = `Est#${Date.now().toString().slice(-6)}`;
     await this.customerEstimateNumber.fill(uniqueNum);
   }

@@ -176,6 +176,19 @@ class EstimatePage extends BasePage {
     this.moduleSettings = page.locator('#moduleSettings');
     this.autoUpdateEstimateNumber = page.getByText('Auto/Custom');
 
+
+
+  }
+
+
+
+  async userCreateNewProjectForEstimate(){
+    await this.newEstimateBtn.click();
+    await this.clickProjectOpportunitysTextbox();
+    await this.projectCreateForNewEstimate();
+
+
+
   }
 
   async selectProjectOpportunityS(projectName = 'Residential Villa – Electrical & Plumbing') {

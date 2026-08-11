@@ -8,6 +8,7 @@ Feature: Estimate Creation
 
 Scenario: Create a new Estimate using project
     When User navigates to Estimate page
+    #Then User create estimate using existing project
     Then User create new project in estimate
 
 
