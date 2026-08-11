@@ -215,7 +215,18 @@ class EstimatePage extends BasePage {
 
     const CreateProjectBtn = this.page.getByRole('button', { name: 'Create Project', exact: true });
     await CreateProjectBtn.click();
+    await this.titleInput.fill('This is a testing title');
+    await this.randomEstimateNumbergenerate();
+    await this.createEstimateBtn.nth(0).click();
 
+  // Open global project selector
+  // const globalProjectButton = this.page.locator('#global_select_project');
+  // await globalProjectButton.click();
+  // const projectSearch = this.page.getByPlaceholder('Search Projects');
+  // await projectSearch.fill(randomProjectNumber);
+  // const createdProject = this.page.locator('a.project').filter({hasText: randomProjectNumber});
+  // await expect(createdProject).toBeVisible({timeout: 10000});
+  // await expect(createdProject).toContainText(randomProjectNumber);
   }
 
 
