@@ -180,7 +180,7 @@ class EstimatePage extends BasePage {
 
 
   async noRecordFilterSerchForCustomerAndLead(){
-        await this.estimatePageOpenAfterCreate();
+    await this.estimatePageOpenAfterCreate();
     await this.estimatesMenu.click();
     await this.newEstimateBtn.click();
     await this.clickProjectOpportunitysTextbox();
@@ -188,6 +188,10 @@ class EstimatePage extends BasePage {
     await this.clickSelectCreateCustomerOrLead();
     await this.searchCustomer.click();
     await this.searchCustomer.fill('This is a not available text');
+    await this.verifyNoRecordsAvailable();
+    await this.leadsButton.click();
+    await this.searchforLead.click();
+    await this.searchforLead.fill('This is a not available text');
     await this.verifyNoRecordsAvailable();
 
 

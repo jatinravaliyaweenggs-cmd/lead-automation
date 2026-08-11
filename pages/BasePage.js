@@ -16,6 +16,9 @@ class BasePage {
     this.yesBtn =  this.page.getByRole('button', { name: 'Yes', exact: true });
     this.selectCreateCustomerOrLead = page.getByRole('button', {name: 'Select/Create Customer or Lead',exact: true});
     this.noRecordsMessage = this.page.getByText('No Records Available', {exact: true});
+
+    this.leadsButton = this.page.getByRole('button', {name: 'Leads', exact: true});
+    this.searchforLead = this.page.getByPlaceholder('Search for Lead');
   }
 
   async verifyNoRecordsAvailable() {
