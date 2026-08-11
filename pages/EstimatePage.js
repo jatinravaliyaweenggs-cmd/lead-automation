@@ -167,6 +167,10 @@ class EstimatePage {
     this.logoImg = this.page.locator('img[src*="logo.svg"]');
 
     this.selectProjectInEstimate = this.page.getByRole('button', {name: 'Click to select a Project/Opportunity-S'});
+    this.searchBarSelectaProject = this.page.locator('input[placeholder="Search Project/Opportunity-S"]')
+
+
+
 
     this.moduleSettings = page.locator('#moduleSettings');
     this.autoUpdateEstimateNumber = page.getByText('Auto/Custom');
@@ -175,15 +179,25 @@ class EstimatePage {
 
   }
 
-
-  async selectProjectOpportunity() {
+  async clickProjectOpportunitysTextbox(){
   await this.projectOpportunityBtn.waitFor({ state: 'visible' });
   await this.projectOpportunityBtn.click();
+
+  }
+
+  async selectProjectOpportunityS() {
+    await this.searchBarSelectaProject.click();
+    await this.searchBarSelectaProject.fill('Residential Villa – Electrical & Plumbing');
+    await this.page.locator('.ant-drawer, .ant-select-dropdown').nth(0).waitFor();
+    const projectName = 'Residential Villa – Electrical & Plumbing'; 
+    const project = this.page.locator('.project').filter({ hasText: projectName }).first();
+    await project.click();
 }
 
   async createNewProjectInEstimate() { 
       await this.newEstimateBtn.click();
-      await this.selectProjectOpportunity();
+      await this.clickProjectOpportunitysTextbox();
+      await this.selectProjectOpportunityS();
 
 
 }
