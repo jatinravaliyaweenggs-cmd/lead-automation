@@ -4,17 +4,17 @@
     "elements": [
       {
         "description": "",
-        "id": "estimate-creation;create-a-new-estimate",
+        "id": "estimate-creation;create-a-new-estimate-using-project",
         "keyword": "Scenario",
-        "line": 8,
-        "name": "Create a new Estimate",
+        "line": 9,
+        "name": "Create a new Estimate using project",
         "steps": [
           {
             "keyword": "Before",
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 460430700
+              "duration": 517787700
             }
           },
           {
@@ -27,7 +27,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 3317167900
+              "duration": 4030406899
             }
           },
           {
@@ -40,33 +40,46 @@
             },
             "result": {
               "status": "passed",
-              "duration": 7012420799
+              "duration": 7542950600
             }
           },
           {
             "arguments": [],
             "keyword": "When ",
-            "line": 9,
+            "line": 10,
             "name": "User navigates to Estimate page",
+            "match": {
+              "location": "step_definitions\\estimate.step.js:30"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 6225403500
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 11,
+            "name": "User create estimate using existing project",
             "match": {
               "location": "step_definitions\\estimate.step.js:7"
             },
             "result": {
               "status": "passed",
-              "duration": 6374999099
+              "duration": 9547227800
             }
           },
           {
             "arguments": [],
-            "keyword": "And ",
-            "line": 10,
-            "name": "User creates a new Estimate",
+            "keyword": "Then ",
+            "line": 12,
+            "name": "User create new project in estimate",
             "match": {
-              "location": "step_definitions\\estimate.step.js:12"
+              "location": "step_definitions\\estimate.step.js:15"
             },
             "result": {
               "status": "passed",
-              "duration": 13662634799
+              "duration": 11938892200
             }
           },
           {
@@ -74,7 +87,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 379232000
+              "duration": 310006300
             }
           }
         ],

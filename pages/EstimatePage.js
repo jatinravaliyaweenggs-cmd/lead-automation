@@ -194,6 +194,7 @@ class EstimatePage extends BasePage {
     await this.newEstimateBtn.click();
     await this.clickProjectOpportunitysTextbox();
     await this.projectPlusButtonClick();
+    await this.randomProjectNumbergenerate();
   }
 
   async selectProjectOpportunityS(projectName = 'Residential Villa – Electrical & Plumbing') {
