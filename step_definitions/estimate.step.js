@@ -4,6 +4,22 @@ const EstimatePage = require('../pages/EstimatePage');
 
 let estimatePage;
 
+When('User create new project in estimate', async function () {
+  estimatePage = new EstimatePage(this.page);
+
+  await estimatePage.createNewProjectInEstimate();
+
+});
+
+
+
+
+When('User navigates to Estimate page and create estimate', async function () {
+  estimatePage = new EstimatePage(this.page);
+  await estimatePage.openEstimatePage();
+  await estimatePage.createEstimate();
+});
+
 When('User navigates to Estimate page', async function () {
   estimatePage = new EstimatePage(this.page);
   await estimatePage.openEstimatePage();
@@ -173,7 +189,7 @@ Then('User search the estimate', async function name() {
   await estimatePage.searchProject();
 })
 
-
-Then('User open module setting page and apply customized starting number setting', async function(){
+Then('User open module setting page and apply customized starting number setting', async function () {
+  if (!estimatePage) estimatePage = new (require('../pages/EstimatePage'))(this.page);
   await estimatePage.customizedStartingNumber();
-})
+});

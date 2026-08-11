@@ -6,9 +6,15 @@ Feature: Estimate Creation
     #Then User should be redirected to the dashboard
 
 
-Scenario: Create a new Estimate
-When User navigates to Estimate page
-Then User open module setting page and apply customized starting number setting
+Scenario: Create a new Estimate using project
+    When User navigates to Estimate page
+    Then User create new project in estimate
+
+
+
+#Scenario: Create a new Estimate
+#When User navigates to Estimate page
+#Then User open module setting page and apply customized starting number setting
 
 
 

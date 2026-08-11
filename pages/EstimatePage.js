@@ -171,7 +171,23 @@ class EstimatePage {
     this.moduleSettings = page.locator('#moduleSettings');
     this.autoUpdateEstimateNumber = page.getByText('Auto/Custom');
 
+    this.projectOpportunityBtn = this.page.locator('button[name="project_id"]');
+
   }
+
+
+  async selectProjectOpportunity() {
+  await this.projectOpportunityBtn.waitFor({ state: 'visible' });
+  await this.projectOpportunityBtn.click();
+}
+
+  async createNewProjectInEstimate() { 
+      await this.newEstimateBtn.click();
+      await this.selectProjectOpportunity();
+
+
+}
+
 
 async customizedStartingNumber(){
   await this.moduleSettings.click();
