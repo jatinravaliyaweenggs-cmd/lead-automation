@@ -2,8 +2,9 @@ const { expect } = require('@playwright/test');
 const BasePage = require('./BasePage');
 
 
-class EstimatePage {
+class EstimatePage extends BasePage {
   constructor(page) {
+    super(page);
     this.page = page;
 
     // Locators
@@ -185,14 +186,9 @@ class EstimatePage {
 
   }
 
-  async selectProjectOpportunityS() {
-    await this.searchBarSelectaProject.click();
-    await this.searchBarSelectaProject.fill('Residential Villa – Electrical & Plumbing');
-    await this.page.locator('.ant-drawer, .ant-select-dropdown').nth(0).waitFor();
-    const projectName = 'Residential Villa – Electrical & Plumbing'; 
-    const project = this.page.locator('.project').filter({ hasText: projectName }).first();
-    await project.click();
-}
+  async selectProjectOpportunityS(projectName = 'Residential Villa – Electrical & Plumbing') {
+    await this.selectProjectOpportunity(projectName, 'input[placeholder="Search Project/Opportunity-S"]');
+  }
 
   async createNewProjectInEstimate() { 
       await this.newEstimateBtn.click();
