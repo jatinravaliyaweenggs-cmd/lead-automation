@@ -196,6 +196,7 @@ class EstimatePage extends BasePage {
     await this.customerBtn.click();
     await this.clickCustomerPlusButton();
     await this.createCustomer();
+    await this.selectStreetAddress();
 
 
 

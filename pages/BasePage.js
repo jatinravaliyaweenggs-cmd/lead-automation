@@ -31,38 +31,46 @@ class BasePage {
 this.customerCompanyNameInput = this.page.locator('input[name="company_name"]');
 this.customerFirstNameInput = this.page.getByPlaceholder('First Name');
 this.customerLastNameInput = this.page.getByPlaceholder('Last Name');
-this.customerEmailInput = this.page.getByPlaceholder('Email');
-
-
 this.customerPrimaryPhoneInput = this.page.getByPlaceholder('Primary phone number');
 this.customerSecondaryPhoneInput = this.page.getByPlaceholder('Secondary phone number');
-
 this.customerPhoneExtInput = this.page.getByPlaceholder('Extension').nth(0);
 this.customerPhone2ExtInput = this.page.getByPlaceholder('Extension').nth(1);
 this.customerPhone2Input = this.page.getByPlaceholder('Phone 2');
 this.customerCellInput = this.page.getByPlaceholder('Cell');
+this.customerEmailInput = this.page.getByPlaceholder('Email');
+
+this.streetAddressInput = this.page.locator('#multi-select-directory-address-overlay');
+this.customerAddress2Input = this.page.getByPlaceholder('Suite or unit');
+this.customerCity = this.page.getByPlaceholder('City');
+this.customerState = this.page.getByPlaceholder('State/Province');
+this.CustomerZipCode = this.page.getByPlaceholder('Zip code');
 //this.createCustomerButton = page.getByRole('button', {name: 'Create Customer', exact: true});
 
 
 }
 
-async createCustomer({
-  companyName = `Automation Company ${Date.now()}`,
-  firstName = 'Automation',
-  lastName = 'Customer',
-  email = `automation${Date.now()}@example.com`} = {}) {
+async selectStreetAddress() {
+  await this.streetAddressInput.waitFor({state: 'visible',timeout: 10000});
+  await this.streetAddressInput.fill('Maharana Pratap Garden')
+  await this.customerAddress2Input.fill('Flat 204, Maharana Pratap Garden');
+  await this.customerCity.fill('Surat');
+  await this.customerState.fill('Gujarat');
+  await this.CustomerZipCode.fill('395002');
+  await this.clickSave();
+}
 
+async createCustomer() {
   await this.customerCompanyNameInput.waitFor({state: 'visible',timeout: 10000});
   await this.customerCompanyNameInput.fill(testData.customer.companyName);
-  await this.customerFirstNameInput.fill(testData.customer.firstName);
-  await this.customerLastNameInput.fill(testData.customer.lastName);
-  await this.customerEmailInput.fill(testData.customer.email);
+  // await this.customerFirstNameInput.fill(testData.customer.firstName);
+  // await this.customerLastNameInput.fill(testData.customer.lastName);
+  // await this.customerEmailInput.fill(testData.customer.email);
 
-  await this.customerPrimaryPhoneInput.fill(testData.customer.primaryPhone);
-  await this.customerPhoneExtInput.fill(testData.customer.phoneExtension);
-  await this.customerSecondaryPhoneInput.fill(testData.customer.secondaryPhone);
-  await this.customerPhone2ExtInput.fill(testData.customer.phone2Extension);
-  await this.customerCellInput.fill(testData.customer.cell);
+  // await this.customerPrimaryPhoneInput.fill(testData.customer.primaryPhone);
+  // await this.customerPhoneExtInput.fill(testData.customer.phoneExtension);
+  // await this.customerSecondaryPhoneInput.fill(testData.customer.secondaryPhone);
+  // await this.customerPhone2ExtInput.fill(testData.customer.phone2Extension);
+  // await this.customerCellInput.fill(testData.customer.cell);
 
   //await this.createCustomerButton.click();
 }
