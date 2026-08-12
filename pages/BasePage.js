@@ -44,7 +44,7 @@ this.customerAddress2Input = this.page.getByPlaceholder('Suite or unit');
 this.customerCity = this.page.getByPlaceholder('City');
 this.customerState = this.page.getByPlaceholder('State/Province');
 this.CustomerZipCode = this.page.getByPlaceholder('Zip code');
-//this.createCustomerButton = page.getByRole('button', {name: 'Create Customer', exact: true});
+
 
 
 }
@@ -62,17 +62,15 @@ async selectStreetAddress() {
 async createCustomer() {
   await this.customerCompanyNameInput.waitFor({state: 'visible',timeout: 10000});
   await this.customerCompanyNameInput.fill(testData.customer.companyName);
-  // await this.customerFirstNameInput.fill(testData.customer.firstName);
-  // await this.customerLastNameInput.fill(testData.customer.lastName);
-  // await this.customerEmailInput.fill(testData.customer.email);
+  await this.customerFirstNameInput.fill(testData.customer.firstName);
+  await this.customerLastNameInput.fill(testData.customer.lastName);
+  await this.customerEmailInput.fill(testData.customer.email);
+  await this.customerPrimaryPhoneInput.fill(testData.customer.primaryPhone);
+  await this.customerPhoneExtInput.fill(testData.customer.phoneExtension);
+  await this.customerSecondaryPhoneInput.fill(testData.customer.secondaryPhone);
+  await this.customerPhone2ExtInput.fill(testData.customer.phone2Extension);
+  await this.customerCellInput.fill(testData.customer.cell);
 
-  // await this.customerPrimaryPhoneInput.fill(testData.customer.primaryPhone);
-  // await this.customerPhoneExtInput.fill(testData.customer.phoneExtension);
-  // await this.customerSecondaryPhoneInput.fill(testData.customer.secondaryPhone);
-  // await this.customerPhone2ExtInput.fill(testData.customer.phone2Extension);
-  // await this.customerCellInput.fill(testData.customer.cell);
-
-  //await this.createCustomerButton.click();
 }
 
 
