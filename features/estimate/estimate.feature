@@ -18,7 +18,9 @@ Feature: Estimate Creation
      #Then User click on plus button and create Lead for estimate
 
     # Then User create an estimate for an existing Lead
-     Then Verify Show Favourites Only functionality
+    # Then Verify Show Favourites Only functionality
+
+    Then Create an estimate from an opportunity by customer
 
 
 

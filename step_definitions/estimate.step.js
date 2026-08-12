@@ -6,6 +6,16 @@ const BasePage = require('../pages/BasePage');
 let estimatePage;
 
 
+Then('Create an estimate from an opportunity by customer', async function(){
+
+  await estimatePage.opportunitysCreateForExistingCustomerBy();
+
+
+})
+
+
+
+
 Then('Verify Show Favourites Only functionality', async function(){
 
     await estimatePage.showFavouritesOnlyCheckBox();

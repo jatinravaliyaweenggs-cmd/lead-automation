@@ -176,17 +176,33 @@ class EstimatePage extends BasePage {
 
     this.projectTypeDropdown = page.locator('div.ant-select[name="project_type"]');
 
+    this.opportunitysPlusButton = this.page.getByRole('menuitem', { name: 'Opportunity-S' });
+
+
+  }
+
+
+  async opportunityPlusButtonClick() {
+    await this.newButton.waitFor({ state: 'visible', timeout: 10000 });
+    await this.newButton.click();
+    await this.opportunitysPlusButton.waitFor({ state: 'visible', timeout: 10000 });
+    await this.opportunitysPlusButton.click();
+  }
+
+  async opportunitysCreateForExistingCustomerBy() {
+    await this.estimatePageOpenAfterCreate();
+    await this.estimatesMenu.click();
+    await this.newEstimateBtn.click();
+    await this.page.getByText('Click to select a Project/Opportunity-S', {exact: true}).click();
+    await this.opportunityPlusButtonClick();
   }
 
 
 
 
 
-
-
-
-async estimateCreateForExistingLeadBy(){
-   await this.clickToSelectACustomerinEstimateText();
+  async estimateCreateForExistingLeadBy() {
+    await this.clickToSelectACustomerinEstimateText();
     await this.leadsButton.click();
     await this.searchforLead.click();
     await this.searchforLead.fill('Automation');
@@ -197,7 +213,7 @@ async estimateCreateForExistingLeadBy(){
     await this.createEstimateBtn.click();
     await this.CreateProjectOpportunityLater.click();
     await this.createEstimateBtn.nth(0).click();
-}
+  }
 
 
 
@@ -216,7 +232,7 @@ async estimateCreateForExistingLeadBy(){
     await this.createEstimateBtn.nth(0).click();
 
 
-    
+
   }
 
 
