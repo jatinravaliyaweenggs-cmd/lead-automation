@@ -44,9 +44,28 @@ this.customerAddress2Input = this.page.getByPlaceholder('Suite or unit');
 this.customerCity = this.page.getByPlaceholder('City');
 this.customerState = this.page.getByPlaceholder('State/Province');
 this.CustomerZipCode = this.page.getByPlaceholder('Zip code');
+this.projectName = this.page.getByPlaceholder('Type a Project name');
 
 
+this.estimateTitleInput = page.getByRole('textbox', { name: 'Short title for the Estimate-' });
 
+
+}
+
+async randomEstimateTitlegenerate(){
+    const uniqueNum = `Est#${Date.now().toString().slice(-6)}`;
+    await this.estimateTitleInput.fill(uniqueNum);
+}
+async randomProjectNameGenerate() {
+  const randomProjectName = `Automation Project ${Date.now().toString().slice(-6)}`;
+  await this.projectNameInput.waitFor({state: 'visible', timeout: 10000});
+  await this.projectNameInput.fill(randomProjectName);
+}
+
+async selectProjectType(){
+    await this.projectTypeDropdown.click();
+    await this.page.keyboard.type('Residential');
+    await this.page.keyboard.press('Enter');
 }
 
 async selectStreetAddress() {

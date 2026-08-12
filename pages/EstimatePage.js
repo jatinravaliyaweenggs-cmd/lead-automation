@@ -176,17 +176,10 @@ class EstimatePage extends BasePage {
 
     this.projectTypeDropdown = page.locator('div.ant-select[name="project_type"]');
 
-    // this.customerPlusButton = page
-    //   .locator('li').filter({ has: page.getByText('Customers', { exact: true }) }).locator('button.responsive-plus-icon');
+  
 
   }
 
-
-  // async clickCustomerPlusButton() {
-  //   const plusButton = this.customerPlusButton.first();
-  //   await plusButton.waitFor({ state: 'visible', timeout: 10000 });
-  //   await plusButton.click();
-  // }
 
   async estimateCreateForNewCustomerByPlusButton() {
     await this.estimatePageOpenAfterCreate();
@@ -197,11 +190,14 @@ class EstimatePage extends BasePage {
     await this.clickCustomerPlusButton();
     await this.createCustomer();
     await this.selectStreetAddress();
-
-
-
-
+    await this.randomEstimateNumbergenerate();
+    await this.randomEstimateTitlegenerate();
+    await this.createEstimateBtn.click();
+    await this.CreateProjectOpportunityLater.click();
+    await this.createEstimateBtn.nth(0).click();
   }
+
+
 
   async noRecordFilterSerchForCustomerAndLead() {
     await this.estimatePageOpenAfterCreate();
