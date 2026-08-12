@@ -12,9 +12,10 @@ Feature: Estimate Creation
 #    Then User create new project in estimate
 #     Then User serch not exits customer and lead
 
- Scenario: Create a new Estimate using Plus button
+ Scenario: Create a new Estimate using Plus button for customer and Lead
      When User navigates to Estimate page
-     Then User click on plus button and create customer for estimate
+     #Then User click on plus button and create customer for estimate
+     Then User click on plus button and create Lead for estimate
 
 
 

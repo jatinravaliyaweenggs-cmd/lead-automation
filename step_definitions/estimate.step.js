@@ -7,6 +7,13 @@ let estimatePage;
 
 
 
+Then('User click on plus button and create Lead for estimate', async function (){
+
+  estimatePage = new EstimatePage(this.page);
+  await estimatePage.estimateCreateForNewLeadByPlusButton();
+
+})
+
 
 Then('User click on plus button and create customer for estimate', async function (){
 

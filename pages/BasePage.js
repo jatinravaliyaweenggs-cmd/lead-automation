@@ -24,7 +24,6 @@ class BasePage {
       .locator('li').filter({ has: page.getByText('Customers', { exact: true }) }).locator('button.responsive-plus-icon');
 
 
-
     // Customer Creation Locators
 // ==================== Create Customer ====================
 
@@ -49,7 +48,21 @@ this.projectName = this.page.getByPlaceholder('Type a Project name');
 
 this.estimateTitleInput = page.getByRole('textbox', { name: 'Short title for the Estimate-' });
 
+// Leads button
 
+this.estimateLeadsPlusButton = this.page.locator('li').filter({ has: this.page.getByText('Leads', { exact: true }) })
+  .locator('button.responsive-plus-icon')
+  .first();
+
+
+}
+
+async clickLeadPlusButton() {
+  await this.leadsButton.click();
+  // await this.estimateLeadsButton.waitFor({state: 'visible',timeout: 10000});
+  // await this.estimateLeadsButton.click();
+  await this.estimateLeadsPlusButton.waitFor({state: 'visible',timeout: 10000});
+  await this.estimateLeadsPlusButton.click();
 }
 
 async randomEstimateTitlegenerate(){

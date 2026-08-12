@@ -180,6 +180,21 @@ class EstimatePage extends BasePage {
 
   }
 
+  async estimateCreateForNewLeadByPlusButton() {
+    await this.estimatePageOpenAfterCreate();
+    await this.estimatesMenu.click();
+    await this.newEstimateBtn.click();
+    await this.customerBtn.click();
+    await this.clickLeadPlusButton();
+
+    
+  }
+
+
+
+
+
+
 
   async estimateCreateForNewCustomerByPlusButton() {
     await this.estimatePageOpenAfterCreate();
@@ -196,6 +211,10 @@ class EstimatePage extends BasePage {
     await this.CreateProjectOpportunityLater.click();
     await this.createEstimateBtn.nth(0).click();
   }
+
+
+
+
 
 
 
