@@ -30,8 +30,8 @@ class BasePage {
 this.customerCompanyNameInput = this.page.locator('input[name="company_name"]');
 this.customerFirstNameInput = this.page.getByPlaceholder('First Name');
 this.customerLastNameInput = this.page.getByPlaceholder('Last Name');
-this.customerPrimaryPhoneInput = this.page.getByPlaceholder('Primary phone number');
-this.customerSecondaryPhoneInput = this.page.getByPlaceholder('Secondary phone number');
+this.PrimaryPhoneInput = this.page.getByPlaceholder('Primary phone number');
+this.SecondaryPhoneInput = this.page.getByPlaceholder('Secondary phone number');
 this.customerPhoneExtInput = this.page.getByPlaceholder('Extension').nth(0);
 this.customerPhone2ExtInput = this.page.getByPlaceholder('Extension').nth(1);
 this.customerPhone2Input = this.page.getByPlaceholder('Phone 2');
@@ -55,14 +55,42 @@ this.estimateLeadsPlusButton = this.page.locator('li').filter({ has: this.page.g
   .first();
 
 
+this.leadCompanyNameInput = page.getByPlaceholder('Company name');
+this.leadFirstNameInput = page.getByPlaceholder('Lead contact first name');
+this.leadLastNameInput = page.getByPlaceholder('Lead contact last name');
+//this.leadStageInput = page.getByPlaceholder('Click to select the lead stage');
+
+this.leadStageInput = this.page.locator('.ant-select[name="stage"]');
+
+
+
 }
+
+async createLeads(){
+  
+    await this.leadCompanyNameInput.fill(testData.estimateLead.LeadsCompanyName);
+    await this.leadFirstNameInput.fill(testData.estimateLead.firstName);
+    await this.leadLastNameInput.fill(testData.estimateLead.lastName);
+    await this.leadStageInput.click();
+    this.leadStageSearchInput = this.page.locator('.ant-select[name="stage"] input.ant-select-selection-search-input');
+    await this.leadStageSearchInput.click();
+    await this.leadStageSearchInput.fill('Pending');
+    await this.page.waitForTimeout(500);
+    await this.page.getByText('Pending', { exact: true }).click();
+
+}
+
+
 
 async clickLeadPlusButton() {
   await this.leadsButton.click();
-  // await this.estimateLeadsButton.waitFor({state: 'visible',timeout: 10000});
-  // await this.estimateLeadsButton.click();
   await this.estimateLeadsPlusButton.waitFor({state: 'visible',timeout: 10000});
   await this.estimateLeadsPlusButton.click();
+
+
+
+
+
 }
 
 async randomEstimateTitlegenerate(){
@@ -97,9 +125,9 @@ async createCustomer() {
   await this.customerFirstNameInput.fill(testData.customer.firstName);
   await this.customerLastNameInput.fill(testData.customer.lastName);
   await this.customerEmailInput.fill(testData.customer.email);
-  await this.customerPrimaryPhoneInput.fill(testData.customer.primaryPhone);
+  await this.PrimaryPhoneInput.fill(testData.customer.primaryPhone);
   await this.customerPhoneExtInput.fill(testData.customer.phoneExtension);
-  await this.customerSecondaryPhoneInput.fill(testData.customer.secondaryPhone);
+  await this.SecondaryPhoneInput.fill(testData.customer.secondaryPhone);
   await this.customerPhone2ExtInput.fill(testData.customer.phone2Extension);
   await this.customerCellInput.fill(testData.customer.cell);
 

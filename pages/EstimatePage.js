@@ -186,6 +186,8 @@ class EstimatePage extends BasePage {
     await this.newEstimateBtn.click();
     await this.customerBtn.click();
     await this.clickLeadPlusButton();
+    await this.createLeads();
+
 
     
   }
