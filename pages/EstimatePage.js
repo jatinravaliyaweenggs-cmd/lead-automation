@@ -176,21 +176,27 @@ class EstimatePage extends BasePage {
 
     this.projectTypeDropdown = page.locator('div.ant-select[name="project_type"]');
 
-  
-
   }
 
+
+
+
+
+
+
+
 async estimateCreateForExistingLeadBy(){
-
-    await this.estimatePageOpenAfterCreate();
-    await this.estimatesMenu.click();
-    await this.newEstimateBtn.click();
-    await this.customerBtn.click();
+   await this.clickToSelectACustomerinEstimateText();
     await this.leadsButton.click();
-
-
-
-
+    await this.searchforLead.click();
+    await this.searchforLead.fill('Automation');
+    const firstLead = this.page.locator('div.project').filter({ hasText: 'Automation Lead' }).first();
+    await firstLead.click();
+    await this.randomEstimateTitlegenerate();
+    await this.randomEstimateNumbergenerate();
+    await this.createEstimateBtn.click();
+    await this.CreateProjectOpportunityLater.click();
+    await this.createEstimateBtn.nth(0).click();
 }
 
 
@@ -199,10 +205,7 @@ async estimateCreateForExistingLeadBy(){
 
 
   async estimateCreateForNewLeadByPlusButton() {
-    await this.estimatePageOpenAfterCreate();
-    await this.estimatesMenu.click();
-    await this.newEstimateBtn.click();
-    await this.customerBtn.click();
+    await this.clickToSelectACustomerinEstimateText();
     await this.clickLeadPlusButton();
     await this.createLeads();
     await this.selectStreetAddress();
@@ -223,11 +226,7 @@ async estimateCreateForExistingLeadBy(){
 
 
   async estimateCreateForNewCustomerByPlusButton() {
-    await this.estimatePageOpenAfterCreate();
-    await this.estimatesMenu.click();
-    await this.newEstimateBtn.click();
-
-    await this.customerBtn.click();
+    await this.clickToSelectACustomerinEstimateText();
     await this.clickCustomerPlusButton();
     await this.createCustomer();
     await this.selectStreetAddress();

@@ -62,8 +62,26 @@ this.leadLastNameInput = page.getByPlaceholder('Lead contact last name');
 
 this.leadStageInput = this.page.locator('.ant-select[name="stage"]');
 
+this.favoritesOnly = this.page.getByLabel('Show Favorites Only');
+
+}
 
 
+
+
+async showFavouritesOnlyCheckBox(){
+  await this.clickToSelectACustomerinEstimateText();
+  await this.favoritesOnly.check();
+
+
+}
+
+
+async clickToSelectACustomerinEstimateText(){
+ await this.estimatePageOpenAfterCreate();
+    await this.estimatesMenu.click();
+    await this.newEstimateBtn.click();
+    await this.customerBtn.click();
 }
 
 async createLeads(){

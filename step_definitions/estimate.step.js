@@ -6,15 +6,25 @@ const BasePage = require('../pages/BasePage');
 let estimatePage;
 
 
+Then('Verify Show Favourites Only functionality', async function(){
 
-Then('User create an estimate for an existing Lead', async function(){
+    await estimatePage.showFavouritesOnlyCheckBox();
+
+
+})
+
+
+
+
+
+Then('User create an estimate for an existing Lead', async function () {
 
   estimatePage = new EstimatePage(this.page);
   await estimatePage.estimateCreateForExistingLeadBy();
 
 })
 
-Then('User click on plus button and create Lead for estimate', async function (){
+Then('User click on plus button and create Lead for estimate', async function () {
 
   estimatePage = new EstimatePage(this.page);
   await estimatePage.estimateCreateForNewLeadByPlusButton();
@@ -22,7 +32,7 @@ Then('User click on plus button and create Lead for estimate', async function ()
 })
 
 
-Then('User click on plus button and create customer for estimate', async function (){
+Then('User click on plus button and create customer for estimate', async function () {
 
   estimatePage = new EstimatePage(this.page);
   await estimatePage.estimateCreateForNewCustomerByPlusButton();
@@ -67,8 +77,8 @@ When('User creates a new Estimate', async function () {
   await estimatePage.createEstimate();
 });
 
-Then('User verifies mandatory fields for create estimate', async function (){
-    await estimatePage.verifyRequiredFieldErrors();
+Then('User verifies mandatory fields for create estimate', async function () {
+  await estimatePage.verifyRequiredFieldErrors();
 })
 
 When('User navigates to Estimate page and open estimate', async function () {
@@ -144,14 +154,14 @@ When('User enter other item from other item tab', async function () {
 
 When('User update View Edit Section Details', async function () {
   await estimatePage.updateSectionDetails();
-const section = this.page.locator('span.ant-typography', { hasText: 'Test Section' }).first();
-await expect(section).toBeVisible();
+  const section = this.page.locator('span.ant-typography', { hasText: 'Test Section' }).first();
+  await expect(section).toBeVisible();
 });
 
 When('User apply Automatic Bulk Markup', async function () {
   await estimatePage.applyBulkMarkUp();
   const section = this.page.locator('span.ant-typography', { hasText: 'Copy of Test Section' }).first();
-await expect(section).toBeVisible();
+  await expect(section).toBeVisible();
 })
 
 
@@ -160,14 +170,14 @@ When('User update item details and delete item', async function () {
 })
 
 Then('User verify hide markup functionality', async function () {
-await estimatePage.hideandmarkupCheck();
+  await estimatePage.hideandmarkupCheck();
 
 })
 
 When('User apply bid package', async function () {
-await estimatePage.createBidPackage();
-await estimatePage.termsValueEnterInBidPackage();
-await estimatePage.uploadFileinBid();
+  await estimatePage.createBidPackage();
+  await estimatePage.termsValueEnterInBidPackage();
+  await estimatePage.uploadFileinBid();
 
 
 
@@ -184,26 +194,26 @@ When('Make item optional', async function () {
 })
 
 When('user apply markup and verify value', async function () {
-await estimatePage.applyBulkMarkUpToSelectedItem();
-await estimatePage.applyBulkMarkUpToSelectedItemWithNoMarkup();
-await estimatePage.openApplyBulkMarkupPopupMinMax();
-await estimatePage.increaseMarkupBy();
-await estimatePage.reduceTheMarkupOfSelectedItemsBy();
-await estimatePage.reduceTheMarkupofSelectedItemsBy();
-await estimatePage.resetTheMarkupForSelectedItemsToZero();
-await estimatePage.UpdateTheMarkupOfSelectedItemsFrom();
+  await estimatePage.applyBulkMarkUpToSelectedItem();
+  await estimatePage.applyBulkMarkUpToSelectedItemWithNoMarkup();
+  await estimatePage.openApplyBulkMarkupPopupMinMax();
+  await estimatePage.increaseMarkupBy();
+  await estimatePage.reduceTheMarkupOfSelectedItemsBy();
+  await estimatePage.reduceTheMarkupofSelectedItemsBy();
+  await estimatePage.resetTheMarkupForSelectedItemsToZero();
+  await estimatePage.UpdateTheMarkupOfSelectedItemsFrom();
 })
 
-When('User copy selected items', async function (){
-await estimatePage.copyitems();
+When('User copy selected items', async function () {
+  await estimatePage.copyitems();
 })
 
 Then('User update tab name', async function () {
   await estimatePage.swapTabsByDrag();
 })
 
-Then('User enter scope of detail', async function(){
-await estimatePage.enterScopeOfDetail();
+Then('User enter scope of detail', async function () {
+  await estimatePage.enterScopeOfDetail();
 })
 
 Then('Upload files in estimate', async function () {
