@@ -1,4 +1,5 @@
 const { expect } = require('@playwright/test');
+const testData = require('../testdata/testData');
 
 class BasePage {
   constructor(page) {
@@ -52,16 +53,16 @@ async createCustomer({
   email = `automation${Date.now()}@example.com`} = {}) {
 
   await this.customerCompanyNameInput.waitFor({state: 'visible',timeout: 10000});
-  await this.customerCompanyNameInput.fill(companyName);
-  await this.customerFirstNameInput.fill(firstName);
-  await this.customerLastNameInput.fill(lastName);
-  await this.customerEmailInput.fill(email);
+  await this.customerCompanyNameInput.fill(testData.customer.companyName);
+  await this.customerFirstNameInput.fill(testData.customer.firstName);
+  await this.customerLastNameInput.fill(testData.customer.lastName);
+  await this.customerEmailInput.fill(testData.customer.email);
 
-  await this.customerPrimaryPhoneInput.fill('9876543210');
-  await this.customerPhoneExtInput.fill('101');
-  await this.customerSecondaryPhoneInput.fill('9123456780');
-  await this.customerPhone2ExtInput.fill('102');
-  await this.customerCellInput.fill('9988776655');
+  await this.customerPrimaryPhoneInput.fill(testData.customer.primaryPhone);
+  await this.customerPhoneExtInput.fill(testData.customer.phoneExtension);
+  await this.customerSecondaryPhoneInput.fill(testData.customer.secondaryPhone);
+  await this.customerPhone2ExtInput.fill(testData.customer.phone2Extension);
+  await this.customerCellInput.fill(testData.customer.cell);
 
   //await this.createCustomerButton.click();
 }

@@ -4,17 +4,17 @@
     "elements": [
       {
         "description": "",
-        "id": "estimate-creation;create-a-new-estimate-using-project",
+        "id": "estimate-creation;create-a-new-estimate-using-plus-button",
         "keyword": "Scenario",
-        "line": 9,
-        "name": "Create a new Estimate using project",
+        "line": 15,
+        "name": "Create a new Estimate using Plus button",
         "steps": [
           {
             "keyword": "Before",
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 637109699
+              "duration": 466462100
             }
           },
           {
@@ -27,7 +27,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 4029194700
+              "duration": 4231730800
             }
           },
           {
@@ -40,33 +40,33 @@
             },
             "result": {
               "status": "passed",
-              "duration": 7689899300
+              "duration": 6700779700
             }
           },
           {
             "arguments": [],
             "keyword": "When ",
-            "line": 10,
+            "line": 16,
             "name": "User navigates to Estimate page",
             "match": {
-              "location": "step_definitions\\estimate.step.js:38"
+              "location": "step_definitions\\estimate.step.js:47"
             },
             "result": {
               "status": "passed",
-              "duration": 5867010300
+              "duration": 11191443700
             }
           },
           {
             "arguments": [],
             "keyword": "Then ",
-            "line": 13,
-            "name": "User serch not exits customer and lead",
+            "line": 17,
+            "name": "User click on plus button and create customer for estimate",
             "match": {
-              "location": "step_definitions\\estimate.step.js:9"
+              "location": "step_definitions\\estimate.step.js:11"
             },
             "result": {
               "status": "passed",
-              "duration": 15645486900
+              "duration": 16402550999
             }
           },
           {
@@ -74,7 +74,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 358302400
+              "duration": 326863500
             }
           }
         ],
