@@ -176,10 +176,33 @@ class EstimatePage extends BasePage {
 
     this.projectTypeDropdown = page.locator('div.ant-select[name="project_type"]');
 
+    // this.customerPlusButton = page
+    //   .locator('li').filter({ has: page.getByText('Customers', { exact: true }) }).locator('button.responsive-plus-icon');
+
   }
 
 
-  async noRecordFilterSerchForCustomerAndLead(){
+  // async clickCustomerPlusButton() {
+  //   const plusButton = this.customerPlusButton.first();
+  //   await plusButton.waitFor({ state: 'visible', timeout: 10000 });
+  //   await plusButton.click();
+  // }
+
+  async estimateCreateForNewCustomerByPlusButton() {
+    await this.estimatePageOpenAfterCreate();
+    await this.estimatesMenu.click();
+    await this.newEstimateBtn.click();
+
+    await this.customerBtn.click();
+    await this.clickCustomerPlusButton();
+    await this.createCustomer();
+
+
+
+
+  }
+
+  async noRecordFilterSerchForCustomerAndLead() {
     await this.estimatePageOpenAfterCreate();
     await this.estimatesMenu.click();
     await this.newEstimateBtn.click();
@@ -239,14 +262,14 @@ class EstimatePage extends BasePage {
     await this.randomEstimateNumbergenerate();
     await this.createEstimateBtn.nth(0).click();
 
-  // Open global project selector
-  // const globalProjectButton = this.page.locator('#global_select_project');
-  // await globalProjectButton.click();
-  // const projectSearch = this.page.getByPlaceholder('Search Projects');
-  // await projectSearch.fill(randomProjectNumber);
-  // const createdProject = this.page.locator('a.project').filter({hasText: randomProjectNumber});
-  // await expect(createdProject).toBeVisible({timeout: 10000});
-  // await expect(createdProject).toContainText(randomProjectNumber);
+    // Open global project selector
+    // const globalProjectButton = this.page.locator('#global_select_project');
+    // await globalProjectButton.click();
+    // const projectSearch = this.page.getByPlaceholder('Search Projects');
+    // await projectSearch.fill(randomProjectNumber);
+    // const createdProject = this.page.locator('a.project').filter({hasText: randomProjectNumber});
+    // await expect(createdProject).toBeVisible({timeout: 10000});
+    // await expect(createdProject).toContainText(randomProjectNumber);
   }
 
 

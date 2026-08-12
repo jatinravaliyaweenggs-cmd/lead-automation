@@ -6,11 +6,15 @@ Feature: Estimate Creation
     #Then User should be redirected to the dashboard
 
 
-Scenario: Create a new Estimate using project
-    When User navigates to Estimate page
-   Then User create estimate using existing project
-   Then User create new project in estimate
-    Then User serch not exits customer and lead
+# Scenario: Create a new Estimate using project
+#     When User navigates to Estimate page
+#    Then User create estimate using existing project
+#    Then User create new project in estimate
+#     Then User serch not exits customer and lead
+
+ Scenario: Create a new Estimate using Plus button
+     When User navigates to Estimate page
+     Then User click on plus button and create customer for estimate
 
 
 

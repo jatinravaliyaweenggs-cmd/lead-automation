@@ -19,6 +19,58 @@ class BasePage {
 
     this.leadsButton = this.page.getByRole('button', {name: 'Leads', exact: true});
     this.searchforLead = this.page.getByPlaceholder('Search for Lead');
+    this.customerPlusButton = page
+      .locator('li').filter({ has: page.getByText('Customers', { exact: true }) }).locator('button.responsive-plus-icon');
+
+
+
+    // Customer Creation Locators
+// ==================== Create Customer ====================
+
+this.customerCompanyNameInput = this.page.locator('input[name="company_name"]');
+this.customerFirstNameInput = this.page.getByPlaceholder('First Name');
+this.customerLastNameInput = this.page.getByPlaceholder('Last Name');
+this.customerEmailInput = this.page.getByPlaceholder('Email');
+
+
+this.customerPrimaryPhoneInput = this.page.getByPlaceholder('Primary phone number');
+this.customerSecondaryPhoneInput = this.page.getByPlaceholder('Secondary phone number');
+
+this.customerPhoneExtInput = this.page.getByPlaceholder('Extension').nth(0);
+this.customerPhone2ExtInput = this.page.getByPlaceholder('Extension').nth(1);
+this.customerPhone2Input = this.page.getByPlaceholder('Phone 2');
+this.customerCellInput = this.page.getByPlaceholder('Cell');
+//this.createCustomerButton = page.getByRole('button', {name: 'Create Customer', exact: true});
+
+
+}
+
+async createCustomer({
+  companyName = `Automation Company ${Date.now()}`,
+  firstName = 'Automation',
+  lastName = 'Customer',
+  email = `automation${Date.now()}@example.com`} = {}) {
+
+  await this.customerCompanyNameInput.waitFor({state: 'visible',timeout: 10000});
+  await this.customerCompanyNameInput.fill(companyName);
+  await this.customerFirstNameInput.fill(firstName);
+  await this.customerLastNameInput.fill(lastName);
+  await this.customerEmailInput.fill(email);
+
+  await this.customerPrimaryPhoneInput.fill('9876543210');
+  await this.customerPhoneExtInput.fill('101');
+  await this.customerSecondaryPhoneInput.fill('9123456780');
+  await this.customerPhone2ExtInput.fill('102');
+  await this.customerCellInput.fill('9988776655');
+
+  //await this.createCustomerButton.click();
+}
+
+
+    async clickCustomerPlusButton() {
+    const plusButton = this.customerPlusButton.first();
+    await plusButton.waitFor({ state: 'visible', timeout: 10000 });
+    await plusButton.click();
   }
 
   async verifyNoRecordsAvailable() {

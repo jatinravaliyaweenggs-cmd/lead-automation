@@ -6,6 +6,15 @@ const BasePage = require('../pages/BasePage');
 let estimatePage;
 
 
+
+
+Then('User click on plus button and create customer for estimate', async function (){
+
+  estimatePage = new EstimatePage(this.page);
+  await estimatePage.estimateCreateForNewCustomerByPlusButton();
+
+})
+
 When('User serch not exits customer and lead', async function () {
   estimatePage = new EstimatePage(this.page);
   await estimatePage.noRecordFilterSerchForCustomerAndLead();
