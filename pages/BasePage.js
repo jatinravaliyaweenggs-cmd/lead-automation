@@ -72,6 +72,8 @@ this.favoritesOnly = this.page.getByLabel('Show Favorites Only');
 async showFavouritesOnlyCheckBox(){
   await this.clickToSelectACustomerinEstimateText();
   await this.favoritesOnly.check();
+  const firstStar = this.page.locator('svg[data-icon="star"]').first();
+  await expect(firstStar).toBeVisible();
 
 
 }
