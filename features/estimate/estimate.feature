@@ -15,7 +15,9 @@ Feature: Estimate Creation
  Scenario: Create a new Estimate using Plus button for customer and Lead
      When User navigates to Estimate page
      #Then User click on plus button and create customer for estimate
-     Then User click on plus button and create Lead for estimate
+     #Then User click on plus button and create Lead for estimate
+
+     Then User create an estimate for an existing Lead
 
 
 

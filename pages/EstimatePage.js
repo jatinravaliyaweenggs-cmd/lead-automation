@@ -180,6 +180,24 @@ class EstimatePage extends BasePage {
 
   }
 
+async estimateCreateForExistingLeadBy(){
+
+    await this.estimatePageOpenAfterCreate();
+    await this.estimatesMenu.click();
+    await this.newEstimateBtn.click();
+    await this.customerBtn.click();
+    await this.leadsButton.click();
+
+
+
+
+}
+
+
+
+
+
+
   async estimateCreateForNewLeadByPlusButton() {
     await this.estimatePageOpenAfterCreate();
     await this.estimatesMenu.click();
