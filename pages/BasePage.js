@@ -32,11 +32,11 @@ this.customerFirstNameInput = this.page.getByPlaceholder('First Name');
 this.customerLastNameInput = this.page.getByPlaceholder('Last Name');
 this.PrimaryPhoneInput = this.page.getByPlaceholder('Primary phone number');
 this.SecondaryPhoneInput = this.page.getByPlaceholder('Secondary phone number');
-this.customerPhoneExtInput = this.page.getByPlaceholder('Extension').nth(0);
-this.customerPhone2ExtInput = this.page.getByPlaceholder('Extension').nth(1);
+this.PhoneExtInput = this.page.getByPlaceholder('Extension').nth(0);
+this.Phone2ExtInput = this.page.getByPlaceholder('Extension').nth(1);
 this.customerPhone2Input = this.page.getByPlaceholder('Phone 2');
-this.customerCellInput = this.page.getByPlaceholder('Cell');
-this.customerEmailInput = this.page.getByPlaceholder('Email');
+this.CellInput = this.page.getByPlaceholder('Cell');
+this.EmailInput = this.page.getByPlaceholder('Email');
 
 this.streetAddressInput = this.page.locator('#multi-select-directory-address-overlay');
 this.customerAddress2Input = this.page.getByPlaceholder('Suite or unit');
@@ -77,6 +77,22 @@ async createLeads(){
     await this.leadStageSearchInput.fill('Pending');
     await this.page.waitForTimeout(500);
     await this.page.getByText('Pending', { exact: true }).click();
+    
+    await this.PrimaryPhoneInput.fill(testData.estimateLead.primaryPhone);
+    await this.SecondaryPhoneInput.fill(testData.estimateLead.secondaryPhone);
+
+    await this.PhoneExtInput.fill(testData.estimateLead.phoneExt);
+    await this.Phone2ExtInput.fill(testData.estimateLead.phone2Ext);
+    await this.CellInput.fill(testData.estimateLead.cell);
+    await this.EmailInput.fill(testData.estimateLead.email);
+
+//     this.PhoneExtInput = this.page.getByPlaceholder('Extension').nth(0);
+// this.Phone2ExtInput = this.page.getByPlaceholder('Extension').nth(1);
+// this.customerPhone2Input = this.page.getByPlaceholder('Phone 2');
+// this.customerCellInput = this.page.getByPlaceholder('Cell');
+// this.customerEmailInput = this.page.getByPlaceholder('Email');
+
+
 
 }
 
@@ -124,12 +140,12 @@ async createCustomer() {
   await this.customerCompanyNameInput.fill(testData.customer.companyName);
   await this.customerFirstNameInput.fill(testData.customer.firstName);
   await this.customerLastNameInput.fill(testData.customer.lastName);
-  await this.customerEmailInput.fill(testData.customer.email);
+  await this.EmailInput.fill(testData.customer.email);
   await this.PrimaryPhoneInput.fill(testData.customer.primaryPhone);
-  await this.customerPhoneExtInput.fill(testData.customer.phoneExtension);
+  await this.PhoneExtInput.fill(testData.customer.phoneExtension);
   await this.SecondaryPhoneInput.fill(testData.customer.secondaryPhone);
-  await this.customerPhone2ExtInput.fill(testData.customer.phone2Extension);
-  await this.customerCellInput.fill(testData.customer.cell);
+  await this.Phone2ExtInput.fill(testData.customer.phone2Extension);
+  await this.CellInput.fill(testData.customer.cell);
 
 }
 
