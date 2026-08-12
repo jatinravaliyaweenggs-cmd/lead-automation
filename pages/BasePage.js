@@ -39,11 +39,11 @@ this.CellInput = this.page.getByPlaceholder('Cell');
 this.EmailInput = this.page.getByPlaceholder('Email');
 
 this.streetAddressInput = this.page.locator('#multi-select-directory-address-overlay');
-this.customerAddress2Input = this.page.getByPlaceholder('Suite or unit');
-this.customerCity = this.page.getByPlaceholder('City');
-this.customerState = this.page.getByPlaceholder('State/Province');
-this.CustomerZipCode = this.page.getByPlaceholder('Zip code');
-this.projectName = this.page.getByPlaceholder('Type a Project name');
+this.Address2Input = this.page.getByPlaceholder('Suite or unit');
+this.City = this.page.getByPlaceholder('City');
+this.State = this.page.getByPlaceholder('State/Province');
+this.ZipCode = this.page.getByPlaceholder('Zip code');
+// this.projectName = this.page.getByPlaceholder('Type a Project name');
 
 
 this.estimateTitleInput = page.getByRole('textbox', { name: 'Short title for the Estimate-' });
@@ -86,14 +86,6 @@ async createLeads(){
     await this.CellInput.fill(testData.estimateLead.cell);
     await this.EmailInput.fill(testData.estimateLead.email);
 
-//     this.PhoneExtInput = this.page.getByPlaceholder('Extension').nth(0);
-// this.Phone2ExtInput = this.page.getByPlaceholder('Extension').nth(1);
-// this.customerPhone2Input = this.page.getByPlaceholder('Phone 2');
-// this.customerCellInput = this.page.getByPlaceholder('Cell');
-// this.customerEmailInput = this.page.getByPlaceholder('Email');
-
-
-
 }
 
 
@@ -102,11 +94,6 @@ async clickLeadPlusButton() {
   await this.leadsButton.click();
   await this.estimateLeadsPlusButton.waitFor({state: 'visible',timeout: 10000});
   await this.estimateLeadsPlusButton.click();
-
-
-
-
-
 }
 
 async randomEstimateTitlegenerate(){
@@ -127,11 +114,11 @@ async selectProjectType(){
 
 async selectStreetAddress() {
   await this.streetAddressInput.waitFor({state: 'visible',timeout: 10000});
-  await this.streetAddressInput.fill('Maharana Pratap Garden')
-  await this.customerAddress2Input.fill('Flat 204, Maharana Pratap Garden');
-  await this.customerCity.fill('Surat');
-  await this.customerState.fill('Gujarat');
-  await this.CustomerZipCode.fill('395002');
+    await this.streetAddressInput.fill(testData.estimateLead.street);
+    await this.Address2Input.fill(testData.estimateLead.street2);
+    await this.City.fill(testData.estimateLead.city);
+    await this.State.fill(testData.estimateLead.state);
+    await this.ZipCode.fill(testData.estimateLead.zip);
   await this.clickSave();
 }
 
