@@ -189,6 +189,12 @@ class EstimatePage extends BasePage {
     await this.opportunitysPlusButton.click();
   }
 
+  async projectTypeSelect(){
+    await this.projectTypeDropdown.click();
+    await this.page.keyboard.type('Residential');
+    await this.page.keyboard.press('Enter');
+  }
+
   async opportunitysCreateForExistingCustomerBy() {
     await this.estimatePageOpenAfterCreate();
     await this.estimatesMenu.click();
@@ -202,7 +208,7 @@ class EstimatePage extends BasePage {
     await this.selectCustomer('Bhavik Raval');
     await this.yesBtn.click();
 
-    await this.projectTypeDropdown.click();
+    await this.projectTypeSelect();
 
 
 
