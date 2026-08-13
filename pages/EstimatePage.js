@@ -301,10 +301,7 @@ class EstimatePage extends BasePage {
 
 
     await this.projectNameInputFill();
-    await this.projectTypeDropdown.click();
-    await this.page.keyboard.type('Residential');
-    await this.page.keyboard.press('Enter');
-
+    await this.projectTypeSelect();
     const duplicateNameAlert = this.page.locator('.ant-notification-notice-description');
     await expect(duplicateNameAlert).toBeVisible({ timeout: 5000 });
     await expect(duplicateNameAlert).toHaveText('This name already exists. Please use a different name.');
@@ -326,11 +323,7 @@ class EstimatePage extends BasePage {
     await this.searchCustomer.fill('Bhavik Raval');
     await this.selectCustomer('Bhavik Raval');
 
-    await this.projectTypeDropdown.click();
-    await this.page.keyboard.type('Residential');
-    await this.page.keyboard.press('Enter');
-
-
+    await this.projectTypeSelect();
     const CreateProjectBtn = this.page.getByRole('button', { name: 'Create Project', exact: true });
     await CreateProjectBtn.click();
     await this.titleInput.fill('This is a testing title');
