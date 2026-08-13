@@ -6,47 +6,34 @@ const BasePage = require('../pages/BasePage');
 let estimatePage;
 
 
-Then('Create an estimate from an opportunity by customer', async function(){
 
+Then('Create an estimate from an opportunity by lead', async function () {
+      await estimatePage.createAnEstimateFromAnOpportunityByLead();
+})
+
+
+
+Then('Create an estimate from an opportunity by customer', async function () {
   await estimatePage.opportunitysCreateForExistingCustomerBy();
-
-
 })
 
-
-
-
-Then('Verify Show Favourites Only functionality', async function(){
-
-    await estimatePage.showFavouritesOnlyCheckBox();
-
-
+Then('Verify Show Favourites Only functionality', async function () {
+  await estimatePage.showFavouritesOnlyCheckBox();
 })
-
-
-
-
 
 Then('User create an estimate for an existing Lead', async function () {
-
   estimatePage = new EstimatePage(this.page);
   await estimatePage.estimateCreateForExistingLeadBy();
-
 })
 
 Then('User click on plus button and create Lead for estimate', async function () {
-
   estimatePage = new EstimatePage(this.page);
   await estimatePage.estimateCreateForNewLeadByPlusButton();
-
 })
 
-
 Then('User click on plus button and create customer for estimate', async function () {
-
   estimatePage = new EstimatePage(this.page);
   await estimatePage.estimateCreateForNewCustomerByPlusButton();
-
 })
 
 When('User serch not exits customer and lead', async function () {
@@ -54,23 +41,16 @@ When('User serch not exits customer and lead', async function () {
   await estimatePage.noRecordFilterSerchForCustomerAndLead();
 });
 
-
-
 When('User create estimate using existing project', async function () {
   estimatePage = new EstimatePage(this.page);
   await estimatePage.createEstimateUsingExistingProject();
 });
 
-
 When('User create new project in estimate', async function () {
   estimatePage = new EstimatePage(this.page);
   await estimatePage.userCreateNewProjectForEstimate();
   await estimatePage.EstimaterCreateUsingNewProject();
-
 });
-
-
-
 
 When('User navigates to Estimate page and create estimate', async function () {
   estimatePage = new EstimatePage(this.page);
@@ -113,8 +93,7 @@ Then('User open enter item', async function () {
   await estimatePage.addItemDetails();
   await estimatePage.clickYesAndValidate();
   await estimatePage.clickNoAndValidate();
-}
-);
+});
 
 Then('user enter new section', async function () {
   await estimatePage.addNewSection();
@@ -130,7 +109,6 @@ Then('User import estimate from template', async function () {
   await estimatePage.pasteFromClipboard();
 });
 
-
 When('user enter manual item', async function () {
   await estimatePage.addManualItemTabClick();
 });
@@ -143,11 +121,9 @@ When('User enter material from material tab', async function () {
   await estimatePage.materialAddFromMaterialPage();
 })
 
-
 When('User enter labor from labor tab', async function () {
   await estimatePage.laborAddFromLaborPage();
 })
-
 
 When('User enter equipment from equipment tab', async function () {
   await estimatePage.equipmentAddFromLaborPage();
@@ -161,7 +137,6 @@ When('User enter other item from other item tab', async function () {
   await estimatePage.otherItemsAddFromOtherItemsPage();
 });
 
-
 When('User update View Edit Section Details', async function () {
   await estimatePage.updateSectionDetails();
   const section = this.page.locator('span.ant-typography', { hasText: 'Test Section' }).first();
@@ -173,7 +148,6 @@ When('User apply Automatic Bulk Markup', async function () {
   const section = this.page.locator('span.ant-typography', { hasText: 'Copy of Test Section' }).first();
   await expect(section).toBeVisible();
 })
-
 
 When('User update item details and delete item', async function () {
   await estimatePage.updateItemDetails();
@@ -188,9 +162,6 @@ When('User apply bid package', async function () {
   await estimatePage.createBidPackage();
   await estimatePage.termsValueEnterInBidPackage();
   await estimatePage.uploadFileinBid();
-
-
-
 })
 
 Then('User apply and remove tax', async function () {
@@ -237,7 +208,6 @@ Then('Open coversheet page and apply template', async function () {
 Then('User enter note in estimate', async function () {
   await estimatePage.addNote();
 })
-
 
 Then('User copy the estimate', async function () {
   await estimatePage.estimateCopyButton();

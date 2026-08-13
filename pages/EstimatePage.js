@@ -185,6 +185,30 @@ class EstimatePage extends BasePage {
   }
 
 
+  async createAnEstimateFromAnOpportunityByLead(){
+
+    await this.estimatePageOpenAfterCreate();
+    await this.estimatesMenu.click();
+    await this.newEstimateBtn.click();
+    await this.page.getByText('Click to select a Project(s)/Opportunity-S', {exact: true}).click();
+    await this.opportunityPlusButtonClick();
+    await this.page.getByText('Click to select an existing contact for this opportunity',{ exact: true }).click();
+    await this.leadsButton.click();
+    await this.searchforLead.click();
+    await this.searchforLead.fill('Automation');
+    const firstLead = this.page.locator('div.project').filter({ hasText: 'Automation Lead' }).first();
+    await firstLead.click();
+    await this.yesBtn.click();
+    await this.projectTypeSelect();
+   // await this.selectStage();
+    
+    await this.page.getByPlaceholder('Enter an Opportunity Number').fill(testData.opportunity.opportunityNumber);
+    await this.page.getByPlaceholder('Short descriptive title for the opportunity').fill(testData.opportunity.opportunityTitle);
+    await this.createOpportunityBtn.click();
+
+
+  }
+
   async opportunityPlusButtonClick() {
     await this.newButton.waitFor({ state: 'visible', timeout: 10000 });
     await this.newButton.click();
