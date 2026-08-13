@@ -195,6 +195,13 @@ class EstimatePage extends BasePage {
     await this.page.keyboard.press('Enter');
   }
 
+async selectStage() {
+  this.leadStageSearchInput =this.page.locator('.ant-select[name="stage"] input.ant-select-selection-search-input');
+  await this.leadStageSearchInput.click();
+  await this.leadStageSearchInput.fill('Pending');
+  await this.page.locator('.ant-select-item-option').filter({ hasText: 'Pending' }).click();
+}
+
   async opportunitysCreateForExistingCustomerBy() {
     await this.estimatePageOpenAfterCreate();
     await this.estimatesMenu.click();
@@ -207,10 +214,13 @@ class EstimatePage extends BasePage {
     await this.searchCustomer.fill('Bhavik Raval');
     await this.selectCustomer('Bhavik Raval');
     await this.yesBtn.click();
-
     await this.projectTypeSelect();
-
-
+    await this.selectStage();
+    const opportunityNumber = `OPP-${Date.now().toString().slice(-6)}`;
+    await this.page.getByPlaceholder('Enter an Opportunity Number').fill(opportunityNumber);
+    const opportunityTitle = `Test Opportunity ${Date.now()}`;
+    await this.page.getByPlaceholder('Short descriptive title for the opportunity').fill(opportunityTitle);
+    
 
 
   }
