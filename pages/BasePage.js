@@ -226,6 +226,14 @@ async clickSelectCreateCustomerOrLead(){
     await this.customerEstimateNumber.fill(uniqueNum);
   }
 
+  async getUniqueOpportunityData() {
+    const uniqueId = `${Date.now()}-${Math.floor(Math.random() * 1000)}`;
+    return {
+      opportunityNumber: `OPP Number-${uniqueId}`,
+      opportunityTitle: `OPP Title-${uniqueId}`,
+    };
+  }
+
   async clickSave() {
     await this.saveButton.waitFor({ state: 'visible', timeout: 10000 });
     await this.saveButton.click();

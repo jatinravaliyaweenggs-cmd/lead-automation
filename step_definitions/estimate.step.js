@@ -8,21 +8,22 @@ let estimatePage;
 
 
 Then('Create an estimate from an opportunity for a lead using the plus button', async function name() {
+  estimatePage = new EstimatePage(this.page);
   await estimatePage.OpportunityCreateForNewLead();
-  
 })
 
-
-
 Then('Create an estimate from an opportunity for a customer using the plus button', async function(){
+    estimatePage = new EstimatePage(this.page);
     await estimatePage.OpportunityCreateForNewCustomer();
 })
 
 Then('Create an estimate from an opportunity by lead', async function () {
+      estimatePage = new EstimatePage(this.page);
       await estimatePage.createAnEstimateFromAnOpportunityByLead();
 })
 
 Then('Create an estimate from an opportunity by customer', async function () {
+  estimatePage = new EstimatePage(this.page);
   await estimatePage.opportunitysCreateForExistingCustomerBy();
 })
 

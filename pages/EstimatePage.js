@@ -176,7 +176,7 @@ class EstimatePage extends BasePage {
     this.autoUpdateEstimateNumber = page.getByText('Auto/Custom');
     this.CreateProjectBtn = page.getByRole('button', { name: 'Create Project' });
 
-    this.projectTypeDropdown = page.locator('div.ant-select[name="project_type"]');
+    this.projectTypeDropdown = this.page.locator('div.ant-select[name="project_type"]');
 
     this.opportunitysPlusButton = this.page.getByRole('menuitem', { name: 'Opportunity-S' });
     this.createOpportunityBtn = page.getByRole('button', { name: 'Create Opportunity-S' });
@@ -200,8 +200,9 @@ class EstimatePage extends BasePage {
     await this.selectStreetAddress();
     await this.yesBtn.click();
 
-    await this.page.getByPlaceholder('Enter an Opportunity Number').fill(testData.opportunity.opportunityNumber);
-    await this.page.getByPlaceholder('Short descriptive title for the opportunity').fill(testData.opportunity.opportunityTitle);
+    const opportunityData = await this.getUniqueOpportunityData();
+    await this.page.getByPlaceholder('Enter an Opportunity Number').fill(opportunityData.opportunityNumber);
+    await this.page.getByPlaceholder('Short descriptive title for the opportunity').fill(opportunityData.opportunityTitle);
     await this.createOpportunityBtn.click();
 
     await this.randomEstimateTitlegenerate();
@@ -236,8 +237,9 @@ class EstimatePage extends BasePage {
     await this.projectTypeSelect();
     // await this.randomEstimateNumbergenerate();
     // await this.randomEstimateTitlegenerate();
-    await this.page.getByPlaceholder('Enter an Opportunity Number').fill(testData.opportunity.opportunityNumber);
-    await this.page.getByPlaceholder('Short descriptive title for the opportunity').fill(testData.opportunity.opportunityTitle);
+    const opportunityData = await this.getUniqueOpportunityData();
+    await this.page.getByPlaceholder('Enter an Opportunity Number').fill(opportunityData.opportunityNumber);
+    await this.page.getByPlaceholder('Short descriptive title for the opportunity').fill(opportunityData.opportunityTitle);
     await this.createOpportunityBtn.click();
 
     await this.randomEstimateTitlegenerate();
@@ -270,9 +272,13 @@ class EstimatePage extends BasePage {
     await this.projectTypeSelect();
     // await this.selectStage();
 
-    await this.page.getByPlaceholder('Enter an Opportunity Number').fill(testData.opportunity.opportunityNumber);
-    await this.page.getByPlaceholder('Short descriptive title for the opportunity').fill(testData.opportunity.opportunityTitle);
+    const opportunityData = await this.getUniqueOpportunityData();
+    await this.page.getByPlaceholder('Enter an Opportunity Number').fill(opportunityData.opportunityNumber);
+    await this.page.getByPlaceholder('Short descriptive title for the opportunity').fill(opportunityData.opportunityTitle);
     await this.createOpportunityBtn.click();
+    await this.randomEstimateTitlegenerate();
+    await this.randomEstimateNumbergenerate();
+    await this.page.getByRole('button', { name: 'Create Estimate-sin' }).click();
 
 
   }
@@ -315,6 +321,9 @@ class EstimatePage extends BasePage {
     await this.page.getByPlaceholder('Enter an Opportunity Number').fill(testData.opportunity.opportunityNumber);
     await this.page.getByPlaceholder('Short descriptive title for the opportunity').fill(testData.opportunity.opportunityTitle);
     await this.createOpportunityBtn.click();
+    await this.randomEstimateTitlegenerate();
+    await this.randomEstimateNumbergenerate();
+    await this.page.getByRole('button', { name: 'Create Estimate-sin' }).click();
 
 
   }
