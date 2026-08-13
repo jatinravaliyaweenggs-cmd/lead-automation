@@ -6,18 +6,21 @@ const BasePage = require('../pages/BasePage');
 let estimatePage;
 
 
+
+Then('Create an estimate from an opportunity for a lead using the plus button', async function name() {
+  await estimatePage.OpportunityCreateForNewLead();
+  
+})
+
+
+
 Then('Create an estimate from an opportunity for a customer using the plus button', async function(){
     await estimatePage.OpportunityCreateForNewCustomer();
 })
 
-
-
-
 Then('Create an estimate from an opportunity by lead', async function () {
       await estimatePage.createAnEstimateFromAnOpportunityByLead();
 })
-
-
 
 Then('Create an estimate from an opportunity by customer', async function () {
   await estimatePage.opportunitysCreateForExistingCustomerBy();

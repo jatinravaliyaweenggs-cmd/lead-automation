@@ -58,9 +58,10 @@ this.estimateLeadsPlusButton = this.page.locator('li').filter({ has: this.page.g
 this.leadCompanyNameInput = page.getByPlaceholder('Company name');
 this.leadFirstNameInput = page.getByPlaceholder('Lead contact first name');
 this.leadLastNameInput = page.getByPlaceholder('Lead contact last name');
-//this.leadStageInput = page.getByPlaceholder('Click to select the lead stage');
 
-this.leadStageInput = this.page.locator('.ant-select[name="stage"]');
+//this.leadStageInput = this.page.locator('.ant-select[name="stage"]');
+this.leadStageInput = this.page.locator('.ant-select[name="stage"]').filter({hasText: 'Click to select the lead stage'});
+
 
 this.favoritesOnly = this.page.getByLabel('Show Favorites Only');
 
@@ -95,7 +96,8 @@ async createLeads(){
     await this.leadFirstNameInput.fill(testData.estimateLead.firstName);
     await this.leadLastNameInput.fill(testData.estimateLead.lastName);
     await this.leadStageInput.click();
-    this.leadStageSearchInput = this.page.locator('.ant-select[name="stage"] input.ant-select-selection-search-input');
+    //this.leadStageSearchInput = this.page.locator('.ant-select[name="stage"] input.ant-select-selection-search-input');
+    this.leadStageSearchInput = this.leadStageInput.locator('input.ant-select-selection-search-input');
     await this.leadStageSearchInput.click();
     await this.leadStageSearchInput.fill('Pending');
     await this.page.waitForTimeout(500);
@@ -108,6 +110,9 @@ async createLeads(){
     await this.Phone2ExtInput.fill(testData.estimateLead.phone2Ext);
     await this.CellInput.fill(testData.estimateLead.cell);
     await this.EmailInput.fill(testData.estimateLead.email);
+
+
+    
 
 }
 

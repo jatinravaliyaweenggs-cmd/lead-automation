@@ -179,15 +179,49 @@ class EstimatePage extends BasePage {
     this.projectTypeDropdown = page.locator('div.ant-select[name="project_type"]');
 
     this.opportunitysPlusButton = this.page.getByRole('menuitem', { name: 'Opportunity-S' });
-    this.createOpportunityBtn = page.getByRole('button', {name: 'Create Opportunity-S'});
-    this.contactSelectForOpportunity = this.page.getByText('Click to select a Project(s)/Opportunity-S', {exact: true});
-    this.projectTypeSelectForOpportunity = this.page.getByText('Click to select an existing contact for this opportunity',{ exact: true })
+    this.createOpportunityBtn = page.getByRole('button', { name: 'Create Opportunity-S' });
+    this.contactSelectForOpportunity = this.page.getByText('Click to select a Project(s)/Opportunity-S', { exact: true });
+    this.projectTypeSelectForOpportunity = this.page.getByText('Click to select an existing contact for this opportunity', { exact: true })
+
+  }
+
+  async OpportunityCreateForNewLead() {
+
+    await this.estimatePageOpenAfterCreate();
+    await this.estimatesMenu.click();
+    await this.newEstimateBtn.click();
+    await this.contactSelectForOpportunity.click();
+    await this.opportunityPlusButtonClick();
+    await this.projectTypeSelectForOpportunity.click();
+    await this.leadsButton.click();
+
+    await this.clickLeadPlusButton();
+    await this.createLeads();
+    await this.selectStreetAddress();
+    await this.yesBtn.click();
+
+    await this.page.getByPlaceholder('Enter an Opportunity Number').fill(testData.opportunity.opportunityNumber);
+    await this.page.getByPlaceholder('Short descriptive title for the opportunity').fill(testData.opportunity.opportunityTitle);
+    await this.createOpportunityBtn.click();
+
+    await this.randomEstimateTitlegenerate();
+    await this.randomEstimateNumbergenerate();
+    await this.projectTypeSelect();
+    await this.createOpportunityBtn.click()
+
+    await this.randomEstimateTitlegenerate();
+    await this.randomEstimateNumbergenerate();
+
+    await this.page.getByRole('button', { name: 'Create Estimate-sin' }).click();
+
 
   }
 
 
-async OpportunityCreateForNewCustomer(){
- await this.estimatePageOpenAfterCreate();
+
+
+  async OpportunityCreateForNewCustomer() {
+    await this.estimatePageOpenAfterCreate();
     await this.estimatesMenu.click();
     await this.newEstimateBtn.click();
     await this.contactSelectForOpportunity.click();
@@ -207,18 +241,18 @@ async OpportunityCreateForNewCustomer(){
     await this.createOpportunityBtn.click();
 
     await this.randomEstimateTitlegenerate();
-    await this.randomEstimateNumbergenerate(); 
+    await this.randomEstimateNumbergenerate();
 
-  await this.page.getByRole('button', {name: 'Create Estimate-sin'}).click();
-  //await this.createEstimateBtn.click();
-}
-
-
+    await this.page.getByRole('button', { name: 'Create Estimate-sin' }).click();
+    //await this.createEstimateBtn.click();
+  }
 
 
 
 
-  async createAnEstimateFromAnOpportunityByLead(){
+
+
+  async createAnEstimateFromAnOpportunityByLead() {
 
     await this.estimatePageOpenAfterCreate();
     await this.estimatesMenu.click();
@@ -234,8 +268,8 @@ async OpportunityCreateForNewCustomer(){
     await firstLead.click();
     await this.yesBtn.click();
     await this.projectTypeSelect();
-   // await this.selectStage();
-    
+    // await this.selectStage();
+
     await this.page.getByPlaceholder('Enter an Opportunity Number').fill(testData.opportunity.opportunityNumber);
     await this.page.getByPlaceholder('Short descriptive title for the opportunity').fill(testData.opportunity.opportunityTitle);
     await this.createOpportunityBtn.click();
@@ -250,18 +284,18 @@ async OpportunityCreateForNewCustomer(){
     await this.opportunitysPlusButton.click();
   }
 
-  async projectTypeSelect(){
+  async projectTypeSelect() {
     await this.projectTypeDropdown.click();
     await this.page.keyboard.type('Residential');
     await this.page.keyboard.press('Enter');
   }
 
-async selectStage() {
-  this.leadStageSearchInput =this.page.locator('.ant-select[name="stage"] input.ant-select-selection-search-input');
-  await this.leadStageSearchInput.click();
-  await this.leadStageSearchInput.fill('Pending');
-  await this.page.locator('.ant-select-item-option').filter({ hasText: 'Pending' }).click();
-}
+  async selectStage() {
+    this.leadStageSearchInput = this.page.locator('.ant-select[name="stage"] input.ant-select-selection-search-input');
+    await this.leadStageSearchInput.click();
+    await this.leadStageSearchInput.fill('Pending');
+    await this.page.locator('.ant-select-item-option').filter({ hasText: 'Pending' }).click();
+  }
 
   async opportunitysCreateForExistingCustomerBy() {
     await this.estimatePageOpenAfterCreate();
@@ -271,13 +305,13 @@ async selectStage() {
     await this.opportunityPlusButtonClick();
     await this.projectTypeSelectForOpportunity.click();
 
-    
+
     await this.searchCustomer.fill('Bhavik Raval');
     await this.selectCustomer('Bhavik Raval');
     await this.yesBtn.click();
     await this.projectTypeSelect();
     await this.selectStage();
-    
+
     await this.page.getByPlaceholder('Enter an Opportunity Number').fill(testData.opportunity.opportunityNumber);
     await this.page.getByPlaceholder('Short descriptive title for the opportunity').fill(testData.opportunity.opportunityTitle);
     await this.createOpportunityBtn.click();

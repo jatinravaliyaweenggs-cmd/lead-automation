@@ -22,7 +22,8 @@ Feature: Estimate Creation
 
     #Then Create an estimate from an opportunity by customer
     #Then Create an estimate from an opportunity by lead
-    Then Create an estimate from an opportunity for a customer using the plus button
+   # Then Create an estimate from an opportunity for a customer using the plus button
+   Then Create an estimate from an opportunity for a lead using the plus button
 
 
 
