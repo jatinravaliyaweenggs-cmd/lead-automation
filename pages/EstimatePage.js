@@ -1,5 +1,7 @@
 const { expect } = require('@playwright/test');
 const BasePage = require('./BasePage');
+const testData = require('../testdata/testData');
+
 
 
 class EstimatePage extends BasePage {
@@ -216,10 +218,9 @@ async selectStage() {
     await this.yesBtn.click();
     await this.projectTypeSelect();
     await this.selectStage();
-    const opportunityNumber = `OPP-${Date.now().toString().slice(-6)}`;
-    await this.page.getByPlaceholder('Enter an Opportunity Number').fill(opportunityNumber);
-    const opportunityTitle = `Test Opportunity ${Date.now()}`;
-    await this.page.getByPlaceholder('Short descriptive title for the opportunity').fill(opportunityTitle);
+    
+    await this.page.getByPlaceholder('Enter an Opportunity Number').fill(testData.opportunity.opportunityNumber);
+    await this.page.getByPlaceholder('Short descriptive title for the opportunity').fill(testData.opportunity.opportunityTitle);
     
 
 

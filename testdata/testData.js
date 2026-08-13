@@ -29,6 +29,16 @@ const testData = {
     city: 'Ahmedabad',
     state: 'Gujarat',
     zip: '380001'
+  },
+
+  opportunity:{
+opportunityNumber: `OPP-${Date.now().toString().slice(-6)}`,
+opportunityTitle: `OPP Title-${Date.now().toString().slice(-6)}`
+
+
+
+
+
   }
 
 
