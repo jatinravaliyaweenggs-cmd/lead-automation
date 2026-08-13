@@ -21,7 +21,8 @@ Feature: Estimate Creation
     # Then Verify Show Favourites Only functionality
 
     #Then Create an estimate from an opportunity by customer
-    Then Create an estimate from an opportunity by lead
+    #Then Create an estimate from an opportunity by lead
+    Then Create an estimate from an opportunity for a customer using the plus button
 
 
 

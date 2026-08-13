@@ -186,6 +186,38 @@ class EstimatePage extends BasePage {
   }
 
 
+async OpportunityCreateForNewCustomer(){
+ await this.estimatePageOpenAfterCreate();
+    await this.estimatesMenu.click();
+    await this.newEstimateBtn.click();
+    await this.contactSelectForOpportunity.click();
+
+    await this.opportunityPlusButtonClick();
+    await this.projectTypeSelectForOpportunity.click();
+
+    await this.clickCustomerPlusButton();
+    await this.createCustomer();
+    await this.selectStreetAddress();
+    await this.yesBtn.click();
+    await this.projectTypeSelect();
+    // await this.randomEstimateNumbergenerate();
+    // await this.randomEstimateTitlegenerate();
+    await this.page.getByPlaceholder('Enter an Opportunity Number').fill(testData.opportunity.opportunityNumber);
+    await this.page.getByPlaceholder('Short descriptive title for the opportunity').fill(testData.opportunity.opportunityTitle);
+    await this.createOpportunityBtn.click();
+
+    await this.randomEstimateTitlegenerate();
+    await this.randomEstimateNumbergenerate(); 
+
+  await this.page.getByRole('button', {name: 'Create Estimate-sin'}).click();
+  //await this.createEstimateBtn.click();
+}
+
+
+
+
+
+
   async createAnEstimateFromAnOpportunityByLead(){
 
     await this.estimatePageOpenAfterCreate();

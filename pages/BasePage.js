@@ -84,6 +84,9 @@ async clickToSelectACustomerinEstimateText(){
     await this.estimatesMenu.click();
     await this.newEstimateBtn.click();
     await this.customerBtn.click();
+    
+    
+
 }
 
 async createLeads(){
@@ -214,7 +217,7 @@ async clickSelectCreateCustomerOrLead(){
 
 
   async randomEstimateNumbergenerate() {
-    const uniqueNum = `Est#${Date.now().toString().slice(-6)}`;
+    const uniqueNum = `EstNumber-${Date.now().toString().slice(-6)}`;
     await this.customerEstimateNumber.fill(uniqueNum);
   }
 
