@@ -195,6 +195,11 @@ class EstimatePage extends BasePage {
     await this.newEstimateBtn.click();
     await this.page.getByText('Click to select a Project(s)/Opportunity-S', {exact: true}).click();
     await this.opportunityPlusButtonClick();
+    await this.page.getByText('Click to select an existing contact for this opportunity',{ exact: true }).click();
+
+
+
+
   }
 
 

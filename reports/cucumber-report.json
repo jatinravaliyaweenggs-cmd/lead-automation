@@ -14,7 +14,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 551152300
+              "duration": 491538699
             }
           },
           {
@@ -27,7 +27,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 4018080899
+              "duration": 3969933100
             }
           },
           {
@@ -40,7 +40,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 10427015600
+              "duration": 7709279999
             }
           },
           {
@@ -49,24 +49,24 @@
             "line": 16,
             "name": "User navigates to Estimate page",
             "match": {
-              "location": "step_definitions\\estimate.step.js:54"
+              "location": "step_definitions\\estimate.step.js:81"
             },
             "result": {
               "status": "passed",
-              "duration": 4968196599
+              "duration": 6308502100
             }
           },
           {
             "arguments": [],
             "keyword": "Then ",
-            "line": 18,
-            "name": "User click on plus button and create Lead for estimate",
+            "line": 23,
+            "name": "Create an estimate from an opportunity by customer",
             "match": {
-              "location": "step_definitions\\estimate.step.js:10"
+              "location": "step_definitions\\estimate.step.js:9"
             },
             "result": {
               "status": "passed",
-              "duration": 31692055600
+              "duration": 8581264100
             }
           },
           {
@@ -74,7 +74,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 501878199
+              "duration": 344907600
             }
           }
         ],
