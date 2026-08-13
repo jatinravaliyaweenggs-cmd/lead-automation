@@ -180,7 +180,9 @@ class EstimatePage extends BasePage {
 
     this.opportunitysPlusButton = this.page.getByRole('menuitem', { name: 'Opportunity-S' });
     this.createOpportunityBtn = page.getByRole('button', {name: 'Create Opportunity-S'});
-
+    this.contactSelectForOpportunity = this.page.getByText('Click to select a Project(s)/Opportunity-S', {exact: true});
+    this.projectTypeSelectForOpportunity = 
+    this.page.getByText('Click to select an existing contact for this opportunity',{ exact: true })
 
   }
 
@@ -190,9 +192,10 @@ class EstimatePage extends BasePage {
     await this.estimatePageOpenAfterCreate();
     await this.estimatesMenu.click();
     await this.newEstimateBtn.click();
-    await this.page.getByText('Click to select a Project(s)/Opportunity-S', {exact: true}).click();
+    await this.contactSelectForOpportunity.click();
+
     await this.opportunityPlusButtonClick();
-    await this.page.getByText('Click to select an existing contact for this opportunity',{ exact: true }).click();
+    await this.projectTypeSelectForOpportunity.click();
     await this.leadsButton.click();
     await this.searchforLead.click();
     await this.searchforLead.fill('Automation');
