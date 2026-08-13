@@ -179,6 +179,7 @@ class EstimatePage extends BasePage {
     this.projectTypeDropdown = page.locator('div.ant-select[name="project_type"]');
 
     this.opportunitysPlusButton = this.page.getByRole('menuitem', { name: 'Opportunity-S' });
+    this.createOpportunityBtn = page.getByRole('button', {name: 'Create Opportunity-S'});
 
 
   }
@@ -221,7 +222,7 @@ async selectStage() {
     
     await this.page.getByPlaceholder('Enter an Opportunity Number').fill(testData.opportunity.opportunityNumber);
     await this.page.getByPlaceholder('Short descriptive title for the opportunity').fill(testData.opportunity.opportunityTitle);
-    
+    await this.createOpportunityBtn.click();
 
 
   }
