@@ -11,6 +11,11 @@ Then('Create an estimate from an opportunity for a new stage type and existing s
   await estimatePage.createEstimateForNewStageTypeAndExistingStageType();
 })
 
+Then('Verify validation messsage for create estimate', async function(){
+  estimatePage = new EstimatePage(this.page);
+  await estimatePage.verifyCreateEstimateValidation();
+
+})
 
 Then('Create an estimate from an opportunity for a new project type and existing project type', async function(){
   estimatePage = new EstimatePage(this.page);

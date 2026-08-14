@@ -185,6 +185,9 @@ class EstimatePage extends BasePage {
 
   }
 
+
+  
+
   async opportunityNumberAndTitleAdd() {
 
     const opportunityData = await this.getUniqueOpportunityData();
@@ -228,6 +231,28 @@ await this.page.keyboard.press('Enter');
 
 
   }
+
+
+
+  async verifyCreateEstimateValidation() {
+
+    await this.newEstimateBtn.click();
+    await this.page.getByRole('button', { name: 'Create Estimate-sin' }).click();
+
+    // Verify validation messages
+    const requiredMessages = this.page.getByText(
+        'This field is required.',
+        { exact: true }
+    );
+
+    await expect(requiredMessages).toHaveCount(3);
+
+    await expect(requiredMessages.nth(0)).toBeVisible();
+    await expect(requiredMessages.nth(1)).toBeVisible();
+    await expect(requiredMessages.nth(2)).toBeVisible();
+}
+
+
 
   async createEstimateForNewProjectTypeAndExistingProjectType() {
 
