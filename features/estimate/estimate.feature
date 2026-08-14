@@ -14,20 +14,23 @@ Feature: Estimate Creation
 
  Scenario: Create a new Estimate using Plus button for customer and Lead
      When User navigates to Estimate page
-     #Then User click on plus button and create customer for estimate
-     #Then User click on plus button and create Lead for estimate
+    #  Then User click on plus button and create customer for estimate
+  #    Then User click on plus button and create Lead for estimate
 
-    # Then User create an estimate for an existing Lead
-    # Then Verify Show Favourites Only functionality
+  #   Then User create an estimate for an existing Lead
+  #   Then Verify Show Favourites Only functionality
 
   #   Then Create an estimate from an opportunity by customer
   #   Then Create an estimate from an opportunity by lead
   #   Then Create an estimate from an opportunity for a customer using the plus button
   #  Then Create an estimate from an opportunity for a lead using the plus button
 
-  #Then Create an estimate from an opportunity for a new project type and existing project type
-  #Then Create an estimate from an opportunity for a new stage type and existing stage type
-  Then Verify validation messsage for create estimate
+  Then Create an estimate from an opportunity for a new project type and existing project type
+
+  #  Scenario: Create a new Estimate using stage
+  # When User navigates to Estimate page
+  # Then Create an estimate from an opportunity for a new stage type and existing stage type
+  # #Then Verify validation messsage for create estimate
 
 
 

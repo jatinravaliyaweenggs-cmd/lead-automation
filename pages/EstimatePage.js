@@ -198,7 +198,8 @@ class EstimatePage extends BasePage {
   }
 
   async createEstimateForNewStageTypeAndExistingStageType() {
-
+    // // await this.estimatePageOpenAfterCreate();
+    // await this.estimatesMenu.click();
     await this.newEstimateBtn.click();
     await this.contactSelectForOpportunity.click();
     await this.opportunityPlusButtonClick();
@@ -236,8 +237,10 @@ await this.page.keyboard.press('Enter');
 
   async verifyCreateEstimateValidation() {
 
+    await this.estimatePageOpenAfterCreate();
+    await this.estimatesMenu.click();
     await this.newEstimateBtn.click();
-    await this.page.getByRole('button', { name: 'Create Estimate-sin' }).click();
+    //await this.page.getByRole('button', { name: 'Create Estimate-sin' }).click();
 
     // Verify validation messages
     const requiredMessages = this.page.getByText(
@@ -255,8 +258,11 @@ await this.page.keyboard.press('Enter');
 
 
   async createEstimateForNewProjectTypeAndExistingProjectType() {
-
+   // await this.estimatePageOpenAfterCreate();
+   // await this.estimatesMenu.click();
     await this.newEstimateBtn.click();
+   console.log('menu open sucessfull');
+    //await page.getByRole('button', { name: 'Estimate-sin' }).click();
     await this.contactSelectForOpportunity.click();
     await this.opportunityPlusButtonClick();
     await this.projectTypeSelectForOpportunity.click();
