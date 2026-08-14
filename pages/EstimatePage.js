@@ -185,7 +185,7 @@ class EstimatePage extends BasePage {
 
   }
 
-  async opportunityNumberAndTitleAdd(){
+  async opportunityNumberAndTitleAdd() {
 
     const opportunityData = await this.getUniqueOpportunityData();
 
@@ -194,9 +194,42 @@ class EstimatePage extends BasePage {
 
   }
 
+  async createEstimateForNewStageTypeAndExistingStageType() {
+
+    await this.newEstimateBtn.click();
+    await this.contactSelectForOpportunity.click();
+    await this.opportunityPlusButtonClick();
+    await this.projectTypeSelectForOpportunity.click();
+    await this.leadsButton.click();
+
+    await this.clickLeadPlusButton();
+    await this.createLeads();
+    await this.selectStreetAddress();
+    await this.yesBtn.click();
+
+    await this.enterNewProjectType();
+    await this.opportunityNumberAndTitleAdd();
+
+    await this.page.locator('.ant-select[name="stage"] .ant-select-selector').click();
+
+const randomNewStage = `NewStage ${Date.now()}`;
+await this.page.locator('.ant-select[name="stage"] input.ant-select-selection-search-input').fill(randomNewStage);
+await this.page.keyboard.press('Enter');
+    await this.yesBtn.click();
+
+    await this.createOpportunityBtn.click();
+
+    await expect(this.estimateTitleInput).toBeVisible({ timeout: 20000 });
+    await this.randomEstimateTitlegenerate();
+    await this.randomEstimateNumbergenerate();
+    //await this.projectTypeSelect();
+
+    await this.page.getByRole('button', { name: 'Create Estimate-sin' }).click();
 
 
-async createEstimateForNewProjectTypeAndExistingProjectType(){
+  }
+
+  async createEstimateForNewProjectTypeAndExistingProjectType() {
 
     await this.newEstimateBtn.click();
     await this.contactSelectForOpportunity.click();
@@ -220,7 +253,7 @@ async createEstimateForNewProjectTypeAndExistingProjectType(){
 
     await this.page.getByRole('button', { name: 'Create Estimate-sin' }).click();
 
-}
+  }
 
 
 

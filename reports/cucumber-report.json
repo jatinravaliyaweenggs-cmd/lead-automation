@@ -14,7 +14,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 442695399
+              "duration": 447903199
             }
           },
           {
@@ -27,7 +27,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 7982627599
+              "duration": 4180498999
             }
           },
           {
@@ -40,7 +40,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 8188636600
+              "duration": 7157680300
             }
           },
           {
@@ -49,24 +49,24 @@
             "line": 16,
             "name": "User navigates to Estimate page",
             "match": {
-              "location": "step_definitions\\estimate.step.js:76"
+              "location": "step_definitions\\estimate.step.js:83"
             },
             "result": {
               "status": "passed",
-              "duration": 7469138299
+              "duration": 6450620899
             }
           },
           {
             "arguments": [],
             "keyword": "Then ",
-            "line": 28,
-            "name": "Create an estimate from an opportunity for a new stage and existing stage",
+            "line": 29,
+            "name": "Create an estimate from an opportunity for a new stage type and existing stage type",
             "match": {
-              "location": "step_definitions\\estimate.step.js:8"
+              "location": "step_definitions\\estimate.step.js:9"
             },
             "result": {
               "status": "passed",
-              "duration": 33954396999
+              "duration": 44580965400
             }
           },
           {
@@ -74,7 +74,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 317909200
+              "duration": 385381699
             }
           }
         ],

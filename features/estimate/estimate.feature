@@ -25,7 +25,8 @@ Feature: Estimate Creation
   #   Then Create an estimate from an opportunity for a customer using the plus button
   #  Then Create an estimate from an opportunity for a lead using the plus button
 
-  Then Create an estimate from an opportunity for a new project type and existing project type
+  #Then Create an estimate from an opportunity for a new project type and existing project type
+  Then Create an estimate from an opportunity for a new stage type and existing stage type
 
 
 
