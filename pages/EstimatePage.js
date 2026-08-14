@@ -17,7 +17,7 @@ class EstimatePage extends BasePage {
     this.titleInput = page.getByRole('textbox', { name: 'Short title for the Estimate-' });
     this.customerBtn = page.getByRole('button', { name: 'Click to select a Customer' });
     this.searchCustomer = page.getByRole('searchbox', { name: 'Search for Customer' });
-    this.createEstimateBtn = page.getByRole('button', { name: 'Create Estimate-sin1' });
+    //this.createEstimateBtn = page.getByRole('button', { name: 'Create Estimate-sin1' });
     this.NewCreateEstimateRow = page.locator('table tbody tr');
 
     this.detailMenuPage = page.getByRole('button', { name: 'Details' });
@@ -185,6 +185,17 @@ class EstimatePage extends BasePage {
 
   }
 
+  async opportunityNumberAndTitleAdd(){
+
+    const opportunityData = await this.getUniqueOpportunityData();
+
+    await this.page.getByPlaceholder('Enter an Opportunity Number').fill(opportunityData.opportunityNumber);
+    await this.page.getByPlaceholder('Short descriptive title for the opportunity').fill(opportunityData.opportunityTitle);
+
+  }
+
+
+
 async createEstimateForNewStageAndExistingStage(){
 
     await this.newEstimateBtn.click();
@@ -199,9 +210,15 @@ async createEstimateForNewStageAndExistingStage(){
     await this.yesBtn.click();
 
     await this.enterNewProjectType();
+    await this.opportunityNumberAndTitleAdd();
+    await this.createOpportunityBtn.click();
 
+    await expect(this.estimateTitleInput).toBeVisible({ timeout: 20000 });
+    await this.randomEstimateTitlegenerate();
+    await this.randomEstimateNumbergenerate();
+    //await this.projectTypeSelect();
 
-
+    await this.page.getByRole('button', { name: 'Create Estimate-sin' }).click();
 
 }
 
@@ -223,21 +240,14 @@ async createEstimateForNewStageAndExistingStage(){
     await this.selectStreetAddress();
     await this.yesBtn.click();
 
-    const opportunityData = await this.getUniqueOpportunityData();
-    await this.page.getByPlaceholder('Enter an Opportunity Number').fill(opportunityData.opportunityNumber);
-    await this.page.getByPlaceholder('Short descriptive title for the opportunity').fill(opportunityData.opportunityTitle);
+    await this.opportunityNumberAndTitleAdd();
     await this.createOpportunityBtn.click();
 
+    await expect(this.estimateTitleInput).toBeVisible({ timeout: 20000 });
     await this.randomEstimateTitlegenerate();
     await this.randomEstimateNumbergenerate();
     await this.projectTypeSelect();
-    await this.createOpportunityBtn.click()
-
-    await this.randomEstimateTitlegenerate();
-    await this.randomEstimateNumbergenerate();
-
     await this.page.getByRole('button', { name: 'Create Estimate-sin' }).click();
-
 
   }
 
@@ -258,18 +268,14 @@ async createEstimateForNewStageAndExistingStage(){
     await this.selectStreetAddress();
     await this.yesBtn.click();
     await this.projectTypeSelect();
-    // await this.randomEstimateNumbergenerate();
-    // await this.randomEstimateTitlegenerate();
-    const opportunityData = await this.getUniqueOpportunityData();
-    await this.page.getByPlaceholder('Enter an Opportunity Number').fill(opportunityData.opportunityNumber);
-    await this.page.getByPlaceholder('Short descriptive title for the opportunity').fill(opportunityData.opportunityTitle);
+    await this.opportunityNumberAndTitleAdd();
+
     await this.createOpportunityBtn.click();
 
+    await expect(this.estimateTitleInput).toBeVisible({ timeout: 20000 });
     await this.randomEstimateTitlegenerate();
     await this.randomEstimateNumbergenerate();
-
     await this.page.getByRole('button', { name: 'Create Estimate-sin' }).click();
-    //await this.createEstimateBtn.click();
   }
 
 
@@ -293,16 +299,14 @@ async createEstimateForNewStageAndExistingStage(){
     await firstLead.click();
     await this.yesBtn.click();
     await this.projectTypeSelect();
-    // await this.selectStage();
 
-    const opportunityData = await this.getUniqueOpportunityData();
-    await this.page.getByPlaceholder('Enter an Opportunity Number').fill(opportunityData.opportunityNumber);
-    await this.page.getByPlaceholder('Short descriptive title for the opportunity').fill(opportunityData.opportunityTitle);
+    await this.opportunityNumberAndTitleAdd();
     await this.createOpportunityBtn.click();
+
+    await expect(this.estimateTitleInput).toBeVisible({ timeout: 20000 });
     await this.randomEstimateTitlegenerate();
     await this.randomEstimateNumbergenerate();
     await this.page.getByRole('button', { name: 'Create Estimate-sin' }).click();
-
 
   }
 
@@ -349,8 +353,8 @@ async createEstimateForNewStageAndExistingStage(){
     await this.projectTypeSelect();
     await this.selectStage();
 
-    await this.page.getByPlaceholder('Enter an Opportunity Number').fill(testData.opportunity.opportunityNumber);
-    await this.page.getByPlaceholder('Short descriptive title for the opportunity').fill(testData.opportunity.opportunityTitle);
+    await this.opportunityNumberAndTitleAdd();
+
     await this.createOpportunityBtn.click();
     await this.randomEstimateTitlegenerate();
     await this.randomEstimateNumbergenerate();

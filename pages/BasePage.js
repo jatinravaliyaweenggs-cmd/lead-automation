@@ -46,7 +46,7 @@ this.ZipCode = this.page.getByPlaceholder('Zip code');
 // this.projectName = this.page.getByPlaceholder('Type a Project name');
 
 
-this.estimateTitleInput = page.getByRole('textbox', { name: 'Short title for the Estimate-' });
+this.estimateTitleInput = this.page.getByRole('textbox', { name: 'Short title for the Estimate-' });
 
 // Leads button
 
