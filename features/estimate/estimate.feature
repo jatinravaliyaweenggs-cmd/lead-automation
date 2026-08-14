@@ -20,10 +20,16 @@ Feature: Estimate Creation
     # Then User create an estimate for an existing Lead
     # Then Verify Show Favourites Only functionality
 
-    Then Create an estimate from an opportunity by customer
-    Then Create an estimate from an opportunity by lead
-    Then Create an estimate from an opportunity for a customer using the plus button
-   Then Create an estimate from an opportunity for a lead using the plus button
+  #   Then Create an estimate from an opportunity by customer
+  #   Then Create an estimate from an opportunity by lead
+  #   Then Create an estimate from an opportunity for a customer using the plus button
+  #  Then Create an estimate from an opportunity for a lead using the plus button
+
+  Then Create an estimate from an opportunity for a new stage and existing stage
+
+
+
+
 
 
 

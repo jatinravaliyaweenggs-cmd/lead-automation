@@ -134,6 +134,16 @@ async randomProjectNameGenerate() {
   await this.projectNameInput.fill(randomProjectName);
 }
 
+
+async enterNewProjectType(){
+    await this.projectTypeDropdown.click();
+    const randomProjectType = `PType ${Date.now()}`;
+    await this.page.keyboard.type(randomProjectType);
+    await this.page.keyboard.press('Enter');
+    await this.yesBtn.click();
+}
+
+
 async selectProjectType(){
     await this.projectTypeDropdown.click();
     await this.page.keyboard.type('Residential');

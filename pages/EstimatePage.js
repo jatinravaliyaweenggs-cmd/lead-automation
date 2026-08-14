@@ -185,6 +185,29 @@ class EstimatePage extends BasePage {
 
   }
 
+async createEstimateForNewStageAndExistingStage(){
+
+    await this.newEstimateBtn.click();
+    await this.contactSelectForOpportunity.click();
+    await this.opportunityPlusButtonClick();
+    await this.projectTypeSelectForOpportunity.click();
+    await this.leadsButton.click();
+
+    await this.clickLeadPlusButton();
+    await this.createLeads();
+    await this.selectStreetAddress();
+    await this.yesBtn.click();
+
+    await this.enterNewProjectType();
+
+
+
+
+}
+
+
+
+
   async OpportunityCreateForNewLead() {
 
     await this.estimatePageOpenAfterCreate();
@@ -288,6 +311,14 @@ class EstimatePage extends BasePage {
     await this.newButton.click();
     await this.opportunitysPlusButton.waitFor({ state: 'visible', timeout: 10000 });
     await this.opportunitysPlusButton.click();
+  }
+
+  async enterNewProjectTypeSelect() {
+    await this.projectTypeDropdown.click();
+    const newProjectTypeProjectName = `Project-${Math.random().toString(36).substring(2, 8)}`;
+    await this.page.keyboard.type(newProjectTypeProjectName);
+    await this.page.keyboard.press('Enter');
+
   }
 
   async projectTypeSelect() {

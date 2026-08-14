@@ -1,0 +1,92 @@
+[
+  {
+    "description": "",
+    "elements": [
+      {
+        "description": "",
+        "id": "estimate-creation;create-a-new-estimate-using-plus-button-for-customer-and-lead",
+        "keyword": "Scenario",
+        "line": 15,
+        "name": "Create a new Estimate using Plus button for customer and Lead",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 442695399
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 4,
+            "name": "User is on the login page",
+            "match": {
+              "location": "step_definitions\\login.steps.js:7"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 7982627599
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 5,
+            "name": "User login with valid credentials",
+            "match": {
+              "location": "step_definitions\\login.steps.js:14"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 8188636600
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 16,
+            "name": "User navigates to Estimate page",
+            "match": {
+              "location": "step_definitions\\estimate.step.js:76"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 7469138299
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 28,
+            "name": "Create an estimate from an opportunity for a new stage and existing stage",
+            "match": {
+              "location": "step_definitions\\estimate.step.js:8"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 33954396999
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 317909200
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      }
+    ],
+    "id": "estimate-creation",
+    "line": 1,
+    "keyword": "Feature",
+    "name": "Estimate Creation",
+    "tags": [],
+    "uri": "features\\estimate\\estimate.feature"
+  }
+]
