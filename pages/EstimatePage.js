@@ -450,11 +450,8 @@ async createEstimateForNewStageAndExistingStage(){
     await expect(duplicateNameAlert).toBeVisible({ timeout: 5000 });
     await expect(duplicateNameAlert).toHaveText('This name already exists. Please use a different name.');
 
-    const randomProjectType = `PType ${Date.now()}`;
+    await this.enterNewProjectType();
 
-    await this.page.keyboard.type(randomProjectType);
-    await this.page.keyboard.press('Enter');
-    await this.yesBtn.click();
 
     // const selectCreateCustomerOrLead = this.page.getByRole('button', {
     //   name: 'Select/Create Customer or Lead',
