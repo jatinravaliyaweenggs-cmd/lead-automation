@@ -196,7 +196,7 @@ class EstimatePage extends BasePage {
 
 
 
-async createEstimateForNewStageAndExistingStage(){
+async createEstimateForNewProjectTypeAndExistingProjectType(){
 
     await this.newEstimateBtn.click();
     await this.contactSelectForOpportunity.click();
@@ -330,6 +330,14 @@ async createEstimateForNewStageAndExistingStage(){
     await this.page.keyboard.type('Residential');
     await this.page.keyboard.press('Enter');
   }
+
+  async enterNewStageForOpprtunity() {
+    this.leadStageSearchInput = this.page.locator('.ant-select[name="stage"] input.ant-select-selection-search-input');
+    await this.leadStageSearchInput.click();
+    const randomStage = `Stage-${Math.random().toString(36).substring(2, 8)}`;
+    await this.leadStageSearchInput.fill(randomStage);
+  }
+
 
   async selectStage() {
     this.leadStageSearchInput = this.page.locator('.ant-select[name="stage"] input.ant-select-selection-search-input');

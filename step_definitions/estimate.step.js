@@ -5,9 +5,9 @@ const BasePage = require('../pages/BasePage');
 
 let estimatePage;
 
-Then('Create an estimate from an opportunity for a new stage and existing stage', async function(){
+Then('Create an estimate from an opportunity for a new project type and existing project type', async function(){
   estimatePage = new EstimatePage(this.page);
-  await estimatePage.createEstimateForNewStageAndExistingStage();
+  await estimatePage.createEstimateForNewProjectTypeAndExistingProjectType();
 
 
 })
