@@ -12,35 +12,42 @@ class DashbroadEstimatePage {
     this.page = page;
     estimatePage = new EstimatePage(page);
 
+    // Recent Client Responses Block
+    this.recentClientResponses = page.locator('.common-card').filter({ hasText: 'Recent Client Responses' }).first();
+
+    // Estimate title
+    this.estimateTitle = page.locator('[role="gridcell"][col-id="subject"]').filter({ hasText: 'This is a testing title' }).first();
+
+    // Recent Client Responses column headers
+    this.columnHeaders = this.recentClientResponses.locator('.ag-header-cell[role="columnheader"] .ag-header-cell-text');
+
+    // Estimate row
+    this.estimateRow = page.locator('[role="row"]').filter({ hasText: 'This is a testing title' }).first();
+
+    // Estimate status
+    this.estimateStatus = this.estimateRow.locator('[col-id="status"]');
   }
 
   async recentClientResponsesBlock() {
     const expectedTitle = 'This is a testing title';
-    const estimateTitle = this.page.locator('[role="gridcell"][col-id="subject"]').filter({ hasText: expectedTitle }).first();
-    await expect(estimateTitle).toBeVisible();
-    await expect(estimateTitle).toHaveText(expectedTitle);
+    await expect(this.estimateTitle).toBeVisible();
+    await expect(this.estimateTitle).toHaveText(expectedTitle);
     console.log(`Assertion Passed: Estimate title is "${expectedTitle}"`);
   }
 
-async verifyRecentClientResponsesColumns() {
-  const recentClientResponses = this.page.locator('.common-card').filter({ hasText: 'Recent Client Responses' }).first();
-  await expect(recentClientResponses).toBeVisible();
-  const expectedColumns = ['EST. #', 'Title', 'Customer', 'Status'];
-  const columnHeaders = recentClientResponses.locator('.ag-header-cell[role="columnheader"] .ag-header-cell-text');
-  await expect(columnHeaders).toHaveText(expectedColumns);
-  console.log('Assertion Passed: All Recent Client Responses columns are displayed');
-}
+  async verifyRecentClientResponsesColumns() {
+    const expectedColumns = ['EST. #','Title','Customer','Status'];
+    await expect(this.recentClientResponses).toBeVisible();
+    await expect(this.columnHeaders).toHaveText(expectedColumns);
+    console.log('Assertion Passed: All Recent Client Responses columns are displayed');
+  }
 
-async verifyEstimateStatus() {
-  const expectedTitle = 'This is a testing title';
-  const expectedStatus = 'Approved';
-  const estimateRow = this.page.locator('[role="row"]').filter({ hasText: expectedTitle }).first();
-  await expect(estimateRow).toBeVisible();
-  const status = estimateRow.locator('[col-id="status"]');
-  await expect(status).toHaveText(expectedStatus);
-  console.log(`Assertion Passed: "${expectedTitle}" status is "${expectedStatus}"`);
-}
-
+  async verifyEstimateStatus() {
+    const expectedStatus = 'Approved';
+    await expect(this.estimateRow).toBeVisible();
+    await expect(this.estimateStatus).toHaveText(expectedStatus);
+    console.log(`Assertion Passed: Estimate status is "${expectedStatus}"`);
+  }
 }
 
 module.exports = DashbroadEstimatePage;
