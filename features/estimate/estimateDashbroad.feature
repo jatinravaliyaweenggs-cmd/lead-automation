@@ -5,6 +5,7 @@ Feature: Dashbroad Estimate Creation
     When User login with valid credentials
     #Then User should be redirected to the dashboard
 
-  Scenario: Create a new Estimate
+  Scenario: Recent Client Responses Block
     When User navigates to Estimate page
-    And User creates a new Estimate
+    #And User creates a new Estimate
+    And Verify estimate in Recent Client Responses block
