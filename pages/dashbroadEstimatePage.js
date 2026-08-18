@@ -18,7 +18,16 @@ class DashbroadEstimatePage {
     this.estimateRow = this.recentClientResponses.locator('[role="row"]').filter({ hasText: 'This is a testing title' }).first();
     // Estimate Status
     this.estimateStatus = this.estimateRow.locator('[col-id="status"]');
+
+    this.backButton = this.page.getByRole('button', { name: 'Back' });
   }
+
+  async clickBackButton() {
+  const backButton = this.page.getByRole('button', { name: 'Back' });
+
+  await expect(backButton).toBeVisible();
+  await backButton.click();
+}
 
   async recentClientResponsesBlock() {
     const expectedTitle = 'This is a testing title';
@@ -48,6 +57,15 @@ async VerifyEstimateTitleInRecentalyVisibleBlock(){
     await estimateRow.locator('[role="gridcell"][col-id="subject"]').click();
     await expect(this.page.locator('#custom_estimate_id')).toHaveValue('EST. #Est#348642');
 
+}
+
+async clickCustomerProfileFromEstimate(title) {
+await this.clickBackButton();
+  const row = this.page.locator('[role="row"]').filter({has: this.page.getByText(title, { exact: true })}).first();
+    await expect(row).toBeVisible();
+  const customerCell = row.locator('[role="gridcell"][col-id="customer"]');
+  await expect(customerCell).toBeVisible();
+  await customerCell.click();
 }
 
 }

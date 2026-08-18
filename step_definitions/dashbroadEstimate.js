@@ -21,3 +21,8 @@ Then('Verify estimate title after click on estimate link and verify title', asyn
   this.dashbroadEstimatePage = new DashbroadEstimatePage(this.page);
   await this.dashbroadEstimatePage.VerifyEstimateTitleInRecentalyVisibleBlock();
 });
+
+Then('Click customer profile for estimate {string}', async function (title) {
+  this.dashbroadEstimatePage = new DashbroadEstimatePage(this.page);
+  await this.dashbroadEstimatePage.clickCustomerProfileFromEstimate(title);
+});
