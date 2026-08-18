@@ -5,5 +5,6 @@ Feature: Dashbroad Estimate Creation
     When User login with valid credentials
     #Then User should be redirected to the dashboard
 
-Scenario: Create a new Estimate using project
+  Scenario: Create a new Estimate
     When User navigates to Estimate page
+    And User creates a new Estimate

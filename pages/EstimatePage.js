@@ -17,7 +17,7 @@ class EstimatePage extends BasePage {
     this.titleInput = page.getByRole('textbox', { name: 'Short title for the Estimate-' });
     this.customerBtn = page.getByRole('button', { name: 'Click to select a Customer' });
     this.searchCustomer = page.getByRole('searchbox', { name: 'Search for Customer' });
-    //this.createEstimateBtn = page.getByRole('button', { name: 'Create Estimate-sin1' });
+    this.createEstimateBtn = page.getByRole('button', { name: 'Create Estimate-sin' });
     this.NewCreateEstimateRow = page.locator('table tbody tr');
 
     this.detailMenuPage = page.getByRole('button', { name: 'Details' });
@@ -169,7 +169,7 @@ class EstimatePage extends BasePage {
 
     this.logoImg = this.page.locator('img[src*="logo.svg"]');
 
-    this.selectProjectInEstimate = this.page.getByRole('button', { name: 'Click to select a Project/Opportunity-S' });
+    this.selectProjectInEstimate = this.page.getByRole('button', { name: 'Click to select a Project(s)/Opportunity-S' });
     this.searchBarSelectaProject = this.page.locator('input[placeholder="Search Project/Opportunity-S"]')
 
     this.moduleSettings = page.locator('#moduleSettings');
