@@ -16,3 +16,8 @@ Then('Verify estimate in Recent Client Responses block status visible', async fu
   this.dashbroadEstimatePage = new DashbroadEstimatePage(this.page);
   await this.dashbroadEstimatePage.verifyEstimateStatus();
 });
+
+Then('Verify estimate title after click on estimate link and verify title', async function () {
+  this.dashbroadEstimatePage = new DashbroadEstimatePage(this.page);
+  await this.dashbroadEstimatePage.VerifyEstimateTitleInRecentalyVisibleBlock();
+});

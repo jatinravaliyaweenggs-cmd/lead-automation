@@ -6,7 +6,7 @@
         "description": "",
         "id": "dashbroad-estimate-creation;recent-client-responses-block",
         "keyword": "Scenario",
-        "line": 8,
+        "line": 7,
         "name": "Recent Client Responses Block",
         "steps": [
           {
@@ -14,7 +14,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 576942400
+              "duration": 558522100
             }
           },
           {
@@ -27,7 +27,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 3677230000
+              "duration": 4198471899
             }
           },
           {
@@ -40,7 +40,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 7931045500
+              "duration": 8116012700
             }
           },
           {
@@ -53,20 +53,59 @@
             },
             "result": {
               "status": "passed",
-              "duration": 6012713400
+              "duration": 5616357799
             }
           },
           {
             "arguments": [],
             "keyword": "And ",
             "line": 11,
-            "name": "Verify estimate in Recent Client Responses block",
+            "name": "Verify estimate in Recent Client Responses block visible",
+            "match": {
+              "location": "step_definitions\\dashbroadEstimate.js:5"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1491452000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 12,
+            "name": "Verify estimate in Recent Client Responses block column visible",
             "match": {
               "location": "step_definitions\\dashbroadEstimate.js:10"
             },
             "result": {
               "status": "passed",
-              "duration": 1356037400
+              "duration": 194658400
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 13,
+            "name": "Verify estimate in Recent Client Responses block status visible",
+            "match": {
+              "location": "step_definitions\\dashbroadEstimate.js:15"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 212721900
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 14,
+            "name": "Verify estimate title after click on estimate link and verify title",
+            "match": {
+              "location": "step_definitions\\dashbroadEstimate.js:20"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 5023179200
             }
           },
           {
@@ -74,7 +113,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 304900900
+              "duration": 403627900
             }
           }
         ],

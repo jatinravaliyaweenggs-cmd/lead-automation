@@ -42,6 +42,14 @@ class DashbroadEstimatePage {
     await expect(this.estimateStatus).toHaveText(expectedStatus);
     console.log(`Assertion Checked: Estimate status is "${expectedStatus}"`);
   }
+
+async VerifyEstimateTitleInRecentalyVisibleBlock(){
+    const estimateRow = this.page.locator('[role="row"]').filter({ hasText: 'Est#348642' });
+    await estimateRow.locator('[role="gridcell"][col-id="subject"]').click();
+    await expect(this.page.locator('#custom_estimate_id')).toHaveValue('EST. #Est#348642');
+
+}
+
 }
 
 module.exports = DashbroadEstimatePage;
