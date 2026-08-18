@@ -31,6 +31,15 @@ async verifyRecentClientResponsesColumns() {
   console.log('Assertion Passed: All Recent Client Responses columns are displayed');
 }
 
+async verifyEstimateStatus() {
+  const expectedTitle = 'This is a testing title';
+  const expectedStatus = 'Approved';
+  const estimateRow = this.page.locator('[role="row"]').filter({ hasText: expectedTitle }).first();
+  await expect(estimateRow).toBeVisible();
+  const status = estimateRow.locator('[col-id="status"]');
+  await expect(status).toHaveText(expectedStatus);
+  console.log(`Assertion Passed: "${expectedTitle}" status is "${expectedStatus}"`);
+}
 
 }
 

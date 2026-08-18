@@ -4,17 +4,17 @@
     "elements": [
       {
         "description": "",
-        "id": "dashbroad-estimate-creation;create-a-new-estimate-using-project",
+        "id": "dashbroad-estimate-creation;recent-client-responses-block",
         "keyword": "Scenario",
         "line": 8,
-        "name": "Create a new Estimate using project",
+        "name": "Recent Client Responses Block",
         "steps": [
           {
             "keyword": "Before",
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 458370499
+              "duration": 576942400
             }
           },
           {
@@ -27,7 +27,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 4240667300
+              "duration": 3677230000
             }
           },
           {
@@ -40,7 +40,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 11344406299
+              "duration": 7931045500
             }
           },
           {
@@ -53,7 +53,20 @@
             },
             "result": {
               "status": "passed",
-              "duration": 4696675800
+              "duration": 6012713400
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 11,
+            "name": "Verify estimate in Recent Client Responses block",
+            "match": {
+              "location": "step_definitions\\dashbroadEstimate.js:10"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1356037400
             }
           },
           {
@@ -61,7 +74,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 488185099
+              "duration": 304900900
             }
           }
         ],
