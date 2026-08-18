@@ -6,15 +6,15 @@ Feature: Estimate Creation
     #Then User should be redirected to the dashboard
 
 
-# Scenario: Create a new Estimate using project
-#     When User navigates to Estimate page
-#    Then User create estimate using existing project
-#    Then User create new project in estimate
-#     Then User serch not exits customer and lead
+Scenario: Create a new Estimate using project
+    When User navigates to Estimate page
+    Then User create estimate using existing project
+    Then User create new project in estimate
+    Then User serch not exits customer and lead
 
- Scenario: Create a new Estimate using Plus button for customer and Lead
-     When User navigates to Estimate page
-    #  Then User click on plus button and create customer for estimate
+ #Scenario: Create a new Estimate using Plus button for customer and Lead
+  #   When User navigates to Estimate page
+  #    Then User click on plus button and create customer for estimate
   #    Then User click on plus button and create Lead for estimate
 
   #   Then User create an estimate for an existing Lead
@@ -25,12 +25,12 @@ Feature: Estimate Creation
   #   Then Create an estimate from an opportunity for a customer using the plus button
   #  Then Create an estimate from an opportunity for a lead using the plus button
 
-  Then Create an estimate from an opportunity for a new project type and existing project type
+  #Then Create an estimate from an opportunity for a new project type and existing project type
 
-  #  Scenario: Create a new Estimate using stage
-  # When User navigates to Estimate page
+# Scenario: Create a new Estimate using stage
+   #When User navigates to Estimate page
   # Then Create an estimate from an opportunity for a new stage type and existing stage type
-  # #Then Verify validation messsage for create estimate
+   #Then Verify validation messsage for create estimate
 
 
 

@@ -4,17 +4,17 @@
     "elements": [
       {
         "description": "",
-        "id": "estimate-creation;create-a-new-estimate-using-plus-button-for-customer-and-lead",
+        "id": "dashbroad-estimate-creation;create-a-new-estimate-using-project",
         "keyword": "Scenario",
-        "line": 15,
-        "name": "Create a new Estimate using Plus button for customer and Lead",
+        "line": 8,
+        "name": "Create a new Estimate using project",
         "steps": [
           {
             "keyword": "Before",
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 447903199
+              "duration": 458370499
             }
           },
           {
@@ -27,7 +27,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 4180498999
+              "duration": 4240667300
             }
           },
           {
@@ -40,33 +40,20 @@
             },
             "result": {
               "status": "passed",
-              "duration": 7157680300
+              "duration": 11344406299
             }
           },
           {
             "arguments": [],
             "keyword": "When ",
-            "line": 16,
+            "line": 9,
             "name": "User navigates to Estimate page",
             "match": {
-              "location": "step_definitions\\estimate.step.js:83"
+              "location": "step_definitions\\estimate.step.js:88"
             },
             "result": {
               "status": "passed",
-              "duration": 6450620899
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Then ",
-            "line": 29,
-            "name": "Create an estimate from an opportunity for a new stage type and existing stage type",
-            "match": {
-              "location": "step_definitions\\estimate.step.js:9"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 44580965400
+              "duration": 4696675800
             }
           },
           {
@@ -74,7 +61,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 385381699
+              "duration": 488185099
             }
           }
         ],
@@ -82,11 +69,11 @@
         "type": "scenario"
       }
     ],
-    "id": "estimate-creation",
+    "id": "dashbroad-estimate-creation",
     "line": 1,
     "keyword": "Feature",
-    "name": "Estimate Creation",
+    "name": "Dashbroad Estimate Creation",
     "tags": [],
-    "uri": "features\\estimate\\estimate.feature"
+    "uri": "features\\estimate\\estimateDashbroad.feature"
   }
 ]
