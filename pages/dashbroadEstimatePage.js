@@ -66,6 +66,17 @@ await this.clickBackButton();
   const customerCell = row.locator('[role="gridcell"][col-id="customer"]');
   await expect(customerCell).toBeVisible();
   await customerCell.click();
+
+  // Customer profile assertion
+  const customerProfile = this.page.getByRole('button', {
+    name: "Bhavik Raval (Bhavik and son's company)"
+  });
+
+  await expect(customerProfile).toBeVisible();
+
+  console.log(
+    'Assertion Checked: Customer profile "Bhavik Raval (Bhavik and son\'s company)" is visible'
+  );
 }
 
 }

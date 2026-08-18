@@ -14,7 +14,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 558522100
+              "duration": 588731400
             }
           },
           {
@@ -27,7 +27,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 4198471899
+              "duration": 4151363599
             }
           },
           {
@@ -40,7 +40,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 8116012700
+              "duration": 10330944900
             }
           },
           {
@@ -53,7 +53,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 5616357799
+              "duration": 4818162899
             }
           },
           {
@@ -66,7 +66,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 1491452000
+              "duration": 1362652699
             }
           },
           {
@@ -79,7 +79,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 194658400
+              "duration": 224949999
             }
           },
           {
@@ -92,7 +92,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 212721900
+              "duration": 124064800
             }
           },
           {
@@ -105,7 +105,20 @@
             },
             "result": {
               "status": "passed",
-              "duration": 5023179200
+              "duration": 5120931800
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 15,
+            "name": "Click customer profile for estimate \"This is a testing title\"",
+            "match": {
+              "location": "step_definitions\\dashbroadEstimate.js:25"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 5048442899
             }
           },
           {
@@ -113,7 +126,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 403627900
+              "duration": 507411599
             }
           }
         ],
