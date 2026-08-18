@@ -13,3 +13,4 @@ Feature: Dashbroad Estimate Creation
     And Verify estimate in Recent Client Responses block status visible
     Then Verify estimate title after click on estimate link and verify title
     Then Click customer profile for estimate "This is a testing title"
+    Then Verify ResetButton is visible on Estimate page and working

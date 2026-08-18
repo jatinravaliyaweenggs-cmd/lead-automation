@@ -4,27 +4,19 @@ class DashbroadEstimatePage {
 
   constructor(page) {
     this.page = page;
-
-    // Recent Client Responses Block
     this.recentClientResponses = page.locator('.common-card').filter({ hasText: 'Recent Client Responses' }).first();
-
-    // Estimate Title
     this.estimateTitle = this.recentClientResponses.locator('[role="gridcell"][col-id="subject"]').filter({ hasText: 'This is a testing title' }).first();
-
-    // Column Headers
     this.columnHeaders = this.recentClientResponses.locator('.ag-header-cell[role="columnheader"] .ag-header-cell-text');
-
-    // Estimate Row
     this.estimateRow = this.recentClientResponses.locator('[role="row"]').filter({ hasText: 'This is a testing title' }).first();
-    // Estimate Status
     this.estimateStatus = this.estimateRow.locator('[col-id="status"]');
-
     this.backButton = this.page.getByRole('button', { name: 'Back' });
+    this.resetButton = this.page.locator('button:has(svg[data-icon="arrow-rotate-right"])');
+    this.recentClientResponses = page.locator('.common-card').filter({ hasText: 'Recent Client Responses' }).first();
+    this.resetButton = this.recentClientResponses.locator('button:has(svg[data-icon="arrow-rotate-right"])');
   }
 
   async clickBackButton() {
   const backButton = this.page.getByRole('button', { name: 'Back' });
-
   await expect(backButton).toBeVisible();
   await backButton.click();
 }
@@ -72,6 +64,19 @@ await this.clickBackButton();
   await expect(customerProfile).toBeVisible();
   console.log('Assertion Checked: Customer profile "Bhavik Raval (Bhavik and son\'s company)" is visible');
 }
+
+
+async verifyResetButton() {
+    await this.clickBackButton();
+  await expect(this.resetButton).toBeVisible();
+  await expect(this.resetButton).toBeEnabled();
+  await this.resetButton.click();
+  await expect(this.resetButton).toBeVisible();
+  console.log('Assertion Checked: Reset button is visible, enabled, and clickable');
+}
+
+
+
 
 }
 

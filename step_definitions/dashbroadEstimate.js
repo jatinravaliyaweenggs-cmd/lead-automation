@@ -26,3 +26,8 @@ Then('Click customer profile for estimate {string}', async function (title) {
   this.dashbroadEstimatePage = new DashbroadEstimatePage(this.page);
   await this.dashbroadEstimatePage.clickCustomerProfileFromEstimate(title);
 });
+
+Then('Verify ResetButton is visible on Estimate page and working', async function () {
+  this.dashbroadEstimatePage = new DashbroadEstimatePage(this.page);
+  await this.dashbroadEstimatePage.verifyResetButton();
+});
