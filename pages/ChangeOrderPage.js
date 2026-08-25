@@ -28,6 +28,10 @@ class ChangeOrderPage {
         this.backButton = this.page.getByRole('button', { name: 'Back', exact: true });
     }
 
+    async clickSaveButton() {
+    await this.saveButton.click();
+}
+
     async clickBackButton() {
     await this.backButton.click();
 }
@@ -41,7 +45,7 @@ class ChangeOrderPage {
 
         await this.page.getByPlaceholder('Search Projects plu', { exact: true }).fill(changeOrderData.projectName);
         await this.page.locator('.project').filter({hasText: changeOrderData.projectName}).click();
-        await this.saveButton.click();
+        await this.clickSaveButton();
 
         await this.page.locator('div.ant-select[name="billing_status"]').click(); 
         await this.page.keyboard.type('Proposed Change Order-ss (CO)'); 
