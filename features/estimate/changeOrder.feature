@@ -5,4 +5,5 @@ Feature: Change Orders
 
 
 Scenario: Open Change Orders page
-  When User opens the Change Orders page and Change Orders page should be displayed
+  When User opens the Change Orders page and verify chnage oder pahe open
+  And User click on the create change order button
