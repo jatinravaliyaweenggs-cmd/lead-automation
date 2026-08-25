@@ -26,6 +26,18 @@ class ChangeOrderPage {
         await this.page.locator('#date_range').click();
         await this.page.locator('.ant-picker-presets li').getByText('Today', { exact: true }).click();
         await this.page.locator('.flex.items-center.justify-between.\\!max-w-full').click();
+
+        await this.page.getByPlaceholder('Search Projects plu', { exact: true }).fill(changeOrderData.projectName);
+        //await this.searchProjectsTextbox.fill(changeOrderData.projectName);
+        await this.page.locator('.project').filter({hasText: changeOrderData.projectName}).click();
+        await this.page.getByRole('button', { name: 'Save', exact: true }).click();
+
+        await this.page.locator('div.ant-select[name="billing_status"]').click(); 
+        await this.page.keyboard.type('Proposed Change Order-ss (CO)'); 
+        await this.page.keyboard.press('Enter');
+        await this.page.keyboard.press('Escape');
+
+
     }
 
 
