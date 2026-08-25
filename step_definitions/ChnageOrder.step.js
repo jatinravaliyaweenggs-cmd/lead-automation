@@ -30,3 +30,10 @@ When('User click on a chnage order button and verify mandatory data', async func
     
 })
 
+
+
+When('User click on the create change order button and verify project name maximum lenght', async function(){
+    changeOrderPage = new ChangeOrderPage(this.page);
+    await changeOrderPage.clickAddChangeOrderButton();
+    await changeOrderPage.createChnageOrderForMaxProjectLenght();
+})

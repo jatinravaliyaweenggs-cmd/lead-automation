@@ -71,6 +71,22 @@ async verifyMandatoryData() {
     await this.createChangeOrderButton.click();
     await expect(this.page.getByText('This field is required.', { exact: true })).toHaveCount(3);
 }
+
+
+
+    async createChnageOrderForMaxProjectLenght(){
+        await this.page.getByText('Click to select a Project(s)', { exact: true }).click();
+        await this.searchProjectsTextbox.fill(changeOrderData.projectName);
+        await this.page.locator('.project').filter({hasText: changeOrderData.projectName}).click();
+        await this.briefDescriptionOfWhatIsBeingChangedTextbox.fill(changeOrderData.subjectMax); 
+        await this.typeAChangeOrderNumber.fill(changeOrderData.changeOrderNumber); 
+        await this.createChangeOrderButton.click();
+        await expect(this.page.locator('.ant-notification-notice-message')).toHaveText('Alert');
+    }
+
+
+
+
 }
 
 module.exports = ChangeOrderPage;
