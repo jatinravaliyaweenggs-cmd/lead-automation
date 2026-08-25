@@ -1,9 +1,13 @@
 const { expect } = require('@playwright/test');
 const changeOrderData = require('../testdata/chnageOrderData');
+const changeOrdercommanData = require('../pages/CommanForCO');
+
 
 class ChangeOrderPage {
     constructor(page) {
         this.page = page;
+        this.changeOrdercommanData = new changeOrdercommanData(page);
+
         this.logo = page.locator('a.logo[href="/"]');
         this.menuDropdown = page.locator('li.header-list-menu button');
         this.changeOrdersMenu = page.locator('a[href="/manage-change-orders"]');
@@ -21,20 +25,9 @@ class ChangeOrderPage {
 
         this.searchProjectsTextbox = page.getByPlaceholder('Search Project(s)', { exact: true });
         this.filterButton = page.locator('button:has(svg[data-icon="filter"])');
-        this.saveButton = page.getByRole('button', { name: 'Save', exact: true });
-
         this.createChangeOrderRequestButton = page.getByRole('button', { name: 'Create Change Order Request' });
-
-        this.backButton = this.page.getByRole('button', { name: 'Back', exact: true });
     }
 
-    async clickSaveButton() {
-    await this.saveButton.click();
-}
-
-    async clickBackButton() {
-    await this.backButton.click();
-}
 
     async clickFilterButton(){
         await this.filterButton.click();
@@ -45,7 +38,7 @@ class ChangeOrderPage {
 
         await this.page.getByPlaceholder('Search Projects plu', { exact: true }).fill(changeOrderData.projectName);
         await this.page.locator('.project').filter({hasText: changeOrderData.projectName}).click();
-        await this.clickSaveButton();
+        await this.changeOrdercommanData.clickSaveButton();
 
         await this.page.locator('div.ant-select[name="billing_status"]').click(); 
         await this.page.keyboard.type('Proposed Change Order-ss (CO)'); 
@@ -81,7 +74,7 @@ class ChangeOrderPage {
         await this.enterSubject();
         await this.typeAChangeOrderRequestNumber.fill(changeOrderData.changeOrderRequestNumber); 
         await this.createChangeOrderRequestButton.click();
-        await this.clickBackButton();
+        await this.changeOrdercommanData.clickBackButton();
         await this.page.getByRole('gridcell', {name: changeOrderData.changeOrderRequestNumber});
 
     }
