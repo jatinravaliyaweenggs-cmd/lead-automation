@@ -59,7 +59,15 @@ class ChangeOrderPage {
         await this.changeOrderDropdown.click();
         await this.changeOrderRequestPageButton.first().click();
         await expect(this.page.locator('h5', { hasText: 'Add Change Order Request' })).toBeVisible();
+        await this.selectProject();
 
+    }
+
+
+    async selectProject(){
+        await this.page.getByText('Click to select a Project(s)', { exact: true }).click();
+        await this.searchProjectsTextbox.fill(changeOrderData.projectName);
+        await this.page.locator('.project').filter({hasText: changeOrderData.projectName}).click();
     }
 
     async createChnageOrder(){
