@@ -18,6 +18,7 @@ class ChangeOrderPage {
 
         this.searchProjectsTextbox = page.getByPlaceholder('Search Project(s)', { exact: true });
         this.filterButton = page.locator('button:has(svg[data-icon="filter"])');
+        this.saveButton = page.getByRole('button', { name: 'Save', exact: true });
     }
 
     async clickFilterButton(){
@@ -28,16 +29,14 @@ class ChangeOrderPage {
         await this.page.locator('.flex.items-center.justify-between.\\!max-w-full').click();
 
         await this.page.getByPlaceholder('Search Projects plu', { exact: true }).fill(changeOrderData.projectName);
-        //await this.searchProjectsTextbox.fill(changeOrderData.projectName);
         await this.page.locator('.project').filter({hasText: changeOrderData.projectName}).click();
-        await this.page.getByRole('button', { name: 'Save', exact: true }).click();
+        await this.saveButton.click();
 
         await this.page.locator('div.ant-select[name="billing_status"]').click(); 
         await this.page.keyboard.type('Proposed Change Order-ss (CO)'); 
         await this.page.keyboard.press('Enter');
         await this.page.keyboard.press('Escape');
         await this.page.getByRole('gridcell', {name: changeOrderData.changeOrderNumber});
-
 
     }
 
@@ -65,6 +64,13 @@ class ChangeOrderPage {
         await this.createChangeOrderButton.click();
         await this.page.getByRole('gridcell', {name: changeOrderData.changeOrderNumber});
     }
+
+
+async verifyMandatoryData() {
+    await this.clickAddChangeOrderButton();
+    await this.createChangeOrderButton.click();
+    await expect(this.page.getByText('This field is required.', { exact: true })).toHaveCount(3);
+}
 }
 
 module.exports = ChangeOrderPage;

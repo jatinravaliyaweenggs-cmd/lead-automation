@@ -24,3 +24,9 @@ When('User click on filter and verify filter data', async function () {
     
 })
 
+When('User click on a chnage order button and verify mandatory data', async function() {
+    changeOrderPage = new ChangeOrderPage(this.page);
+    await changeOrderPage.verifyMandatoryData();
+    
+})
+
