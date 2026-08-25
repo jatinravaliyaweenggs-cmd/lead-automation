@@ -125,6 +125,7 @@ class ChangeOrderPage {
 
 
 async verifyMandatoryData() {
+    //await this.changeOrdercommanData.clickBackButton();
     await this.clickAddChangeOrderButton();
     await this.createChangeOrderButton.click();
     await expect(this.page.getByText('This field is required.', { exact: true })).toHaveCount(3);
