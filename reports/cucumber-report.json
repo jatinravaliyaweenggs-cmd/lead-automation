@@ -4,134 +4,69 @@
     "elements": [
       {
         "description": "",
-        "id": "dashbroad-estimate-creation;recent-client-responses-block",
+        "id": "change-orders;open-change-orders-page",
         "keyword": "Scenario",
         "line": 7,
-        "name": "Recent Client Responses Block",
+        "name": "Open Change Orders page",
         "steps": [
           {
             "keyword": "Before",
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 510980900
+              "duration": 497289699
             }
           },
           {
             "arguments": [],
             "keyword": "Given ",
-            "line": 4,
+            "line": 3,
             "name": "User is on the login page",
             "match": {
               "location": "step_definitions\\login.steps.js:7"
             },
             "result": {
               "status": "passed",
-              "duration": 4013442000
+              "duration": 4099907000
             }
           },
           {
             "arguments": [],
             "keyword": "When ",
-            "line": 5,
+            "line": 4,
             "name": "User login with valid credentials",
             "match": {
               "location": "step_definitions\\login.steps.js:14"
             },
             "result": {
               "status": "passed",
-              "duration": 7021567900
+              "duration": 7575233400
             }
           },
           {
             "arguments": [],
             "keyword": "When ",
+            "line": 8,
+            "name": "User opens the Change Orders page and verify chnage oder pahe open",
+            "match": {
+              "location": "step_definitions\\ChnageOrder.step.js:7"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 3484983299
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
             "line": 9,
-            "name": "User navigates to Estimate page",
+            "name": "User click on the create change order button",
             "match": {
-              "location": "step_definitions\\estimate.step.js:88"
+              "location": "step_definitions\\ChnageOrder.step.js:13"
             },
             "result": {
               "status": "passed",
-              "duration": 7614246599
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "And ",
-            "line": 11,
-            "name": "Verify estimate in Recent Client Responses block visible",
-            "match": {
-              "location": "step_definitions\\dashbroadEstimate.js:5"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 1534313900
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "And ",
-            "line": 12,
-            "name": "Verify estimate in Recent Client Responses block column visible",
-            "match": {
-              "location": "step_definitions\\dashbroadEstimate.js:10"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 262762499
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "And ",
-            "line": 13,
-            "name": "Verify estimate in Recent Client Responses block status visible",
-            "match": {
-              "location": "step_definitions\\dashbroadEstimate.js:15"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 154607799
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Then ",
-            "line": 14,
-            "name": "Verify estimate title after click on estimate link and verify title",
-            "match": {
-              "location": "step_definitions\\dashbroadEstimate.js:20"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 6514684999
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Then ",
-            "line": 15,
-            "name": "Click customer profile for estimate \"This is a testing title\"",
-            "match": {
-              "location": "step_definitions\\dashbroadEstimate.js:25"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 5144464100
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Then ",
-            "line": 16,
-            "name": "Verify ResetButton is visible on Estimate page and working",
-            "match": {
-              "location": "step_definitions\\dashbroadEstimate.js:30"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 2605343000
+              "duration": 9353490600
             }
           },
           {
@@ -139,7 +74,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 257218500
+              "duration": 307387699
             }
           }
         ],
@@ -147,11 +82,11 @@
         "type": "scenario"
       }
     ],
-    "id": "dashbroad-estimate-creation",
+    "id": "change-orders",
     "line": 1,
     "keyword": "Feature",
-    "name": "Dashbroad Estimate Creation",
+    "name": "Change Orders",
     "tags": [],
-    "uri": "features\\estimate\\estimateDashbroad.feature"
+    "uri": "features\\estimate\\changeOrder.feature"
   }
 ]

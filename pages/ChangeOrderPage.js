@@ -9,6 +9,13 @@ class ChangeOrderPage {
 
         this.changeOrderDropdown = page.locator('button.add-select-dropdown');
         this.changeOrderPageButton = page.getByRole('menuitem').filter({hasText: 'Change Order'});
+
+        this.createChangeOrderButton = page.getByRole('button', { name: 'Create Change Order' });
+        this.typeAChangeOrderNumber = page.getByPlaceholder('Type a Change Order number');
+        this.briefDescriptionOfWhatIsBeingChangedTextbox = 
+        page.getByPlaceholder('Brief description of what is being changed');
+
+        this.searchProjectsTextbox = page.getByPlaceholder('Search Project(s)', { exact: true });
     }
 
     async openChangeOrderPage() {
@@ -22,6 +29,16 @@ class ChangeOrderPage {
         await this.changeOrderDropdown.click();
         await this.changeOrderPageButton.first().click();
         await expect(this.page.locator('h5', { hasText: 'Add Change Order' })).toBeVisible();
+
+        await this.page.getByText('Click to select a Project(s)', { exact: true }).click();
+        await this.searchProjectsTextbox.fill('Jt - PJ - Bathroom Plumbing Renovation Estimate');
+        await this.page.locator('.project').filter({hasText: 'Jt - PJ - Bathroom Plumbing Renovation Estimate'}).click();
+        await this.briefDescriptionOfWhatIsBeingChangedTextbox.fill('Additional Bathroom Plumbing and Fixture Work'); 
+
+        await this.typeAChangeOrderNumber.fill('CO-BATH-2026-027'); 
+        await this.createChangeOrderButton.click();
+
+    
     }
 }
 
