@@ -36,6 +36,7 @@ class ChangeOrderPage {
         await this.page.keyboard.type('Proposed Change Order-ss (CO)'); 
         await this.page.keyboard.press('Enter');
         await this.page.keyboard.press('Escape');
+        await this.page.getByRole('gridcell', {name: changeOrderData.changeOrderNumber});
 
 
     }
