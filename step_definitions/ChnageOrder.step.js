@@ -10,9 +10,10 @@ When('User opens the Change Orders page and verify chnage oder pahe open', async
     await this.page.waitForURL('**/manage-change-orders');
 });
 
-When('User click on the create change order button', async function(){
+When('User click on the create change order button and create chnage order', async function(){
     changeOrderPage = new ChangeOrderPage(this.page);
-    await changeOrderPage.clickAddChangeOrder();
+    await changeOrderPage.clickAddChangeOrderButton();
+    await changeOrderPage.createChnageOrder();
 })
 
 

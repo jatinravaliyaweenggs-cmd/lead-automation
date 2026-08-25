@@ -26,20 +26,20 @@ class ChangeOrderPage {
         await this.page.waitForURL('**/manage-change-orders');
     }
 
-    async clickAddChangeOrder(){
+    async clickAddChangeOrderButton(){
         await this.changeOrderDropdown.click();
         await this.changeOrderPageButton.first().click();
         await expect(this.page.locator('h5', { hasText: 'Add Change Order' })).toBeVisible();
+        
+    }
 
+    async createChnageOrder(){
         await this.page.getByText('Click to select a Project(s)', { exact: true }).click();
         await this.searchProjectsTextbox.fill(changeOrderData.projectName);
         await this.page.locator('.project').filter({hasText: changeOrderData.projectName}).click();
         await this.briefDescriptionOfWhatIsBeingChangedTextbox.fill(changeOrderData.description); 
-
         await this.typeAChangeOrderNumber.fill(changeOrderData.changeOrderNumber); 
         await this.createChangeOrderButton.click();
-        
-        
     }
 }
 
