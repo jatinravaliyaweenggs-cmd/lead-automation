@@ -10,6 +10,7 @@ class ChangeOrderPage {
 
         this.changeOrderDropdown = page.locator('button.add-select-dropdown');
         this.changeOrderPageButton = page.getByRole('menuitem').filter({hasText: 'Change Order'});
+        this.changeOrderRequestPageButton = page.getByRole('menuitem').filter({hasText: 'Change Order Request'});
 
         this.createChangeOrderButton = page.getByRole('button', { name: 'Create Change Order' });
         this.typeAChangeOrderNumber = page.getByPlaceholder('Type a Change Order number');
@@ -52,7 +53,13 @@ class ChangeOrderPage {
         await this.changeOrderDropdown.click();
         await this.changeOrderPageButton.first().click();
         await expect(this.page.locator('h5', { hasText: 'Add Change Order' })).toBeVisible();
-        
+    }
+
+    async createChnageOrderRequest(){
+        await this.changeOrderDropdown.click();
+        await this.changeOrderRequestPageButton.first().click();
+        await expect(this.page.locator('h5', { hasText: 'Add Change Order Request' })).toBeVisible();
+
     }
 
     async createChnageOrder(){
@@ -61,6 +68,14 @@ class ChangeOrderPage {
         await this.page.locator('.project').filter({hasText: changeOrderData.projectName}).click();
         await this.briefDescriptionOfWhatIsBeingChangedTextbox.fill(changeOrderData.description); 
         await this.typeAChangeOrderNumber.fill(changeOrderData.changeOrderNumber); 
+
+        await this.page.locator('#rc_select_9').click(); 
+        await this.page.locator('#rc_select_9').fill('Template - Bathroom Plumbing'); 
+        await this.page.keyboard.press('Enter');
+
+
+
+
         await this.createChangeOrderButton.click();
         await this.page.getByRole('gridcell', {name: changeOrderData.changeOrderNumber});
     }

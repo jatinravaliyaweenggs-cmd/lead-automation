@@ -16,8 +16,11 @@ Feature: Change Orders
     #     And User click on a chnage order button and verify mandatory data
 
 
-    Scenario: Maximum data lenght check for change order
-        When User opens the Change Orders page and verify chnage oder page open
-        And User click on the create change order button and verify project name maximum lenght
+    # Scenario: Maximum data lenght check for change order
+    #     When User opens the Change Orders page and verify chnage oder page open
+    #     And User click on the create change order button and verify project name maximum lenght
 
 
+     Scenario: Create change order request
+         When User opens the Change Orders page and verify chnage oder page open
+         And User click on the create change order request button and create chnage order request

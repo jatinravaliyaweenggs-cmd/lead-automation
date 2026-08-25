@@ -4,17 +4,17 @@
     "elements": [
       {
         "description": "",
-        "id": "change-orders;open-change-orders-page",
+        "id": "change-orders;create-change-order-request",
         "keyword": "Scenario",
-        "line": 7,
-        "name": "Open Change Orders page",
+        "line": 24,
+        "name": "Create change order request",
         "steps": [
           {
             "keyword": "Before",
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 497289699
+              "duration": 485866800
             }
           },
           {
@@ -27,7 +27,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 4099907000
+              "duration": 4229416299
             }
           },
           {
@@ -40,33 +40,33 @@
             },
             "result": {
               "status": "passed",
-              "duration": 7575233400
+              "duration": 7989652500
             }
           },
           {
             "arguments": [],
             "keyword": "When ",
-            "line": 8,
-            "name": "User opens the Change Orders page and verify chnage oder pahe open",
+            "line": 25,
+            "name": "User opens the Change Orders page and verify chnage oder page open",
             "match": {
               "location": "step_definitions\\ChnageOrder.step.js:7"
             },
             "result": {
               "status": "passed",
-              "duration": 3484983299
+              "duration": 3659294700
             }
           },
           {
             "arguments": [],
             "keyword": "And ",
-            "line": 9,
-            "name": "User click on the create change order button",
+            "line": 26,
+            "name": "User click on the create change order request button and create chnage order request",
             "match": {
-              "location": "step_definitions\\ChnageOrder.step.js:13"
+              "location": "step_definitions\\ChnageOrder.step.js:42"
             },
             "result": {
               "status": "passed",
-              "duration": 9353490600
+              "duration": 3464128899
             }
           },
           {
@@ -74,7 +74,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 307387699
+              "duration": 335684400
             }
           }
         ],

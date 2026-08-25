@@ -37,3 +37,11 @@ When('User click on the create change order button and verify project name maxim
     await changeOrderPage.clickAddChangeOrderButton();
     await changeOrderPage.createChnageOrderForMaxProjectLenght();
 })
+
+
+When('User click on the create change order request button and create chnage order request', async function(){
+
+    changeOrderPage = new ChangeOrderPage(this.page);
+    await changeOrderPage.createChnageOrderRequest();
+
+})
