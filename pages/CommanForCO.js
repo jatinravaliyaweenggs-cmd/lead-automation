@@ -5,8 +5,7 @@ class ChangeOrderPageComman {
         this.page = page;
 
         this.saveButton = page.getByRole('button', {name: 'Save', exact: true });
-        this.backButton = page.getByRole('button', {name: 'Back', exact: true
-        });
+        this.backButton = page.getByRole('button', {name: 'Back', exact: true });
     }
 
     async clickSaveButton() {

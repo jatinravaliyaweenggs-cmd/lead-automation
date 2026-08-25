@@ -48,3 +48,8 @@ Then('User verify mandatory fields', async function () {
     changeOrderPage = new ChangeOrderPage(this.page);
     await changeOrderPage.verifyMandatoryForChangeOrderRequest();
 })
+
+When('Verify maximum project subject lenght for chnage order request', async function(){
+    changeOrderPage = new ChangeOrderPage(this.page);
+    await changeOrderPage.createChnageOrderRequestForMaxProjectLenght();
+})
