@@ -4,6 +4,5 @@ Feature: Change Orders
     When User login with valid credentials
 
 
-  Scenario: Open Change Orders page
-    When user opens the Change Orders page
-    Then Change Orders page should be displayed
+Scenario: Open Change Orders page
+  When User opens the Change Orders page and Change Orders page should be displayed
