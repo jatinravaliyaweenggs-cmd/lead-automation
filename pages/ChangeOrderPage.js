@@ -22,6 +22,9 @@ class ChangeOrderPage {
 
     async clickFilterButton(){
         await this.filterButton.click();
+        await this.page.getByText('Change Orders Filter', { exact: true });
+        await this.page.locator('#date_range').click();
+        await this.page.locator('.ant-picker-presets li').getByText('Today', { exact: true }).click();
     }
 
 
