@@ -14,12 +14,16 @@ class ChangeOrderPage {
 
         this.createChangeOrderButton = page.getByRole('button', { name: 'Create Change Order' });
         this.typeAChangeOrderNumber = page.getByPlaceholder('Type a Change Order number');
+        
+        this.typeAChangeOrderRequestNumber = page.getByPlaceholder('Type a Change Order Request number');
         this.briefDescriptionOfWhatIsBeingChangedTextbox = 
         page.getByPlaceholder('Brief description of what is being changed');
 
         this.searchProjectsTextbox = page.getByPlaceholder('Search Project(s)', { exact: true });
         this.filterButton = page.locator('button:has(svg[data-icon="filter"])');
         this.saveButton = page.getByRole('button', { name: 'Save', exact: true });
+
+        this.createChangeOrderRequestButton = page.getByRole('button', { name: 'Create Change Order Request' });
     }
 
     async clickFilterButton(){
@@ -60,6 +64,10 @@ class ChangeOrderPage {
         await this.changeOrderRequestPageButton.first().click();
         await expect(this.page.locator('h5', { hasText: 'Add Change Order Request' })).toBeVisible();
         await this.selectProject();
+        await this.enterSubject();
+        await this.typeAChangeOrderRequestNumber.fill(changeOrderData.changeOrderRequestNumber); 
+        await this.createChangeOrderRequestButton.click();
+        await this.page.getByRole('gridcell', {name: changeOrderData.changeOrderRequestNumber});
 
     }
 
@@ -70,11 +78,13 @@ class ChangeOrderPage {
         await this.page.locator('.project').filter({hasText: changeOrderData.projectName}).click();
     }
 
+    async enterSubject(){
+        await this.briefDescriptionOfWhatIsBeingChangedTextbox.fill(changeOrderData.subject); 
+    }
+
     async createChnageOrder(){
-        await this.page.getByText('Click to select a Project(s)', { exact: true }).click();
-        await this.searchProjectsTextbox.fill(changeOrderData.projectName);
-        await this.page.locator('.project').filter({hasText: changeOrderData.projectName}).click();
-        await this.briefDescriptionOfWhatIsBeingChangedTextbox.fill(changeOrderData.description); 
+        await this.selectProject();
+        await this.enterSubject();
         await this.typeAChangeOrderNumber.fill(changeOrderData.changeOrderNumber); 
 
         await this.page.locator('#rc_select_9').click(); 
