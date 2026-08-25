@@ -1,4 +1,5 @@
 const { expect } = require('@playwright/test');
+const changeOrderData = require('../testdata/chnageOrderData');
 
 class ChangeOrderPage {
     constructor(page) {
@@ -31,14 +32,14 @@ class ChangeOrderPage {
         await expect(this.page.locator('h5', { hasText: 'Add Change Order' })).toBeVisible();
 
         await this.page.getByText('Click to select a Project(s)', { exact: true }).click();
-        await this.searchProjectsTextbox.fill('Jt - PJ - Bathroom Plumbing Renovation Estimate');
-        await this.page.locator('.project').filter({hasText: 'Jt - PJ - Bathroom Plumbing Renovation Estimate'}).click();
-        await this.briefDescriptionOfWhatIsBeingChangedTextbox.fill('Additional Bathroom Plumbing and Fixture Work'); 
+        await this.searchProjectsTextbox.fill(changeOrderData.projectName);
+        await this.page.locator('.project').filter({hasText: changeOrderData.projectName}).click();
+        await this.briefDescriptionOfWhatIsBeingChangedTextbox.fill(changeOrderData.description); 
 
-        await this.typeAChangeOrderNumber.fill('CO-BATH-2026-027'); 
+        await this.typeAChangeOrderNumber.fill(changeOrderData.changeOrderNumber); 
         await this.createChangeOrderButton.click();
-
-    
+        
+        
     }
 }
 
