@@ -40,6 +40,7 @@ class ChangeOrderPage {
         await this.briefDescriptionOfWhatIsBeingChangedTextbox.fill(changeOrderData.description); 
         await this.typeAChangeOrderNumber.fill(changeOrderData.changeOrderNumber); 
         await this.createChangeOrderButton.click();
+        await this.page.getByRole('gridcell', {name: changeOrderData.changeOrderNumber});
     }
 }
 
