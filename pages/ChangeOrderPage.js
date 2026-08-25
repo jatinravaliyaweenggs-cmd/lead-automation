@@ -17,7 +17,13 @@ class ChangeOrderPage {
         page.getByPlaceholder('Brief description of what is being changed');
 
         this.searchProjectsTextbox = page.getByPlaceholder('Search Project(s)', { exact: true });
+        this.filterButton = page.locator('button:has(svg[data-icon="filter"])');
     }
+
+    async clickFilterButton(){
+        await this.filterButton.click();
+    }
+
 
     async openChangeOrderPage() {
         await this.logo.click();

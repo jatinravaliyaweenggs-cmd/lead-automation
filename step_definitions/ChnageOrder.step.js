@@ -4,7 +4,7 @@ const ChangeOrderPage = require('../pages/ChangeOrderPage');
 
 let changeOrderPage;
 
-When('User opens the Change Orders page and verify chnage oder pahe open', async function () {
+When('User opens the Change Orders page and verify chnage oder page open', async function () {
     changeOrderPage = new ChangeOrderPage(this.page);
     await changeOrderPage.openChangeOrderPage();
     await this.page.waitForURL('**/manage-change-orders');
@@ -16,4 +16,11 @@ When('User click on the create change order button and create chnage order', asy
     await changeOrderPage.createChnageOrder();
 })
 
+
+When('User click on filter and verify filter data', async function () {
+    changeOrderPage = new ChangeOrderPage(this.page);
+    await changeOrderPage.clickFilterButton();
+    //await changeOrderPage.verifyFilterData();
+    
+})
 
