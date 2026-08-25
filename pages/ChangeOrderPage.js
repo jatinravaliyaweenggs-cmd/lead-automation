@@ -24,7 +24,13 @@ class ChangeOrderPage {
         this.saveButton = page.getByRole('button', { name: 'Save', exact: true });
 
         this.createChangeOrderRequestButton = page.getByRole('button', { name: 'Create Change Order Request' });
+
+        this.backButton = this.page.getByRole('button', { name: 'Back', exact: true });
     }
+
+    async clickBackButton() {
+    await this.backButton.click();
+}
 
     async clickFilterButton(){
         await this.filterButton.click();
@@ -59,17 +65,28 @@ class ChangeOrderPage {
         await expect(this.page.locator('h5', { hasText: 'Add Change Order' })).toBeVisible();
     }
 
-    async createChnageOrderRequest(){
+    async openChnageOrderRequestPage(){
         await this.changeOrderDropdown.click();
         await this.changeOrderRequestPageButton.first().click();
         await expect(this.page.locator('h5', { hasText: 'Add Change Order Request' })).toBeVisible();
+    }
+
+    async createChnageOrderRequest(){
+        await this.openChnageOrderRequestPage()
         await this.selectProject();
         await this.enterSubject();
         await this.typeAChangeOrderRequestNumber.fill(changeOrderData.changeOrderRequestNumber); 
         await this.createChangeOrderRequestButton.click();
+        await this.clickBackButton();
         await this.page.getByRole('gridcell', {name: changeOrderData.changeOrderRequestNumber});
 
     }
+
+    async verifyMandatoryForChangeOrderRequest(){
+        await this.openChnageOrderRequestPage()
+        await this.createChangeOrderRequestButton.click();
+        await expect(this.page.getByText('This field is required.', { exact: true })).toHaveCount(3);
+}
 
 
     async selectProject(){
@@ -86,14 +103,9 @@ class ChangeOrderPage {
         await this.selectProject();
         await this.enterSubject();
         await this.typeAChangeOrderNumber.fill(changeOrderData.changeOrderNumber); 
-
         await this.page.locator('#rc_select_9').click(); 
         await this.page.locator('#rc_select_9').fill('Template - Bathroom Plumbing'); 
         await this.page.keyboard.press('Enter');
-
-
-
-
         await this.createChangeOrderButton.click();
         await this.page.getByRole('gridcell', {name: changeOrderData.changeOrderNumber});
     }
@@ -104,6 +116,8 @@ async verifyMandatoryData() {
     await this.createChangeOrderButton.click();
     await expect(this.page.getByText('This field is required.', { exact: true })).toHaveCount(3);
 }
+
+
 
 
 

@@ -14,7 +14,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 425136900
+              "duration": 429300000
             }
           },
           {
@@ -27,7 +27,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 3812094600
+              "duration": 3954565799
             }
           },
           {
@@ -40,7 +40,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 7735514100
+              "duration": 8358885800
             }
           },
           {
@@ -53,7 +53,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 4865278500
+              "duration": 2946365400
             }
           },
           {
@@ -66,7 +66,20 @@
             },
             "result": {
               "status": "passed",
-              "duration": 6896441299
+              "duration": 13003376199
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 27,
+            "name": "User verify mandatory fields",
+            "match": {
+              "location": "step_definitions\\ChnageOrder.step.js:47"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 2922428199
             }
           },
           {
@@ -74,7 +87,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 333298899
+              "duration": 341283900
             }
           }
         ],

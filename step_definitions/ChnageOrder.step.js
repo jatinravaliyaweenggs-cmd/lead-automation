@@ -40,8 +40,11 @@ When('User click on the create change order button and verify project name maxim
 
 
 When('User click on the create change order request button and create chnage order request', async function(){
-
     changeOrderPage = new ChangeOrderPage(this.page);
     await changeOrderPage.createChnageOrderRequest();
+})
 
+Then('User verify mandatory fields', async function () {
+    changeOrderPage = new ChangeOrderPage(this.page);
+    await changeOrderPage.verifyMandatoryForChangeOrderRequest();
 })

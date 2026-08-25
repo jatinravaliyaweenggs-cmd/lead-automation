@@ -24,3 +24,4 @@ Feature: Change Orders
      Scenario: Create change order request
          When User opens the Change Orders page and verify chnage oder page open
          And User click on the create change order request button and create chnage order request
+         And User verify mandatory fields
