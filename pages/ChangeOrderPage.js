@@ -116,9 +116,16 @@ class ChangeOrderPage {
         await this.selectProject();
         await this.enterSubject();
         await this.typeAChangeOrderNumber.fill(changeOrderData.changeOrderNumber); 
-        // await this.page.locator('#rc_select_9').click(); 
-        // await this.page.locator('#rc_select_9').fill('Template - Bathroom Plumbing'); 
-        // await this.page.keyboard.press('Enter');
+
+        const templateDropdown = this.page.locator('#rc_select_9');
+        await this.page.waitForTimeout(2000); 
+          
+    if (await templateDropdown.isVisible()) {
+        await templateDropdown.click();
+        await templateDropdown.fill('Template - Bathroom Plumbing');
+        await this.page.keyboard.press('Enter');
+    }
+
         await this.createChangeOrderButton.click();
         await this.page.getByRole('gridcell', {name: changeOrderData.changeOrderNumber});
     }
