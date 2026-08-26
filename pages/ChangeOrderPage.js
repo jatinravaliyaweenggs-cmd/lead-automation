@@ -33,6 +33,37 @@ class ChangeOrderPage {
 
     }
 
+    async verifyProjectSelectionOption(){
+    const moduleSettings = this.page.locator('#moduleSettings');
+
+    await moduleSettings.waitFor({
+        state: 'visible',
+        timeout: 10000
+});
+
+    await moduleSettings.scrollIntoViewIfNeeded();
+
+    await expect(moduleSettings).toBeEnabled();
+
+    await moduleSettings.click();
+
+    const switchButton = this.page.getByRole('switch');
+
+    if (await switchButton.isChecked()) {
+        await this.page.locator('.md\\:relative > button.close-icon').click();
+    } else {
+        await switchButton.click();
+        await this.page.getByRole('button', { name: 'Save' }).click();
+    }
+
+    await this.clickAddChangeOrderButton();
+    await this.page.getByText('Click to select a Project(s)', { exact: true }).click();
+    await this.searchProjectsTextbox.fill(changeOrderData.completedProjectName);
+    await expect(this.page.getByText('No Records Available', { exact: true })).toBeVisible();
+
+    }
+
+
     async verifyCustomTextAppliedManuallyPerItem() {
     await this.page.locator('#moduleSettings').click();
     const customTextRadio = this.page.getByRole('radio', { name: 'Custom Text (Applied Manually per Item)'});
@@ -56,6 +87,8 @@ class ChangeOrderPage {
         await startAtNumber.check();
         await this.page.getByRole('button', { name: 'Save' }).click();
     }
+
+
 }
 
 

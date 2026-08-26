@@ -72,3 +72,8 @@ When('User Custom Text Applied Manually per Item seeting functionality', async f
     await changeOrderPage.verifyCustomTextAppliedManuallyPerItem();
     
 })
+
+When('User Project Selection Option seeting functionality', async function(){
+
+    await changeOrderPage.verifyProjectSelectionOption();
+})
