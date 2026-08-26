@@ -61,9 +61,12 @@ When('User verifies the Set as Default View functionality', async function(){
 })
 
 When('User verifies selected project remove', async function(){
-    
     await changeOrderPage.verifySelectedProjectRemove();
+})
 
+When('User verifies start at Number seeting functionality', async function(){
 
+    
+    await changeOrderPage.verifyStartAtNumberSetting();
 
 })

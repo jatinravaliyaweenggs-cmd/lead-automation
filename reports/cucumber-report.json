@@ -4,17 +4,17 @@
     "elements": [
       {
         "description": "",
-        "id": "change-orders;open-change-orders-page",
+        "id": "change-orders;start-at-number-seeting",
         "keyword": "Scenario",
-        "line": 6,
-        "name": "Open Change Orders page",
+        "line": 41,
+        "name": "Start at Number Seeting",
         "steps": [
           {
             "keyword": "Before",
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 2264906600
+              "duration": 481643399
             }
           },
           {
@@ -27,7 +27,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 4019832899
+              "duration": 3785038000
             }
           },
           {
@@ -40,33 +40,33 @@
             },
             "result": {
               "status": "passed",
-              "duration": 6256514299
+              "duration": 7481283599
             }
           },
           {
             "arguments": [],
             "keyword": "When ",
-            "line": 7,
+            "line": 42,
             "name": "User opens the Change Orders page and verify chnage oder page open",
             "match": {
               "location": "step_definitions\\ChnageOrder.step.js:7"
             },
             "result": {
               "status": "passed",
-              "duration": 4629731400
+              "duration": 3541910200
             }
           },
           {
             "arguments": [],
             "keyword": "And ",
-            "line": 8,
-            "name": "User click on the create change order button and create chnage order",
+            "line": 43,
+            "name": "User verifies start at Number seeting functionality",
             "match": {
-              "location": "step_definitions\\ChnageOrder.step.js:13"
+              "location": "step_definitions\\ChnageOrder.step.js:67"
             },
             "result": {
               "status": "passed",
-              "duration": 12072965700
+              "duration": 2489982000
             }
           },
           {
@@ -74,428 +74,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 442929700
-            }
-          }
-        ],
-        "tags": [],
-        "type": "scenario"
-      },
-      {
-        "description": "",
-        "id": "change-orders;chnage-order-filter-functionality-verify",
-        "keyword": "Scenario",
-        "line": 10,
-        "name": "Chnage order filter functionality verify",
-        "steps": [
-          {
-            "keyword": "Before",
-            "hidden": true,
-            "result": {
-              "status": "passed",
-              "duration": 1322442900
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Given ",
-            "line": 3,
-            "name": "User is on the login page",
-            "match": {
-              "location": "step_definitions\\login.steps.js:7"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 4612703399
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "When ",
-            "line": 4,
-            "name": "User login with valid credentials",
-            "match": {
-              "location": "step_definitions\\login.steps.js:14"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 7495760099
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "When ",
-            "line": 11,
-            "name": "User opens the Change Orders page and verify chnage oder page open",
-            "match": {
-              "location": "step_definitions\\ChnageOrder.step.js:7"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 3401219499
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "And ",
-            "line": 12,
-            "name": "User click on filter and verify filter data",
-            "match": {
-              "location": "step_definitions\\ChnageOrder.step.js:20"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 12545582599
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "And ",
-            "line": 13,
-            "name": "User click on a chnage order button and verify mandatory data",
-            "match": {
-              "location": "step_definitions\\ChnageOrder.step.js:27"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 3054664699
-            }
-          },
-          {
-            "keyword": "After",
-            "hidden": true,
-            "result": {
-              "status": "passed",
-              "duration": 425326499
-            }
-          }
-        ],
-        "tags": [],
-        "type": "scenario"
-      },
-      {
-        "description": "",
-        "id": "change-orders;chnage-order-filter-functionality-verify",
-        "keyword": "Scenario",
-        "line": 15,
-        "name": "Chnage order filter functionality verify",
-        "steps": [
-          {
-            "keyword": "Before",
-            "hidden": true,
-            "result": {
-              "status": "passed",
-              "duration": 445341800
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Given ",
-            "line": 3,
-            "name": "User is on the login page",
-            "match": {
-              "location": "step_definitions\\login.steps.js:7"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 3860539099
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "When ",
-            "line": 4,
-            "name": "User login with valid credentials",
-            "match": {
-              "location": "step_definitions\\login.steps.js:14"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 6135613799
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "When ",
-            "line": 16,
-            "name": "User opens the Change Orders page and verify chnage oder page open",
-            "match": {
-              "location": "step_definitions\\ChnageOrder.step.js:7"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 4494129800
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "And ",
-            "line": 17,
-            "name": "User click on a chnage order button and verify mandatory data",
-            "match": {
-              "location": "step_definitions\\ChnageOrder.step.js:27"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 4286095399
-            }
-          },
-          {
-            "keyword": "After",
-            "hidden": true,
-            "result": {
-              "status": "passed",
-              "duration": 283033699
-            }
-          }
-        ],
-        "tags": [],
-        "type": "scenario"
-      },
-      {
-        "description": "",
-        "id": "change-orders;maximum-data-lenght-check-for-change-order",
-        "keyword": "Scenario",
-        "line": 20,
-        "name": "Maximum data lenght check for change order",
-        "steps": [
-          {
-            "keyword": "Before",
-            "hidden": true,
-            "result": {
-              "status": "passed",
-              "duration": 436957199
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Given ",
-            "line": 3,
-            "name": "User is on the login page",
-            "match": {
-              "location": "step_definitions\\login.steps.js:7"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 3664207399
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "When ",
-            "line": 4,
-            "name": "User login with valid credentials",
-            "match": {
-              "location": "step_definitions\\login.steps.js:14"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 8117444700
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "When ",
-            "line": 21,
-            "name": "User opens the Change Orders page and verify chnage oder page open",
-            "match": {
-              "location": "step_definitions\\ChnageOrder.step.js:7"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 3552805600
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "And ",
-            "line": 22,
-            "name": "User click on the create change order button and verify project name maximum lenght",
-            "match": {
-              "location": "step_definitions\\ChnageOrder.step.js:35"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 9806829299
-            }
-          },
-          {
-            "keyword": "After",
-            "hidden": true,
-            "result": {
-              "status": "passed",
-              "duration": 483475200
-            }
-          }
-        ],
-        "tags": [],
-        "type": "scenario"
-      },
-      {
-        "description": "",
-        "id": "change-orders;create-change-order-request",
-        "keyword": "Scenario",
-        "line": 25,
-        "name": "Create change order request",
-        "steps": [
-          {
-            "keyword": "Before",
-            "hidden": true,
-            "result": {
-              "status": "passed",
-              "duration": 1170292900
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Given ",
-            "line": 3,
-            "name": "User is on the login page",
-            "match": {
-              "location": "step_definitions\\login.steps.js:7"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 4983218900
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "When ",
-            "line": 4,
-            "name": "User login with valid credentials",
-            "match": {
-              "location": "step_definitions\\login.steps.js:14"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 8053776599
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "When ",
-            "line": 26,
-            "name": "User opens the Change Orders page and verify chnage oder page open",
-            "match": {
-              "location": "step_definitions\\ChnageOrder.step.js:7"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 3209014800
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "And ",
-            "line": 27,
-            "name": "User click on the create change order request button and create chnage order request",
-            "match": {
-              "location": "step_definitions\\ChnageOrder.step.js:42"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 12539421199
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "And ",
-            "line": 28,
-            "name": "User verify mandatory fields",
-            "match": {
-              "location": "step_definitions\\ChnageOrder.step.js:47"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 2888857400
-            }
-          },
-          {
-            "keyword": "After",
-            "hidden": true,
-            "result": {
-              "status": "passed",
-              "duration": 333462500
-            }
-          }
-        ],
-        "tags": [],
-        "type": "scenario"
-      },
-      {
-        "description": "",
-        "id": "change-orders;create-change-order-request",
-        "keyword": "Scenario",
-        "line": 30,
-        "name": "Create change order request",
-        "steps": [
-          {
-            "keyword": "Before",
-            "hidden": true,
-            "result": {
-              "status": "passed",
-              "duration": 1101773600
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Given ",
-            "line": 3,
-            "name": "User is on the login page",
-            "match": {
-              "location": "step_definitions\\login.steps.js:7"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 4222996100
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "When ",
-            "line": 4,
-            "name": "User login with valid credentials",
-            "match": {
-              "location": "step_definitions\\login.steps.js:14"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 11708275299
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "When ",
-            "line": 31,
-            "name": "User opens the Change Orders page and verify chnage oder page open",
-            "match": {
-              "location": "step_definitions\\ChnageOrder.step.js:7"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 2992327099
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "And ",
-            "line": 32,
-            "name": "Verify maximum project subject lenght for chnage order request",
-            "match": {
-              "location": "step_definitions\\ChnageOrder.step.js:52"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 9525531599
-            }
-          },
-          {
-            "keyword": "After",
-            "hidden": true,
-            "result": {
-              "status": "passed",
-              "duration": 10410800300
+              "duration": 323094500
             }
           }
         ],

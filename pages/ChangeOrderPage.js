@@ -32,6 +32,35 @@ class ChangeOrderPage {
 
 
     }
+
+    async verifyStartAtNumberSetting() {
+    await this.page.locator('#moduleSettings').click();
+    const startAtNumber = this.page.getByRole('radio', { name: 'Start at Number' });
+
+    if (await startAtNumber.isChecked()) {
+       await this.page.locator('.md\\:relative > button.close-icon').click();
+    } else {
+        await startAtNumber.check();
+        await this.page.getByRole('button', { name: 'Save' }).click();
+    }
+}
+
+
+
+    async startAtNumberSetting() {
+    await this.page.locator('#moduleSettings').click();
+    const startAtNumber = this.page.getByRole('radio', { name: 'Start at Number' });
+
+    // Check current state
+    if (await startAtNumber.isChecked()) {
+        await this.page.locator('button.close-icon').click();
+    } else {
+        await startAtNumber.check();
+        await this.page.getByRole('button', { name: 'Save' }).click();
+    }
+}
+
+
 async removeProject(projectName) {
     const project = this.page.locator('.group\\/selectItems', {hasText: projectName});
     await project.hover();

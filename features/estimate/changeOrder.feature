@@ -34,6 +34,10 @@ Feature: Change Orders
     #     And User verifies the Set as Default View functionality
 
 
-     Scenario: project remove functionality
-          When User opens the Change Orders page and verify chnage oder page open
-          And User verifies selected project remove
+    #  Scenario: project remove functionality
+    #       When User opens the Change Orders page and verify chnage oder page open
+    #       And User verifies selected project remove
+
+      Scenario: Start at Number Seeting
+           When User opens the Change Orders page and verify chnage oder page open
+           And User verifies start at Number seeting functionality
