@@ -26,7 +26,21 @@ class ChangeOrderPage {
         this.searchProjectsTextbox = page.getByPlaceholder('Search Project(s)', { exact: true });
         this.filterButton = page.locator('button:has(svg[data-icon="filter"])');
         this.createChangeOrderRequestButton = page.getByRole('button', { name: 'Create Change Order Request' });
+
+        this.trelloButton = page.locator('button:has(svg[data-icon="trello"])');
+        this.defaultViewCheckBox = page.getByLabel('Set as Default View');
+
+
     }
+
+
+async verifyKanbanView() {
+    await this.trelloButton.click();
+    await this.defaultViewCheckBox.click();
+    await this.page.keyboard.press('F5');
+    await expect(this.page.getByRole('button', { description: 'Return to Dashboard', exact: true })).toBeVisible();
+    await this.defaultViewCheckBox.click();
+}
 
 
     async clickFilterButton(){

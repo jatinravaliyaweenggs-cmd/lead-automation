@@ -53,3 +53,9 @@ When('Verify maximum project subject lenght for chnage order request', async fun
     changeOrderPage = new ChangeOrderPage(this.page);
     await changeOrderPage.createChnageOrderRequestForMaxProjectLenght();
 })
+
+When('User verifies the Set as Default View functionality', async function(){
+    changeOrderPage = new ChangeOrderPage(this.page);
+    await changeOrderPage.verifyKanbanView();
+
+})
