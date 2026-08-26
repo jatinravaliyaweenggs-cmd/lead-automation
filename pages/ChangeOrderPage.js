@@ -179,6 +179,23 @@ async verifyChangeOrderSearch() {
         await this.selectProject();
         await this.enterSubject();
         await this.typeAChangeOrderRequestNumber.fill(changeOrderData.changeOrderRequestNumber);
+
+        // Open template dropdown
+    const dropdown = this.page.locator('.ant-select-selector');
+    await dropdown.click();
+
+    // Search template
+    const templateSearch = this.page.locator(
+        'input.ant-select-selection-search-input'
+    );
+
+    await templateSearch.fill('Template - Bathroom Plumbing Request');
+
+    await this.page.keyboard.press('Enter');
+    // Click switch
+    await this.page.getByRole('switch').click();
+
+
         await this.createChangeOrderRequestButton.click();
         await this.changeOrdercommanData.clickBackButton();
         await this.page.getByRole('gridcell', { name: changeOrderData.changeOrderRequestNumber });
@@ -273,10 +290,3 @@ async verifyChangeOrderSearch() {
 }
 
 module.exports = ChangeOrderPage;
-
-
-
-
-
-
-

@@ -4,17 +4,17 @@
     "elements": [
       {
         "description": "",
-        "id": "change-orders;open-change-orders-page",
+        "id": "change-orders;create-change-order-request",
         "keyword": "Scenario",
-        "line": 6,
-        "name": "Open Change Orders page",
+        "line": 23,
+        "name": "Create change order request",
         "steps": [
           {
             "keyword": "Before",
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 506016500
+              "duration": 466514099
             }
           },
           {
@@ -27,7 +27,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 7112707300
+              "duration": 4002091999
             }
           },
           {
@@ -40,33 +40,46 @@
             },
             "result": {
               "status": "passed",
-              "duration": 8060446300
+              "duration": 7889150600
             }
           },
           {
             "arguments": [],
             "keyword": "When ",
-            "line": 7,
+            "line": 24,
             "name": "User opens the Change Orders page and verify chnage oder page open",
             "match": {
               "location": "step_definitions\\ChnageOrder.step.js:7"
             },
             "result": {
               "status": "passed",
-              "duration": 4300586899
+              "duration": 6239098600
             }
           },
           {
             "arguments": [],
             "keyword": "And ",
-            "line": 8,
-            "name": "User click on the create change order button and create chnage order",
+            "line": 25,
+            "name": "User click on the create change order request button and create chnage order request",
             "match": {
-              "location": "step_definitions\\ChnageOrder.step.js:13"
+              "location": "step_definitions\\ChnageOrder.step.js:42"
             },
             "result": {
               "status": "passed",
-              "duration": 13544152899
+              "duration": 16633642899
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 26,
+            "name": "User verify mandatory fields",
+            "match": {
+              "location": "step_definitions\\ChnageOrder.step.js:47"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 2896040800
             }
           },
           {
@@ -74,7 +87,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 465243999
+              "duration": 476108700
             }
           }
         ],
