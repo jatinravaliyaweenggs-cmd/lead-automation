@@ -33,6 +33,19 @@ class ChangeOrderPage {
 
     }
 
+    async verifyCustomTextAppliedManuallyPerItem() {
+    await this.page.locator('#moduleSettings').click();
+    const customTextRadio = this.page.getByRole('radio', { name: 'Custom Text (Applied Manually per Item)'});
+
+    if (await customTextRadio.isChecked()) {
+        await this.page.locator('.md\\:relative > button.close-icon').click();
+
+    } else {
+        await customTextRadio.check();
+        await this.page.getByRole('button', { name: 'Save' }).click();
+    }
+}
+
     async verifyStartAtNumberSetting() {
     await this.page.locator('#moduleSettings').click();
     const startAtNumber = this.page.getByRole('radio', { name: 'Start at Number' });

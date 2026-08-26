@@ -38,6 +38,10 @@ Feature: Change Orders
     #       When User opens the Change Orders page and verify chnage oder page open
     #       And User verifies selected project remove
 
-      Scenario: Start at Number Seeting
+    #   Scenario: Start at Number Seeting
+    #        When User opens the Change Orders page and verify chnage oder page open
+    #        And User verifies start at Number seeting functionality
+
+    Scenario: Start at Number Seeting
            When User opens the Change Orders page and verify chnage oder page open
-           And User verifies start at Number seeting functionality
+           And User Custom Text Applied Manually per Item seeting functionality

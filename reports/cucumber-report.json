@@ -6,7 +6,7 @@
         "description": "",
         "id": "change-orders;start-at-number-seeting",
         "keyword": "Scenario",
-        "line": 41,
+        "line": 45,
         "name": "Start at Number Seeting",
         "steps": [
           {
@@ -14,7 +14,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 481643399
+              "duration": 422371899
             }
           },
           {
@@ -27,7 +27,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 3785038000
+              "duration": 4157633699
             }
           },
           {
@@ -40,33 +40,33 @@
             },
             "result": {
               "status": "passed",
-              "duration": 7481283599
+              "duration": 7825671499
             }
           },
           {
             "arguments": [],
             "keyword": "When ",
-            "line": 42,
+            "line": 46,
             "name": "User opens the Change Orders page and verify chnage oder page open",
             "match": {
               "location": "step_definitions\\ChnageOrder.step.js:7"
             },
             "result": {
               "status": "passed",
-              "duration": 3541910200
+              "duration": 3432617500
             }
           },
           {
             "arguments": [],
             "keyword": "And ",
-            "line": 43,
-            "name": "User verifies start at Number seeting functionality",
+            "line": 47,
+            "name": "User Custom Text Applied Manually per Item seeting functionality",
             "match": {
-              "location": "step_definitions\\ChnageOrder.step.js:67"
+              "location": "step_definitions\\ChnageOrder.step.js:71"
             },
             "result": {
               "status": "passed",
-              "duration": 2489982000
+              "duration": 3090249200
             }
           },
           {
@@ -74,7 +74,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 323094500
+              "duration": 329013500
             }
           }
         ],

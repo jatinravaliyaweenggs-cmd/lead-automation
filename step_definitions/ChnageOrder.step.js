@@ -65,8 +65,10 @@ When('User verifies selected project remove', async function(){
 })
 
 When('User verifies start at Number seeting functionality', async function(){
-
-    
     await changeOrderPage.verifyStartAtNumberSetting();
+})
 
+When('User Custom Text Applied Manually per Item seeting functionality', async function () {
+    await changeOrderPage.verifyCustomTextAppliedManuallyPerItem();
+    
 })
