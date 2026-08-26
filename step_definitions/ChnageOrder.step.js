@@ -77,3 +77,7 @@ When('User Project Selection Option seeting functionality', async function(){
 
     await changeOrderPage.verifyProjectSelectionOption();
 })
+
+When('User serch new create chnage order', async function () {
+    await changeOrderPage.verifyChangeOrderSearch();
+})
