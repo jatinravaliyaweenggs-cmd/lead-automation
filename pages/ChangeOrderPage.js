@@ -32,6 +32,19 @@ class ChangeOrderPage {
 
 
     }
+async removeProject(projectName) {
+    const project = this.page.locator('.group\\/selectItems', {hasText: projectName});
+    await project.hover();
+    await project.locator('button.close-icon').click();
+}
+
+async verifySelectedProjectRemove() {
+    await this.clickAddChangeOrderButton();
+    await this.selectProject();
+    const projectName = changeOrderData.projectName;
+    await this.page.getByRole('button', { name: projectName }).click();
+    await this.removeProject(projectName);
+}
 
 
 async verifyKanbanView() {

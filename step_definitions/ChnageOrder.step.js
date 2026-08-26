@@ -59,3 +59,11 @@ When('User verifies the Set as Default View functionality', async function(){
     await changeOrderPage.verifyKanbanView();
 
 })
+
+When('User verifies selected project remove', async function(){
+    
+    await changeOrderPage.verifySelectedProjectRemove();
+
+
+
+})

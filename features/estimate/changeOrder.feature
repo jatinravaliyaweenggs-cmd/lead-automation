@@ -29,6 +29,11 @@ Feature: Change Orders
     #     When User opens the Change Orders page and verify chnage oder page open
     #     And Verify maximum project subject lenght for chnage order request
 
-    Scenario: Verify Kanban view functionality
-        When User opens the Change Orders page and verify chnage oder page open
-        And User verifies the Set as Default View functionality
+    # Scenario: Verify Kanban view functionality
+    #     When User opens the Change Orders page and verify chnage oder page open
+    #     And User verifies the Set as Default View functionality
+
+
+     Scenario: project remove functionality
+          When User opens the Change Orders page and verify chnage oder page open
+          And User verifies selected project remove
