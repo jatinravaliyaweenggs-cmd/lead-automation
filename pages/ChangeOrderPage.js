@@ -239,7 +239,8 @@ async verifyChangeOrderSearch() {
     await templateSearch.fill('Template - Bathroom Plumbing');
 
     await this.page.keyboard.press('Enter');
-
+    // Click switch
+    await this.page.getByRole('switch').click();
     await this.createChangeOrderButton.click();
 
     await expect(this.page.getByRole('gridcell', {name: changeOrderData.changeOrderNumber})).toBeVisible();
