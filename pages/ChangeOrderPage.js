@@ -38,7 +38,8 @@ async verifyChangeOrderSearch() {
     const searchBox = this.page.getByRole('searchbox', { name: 'Change Orders' });
     const coNumber = changeOrderData.projectName;
     await searchBox.fill(coNumber);
-    await expect(this.page.getByRole('gridcell', {name: coNumber,exact: true}).first()).toBeVisible();
+    await expect(this.page.getByRole('gridcell', {name: coNumber, exact: true}).first()).toBeVisible();
+
 }
 
 async verifyRandomlyChangeOrderSearch() {
@@ -52,7 +53,7 @@ async verifyRandomlyChangeOrderSearch() {
     await this.page.getByRole('menu').getByText('Change Order', {exact: true}).click();
     await expect(this.page.getByRole('heading', { name: 'Add Change Order' })).toBeVisible();
 
-
+    await this.createChnageOrder();
 
 
 }
@@ -239,7 +240,7 @@ async verifyRandomlyChangeOrderSearch() {
 
 
 
-    async selectProject() {
+    async newChangeOrderNumberForDuplicate() {
         await this.page.getByText('Click to select a Project(s)', { exact: true }).click();
         await this.searchProjectsTextbox.fill(changeOrderData.projectName);
         await this.page.locator('.project').filter({ hasText: changeOrderData.projectName }).click();
@@ -248,6 +249,36 @@ async verifyRandomlyChangeOrderSearch() {
     async enterSubject() {
         await this.briefDescriptionOfWhatIsBeingChangedTextbox.fill(changeOrderData.subject);
     }
+
+
+   async createNewChnageOrderForDuplicateNumber() {
+    await this.selectProject();
+
+    await this.enterSubject();
+
+    await this.typeAChangeOrderNumber.fill(
+        changeOrderData.newChangeOrderNumber
+    );
+
+    // Open template dropdown
+    const dropdown = this.page.locator('.ant-select-selector');
+    await dropdown.click();
+
+    // Search template
+    const templateSearch = this.page.locator(
+        'input.ant-select-selection-search-input'
+    );
+
+    await templateSearch.fill('Template - Bathroom Plumbing');
+
+    await this.page.keyboard.press('Enter');
+    // Click switch
+    await this.page.getByRole('switch').click();
+    await this.createChangeOrderButton.click();
+
+    await expect(this.page.getByRole('gridcell', {name: changeOrderData.changeOrderNumber})).toBeVisible();
+}
+
 
     async createChnageOrder() {
     await this.selectProject();
