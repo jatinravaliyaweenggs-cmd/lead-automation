@@ -80,6 +80,6 @@ When('User Project Selection Option seeting functionality', async function(){
 
 When('User serch new create chnage order', async function () {
     //await changeOrderPage.verifyChangeOrderSearch();
-    //await changeOrderPage.createNewChnageOrderForNoRecordAvailbale();
+    await changeOrderPage.createNewChnageOrderForNoRecordAvailbale();
     await changeOrderPage.verifyRandomlyChangeOrderRequestSearch();
 })

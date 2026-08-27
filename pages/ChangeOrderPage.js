@@ -66,6 +66,9 @@ class ChangeOrderPage {
 
 
    async createNewChnageOrderForNoRecordAvailbale() {
+    await this.ClickOnTheClickHereLinkButton();
+    await this.clickAddChangeOrderButton();
+
     await this.selectProject();
     await this.enterSubject();
     await this.typeAChangeOrderNumber.fill(changeOrderData.newChangeOrderNumber);
