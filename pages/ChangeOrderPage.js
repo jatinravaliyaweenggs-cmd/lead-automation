@@ -41,7 +41,13 @@ async verifyChangeOrderSearch() {
     await expect(this.page.getByRole('gridcell', {name: coNumber,exact: true}).first()).toBeVisible();
 }
 
-
+async verifyRandomlyChangeOrderSearch() {
+    const searchBox = this.page.getByRole('searchbox', { name: 'Change Orders' });
+    await searchBox.fill('This is a randomly text');
+    const createNewRecordButton = this.page.getByRole('button', { name: 'Click here' });
+    await this.page.mouse.wheel(0, -1000);
+    await this.page.waitForTimeout(500);
+    await expect(this.page.getByText('to Create a New Record')).toBeVisible();}
 
 
 
