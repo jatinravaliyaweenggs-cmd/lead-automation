@@ -44,10 +44,18 @@ async verifyChangeOrderSearch() {
 async verifyRandomlyChangeOrderSearch() {
     const searchBox = this.page.getByRole('searchbox', { name: 'Change Orders' });
     await searchBox.fill('This is a randomly text');
-    const createNewRecordButton = this.page.getByRole('button', { name: 'Click here' });
     await this.page.mouse.wheel(0, -1000);
     await this.page.waitForTimeout(500);
-    await expect(this.page.getByText('to Create a New Record')).toBeVisible();}
+    await expect(this.page.getByText('to Create a New Record')).toBeVisible();
+
+    await this.page.locator('button').filter({ hasText: 'Click here' }).click();
+    await this.page.getByRole('menu').getByText('Change Order', {exact: true}).click();
+    await expect(this.page.getByRole('heading', { name: 'Add Change Order' })).toBeVisible();
+
+
+
+
+}
 
 
 
