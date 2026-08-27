@@ -34,6 +34,71 @@ class ChangeOrderPage {
     }
 
 
+
+      async createNewChnageOrderRequestForDuplicateNumber() {
+    await this.selectProject();
+    await this.enterSubject();
+    await this.typeAChangeOrderRequestNumber.fill(changeOrderData.newChangeOrderRequstNumber);
+
+    // Open template dropdown
+    const dropdown = this.page.locator('.ant-select-selector');
+    await dropdown.click();
+
+    // Search template
+    const templateSearch = this.page.locator(
+        'input.ant-select-selection-search-input'
+    );
+
+    await templateSearch.fill('Template - Bathroom Plumbing');
+
+    await this.page.keyboard.press('Enter');
+    // Click switch
+    await this.page.getByRole('switch').click();
+    await this.createChangeOrderRequestButton.click();
+    await this.changeOrdercommanData.clickBackButton();
+    await this.page.getByRole('button', { name: 'close-circle' }).click();
+    await expect(
+    this.page.locator('[role="gridcell"][col-id="project_name"]')
+        .filter({ hasText: changeOrderData.projectName }).first()).toBeVisible();
+
+}
+
+
+
+   async createNewChnageOrderForNoRecordAvailbale() {
+    await this.selectProject();
+    await this.enterSubject();
+    await this.typeAChangeOrderNumber.fill(changeOrderData.newChangeOrderNumber);
+
+    // Open template dropdown
+    const dropdown = this.page.locator('.ant-select-selector');
+    await dropdown.click();
+
+    // Search template
+    const templateSearch = this.page.locator(
+        'input.ant-select-selection-search-input'
+    );
+
+    await templateSearch.fill('Template - Bathroom Plumbing');
+
+    await this.page.keyboard.press('Enter');
+    // Click switch
+    await this.page.getByRole('switch').click();
+    await this.createChangeOrderButton.click();
+    await this.changeOrdercommanData.clickBackButton();
+    await this.page.getByRole('button', { name: 'close-circle' }).click();
+    await expect(
+    this.page.locator('[role="gridcell"][col-id="project_name"]')
+        .filter({ hasText: changeOrderData.projectName }).first()).toBeVisible();
+
+}
+
+
+
+
+
+
+
     async selectProject() {
         await this.page.getByText('Click to select a Project(s)', { exact: true }).click();
         await this.searchProjectsTextbox.fill(changeOrderData.projectName);
@@ -48,7 +113,9 @@ class ChangeOrderPage {
 
 }
 
-async verifyRandomlyChangeOrderSearch() {
+
+async ClickOnTheClickHereLinkButton(){
+
     const searchBox = this.page.getByRole('searchbox', { name: 'Change Orders' });
     await searchBox.fill('This is a randomly text');
     await this.page.mouse.wheel(0, -1000);
@@ -56,11 +123,27 @@ async verifyRandomlyChangeOrderSearch() {
     await expect(this.page.getByText('to Create a New Record')).toBeVisible();
 
     await this.page.locator('button').filter({ hasText: 'Click here' }).click();
+
+}
+
+async verifyRandomlyChangeOrderRequestSearch() {
+    await this.ClickOnTheClickHereLinkButton();
+    await this.page.getByRole('menu').getByText('Change Order Request', {exact: true}).click();
+    await expect(this.page.getByRole('heading', { name: 'Add  Change Order Request' })).toBeVisible();
+
+    await this.createNewChnageOrderRequestForDuplicateNumber();
+
+}
+
+
+
+
+async verifyRandomlyChangeOrderSearch() {
+    await this.ClickOnTheClickHereLinkButton();
     await this.page.getByRole('menu').getByText('Change Order', {exact: true}).click();
     await expect(this.page.getByRole('heading', { name: 'Add Change Order' })).toBeVisible();
 
     await this.createNewChnageOrderForDuplicateNumber();
-
 
 }
 
@@ -255,39 +338,6 @@ async verifyRandomlyChangeOrderSearch() {
     async enterSubject() {
         await this.briefDescriptionOfWhatIsBeingChangedTextbox.fill(changeOrderData.subject);
     }
-
-
-   async createNewChnageOrderForDuplicateNumber() {
-    await this.selectProject();
-
-    await this.enterSubject();
-
-    await this.typeAChangeOrderNumber.fill(
-        changeOrderData.newChangeOrderNumber
-    );
-
-    // Open template dropdown
-    const dropdown = this.page.locator('.ant-select-selector');
-    await dropdown.click();
-
-    // Search template
-    const templateSearch = this.page.locator(
-        'input.ant-select-selection-search-input'
-    );
-
-    await templateSearch.fill('Template - Bathroom Plumbing');
-
-    await this.page.keyboard.press('Enter');
-    // Click switch
-    await this.page.getByRole('switch').click();
-    await this.createChangeOrderButton.click();
-    await this.changeOrdercommanData.clickBackButton();
-    await this.page.getByRole('button', { name: 'close-circle' }).click();
-    await expect(
-    this.page.locator('[role="gridcell"][col-id="project_name"]')
-        .filter({ hasText: changeOrderData.projectName }).first()).toBeVisible();
-
-}
 
 
     async createChnageOrder() {
