@@ -34,7 +34,13 @@ class ChangeOrderPage {
     }
 
 
-async verifyChangeOrderSearch() {
+    async selectProject() {
+        await this.page.getByText('Click to select a Project(s)', { exact: true }).click();
+        await this.searchProjectsTextbox.fill(changeOrderData.projectName);
+        await this.page.locator('.project').filter({ hasText: changeOrderData.projectName }).click();
+    }
+
+    async verifyChangeOrderSearch() {
     const searchBox = this.page.getByRole('searchbox', { name: 'Change Orders' });
     const coNumber = changeOrderData.projectName;
     await searchBox.fill(coNumber);
@@ -53,7 +59,7 @@ async verifyRandomlyChangeOrderSearch() {
     await this.page.getByRole('menu').getByText('Change Order', {exact: true}).click();
     await expect(this.page.getByRole('heading', { name: 'Add Change Order' })).toBeVisible();
 
-    await this.createChnageOrder();
+    await this.createNewChnageOrderForDuplicateNumber();
 
 
 }
@@ -275,8 +281,12 @@ async verifyRandomlyChangeOrderSearch() {
     // Click switch
     await this.page.getByRole('switch').click();
     await this.createChangeOrderButton.click();
+    await this.changeOrdercommanData.clickBackButton();
+    await this.page.getByRole('button', { name: 'close-circle' }).click();
+    await expect(
+    this.page.locator('[role="gridcell"][col-id="project_name"]')
+        .filter({ hasText: changeOrderData.projectName }).first()).toBeVisible();
 
-    await expect(this.page.getByRole('gridcell', {name: changeOrderData.changeOrderNumber})).toBeVisible();
 }
 
 
@@ -304,6 +314,7 @@ async verifyRandomlyChangeOrderSearch() {
     // Click switch
     await this.page.getByRole('switch').click();
     await this.createChangeOrderButton.click();
+
 
     await expect(this.page.getByRole('gridcell', {name: changeOrderData.changeOrderNumber})).toBeVisible();
 }

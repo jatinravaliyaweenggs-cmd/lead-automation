@@ -1,0 +1,92 @@
+[
+  {
+    "description": "",
+    "elements": [
+      {
+        "description": "",
+        "id": "change-orders;project-selection-option",
+        "keyword": "Scenario",
+        "line": 55,
+        "name": "Project Selection Option",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 429873100
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 3,
+            "name": "User is on the login page",
+            "match": {
+              "location": "step_definitions\\login.steps.js:7"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 4229947899
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 4,
+            "name": "User login with valid credentials",
+            "match": {
+              "location": "step_definitions\\login.steps.js:14"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 8301884400
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 56,
+            "name": "User opens the Change Orders page and verify chnage oder page open",
+            "match": {
+              "location": "step_definitions\\ChnageOrder.step.js:7"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 3058279200
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 57,
+            "name": "User serch new create chnage order",
+            "match": {
+              "location": "step_definitions\\ChnageOrder.step.js:81"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 18243716099
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 301822999
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      }
+    ],
+    "id": "change-orders",
+    "line": 1,
+    "keyword": "Feature",
+    "name": "Change Orders",
+    "tags": [],
+    "uri": "features\\estimate\\changeOrder.feature"
+  }
+]

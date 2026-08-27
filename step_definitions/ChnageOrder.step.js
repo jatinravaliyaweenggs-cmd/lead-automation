@@ -1,4 +1,4 @@
-const { When, Then, And } = require('@cucumber/cucumber');
+const { When, Then } = require('@cucumber/cucumber');
 
 const ChangeOrderPage = require('../pages/ChangeOrderPage');
 
@@ -80,5 +80,5 @@ When('User Project Selection Option seeting functionality', async function(){
 
 When('User serch new create chnage order', async function () {
     await changeOrderPage.verifyChangeOrderSearch();
-    await changeOrderPage.newChangeOrderNumberForDuplicate();
+    await changeOrderPage.verifyRandomlyChangeOrderSearch();
 })
