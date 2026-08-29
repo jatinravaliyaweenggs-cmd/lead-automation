@@ -40,29 +40,33 @@ class ChangeOrderPage {
         //await expect(this.page.locator('label').filter({ hasText: 'No Cost Change Order' })).toBeVisible();
 
 
-        const requestedBy = this.page.locator('.ant-select-selector').filter({
-            has: this.page.getByText('Requested By', { exact: true })
-        });
-        await requestedBy.click();
-        await this.page.keyboard.press('Enter');
+        // const requestedBy = this.page.locator('.ant-select-selector').filter({
+        //     has: this.page.getByText('Requested By', { exact: true })
+        // });
+        // await requestedBy.click();
+        // await this.page.keyboard.press('Enter');
 
 
-        await this.page.locator('#rc_select_1').click();
-        await this.page.keyboard.press('Enter');
+        // await this.page.locator('#rc_select_1').click();
+        // await this.page.keyboard.press('Enter');
 
-        const updateCustomerCONumber = this.page.getByRole('textbox', { name: 'Customer CO Number' });
-        await updateCustomerCONumber.click();
-        await updateCustomerCONumber.fill(changeOrderData.customerCONumber);
-        await this.page.keyboard.press('Enter');
+        // const updateCustomerCONumber = this.page.getByRole('textbox', { name: 'Customer CO Number' });
+        // await updateCustomerCONumber.click();
+        // await updateCustomerCONumber.fill(changeOrderData.customerCONumber);
+        // await this.page.keyboard.press('Enter');
 
 
-        const estimateInput = this.page.locator('#rc_select_2');
-        await estimateInput.click();
-        await this.page.keyboard.press('Enter');
+        // const estimateInput = this.page.locator('#rc_select_2');
+        // await estimateInput.click();
+        // await this.page.keyboard.press('Enter');
+
+        // await this.page.getByPlaceholder('Days Delayed').fill('10');
 
         await this.page
-    .getByPlaceholder('Days Delayed')
-    .fill('10');
+    .getByPlaceholder('Description')
+    .fill('This change order is created to update the project requirements.');
+
+    await this.page.locator('#rc_select_4').press('Enter');
 
         // await this.page.locator('li:nth-child(7) > .form-group-input > .overflow-hidden > .flex > .cf-field > .ant-space > .ant-space-item > .ant-select > .ant-select-selector').click();
         // await this.page.keyboard.press('Enter');
