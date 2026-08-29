@@ -41,7 +41,8 @@ class ChangeOrderPage {
 
 
         const requestedBy = this.page.locator('.ant-select-selector').filter({
-        has: this.page.getByText('Requested By', { exact: true })});
+            has: this.page.getByText('Requested By', { exact: true })
+        });
         await requestedBy.click();
         await this.page.keyboard.press('Enter');
 
@@ -49,7 +50,7 @@ class ChangeOrderPage {
         await this.page.locator('#rc_select_1').click();
         await this.page.keyboard.press('Enter');
 
-        const updateCustomerCONumber = this.page.getByRole('textbox', {name: 'Customer CO Number'});
+        const updateCustomerCONumber = this.page.getByRole('textbox', { name: 'Customer CO Number' });
         await updateCustomerCONumber.click();
         await updateCustomerCONumber.fill(changeOrderData.customerCONumber);
         await this.page.keyboard.press('Enter');
@@ -59,13 +60,9 @@ class ChangeOrderPage {
         await estimateInput.click();
         await this.page.keyboard.press('Enter');
 
-        //await this.page.getByText('Select Time Delay', { exact: true }).click();
         await this.page.locator('li:nth-child(7) > .form-group-input > .overflow-hidden > .flex > .cf-field > .ant-space > .ant-space-item > .ant-select > .ant-select-selector').click();
         await this.page.keyboard.press('Enter');
 
-
-        // await this.page.locator('li:nth-child(8) > div > .flex.items-center.w-full > .hover\\:w-full > .form-group-input > .overflow-hidden > .flex > .cf-field > .ant-space > .ant-space-item > .ant-select > .ant-select-selector').click();
-        // await this.page.keyboard.press('Enter');     
 
         await this.page.locator('.overflow-hidden > .form-group-input > .overflow-hidden > .flex > .cf-field > .ant-space > .ant-space-item > .ant-select > .ant-select-selector').first().click();
         await this.page.locator('#rc_select_3').press('Enter');
@@ -73,18 +70,18 @@ class ChangeOrderPage {
 
 
 
-    await this.page.getByRole('textbox', { name: 'Text Field' }).click();
-  await this.page.getByRole('textbox', { name: 'Text Field' }).fill('This is a text field');
-  await this.page.locator('div:nth-child(4) > .overflow-hidden > .flex > .cf-field > .ant-space > .ant-space-item > .ant-select > .ant-select-selector').click();
-  await this.page.getByText('Option 1').click();
- // await this.page.locator('div:nth-child(5) > .overflow-hidden > .flex > .cf-field > .ant-space > .ant-space-item > .ant-select > .ant-select-selector > .ant-select-selection-wrap > .ant-select-selection-search').click();
+        await this.page.getByRole('textbox', { name: 'Text Field' }).click();
+        await this.page.getByRole('textbox', { name: 'Text Field' }).fill('This is a text field');
+        await this.page.locator('div:nth-child(4) > .overflow-hidden > .flex > .cf-field > .ant-space > .ant-space-item > .ant-select > .ant-select-selector').click();
+        await this.page.getByText('Option 1').click();
+        // await this.page.locator('div:nth-child(5) > .overflow-hidden > .flex > .cf-field > .ant-space > .ant-space-item > .ant-select > .ant-select-selector > .ant-select-selection-wrap > .ant-select-selection-search').click();
 
- //   await this.page.locator('#rc_select_2').fill('Apex');
-//   await this.page.locator('#rc_select_2').press('Enter');
-//   await this.page.getByRole('textbox', { name: 'Text Area' }).click();
-//   await this.page.getByRole('textbox', { name: 'Text Area' }).fill('This is a text area');
-//   await this.page.getByRole('textbox', { name: 'Date Field' }).click();
-//   await this.page.getByText('Today', { exact: true }).click();
+        //   await this.page.locator('#rc_select_2').fill('Apex');
+        //   await this.page.locator('#rc_select_2').press('Enter');
+        //   await this.page.getByRole('textbox', { name: 'Text Area' }).click();
+        //   await this.page.getByRole('textbox', { name: 'Text Area' }).fill('This is a text area');
+        //   await this.page.getByRole('textbox', { name: 'Date Field' }).click();
+        //   await this.page.getByText('Today', { exact: true }).click();
 
     }
 
@@ -132,7 +129,7 @@ class ChangeOrderPage {
         await this.changeOrdercommanData.clickBackButton();
         await this.page.getByRole('button', { name: 'close-circle' }).click();
         await expect(this.page.locator('[role="gridcell"][col-id="project_name"]')
-                .filter({ hasText: changeOrderData.projectName }).first()).toBeVisible();
+            .filter({ hasText: changeOrderData.projectName }).first()).toBeVisible();
 
     }
 
