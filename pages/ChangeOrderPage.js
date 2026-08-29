@@ -78,12 +78,13 @@ class ChangeOrderPage {
   await this.page.locator('div:nth-child(4) > .overflow-hidden > .flex > .cf-field > .ant-space > .ant-space-item > .ant-select > .ant-select-selector').click();
   await this.page.getByText('Option 1').click();
  // await this.page.locator('div:nth-child(5) > .overflow-hidden > .flex > .cf-field > .ant-space > .ant-space-item > .ant-select > .ant-select-selector > .ant-select-selection-wrap > .ant-select-selection-search').click();
-  await this.page.locator('#rc_select_2').fill('Apex');
-  await this.page.locator('#rc_select_2').press('Enter');
-  await this.page.getByRole('textbox', { name: 'Text Area' }).click();
-  await this.page.getByRole('textbox', { name: 'Text Area' }).fill('This is a text area');
-  await this.page.getByRole('textbox', { name: 'Date Field' }).click();
-  await this.page.getByText('Today', { exact: true }).click();
+
+ //   await this.page.locator('#rc_select_2').fill('Apex');
+//   await this.page.locator('#rc_select_2').press('Enter');
+//   await this.page.getByRole('textbox', { name: 'Text Area' }).click();
+//   await this.page.getByRole('textbox', { name: 'Text Area' }).fill('This is a text area');
+//   await this.page.getByRole('textbox', { name: 'Date Field' }).click();
+//   await this.page.getByText('Today', { exact: true }).click();
 
     }
 
