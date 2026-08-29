@@ -58,7 +58,11 @@ Feature: Change Orders
 
 
 
-        Scenario: Project Selection Option
-              When User opens the Change Orders page and verify chnage oder page open
-              And User use default project in chnage order
+        # Scenario: Project Selection Option
+        #       When User opens the Change Orders page and verify chnage oder page open
+        #       And User use default project in chnage order
 
+
+    Scenario: Project Selection Option
+        When User opens the Change Orders page and verify chnage oder page open
+        And User update chnage order

@@ -88,3 +88,10 @@ When('User use default project in chnage order', async function () {
     changeOrderPage = new ChangeOrderPage(this.page);
     await changeOrderPage.useDefaultProjectInChangeOrder();
 })
+
+When('User update chnage order', async function(){
+
+    
+    await changeOrderPage.updateChangeOrder();
+
+})

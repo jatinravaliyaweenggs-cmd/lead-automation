@@ -33,6 +33,15 @@ class ChangeOrderPage {
 
     }
 
+    async updateChangeOrder(){
+ //await this.page.getByRole('row').nth(1).click();
+ await this.page.locator('div[role="treegrid"] div[col-id="project_name"]')
+ .getByText(changeOrderData.projectName, { exact: true }).first().click();
+    await expect(this.page.locator('label').filter({ hasText: 'No Cost Change Order' })).toBeVisible();
+
+    
+}
+
 
 
 async useDefaultProjectInChangeOrder() {
@@ -49,10 +58,13 @@ async useDefaultProjectInChangeOrder() {
     await this.page.getByPlaceholder('Search Projects').fill(changeOrderData.projectName);
     await this.page.locator('a.project:visible').first().click();
 
+
+   
+
     
 }
 
-      async createNewChnageOrderRequestForDuplicateNumber() {
+async createNewChnageOrderRequestForDuplicateNumber() {
     await this.selectProject();
     await this.enterSubject();
     await this.typeAChangeOrderRequestNumber.fill(changeOrderData.newChangeOrderRequstNumber);
@@ -62,9 +74,7 @@ async useDefaultProjectInChangeOrder() {
     await dropdown.click();
 
     // Search template
-    const templateSearch = this.page.locator(
-        'input.ant-select-selection-search-input'
-    );
+    const templateSearch = this.page.locator('input.ant-select-selection-search-input');
 
     await templateSearch.fill('Template - Bathroom Plumbing');
 
@@ -82,7 +92,7 @@ async useDefaultProjectInChangeOrder() {
 
 
 
-   async createNewChnageOrderForNoRecordAvailbale() {
+async createNewChnageOrderForNoRecordAvailbale() {
     await this.ClickOnTheClickHereLinkButton();
     await this.clickAddChangeOrderButton();
 
@@ -95,21 +105,16 @@ async useDefaultProjectInChangeOrder() {
     await dropdown.click();
 
     // Search template
-    const templateSearch = this.page.locator(
-        'input.ant-select-selection-search-input'
-    );
-
+    const templateSearch = this.page.locator('input.ant-select-selection-search-input');
     await templateSearch.fill('Template - Bathroom Plumbing');
-
     await this.page.keyboard.press('Enter');
     // Click switch
     await this.page.getByRole('switch').click();
     await this.createChangeOrderButton.click();
     await this.changeOrdercommanData.clickBackButton();
     await this.page.getByRole('button', { name: 'close-circle' }).click();
-    await expect(
-    this.page.locator('[role="gridcell"][col-id="project_name"]')
-        .filter({ hasText: changeOrderData.projectName }).first()).toBeVisible();
+    await expect(this.page.locator('[role="gridcell"][col-id="project_name"]')
+    .filter({ hasText: changeOrderData.projectName }).first()).toBeVisible();
 
 }
 

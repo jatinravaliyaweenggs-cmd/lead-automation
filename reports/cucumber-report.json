@@ -6,7 +6,7 @@
         "description": "",
         "id": "change-orders;project-selection-option",
         "keyword": "Scenario",
-        "line": 61,
+        "line": 66,
         "name": "Project Selection Option",
         "steps": [
           {
@@ -14,7 +14,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 404843100
+              "duration": 396446000
             }
           },
           {
@@ -27,7 +27,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 4193814000
+              "duration": 4468196199
             }
           },
           {
@@ -40,33 +40,33 @@
             },
             "result": {
               "status": "passed",
-              "duration": 6882555099
+              "duration": 7835951099
             }
           },
           {
             "arguments": [],
             "keyword": "When ",
-            "line": 62,
+            "line": 67,
             "name": "User opens the Change Orders page and verify chnage oder page open",
             "match": {
               "location": "step_definitions\\ChnageOrder.step.js:7"
             },
             "result": {
               "status": "passed",
-              "duration": 5538864900
+              "duration": 3446839900
             }
           },
           {
             "arguments": [],
             "keyword": "And ",
-            "line": 63,
-            "name": "User use default project in chnage order",
+            "line": 68,
+            "name": "User update chnage order",
             "match": {
-              "location": "step_definitions\\ChnageOrder.step.js:87"
+              "location": "step_definitions\\ChnageOrder.step.js:92"
             },
             "result": {
               "status": "passed",
-              "duration": 8695651900
+              "duration": 7529926899
             }
           },
           {
@@ -74,7 +74,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 284530300
+              "duration": 268387699
             }
           }
         ],
