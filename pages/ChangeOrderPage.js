@@ -60,20 +60,26 @@ class ChangeOrderPage {
         await estimateInput.click();
         await this.page.keyboard.press('Enter');
 
-        await this.page.locator('li:nth-child(7) > .form-group-input > .overflow-hidden > .flex > .cf-field > .ant-space > .ant-space-item > .ant-select > .ant-select-selector').click();
-        await this.page.keyboard.press('Enter');
+        await this.page
+    .getByPlaceholder('Days Delayed')
+    .fill('10');
+
+        // await this.page.locator('li:nth-child(7) > .form-group-input > .overflow-hidden > .flex > .cf-field > .ant-space > .ant-space-item > .ant-select > .ant-select-selector').click();
+        // await this.page.keyboard.press('Enter');
 
 
-        await this.page.locator('.overflow-hidden > .form-group-input > .overflow-hidden > .flex > .cf-field > .ant-space > .ant-space-item > .ant-select > .ant-select-selector').first().click();
-        await this.page.locator('#rc_select_3').press('Enter');
+        // await this.page.locator('.overflow-hidden > .form-group-input > .overflow-hidden > .flex > .cf-field > .ant-space > .ant-space-item > .ant-select > .ant-select-selector').first().click();
+        // await this.page.locator('#rc_select_3').press('Enter');
 
 
 
 
-        await this.page.getByRole('textbox', { name: 'Text Field' }).click();
-        await this.page.getByRole('textbox', { name: 'Text Field' }).fill('This is a text field');
-        await this.page.locator('div:nth-child(4) > .overflow-hidden > .flex > .cf-field > .ant-space > .ant-space-item > .ant-select > .ant-select-selector').click();
-        await this.page.getByText('Option 1').click();
+        // await this.page.getByRole('textbox', { name: 'Text Field' }).click();
+        // await this.page.getByRole('textbox', { name: 'Text Field' }).fill('This is a text field');
+        // await this.page.locator('div:nth-child(4) > .overflow-hidden > .flex > .cf-field > .ant-space > .ant-space-item > .ant-select > .ant-select-selector').click();
+        // await this.page.getByText('Option 1').click();
+
+
         // await this.page.locator('div:nth-child(5) > .overflow-hidden > .flex > .cf-field > .ant-space > .ant-space-item > .ant-select > .ant-select-selector > .ant-select-selection-wrap > .ant-select-selection-search').click();
 
         //   await this.page.locator('#rc_select_2').fill('Apex');
