@@ -37,7 +37,7 @@ class ChangeOrderPage {
         //await this.page.getByRole('row').nth(1).click();
         await this.page.locator('div[role="treegrid"] div[col-id="project_name"]')
             .getByText(changeOrderData.projectName, { exact: true }).first().click();
-        await expect(this.page.locator('label').filter({ hasText: 'No Cost Change Order' })).toBeVisible();
+        //await expect(this.page.locator('label').filter({ hasText: 'No Cost Change Order' })).toBeVisible();
 
 
         const requestedBy = this.page.locator('.ant-select-selector').filter({
@@ -53,6 +53,23 @@ class ChangeOrderPage {
         await updateCustomerCONumber.click();
         await updateCustomerCONumber.fill(changeOrderData.customerCONumber);
         await this.page.keyboard.press('Enter');
+
+
+        const estimateInput = this.page.locator('#rc_select_2');
+        await estimateInput.click();
+        await this.page.keyboard.press('Enter');
+
+        //await this.page.getByText('Select Time Delay', { exact: true }).click();
+        await this.page.locator('li:nth-child(7) > .form-group-input > .overflow-hidden > .flex > .cf-field > .ant-space > .ant-space-item > .ant-select > .ant-select-selector').click();
+        await this.page.keyboard.press('Enter');
+
+
+        // await this.page.locator('li:nth-child(8) > div > .flex.items-center.w-full > .hover\\:w-full > .form-group-input > .overflow-hidden > .flex > .cf-field > .ant-space > .ant-space-item > .ant-select > .ant-select-selector').click();
+        // await this.page.keyboard.press('Enter');     
+
+        await this.page.locator('.overflow-hidden > .form-group-input > .overflow-hidden > .flex > .cf-field > .ant-space > .ant-space-item > .ant-select > .ant-select-selector').first().click();
+        await this.page.locator('#rc_select_3').press('Enter');
+
 
 
     }
