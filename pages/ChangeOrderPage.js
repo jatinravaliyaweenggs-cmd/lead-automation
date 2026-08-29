@@ -42,6 +42,8 @@ async useDefaultProjectInChangeOrder() {
     await this.page.locator('a.project:visible').first().click();
 
     await this.clickAddChangeOrderButton();
+    await expect(this.page.getByText(changeOrderData.projectName, { exact: true }).first()).toBeVisible();
+    await this.page.keyboard.press('Escape');
 
     await this.page.getByText('DEFAULT PROJECT', { exact: true }).click();
     await this.page.getByPlaceholder('Search Projects').fill(changeOrderData.projectName);
