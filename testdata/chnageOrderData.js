@@ -7,7 +7,8 @@ const changeOrderData = {
     completedProjectName: 'Completed Automation Project',
     newChangeOrderNumber: `DuplicateCO-BATH123-${Date.now()}`,
     newChangeOrderRequstNumber: `DuplicateCOR-BATH123-${Date.now()}`,
-    customerCONumber: `CustCONumber-${Date.now()}`
+    customerCONumber: `CustCONumber-${Date.now()}`,
+    Description: 'This change order is created to update the project requirements.'
 };
 
 module.exports = changeOrderData;

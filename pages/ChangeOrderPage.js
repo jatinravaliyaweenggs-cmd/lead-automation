@@ -30,6 +30,9 @@ class ChangeOrderPage {
         this.trelloButton = page.locator('button:has(svg[data-icon="trello"])');
         this.defaultViewCheckBox = page.getByLabel('Set as Default View');
 
+        this.descriptionInput = page.getByPlaceholder('Description');
+        this.approvedByDropdown = page.locator('.ant-select').filter({ hasText: 'Approved By' });
+
 
     }
 
@@ -62,12 +65,9 @@ class ChangeOrderPage {
 
         // await this.page.getByPlaceholder('Days Delayed').fill('10');
 
-        await this.page
-    .getByPlaceholder('Description')
-    .fill('This change order is created to update the project requirements.');
-
-await this.page.locator('.ant-select').filter({ hasText: 'Approved By' }).click();
-await this.page.keyboard.press('Enter');
+        await this.descriptionInput.fill(changeOrderData.Description);
+        await this.approvedByDropdown.click();
+        await this.page.keyboard.press('Enter');
 
 
         // await this.page.locator('li:nth-child(7) > .form-group-input > .overflow-hidden > .flex > .cf-field > .ant-space > .ant-space-item > .ant-select > .ant-select-selector').click();
