@@ -6,7 +6,7 @@
         "description": "",
         "id": "change-orders;project-selection-option",
         "keyword": "Scenario",
-        "line": 55,
+        "line": 61,
         "name": "Project Selection Option",
         "steps": [
           {
@@ -14,7 +14,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 427581100
+              "duration": 429490299
             }
           },
           {
@@ -27,7 +27,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 4154926999
+              "duration": 2949851800
             }
           },
           {
@@ -40,33 +40,33 @@
             },
             "result": {
               "status": "passed",
-              "duration": 7242432700
+              "duration": 7976223500
             }
           },
           {
             "arguments": [],
             "keyword": "When ",
-            "line": 56,
+            "line": 62,
             "name": "User opens the Change Orders page and verify chnage oder page open",
             "match": {
               "location": "step_definitions\\ChnageOrder.step.js:7"
             },
             "result": {
               "status": "passed",
-              "duration": 6029107599
+              "duration": 3304138699
             }
           },
           {
             "arguments": [],
             "keyword": "And ",
-            "line": 57,
-            "name": "User serch new create chnage order",
+            "line": 63,
+            "name": "User use default project in chnage order",
             "match": {
-              "location": "step_definitions\\ChnageOrder.step.js:81"
+              "location": "step_definitions\\ChnageOrder.step.js:87"
             },
             "result": {
               "status": "passed",
-              "duration": 35345963600
+              "duration": 2031579799
             }
           },
           {
@@ -74,7 +74,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 272509400
+              "duration": 335319900
             }
           }
         ],

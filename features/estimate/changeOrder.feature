@@ -52,13 +52,13 @@ Feature: Change Orders
     #         And User Project Selection Option seeting functionality
 
 
-      Scenario: Project Selection Option
-            When User opens the Change Orders page and verify chnage oder page open
-            And User serch new create chnage order
+    #   Scenario: Project Selection Option
+    #         When User opens the Change Orders page and verify chnage oder page open
+    #         And User serch new create chnage order
 
 
 
-    #    Scenario: Project Selection Option
-    #          When User opens the Change Orders page and verify chnage oder page open
-    #          And User serch new create chnage order
+        Scenario: Project Selection Option
+              When User opens the Change Orders page and verify chnage oder page open
+              And User use default project in chnage order
 

@@ -83,3 +83,8 @@ When('User serch new create chnage order', async function () {
     await changeOrderPage.createNewChnageOrderForNoRecordAvailbale();
     await changeOrderPage.verifyRandomlyChangeOrderRequestSearch();
 })
+
+When('User use default project in chnage order', async function () {
+    changeOrderPage = new ChangeOrderPage(this.page);
+    await changeOrderPage.useDefaultProjectInChangeOrder();
+})
