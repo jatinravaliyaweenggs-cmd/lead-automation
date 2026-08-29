@@ -38,6 +38,11 @@ class ChangeOrderPage {
 async useDefaultProjectInChangeOrder() {
     await this.page.locator('#global_select_project').click();
     await this.page.getByPlaceholder('Search Projects').fill(changeOrderData.projectName);
+    await this.page.locator('a.project:visible').first().click();
+
+    await this.clickAddChangeOrderButton()
+
+    
 }
 
       async createNewChnageOrderRequestForDuplicateNumber() {
