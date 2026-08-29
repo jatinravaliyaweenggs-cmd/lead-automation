@@ -66,7 +66,9 @@ class ChangeOrderPage {
     .getByPlaceholder('Description')
     .fill('This change order is created to update the project requirements.');
 
-    await this.page.locator('#rc_select_4').press('Enter');
+await this.page.locator('.ant-select').filter({ hasText: 'Approved By' }).click();
+await this.page.keyboard.press('Enter');
+
 
         // await this.page.locator('li:nth-child(7) > .form-group-input > .overflow-hidden > .flex > .cf-field > .ant-space > .ant-space-item > .ant-select > .ant-select-selector').click();
         // await this.page.keyboard.press('Enter');
