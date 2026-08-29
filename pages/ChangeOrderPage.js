@@ -46,8 +46,16 @@ class ChangeOrderPage {
         await this.page.keyboard.press('Enter');
 
 
-    }
+        await this.page.locator('#rc_select_1').click();
+        await this.page.keyboard.press('Enter');
 
+        const updateCustomerCONumber = this.page.getByRole('textbox', {name: 'Customer CO Number'});
+        await updateCustomerCONumber.click();
+        await updateCustomerCONumber.fill(changeOrderData.customerCONumber);
+        await this.page.keyboard.press('Enter');
+
+
+    }
 
 
     async useDefaultProjectInChangeOrder() {
@@ -63,6 +71,8 @@ class ChangeOrderPage {
         await this.page.getByText('DEFAULT PROJECT', { exact: true }).click();
         await this.page.getByPlaceholder('Search Projects').fill(changeOrderData.projectName);
         await this.page.locator('a.project:visible').first().click();
+
+
 
 
 
