@@ -9,6 +9,11 @@ class EstimatePage extends BasePage {
     super(page);
     this.page = page;
 
+
+            this.backButton = page.getByRole('button', {name: 'Back', exact: true });
+
+
+
     // Locators
     this.menuDashboard = page.getByRole('button', { name: 'Menu Dashboard' });
     this.estimatesMenu = page.getByRole('link', { name: 'Estimates-plu' });
@@ -186,6 +191,9 @@ class EstimatePage extends BasePage {
   }
 
 
+      async clickBackButton() {
+        await this.backButton.click();
+    }
   
 
   async opportunityNumberAndTitleAdd() {
@@ -526,7 +534,7 @@ await this.page.keyboard.press('Enter');
     await expect(duplicateNameAlert).toBeVisible({ timeout: 5000 });
     await expect(duplicateNameAlert).toHaveText('This name already exists. Please use a different name.');
 
-    await this.enterNewProjectType();
+    //await this.enterNewProjectType();
 
 
     // const selectCreateCustomerOrLead = this.page.getByRole('button', {
@@ -539,12 +547,31 @@ await this.page.keyboard.press('Enter');
 
     await this.searchCustomer.fill('Bhavik Raval');
     await this.selectCustomer('Bhavik Raval');
+    await this.enterNewProjectType();
 
-    await this.projectTypeSelect();
-    const CreateProjectBtn = this.page.getByRole('button', { name: 'Create Project', exact: true });
+    
+    const estimationSelect = this.page.locator('div.ant-select[name="custom_fields.select-1750844335368"]');
+    await estimationSelect.click();
+    await this.page.keyboard.press('Enter');
+    await this.page.keyboard.press('Escape');
+
+    await this.page.locator('input[name="custom_fields.date-1750845067545"]').click();
+    
+    await this.page.locator('input[name="custom_fields.date-1750845067545"]').fill('08/31/2026');
+        await this.page.keyboard.press('Escape');
+
+    //await this.page.getByRole('link', { name: 'Today', exact: true }).click();
+
+    //await this.projectTypeSelect();
+    const CreateProjectBtn = this.page.getByRole('button', { name: 'Create Project(s)', exact: true });
     await CreateProjectBtn.click();
     await this.titleInput.fill('This is a testing title');
     await this.randomEstimateNumbergenerate();
+
+
+
+
+
     await this.createEstimateBtn.nth(0).click();
 
     // Open global project selector
@@ -560,6 +587,7 @@ await this.page.keyboard.press('Enter');
 
 
   async userCreateNewProjectForEstimate() {
+    await this.clickBackButton();
     await this.estimatePageOpenAfterCreate();
     await this.estimatesMenu.click();
     await this.newEstimateBtn.click();
@@ -569,7 +597,7 @@ await this.page.keyboard.press('Enter');
   }
 
   async selectProjectOpportunityS(projectName = 'Residential Villa – Electrical & Plumbing') {
-    await this.selectProjectOpportunity(projectName, 'input[placeholder="Search Project/Opportunity-S"]');
+    await this.selectProjectOpportunity(projectName, 'input[placeholder="Search Project(s)/Opportunity-S"]');
   }
 
   async createEstimateUsingExistingProject() {

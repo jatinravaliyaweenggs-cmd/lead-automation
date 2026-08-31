@@ -65,6 +65,8 @@ this.leadStageInput = this.page.locator('.ant-select[name="stage"]').filter({has
 
 this.favoritesOnly = this.page.getByLabel('Show Favorites Only');
 
+this.logoImg = page.locator('a.logo');
+
 }
 
 
@@ -146,6 +148,7 @@ async enterNewProjectType(){
 
 async selectProjectType(){
     await this.projectTypeDropdown.click();
+    
     await this.page.keyboard.type('Residential');
     await this.page.keyboard.press('Enter');
 }
@@ -193,7 +196,8 @@ async clickSelectCreateCustomerOrLead(){
 
 
   async estimatePageOpenAfterCreate() {
-    await this.logoImg.nth(0).click(); // ✅ correct
+    //await this.logoImg.nth(0).click(); // ✅ correct
+    await this.page.goto('https://dev-app.cfteam.net/');
     await this.menuDashboard.click();
     await this.estimatesMenu.waitFor({ state: 'visible', timeout: 15000 });
   }

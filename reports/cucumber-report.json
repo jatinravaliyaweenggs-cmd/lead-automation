@@ -4,69 +4,95 @@
     "elements": [
       {
         "description": "",
-        "id": "change-orders;project-selection-option",
+        "id": "estimate-creation;create-a-new-estimate-using-project",
         "keyword": "Scenario",
-        "line": 66,
-        "name": "Project Selection Option",
+        "line": 9,
+        "name": "Create a new Estimate using project",
         "steps": [
           {
             "keyword": "Before",
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 446277600
+              "duration": 394917000
             }
           },
           {
             "arguments": [],
             "keyword": "Given ",
-            "line": 3,
+            "line": 4,
             "name": "User is on the login page",
             "match": {
               "location": "step_definitions\\login.steps.js:7"
             },
             "result": {
               "status": "passed",
-              "duration": 4384156200
+              "duration": 4200786699
             }
           },
           {
             "arguments": [],
             "keyword": "When ",
-            "line": 4,
+            "line": 5,
             "name": "User login with valid credentials",
             "match": {
               "location": "step_definitions\\login.steps.js:14"
             },
             "result": {
               "status": "passed",
-              "duration": 6591618100
+              "duration": 7690606300
             }
           },
           {
             "arguments": [],
             "keyword": "When ",
-            "line": 67,
-            "name": "User opens the Change Orders page and verify chnage oder page open",
+            "line": 10,
+            "name": "User navigates to Estimate page",
             "match": {
-              "location": "step_definitions\\ChnageOrder.step.js:7"
+              "location": "step_definitions\\estimate.step.js:88"
             },
             "result": {
               "status": "passed",
-              "duration": 5623705500
+              "duration": 4295936999
             }
           },
           {
             "arguments": [],
-            "keyword": "And ",
-            "line": 68,
-            "name": "User update chnage order",
+            "keyword": "Then ",
+            "line": 11,
+            "name": "User create estimate using existing project",
             "match": {
-              "location": "step_definitions\\ChnageOrder.step.js:92"
+              "location": "step_definitions\\estimate.step.js:71"
             },
             "result": {
               "status": "passed",
-              "duration": 13174157099
+              "duration": 9728874499
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 12,
+            "name": "User create new project in estimate",
+            "match": {
+              "location": "step_definitions\\estimate.step.js:76"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 40236257699
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 13,
+            "name": "User serch not exits customer and lead",
+            "match": {
+              "location": "step_definitions\\estimate.step.js:66"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 16999428299
             }
           },
           {
@@ -74,7 +100,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 299239200
+              "duration": 321148199
             }
           }
         ],
@@ -82,11 +108,11 @@
         "type": "scenario"
       }
     ],
-    "id": "change-orders",
+    "id": "estimate-creation",
     "line": 1,
     "keyword": "Feature",
-    "name": "Change Orders",
+    "name": "Estimate Creation",
     "tags": [],
-    "uri": "features\\estimate\\changeOrder.feature"
+    "uri": "features\\estimate\\estimate.feature"
   }
 ]
