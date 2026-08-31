@@ -6,14 +6,16 @@ Feature: Estimate Creation
     #Then User should be redirected to the dashboard
 
 
-# Scenario: Create a new Estimate using project
-#     When User navigates to Estimate page
-#     Then User create estimate using existing project
-#     Then User create new project in estimate
-#     Then User serch not exits customer and lead
+Scenario: Create a new Estimate using project
+    When User navigates to Estimate page
+    Then User create estimate using existing project
+    Then User create new project in estimate
+    Then User serch not exits customer and lead
 
 
-
+ Scenario: estimate deails add
+   When User navigates to Estimate page
+   When User open estimate and enter details
 
 
 
@@ -24,13 +26,11 @@ Feature: Estimate Creation
 #    And User verifies mandatory fields for create estimate
 
 
-Scenario: search estimate page
-    When User navigates to Estimate page
-    Then User search the estimate
+# Scenario: search estimate page
+#     When User navigates to Estimate page
+#     Then User search the estimate
 
-#  Scenario: estimate deails add
-#    When User navigates to Estimate page
-#    When User open estimate and enter details
+
 
 #  Scenario: user enter items detail
 #    When User navigates to Estimate page and open estimate

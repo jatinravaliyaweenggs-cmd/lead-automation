@@ -1363,7 +1363,7 @@ await this.page.keyboard.press('Enter');
 
   async selectAddress() {
     await this.addressDroupdown.click();
-    await this.selectProjectAddress.click();
+    await this.selectProjectAddress.first().click();
     await this.addressListitem.first().hover();
     await this.pencilIconOfAddress.click();
     await this.addressline1.fill('Nana varchha');
