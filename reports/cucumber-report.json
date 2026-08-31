@@ -4,17 +4,17 @@
     "elements": [
       {
         "description": "",
-        "id": "estimate-creation;create-a-new-estimate-using-project",
+        "id": "estimate-creation;search-estimate-page",
         "keyword": "Scenario",
-        "line": 9,
-        "name": "Create a new Estimate using project",
+        "line": 27,
+        "name": "search estimate page",
         "steps": [
           {
             "keyword": "Before",
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 394917000
+              "duration": 393164900
             }
           },
           {
@@ -27,7 +27,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 4200786699
+              "duration": 4244785100
             }
           },
           {
@@ -40,59 +40,33 @@
             },
             "result": {
               "status": "passed",
-              "duration": 7690606300
+              "duration": 6220653000
             }
           },
           {
             "arguments": [],
             "keyword": "When ",
-            "line": 10,
+            "line": 28,
             "name": "User navigates to Estimate page",
             "match": {
               "location": "step_definitions\\estimate.step.js:88"
             },
             "result": {
               "status": "passed",
-              "duration": 4295936999
+              "duration": 6974640400
             }
           },
           {
             "arguments": [],
             "keyword": "Then ",
-            "line": 11,
-            "name": "User create estimate using existing project",
+            "line": 29,
+            "name": "User search the estimate",
             "match": {
-              "location": "step_definitions\\estimate.step.js:71"
+              "location": "step_definitions\\estimate.step.js:243"
             },
             "result": {
               "status": "passed",
-              "duration": 9728874499
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Then ",
-            "line": 12,
-            "name": "User create new project in estimate",
-            "match": {
-              "location": "step_definitions\\estimate.step.js:76"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 40236257699
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Then ",
-            "line": 13,
-            "name": "User serch not exits customer and lead",
-            "match": {
-              "location": "step_definitions\\estimate.step.js:66"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 16999428299
+              "duration": 22084276999
             }
           },
           {
@@ -100,7 +74,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 321148199
+              "duration": 264249100
             }
           }
         ],

@@ -165,7 +165,7 @@ class EstimatePage extends BasePage {
     this.noteTitleInput = page.getByPlaceholder('Enter a title for this note');
     this.noteDescriptionInput = page.getByPlaceholder('Write short description of note or observation here');
 
-    this.searchInput = page.locator('input[placeholder="Search for Estimates-plu123"]');
+    this.searchInput = page.getByPlaceholder("Search for Estimates-plu'");
     this.filterBtn = page.locator('button:has(svg[data-icon="filter"])');
     this.projecTypeFilter = page.locator('div[name="estimate_project_type"]');
 
@@ -415,7 +415,7 @@ await this.page.keyboard.press('Enter');
     this.leadStageSearchInput = this.page.locator('.ant-select[name="stage"] input.ant-select-selection-search-input');
     await this.leadStageSearchInput.click();
     await this.leadStageSearchInput.fill('Pending');
-    await this.page.locator('.ant-select-item-option').filter({ hasText: 'Pending' }).click();
+    await this.page.locator('.ant-select-item-option').filter({ hasText: 'Pending' }).first().click();
   }
 
   async opportunitysCreateForExistingCustomerBy() {
@@ -633,7 +633,7 @@ await this.page.keyboard.press('Enter');
     await this.saveButton.click();
     await this.projecTypeFilter.click();
     await this.projecTypeFilter.type('Residential');
-    await this.page.locator('.ant-select-item-option', { hasText: 'Residential' }).click();
+    await this.page.locator('.ant-select-item-option', { hasText: 'Residential' }).first().click();
     await this.projecTypeFilter.press('Escape');
 
     await this.page.locator('div[name="approval_type"]').click();
