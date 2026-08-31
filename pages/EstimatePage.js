@@ -656,8 +656,9 @@ await this.page.keyboard.press('Enter');
 
 
   async verifyRequiredFieldErrors() {
-    await this.estimatePageOpenAfterCreate();
-    await this.newEstimateBtn.click();
+   // await this.estimatePageOpenAfterCreate();
+   await this.clickBackButton();
+    await this.newEstimateBtn.first().click();
     const titleError = this.page.locator('label:has-text("Title")').locator('..')
       .locator('span:has-text("This field is required.")');
 
